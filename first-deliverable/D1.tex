@@ -491,42 +491,102 @@ Il manager deve essere in grado di:
 \section{Requisiti Non Funzionali}
 Di seguito vengono elencati i requisiti non funzionali dell’applicazione, numerati con acronimo RNF
 
-\subsection*{RNF1 Affidabile}
-Il sito deve risultare affidabile in tutte le sue componenti, basandosi su tecnologia interna ed esterna robusta. Il sito deve gestire gli svariati errori in modo automatico dove possibile, e informare l’utente in caso di fallimento.
-
-\subsection*{RNF2 Intuitivo e Accessibile}
-Il sito deve apparire semplice, sia sotto l’aspetto visivo che sotto l’aspetto pratico. Inoltre deve essere conforme alle direttive stabilite dallo standard W3C WAI (World Wide Web Consortium Web Accessibility Initiative), in particolare:
-
+\subsection*{RNF1 Intuitività e Accessibilità}
+Il sito deve apparire semplice, sia sotto l'aspetto visivo che sotto l'aspetto pratico:
 \begin{enumerate}
-	\item Il sito deve essere disponibile sia in lingua italiana che in lingua inglese, utilizzando un vocabolario semplice e conciso
-	
-	\item Il sito deve essere ben strutturato in modo da non creare alcun tipo di confusione nella navigazione.
+	\item In media l’utente deve essere in grado di capire le funzionalità con una sola lettura della descrizione.
+	\item Il sito deve essere disponibile sia in lingua italiana che in lingua inglese, l’utente con un livello di lingua A1 è in grado di leggere e comprendere il contenuto.
+	\item Il sito deve avere un design consistente nella sua interezza, utilizzando un singolo font e una palette fissa di colori
+\end{enumerate}
+\subsection*{RNF2 Sicurezza}
+Il sito deve gestire ogni comunicazione in maniera sicura, sia tra utenti e server, che tra i servizi esterni di cui usufruisce
+\begin{enumerate}
+	\item Il sito deve garantire che i dati sensibili siano crittografati e inaccessibili a soggetti indesiderati
+	\begin{itemize}
+		\item Il sito deve utilizzare un sistema di hashing delle password per il controllo e la memorizzazione
+		\item Il sito deve utilizzare i protocolli tls e https per la comunicazione, come specificato nel capitolo 3.2-Design del back-end
+	\end{itemize}
+	\item Il sito deve verificare l’identità dell’utente attraverso il 2FA come specificato nel RF1
+	\item Il sito deve garantire che le transazioni economiche siano gestite in maniera sicura 
+	\item Il sito deve, in fase di registrazione, controllare la sicurezza della password, ossia assicurarsi che la password  abbia almeno una lunghezza pari a 10 caratteri e presenti almeno un numero, una lettera maiuscola e un carattere speciale dalla lista \begin{verbatim} ! ? $ % ^ & * ( ) _ - + = { [ } ] : ; @ # | \ < , > . \end{verbatim}
 \end{enumerate}
 
-\subsection*{RNF3 Sicurezza}
-\subsubsection*{RNF3.1 Privacy e Protezione Dati}
+
+\subsection*{RNF3 Privacy}
+
 L’applicativo deve essere conforme alle principali direttive sull’utilizzo e la gestione dei dati personali del cliente, del dipendente e del manager. In particolare il sito dovrà rispettare le normative del GDPR:
-Il GDPR (Regolamento Generale sulla Protezione dei Dati) è una legge europea che riguarda la protezione dei dati personali.
+\newline Il GDPR (Regolamento Generale sulla Protezione dei Dati) è una legge europea che riguarda la protezione dei dati personali.
 Le principali aree di focus del GDPR includono il consenso esplicito per la raccolta dei dati, la trasparenza nell'uso dei dati, la possibilità di accesso e cancellazione dei dati personali da parte dell'individuo, e misure di sicurezza per proteggere tali dati. 
 
-\subsubsection{RNF3.2 Politiche sulla sicurezza e sulle transazioni economiche}
-Il sito deve gestire ogni comunicazione in maniera sicura, sia tra front-end e back-end, che tra i servizi esterni di cui usufruisce. 
-Il sito deve garantire che i dati sensibili siano crittografati e inaccessibili a soggetti indesiderati, specialmente la gestione delle transazioni economiche.
 
-\subsection*{RNF4 Performante}
-La web app deve offrire velocità di accesso ai servizi offerti in tempi rapidi.
+\subsection*{RNF4 Affidabilità e Disponibilità}
+\begin{enumerate}
+	\item la probabilità che il sito fornisca i risultati desiderati senza interruzioni o tempi di inattività deve essere maggiore del 99\%
+	\item la probabilità che il sito rimanga operativo in un determinato momento indipendentemente dal numero di guasti già subiti dal sistema deve essere maggiore del 99\%
+	 
+\end{enumerate}
+\subsection*{RNF5 Performante}
+Il sito deve offrire velocità di accesso ai servizi offerti in tempi rapidi
+\begin{enumerate}
+	\item Il sito deve aggiornare la lista degli articoli presenti in negozio, in caso di modifica al magazzino, in meno di un secondo
+	\item Il sito deve inviare le mail di 2FA(specificata nell'RF1) in meno di 5 secondi.
+	\item Il sito deve aggiornare la lista delle task (in caso di completamento, aggiunta, messa in pausa) in meno di un secondo 
+\end{enumerate}
 
-\subsection*{RNF5 Compatibilità}
-L’applicazione deve essere supportata su una molteplice quantità di dispositivi.
+\subsection*{RNF6 Compatibilità e Portabilità}
+L'applicazione deve essere supportata su una molteplice quantità di dispositivi.
 Tra i principali vi sono:
-\begin{itemize}
-	\item Pc e Laptop
-	\item Smartphones e Tablets
-\end{itemize}
-Il sito deve essere “responsive”, ossia deve potersi adattare a ogni tipologia e dimensione di schermo.
-
-
-
+\begin{enumerate}
+	\item Dal lato client, computer e dispositivi mobili aventi un browser che supporta:
+    \begin{itemize}
+		\item html5,
+		\item https,
+		\item tls 1.2
+	\end{itemize}
+	\item Dal lato server, computer che supporti:
+	\begin{itemize}
+		\item Node js 18.18.0 LTS
+		\item MongoDB 7.0
+	\end{itemize}
+\end{enumerate}
+Il sito deve essere "responsive", ossia deve potersi adattare alla dimensione degli schermi dei principali dispositivi in commercio, quali:
+\begin{enumerate}
+	\item TV e monitor di PC e Laptop 
+	\begin{itemize}
+		\item Aspect Ration da 4:3, 16:9, 21:9
+	\end{itemize}
+	\item Smartphone
+	\begin{itemize}
+		\item Iphone X,XR,11,\dots , 14
+		\item Tutti i modelli Xiaomi dal 2018 in poi 
+		\item Tutti i modelli Samsung dal 2018 in poi
+		\item Tutti i modelli Motorola dal 2018 in poi 
+		\item Tutti i modelli Huawei dal 2018 in poi 
+	\end{itemize}
+	\item Tablet 
+	\begin{itemize}
+		\item Ipad Air, Pro dal 2018 in poi
+		\item Tutti i modelli Xiaomi dal 2018 in poi
+		\item Tutti i modelli Samsung dal 2018 in poi
+	\end{itemize}
+\end{enumerate}
+\subsection*{RNF7 Mantenibilità e Scalabilità}
+\begin{enumerate}
+	\item Al sito deve essere affiancato, prima e dopo il rilascio ufficiale, un team di manutenzione che si occupi di testare ogni funzionalità periodicamente e che, su richiesta qualora ci siano problemi, sia pronto a intervenire tempestivamente
+	\item Il sito, al fine di essere facilmente mantenibile, deve possedere un codice sorgente con le seguenti caratteristiche:
+	\begin{itemize}
+		\item Il codice sorgente del back-end deve essere modulare, utilizzando un'architettura a microservizi come descritto nel capitolo 3.2 - Design del back-end
+		\item Il codice sorgente deve rispettare le guidelines ufficiali del linguaggio scelto
+	
+	\end{itemize} 
+\end{enumerate}
+\subsection*{RNF8 Conformità}
+L'applicazione deve essere conforme alle normative di legge in materia di siti web imposti dall'Unione europea, inoltre vengono rispettati i seguenti:
+\begin{enumerate}
+	\item GDPR
+	\item W3C WAI
+	\item Comunicazione dei dati identificativi nella prima pagina del sito
+\end{enumerate}
 \chapter{Design}
 
 \section{Design del Front End}
