@@ -1,4 +1,5 @@
 \documentclass{report}
+% depricated
 \title{
 	\iffalse
 	\begin{tikzpicture}[remember picture,overlay]
@@ -10,20 +11,12 @@
 	\fi
 	FixMi \\
 	Analisi dei Requisiti
-
 }
 \author{Giovanni Santini, Riginel Ungureanu, Valerio Asaro}
 \date{Anno accademico 2023/2024}
 
 % for the image in the title
 \usepackage{tikz}
-
-
-
-
-
-
-
 
 % custom spacing
 \usepackage{setspace}
@@ -244,7 +237,7 @@ Il sito deve offrire la possibilità all’utente di cambiare password.
 Il sito deve dare la possibilità ad un utente di registrarsi.
 \begin{enumerate}
 	\item La pagina presenta i campi "email", "password" (due volte), "username" e "nazionalità". 
-	\item La password deve avere almeno una lunghezza pari a 10 caratteri e presentare almeno un numero, una lettera maiuscola e un carattere speciale dalla lista ! ? \$ ? \% \^ \& * ( ) \_ - + = { [ } ] : ; @ \# | \ < , > . ? /. 
+	\item La password deve essere conforme come specificato in RNF3.
 	\item La nazionalità deve essere scelta da una lista finita di nazioni disponibili.
 \end{enumerate}
 
@@ -581,9 +574,9 @@ Il team di sviluppo ha suddiviso l’obiettivo del progetto in obiettivi seconda
 			\hline
 			\centering Ruolo & \qquad\qquad Membro \\ % I found no other way...
 			\hline
-			Leader del team di sviluppo & Riginel Ungureanu \\
+			Sviluppo dell'obiettivo & Il gruppo di sviluppo \\
 			\hline
-			Sviluppo dell'obiettivo & Tutti \\
+			Leader del team di sviluppo & Riginel Ungureanu \\
 			\hline
 			Supervisore Back-End &
 			Giovanni Santini \\

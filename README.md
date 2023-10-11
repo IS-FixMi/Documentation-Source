@@ -2,9 +2,9 @@
 All latex source files are located here
 
 # D1 TODO
-- Riscrivere tutti i requisiti non funzionali
-- Aggiungere requisiti non funzionali, guardare le slides del 05/10/23
-- Tutta la front end-
-- Rivedere Back End
-
-
+- [x] Riscrivere tutti i requisiti non funzionali
+- [x] Aggiungere requisiti non funzionali, guardare le slides del 05/10/23
+- [ ] Copiare RNF su latex
+- [ ] Scrivere user stories per i RF
+- [ ] Tutta la front end-
+- [ ] Rivedere scrittura Back End
