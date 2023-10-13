@@ -7,4 +7,4 @@ All latex source files are located here
 - [x] Copiare RNF su latex
 - [ ] Scrivere user stories per i RF
 - [ ] Tutta la front end-
-- [ ] Rivedere scrittura Back End
+- [x] Rivedere scrittura Back End

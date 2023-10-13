@@ -128,7 +128,7 @@ In particolare il documento mira a:
 		\hline
 		Project Manager & Riginel Ungureanu\\
 		\hline
-		Versione del documento & 1.0 \\
+		Versione del documento & 1.1 \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -157,7 +157,7 @@ Il sito presenta ai dipendenti e al manager un sistema di gestione del magazzino
 
 
 \subsection*{OS3 Negozio}
-Il sito offre ai clienti uno shop, con catalogo interfacciato con il magazzino, che permette loro di effettuare acquisti e richiedere la vendita di un proprio articolo all’attività. I dipendenti potranno vedere gli ordini e le richieste di vendita in modo da gestirle.
+Il sito offre ai clienti uno shop, con catalogo interfacciato con il magazzino, che permette loro di effettuare acquisti. I dipendenti potranno vedere gli ordini e le richieste di vendita in modo da gestirle.
 
 
 \subsection*{OS4 Riparazione}
@@ -190,15 +190,15 @@ Segue la lista dei Requisiti Funzionali (RF) individuati per il progetto.
 
 
 \subsection*{RF0 Requisiti Generali}
-Il sito deve manifestare una distinzione esplicita tra i tre tipi di utente, ossia cliente, dipendente e manager, ognuno con accesso a funzionalità e privilegi diversi.
+Il sito deve manifestare una distinzione esplicita tra i tre tipi di utente, ossia Cliente, Dipendente e Manager, ognuno con accesso a funzionalità e privilegi diversi.
 In vista di questo, la seguente sezione verrà divisa in base al tipo di utente interessato.
 
 \subsection{Utente Non Autenticato}
 
 \subsection*{RF1 login}
-Il sito deve presentare una pagina di login.
+Il sito deve presentare una pagina di login:
 \begin{enumerate}
-	\item La pagina richiede due campi “email” e “password” associati al proprio profilo personale per identificarsi ed accedere alle varie funzionalità dell’applicazione in base al proprio livello di autorizzazione (Manger, Dipendente, Cliente) specificate più avanti.
+	\item La pagina richiede due campi “email” e “password” associati ad un profilo per identificarsi ed accedere alle varie funzionalità dell’applicazione in base al proprio livello di autorizzazione (Manger, Dipendente, Cliente) specificate più avanti.
 	
 	\item L'utente verrà autenticato se e solo se i campi "email" e "password" corrispondono entrambi ad un profilo già registrato nel sistema.
 	
@@ -221,7 +221,7 @@ Il sito deve presentare una pagina di login.
 	\end{enumerate}
 	
 \subsubsection*{RF1.3 Cambio Password}
-Il sito deve offrire la possibilità all’utente di cambiare password.
+Il sito deve offrire la possibilità all’utente di cambiare password:
 	\begin{enumerate}
 		\item L'applicazione invierà un link all'utente attraverso email che porterà ad una nuova pagina. La pagina presenterà un campo "nuova password".
 		
@@ -234,7 +234,7 @@ Il sito deve offrire la possibilità all’utente di cambiare password.
 
 
 \subsection*{RF2 Registrazione}
-Il sito deve dare la possibilità ad un utente di registrarsi.
+Il sito deve dare la possibilità ad un utente di registrarsi:
 \begin{enumerate}
 	\item La pagina presenta i campi "email", "password" (due volte), "username" e "nazionalità". 
 	\item La password deve essere conforme come specificato in RNF3.
@@ -458,7 +458,7 @@ Il manager deve essere in grado di:
 
 
 % table, da updateare
-\begin{table}
+\begin{table}[h]
 \begin{center} % center the table
 	\centering
 	\begin{tabular}{ |p{4cm}|p{4cm}|  }
@@ -576,7 +576,7 @@ Il sito deve essere "responsive", ossia deve potersi adattare alla dimensione de
 	\item Il sito, al fine di essere facilmente mantenibile, deve possedere un codice sorgente con le seguenti caratteristiche:
 	\begin{itemize}
 		\item Il codice sorgente del back-end deve essere modulare, utilizzando un'architettura a microservizi come descritto nel capitolo 3.2 - Design del back-end
-		\item Il codice sorgente deve rispettare le guidelines ufficiali del linguaggio scelto
+		\item Il codice sorgente deve rispettare le linee guida ufficiali del linguaggio scelto
 	
 	\end{itemize} 
 \end{enumerate}
@@ -585,7 +585,6 @@ L'applicazione deve essere conforme alle normative di legge in materia di siti w
 \begin{enumerate}
 	\item GDPR
 	\item W3C WAI
-	\item Comunicazione dei dati identificativi nella prima pagina del sito
 \end{enumerate}
 \chapter{Design}
 
@@ -596,17 +595,48 @@ Nella seguente sezione verranno mostrate alcune grafiche al fine di visualizzare
 
 \section{Design del Back End}
 
-\subsection*{Server Mail}
-Il sito prevede di implementare un server SMTP per l’invio delle mail a tutti i tipi di utente e prevede una mail aziendale per i dipendenti e per i manager.
+Nella seguente sezione vengono riportate le specifiche generali per quanto riguarda la back-end dell’applicazione
 
-\subsection*{Gestione delle Task}
-L’applicazione utilizza un database non relazionale per memorizzare le task ed organizzarle tra i vari dipendenti.
+\subsection{Divisione in Microservizi}
 
-\subsection*{Gestione dei Dipendenti}
-L’applicazione utilizza un database non relazionale per memorizzare i dipendenti, le loro informazioni anagrafiche e le statistiche relative ad essi
+La backend presenta un’architettura basata su microservizi indipendenti che comunicano tramite API. In particolare i microservizi sono:
+\begin{itemize}
+	\item Home
+	\item Autenticazione
+	\item Negozio
+	\item Magazzino
+	\item Task
+	\item Mail Server
+	\item Gestione Dipendenti
+\end{itemize}
 
-\subsection*{Magazzino}
-L’applicazione utilizza un database non relazionale per memorizzare gli articoli contenuti all’interno del magazzino, oltre che alle operazioni svolte, come:
+\subsection{Sistemi Esterni}
+L’applicazione si interfaccerà con i seguenti sistemi esterni
+
+\begin{itemize}
+	\item Sistemi di pagamento: PayPal, NEXI
+	\item Sistema di contabilità della banca
+\end{itemize}
+
+\subsection{Descrizione Microservizi}
+
+\subsubsection*{Home}
+Home permette di reinderizzare l'utente al microservizio desiderato tra Autenticazione, Negozio, Task e Gestione Dipendenti, in base al livello di autorizzazione.
+
+\subsubsection*{Autenticazione}
+Il microservizio gestisce la registrazione e l'autenticazione degli utenti. Utilizza un database non relazionale per memorizzare i profili e le rispettive informazioni.
+
+\subsubsection*{Server Mail}
+L'applicazione prevede di implementare un server SMTP per l’invio delle mail a tutti i tipi di utente e prevede una mail aziendale per i dipendenti e per i manager.
+
+\subsubsection*{Gestione delle Task}
+Il microservizio utilizza un database non relazionale per memorizzare le task ed organizzarle tra i vari dipendenti.
+
+\subsubsection*{Gestione dei Dipendenti}
+Il microservizio è in grado dileggere e scrivere nel database delle task e dei dipendenti.
+
+\subsubsection*{Magazzino}
+Il microservizio utilizza un database non relazionale per memorizzare gli articoli contenuti all’interno del magazzino, oltre che alle operazioni svolte, come:
 
 \begin{itemize}
 	\item l’aggiunta di un nuovo articolo
@@ -614,12 +644,37 @@ L’applicazione utilizza un database non relazionale per memorizzare gli artico
 	\item la rimozione di un articolo esistente
 \end{itemize}
 
-\subsection*{Negozio}
+\subsubsection*{Negozio}
 Il sito utilizzerà un’API esterna per effettuare le transazioni dei pagamenti ed organizzare la contabilità. Inoltre si interfaccia con il magazzino per mostrare gli articoli vendibili.
 
-
-\subsection*{Contatti}
+\iffalse 
+\subsubsection*{Contatti}
 L'applicazione si interfaccia con OpenStreetMaps per visualizzare la posizione dell’azienda sulla mappa.
+\fi
+
+\subsection{Grafici}
+
+In seguito uno schema di alto livello dei collegamenti tra i diversi microservizi. In blu i microservizi, in giallo i sistemi esterni, in verde i databases.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{back_end_short}
+	\caption{Microservizi disponibili per tutti}
+\end{figure}	
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.4\textwidth]{admin_back_end}
+	\caption{Gestione Dipendenti, disponibile solo per il manager}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1.1\textwidth]{backend_D1}
+	\caption{Microservizi disponibili per tutti, con maggiore dettaglio}
+\end{figure}
+
+
 
 % -----------------------------
 
