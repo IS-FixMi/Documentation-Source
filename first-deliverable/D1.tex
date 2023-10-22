@@ -1,4 +1,5 @@
 \documentclass{report}
+
 % depricated
 \title{
 	\iffalse
@@ -53,6 +54,9 @@
 \usepackage[Bjarne]{fncychap}
 % options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
 
+%glossario
+% \usepackage{glossaries}
+
 \begin{document}
 
 
@@ -82,8 +86,6 @@
 \end{titlepage}
 
 
-
-
 % use header and footers
 \pagestyle{fancy}
 \fancyhead[R]{\chaptername\ \thechapter}  % header
@@ -91,6 +93,8 @@
 %\maketitle
 \tableofcontents
 \newpage
+
+
 
 
 
@@ -119,21 +123,23 @@ In particolare il documento mira a:
 		\hline
 		\centering Campo & \qquad\qquad Valore \\ % I found no other way...
 		\hline
-		Titolo del Documento & Analsi dei Reqiusiti \\
+		Titolo del Documento & Analisi dei Requisiti \\
 		\hline
-		Titolo del Progetto & FixMe \\
+		Titolo del Progetto & FixMi \\
 		\hline
 		Autori del Documento &
 		Giovanni Santini \\ & Riginel Ungureanu \\ & Valerio Asaro \\
 		\hline
-		Project Manager & Riginel Ungureanu\\
+		Responsabile del Progetto & Riginel Ungureanu\\
 		\hline
 		Versione del documento & 1.1 \\
 		\hline
 	\end{tabular}
 \end{center}
 
+
 \chapter{Obiettivo del progetto}
+
 
 Di seguito vengono illustrati in maniera discorsiva gli obiettivi principali e secondari del progetto in questione.
 
@@ -355,7 +361,7 @@ Il sito deve dare la possibilità al cliente di inviare anonimamente del feedbac
 \end{enumerate}
 
 \subsection{Dipendente}
-Il sito deve dare la possibilità al dipendente di autenticarsi attraverso la pagina di login (RF1) inserendo le proprie credenziali (email e password) fornitegli dal manager, in modo da poter accedere alle funzionalità riservate ai dipendenti elencate qui sotto:
+Il sito deve dare la possibilità al dipendente di autenticarsi attraverso la pagina di login (RF1) inserendo le proprie credenziali (email e password) fornitegli dal manager, in modo da poter accedere alle funzionalità riservate ai dipendenti elencate qui sotto.
 
 \subsection*{Il Sistema Task}
 Il sistema delle task è centrale alla gestione dell'attività aziendale e al funzionamento dell'applicazione. In seguito vi è una descrizione del suo funzionamento
@@ -377,6 +383,22 @@ Le tasks possono essere in uno dei seguenti stati:
 	\item Completata
 	\item Fallita
 \end{itemize}
+
+\subsubsection*{Descrizione delle singole tasks}
+
+In seguito vi è una descrizione del contenuto di ogni tipologia di task:
+
+
+\begin{enumerate}
+	\item Magazzino: il dipendente può visualizzare, aggiungere o rimuovere oggetti dal magazzino.
+	
+	\item Negozio: il dipendente può accedere al sistema di contabilità per aggiornare eventuali entrate / uscite del negozio. Il dipendente ha anche accesso al magazzino come nel punto precedente.
+	
+	\item Assistenza: il dipendente visualizza la richiesta di supporto dal cliente, la descrizione della richiesta, la email del cliente ed eventuali altri dati inseriti dal cliente. Il dipendente potrà rispondere per mail al cliente in base alle esigenze del caso, secondo la propria discrezione.
+	
+	\item Riparazione: il dipendente potrà prendersi carico di una riparazione selezionando e avviando la task. Qualora ci fossero problemi e/o ritardi, il dipendente potrà mettere la task in pausa e riprenderla in qualsiasi momento. Una volta che la riparazione viene terminata, il dipendente segnerà la task come completata o fallita nel caso la riparazione non avesse successo.
+	
+\end{enumerate}
 
 \subsection*{Definizione work-tag}
 Ad ogni profilo dipendente sono associate una o più \textit{work-tag}. Una \textit{work-tag} è una stringa dello stesso tipo di una \textit{task-tag} (Magazzino, Negozio, Assistenza, Riparazione).\\
@@ -408,22 +430,6 @@ Nella pagina task, il dipendente deve essere in grado di:
 	\item Mettere in pausa la task in esecuzione, la task verrà contrassegnata come “In pausa” e il dipendente potrà selezionare una nuova task dalla lista.
 	
 	\item Contrassegnare una task come “completata” e salvarla in una lista di task completate, insieme al nome del / dei dipendente/i responsabili del completamente e alla data, oppure come “fallita” nel caso ci fossero stati dei problemi. Il dipendente allora potrà scegliere una nuova task dalla lista.
-\end{enumerate}
-
-\subsubsection*{RF9.2 Descrizione delle singole tasks}
-
-In seguito vi è una descrizione del contenuto di ogni tipologia di task:
-
-
-\begin{enumerate}
-	\item Magazzino: il dipendente può visualizzare, aggiungere o rimuovere oggetti dal magazzino.
-	
-	\item Negozio: il dipendente può accedere al sistema di contabilità per aggiornare eventuali entrate / uscite del negozio. Il dipendente ha anche accesso al magazzino come nel punto precedente.
-	
-	\item Assistenza: il dipendente visualizza la richiesta di supporto dal cliente, la descrizione della richiesta, la email del cliente ed eventuali altri dati inseriti dal cliente. Il dipendente potrà rispondere per mail al cliente in base alle esigenze del caso, secondo la propria discrezione.
-	
-	\item Riparazione: il dipendente potrà prendersi carico di una riparazione selezionando e avviando la task. Qualora ci fossero problemi e/o ritardi, il dipendente potrà mettere la task in pausa e riprenderla in qualsiasi momento. Una volta che la riparazione viene terminata, il dipendente segnerà la task come completata o fallita nel caso la riparazione non avesse successo.
-	
 \end{enumerate}
 
 \subsection{Manager}
@@ -714,6 +720,8 @@ Diversi strumenti e tecniche sono state scelte accuratamente in base alla situaz
 	\item LaTeX \qquad \url{https://www.latex-project.org/}
 	\item Photoshop \qquad \url{https://www.adobe.com/it/products/photoshop.html}
 	\item VSCode \qquad \url{https://code.visualstudio.com/}
+	\item Figma \qquad \url{https://www.figma.com/}
+	\item Coolors \qquad \url{https://coolors.co/}
 \end{itemize}
 
 \end{document}
