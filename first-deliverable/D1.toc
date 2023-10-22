@@ -1,23 +1,28 @@
-\contentsline {section}{\numberline {0.1}Scopo del documento}{2}{section.0.1}%
-\contentsline {section}{\numberline {0.2}Informazioni del Documento}{2}{section.0.2}%
-\contentsline {chapter}{\numberline {1}Obiettivo del progetto}{3}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Obiettivo Principale}{3}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Obiettivi Secondari}{3}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Requisiti}{5}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Requisiti Funzionali}{5}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Utente Non Autenticato}{5}{subsection.2.1.1}%
-\contentsline {subsubsection}{RF1.2 2FA}{6}{section*.11}%
-\contentsline {subsection}{\numberline {2.1.2}Cliente}{8}{subsection.2.1.2}%
+\contentsline {section}{\numberline {0.1}Scopo del documento}{3}{section.0.1}%
+\contentsline {section}{\numberline {0.2}Informazioni del Documento}{3}{section.0.2}%
+\contentsline {chapter}{\numberline {1}Obiettivo del progetto}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Obiettivo Principale}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Obiettivi Secondari}{4}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Requisiti}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Requisiti Funzionali}{6}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Utente Non Autenticato}{6}{subsection.2.1.1}%
+\contentsline {subsubsection}{RF1.2 2FA}{7}{section*.11}%
+\contentsline {subsection}{\numberline {2.1.2}Cliente}{9}{subsection.2.1.2}%
 \contentsline {subsubsection}{RF5.1 Carrello}{9}{section*.19}%
 \contentsline {subsection}{\numberline {2.1.3}Dipendente}{11}{subsection.2.1.3}%
 \contentsline {subsection}{\numberline {2.1.4}Manager}{13}{subsection.2.1.4}%
-\contentsline {section}{\numberline {2.2}Requisiti Non Funzionali}{14}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Requisiti Non Funzionali}{13}{section.2.2}%
 \contentsline {chapter}{\numberline {3}Design}{18}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Design del Front End}{18}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Design del Back End}{18}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Divisione in Microservizi}{18}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Sistemi Esterni}{19}{subsection.3.2.2}%
+\contentsline {subsubsection}{Sistemi di Pagamento}{19}{section*.37}%
+\contentsline {subsubsection}{Databases}{19}{section*.38}%
+\contentsline {subsubsection}{OpenStreetMap}{19}{section*.39}%
+\contentsline {subsubsection}{2FA}{19}{section*.40}%
 \contentsline {subsection}{\numberline {3.2.3}Descrizione Microservizi}{19}{subsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.2.4}Grafici}{20}{subsection.3.2.4}%
-\contentsline {chapter}{\numberline {4}Ruoli e Responsabilità}{23}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Tecniche e Strumentazione}{24}{chapter.5}%
+\contentsline {chapter}{\numberline {4}Ruoli e Responsabilità}{22}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Il sistema Task}{23}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Tecniche e Strumentazione}{25}{chapter.6}%

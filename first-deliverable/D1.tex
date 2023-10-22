@@ -132,7 +132,7 @@ In particolare il documento mira a:
 		\hline
 		Responsabile del Progetto & Riginel Ungureanu\\
 		\hline
-		Versione del documento & 1.1 \\
+		Versione del documento & 1.2 \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -204,9 +204,9 @@ In vista di questo, la seguente sezione verrà divisa in base al tipo di utente 
 \subsection*{RF1 login}
 Il sito deve presentare una pagina di login:
 \begin{enumerate}
-	\item La pagina richiede due campi “email” e “password” associati ad un profilo per identificarsi ed accedere alle varie funzionalità dell’applicazione in base al proprio livello di autorizzazione (Manager, Dipendente, Cliente) specificate più avanti.
+	\item La pagina richiede due campi “email” e “password” e presenta un bottone "login".
 	
-	\item L'utente verrà autenticato se e solo se i campi "email" e "password" corrispondono entrambi ad un profilo già registrato nel sistema.
+	\item L'utente verrà autenticato se e solo se i campi "email" e "password" inseriti corrispondono entrambi ad un profilo già registrato nel sistema.
 	
 	\item Nel caso il login fallisse, ossia la email o la password non corrispondessero ad un utente registrato, l’applicazione mostrerà una nuova pagina di login.
 	
@@ -218,9 +218,11 @@ Il sito deve presentare una pagina di login:
 	La pagina di login deve implementare una tecnologia 2FA (Two Factor Authentication) secondo le seguinti modalità:
 	
 	\begin{enumerate}
-	\item L’utente dovrà inserire un codice OTP (One-Time Password), generato sul momento e ottenuto attraverso la propria email, prima di completare ogni accesso all’applicazione. 
+	\item L’utente dovrà inserire un codice OTP (One-Time Password), generato sul momento e ottenuto attraverso email, prima di completare ogni accesso all’applicazione. 
 	
 	\item 	L’autenticazione non potrà procedere finché l’utente non avrà inserito il corretto codice OTP.
+	
+	\item Un codice OTP non sarà più valido dopo minuti 5 dopo la sua generazione.
 	
 	\item L’utente avrà sempre la possibilità di ricevere un nuovo OTP tramite email, il codice precedente non sarà più valido per effettuare l’autenticazione.
 
@@ -233,7 +235,7 @@ Il sito deve offrire la possibilità all’utente di cambiare password:
 		
 		\item La nuova password dovrà essere digitata due volte per ridurre la probabilità di errori di battitura.
 		
-		\item La nuova password deve rispettare i vincoli specificati in RF2.
+		\item La nuova password deve rispettare i vincoli specificati in RNF2.
 		
 		\item Qualora non vi fosse alcun profilo associato alla la mail inserita, il processo fallirà e verrà caricata la pagina di login.
 	\end{enumerate}
@@ -243,8 +245,7 @@ Il sito deve offrire la possibilità all’utente di cambiare password:
 Il sito deve dare la possibilità ad un utente di registrarsi:
 \begin{enumerate}
 	\item La pagina presenta i campi "email", "password" (due volte), "username" e "nazionalità". 
-	\item La password deve essere conforme come specificato in RNF3.
-	\item La nazionalità deve essere scelta da una lista finita di nazioni disponibili.
+	\item La password deve essere conforme come specificato in RNF2.
 \end{enumerate}
 
 \subsubsection*{RF2.1 Verifica Email}
@@ -253,7 +254,7 @@ Per terminare la registrazione con successo, l'applicazione deve verificare la m
 \begin{enumerate}
 	\item L'applicazione deve inviare un codice di 6 cifre, generato randomicamente sul momento, alla email specificata dall’utente e mostrare un campo "inserisci codice".
 		
-	\item L’utente avrà sempre la possibilità di inviare un nuovo codice di verifica del profilo. Il codice precedente non sarà più valido per completare la registrazione.
+	\item L'applicazione deve dare la possibilità all’utente di inviare un nuovo codice di verifica del profilo. Il codice precedente non sarà più valido per completare la registrazione.
 		
 \end{enumerate}
 
@@ -318,8 +319,7 @@ Il sito deve permettere al cliente autenticato, nella pagina dedicata a un speci
 La pagina deve fornire diversi metodi di pagamento:
 
 \begin{enumerate}
-	\item La pagina deve fornire il pagamento con bancomat interfacciandosi con la banca dell'azienda
-	\item La pagina deve fornire il pagamento tramite Paypal interfacciandosi al sito stesso.
+	\item La pagina deve fornire il pagamento tramite Paypal e Bancomat con circuiti Visa e Mastercast.
 	\item Una volta effettuato il pagamento con successo, il sito deve fornire un riepilogo dell’acquisto e un messaggio che invita il cliente a recarsi in negozio per il ritiro dei prodotti.
 	\item Il sito deve creare per i dipendenti una task “magazzino” (RF9), dettagliando i prodotti richiesti.
 	\item Il sito deve inviare i dettagli del pagamento al software di accounting scelto.
@@ -336,7 +336,7 @@ Il sito deve offrire al cliente la possibilità di inviare, attraverso un'apposi
 	
 	\item Successivamente all’invio della richiesta da parte del cliente, l’applicazione deve generare una task di tipo “riparazione”. Il sistema di task è specificato in RF9
 	
-	\item Qualora il cliente abbia inviato una riparazione, il sito deve mostrare al cliente lo stato della propria riparazione in un'apposita pagina "stato riparazioni", interfacciandosi con il sistema di task specificato in RF9.
+	\item Qualora il cliente abbia inviato una riparazione, il sito deve mostrare al cliente lo stato della propria riparazione in un'apposita pagina "stato riparazioni", interfacciandosi con il sistema di task specificato in RF9. In caso non vi siano riparazioni, la pagina deve mostrare la scritta "Nessuna riparazione registrata".
 	
 \end{enumerate}
 
@@ -361,68 +361,25 @@ Il sito deve dare la possibilità al cliente di inviare anonimamente del feedbac
 \end{enumerate}
 
 \subsection{Dipendente}
-Il sito deve dare la possibilità al dipendente di autenticarsi attraverso la pagina di login (RF1) inserendo le proprie credenziali (email e password) fornitegli dal manager, in modo da poter accedere alle funzionalità riservate ai dipendenti elencate qui sotto.
-
-\subsection*{Il Sistema Task}
-Il sistema delle task è centrale alla gestione dell'attività aziendale e al funzionamento dell'applicazione. In seguito vi è una descrizione del suo funzionamento
-
-\subsubsection*{Definizione Task e Task-tag}
-Una task è un'attività sulla quale un dipendente o un manager può decidere di lavorare. Esistono diverse tipologie di task, caratterizzate da una \textit{task-tag}. \\
-Una \textit{task-tag} è una e una sola stringa tra le seguenti:
-\begin{itemize}
-	\item Magazzino
-	\item Negozio
-	\item Assistenza e Supporto
-	\item Riparazione
-\end{itemize}
-Le tasks possono essere in uno dei seguenti stati: 
-\begin{itemize}
-	\item Da eseguire
-	\item In lavorazione
-	\item In pausa
-	\item Completata
-	\item Fallita
-\end{itemize}
-
-\subsubsection*{Descrizione delle singole tasks}
-
-In seguito vi è una descrizione del contenuto di ogni tipologia di task:
-
-
-\begin{enumerate}
-	\item Magazzino: il dipendente può visualizzare, aggiungere o rimuovere oggetti dal magazzino.
-	
-	\item Negozio: il dipendente può accedere al sistema di contabilità per aggiornare eventuali entrate / uscite del negozio. Il dipendente ha anche accesso al magazzino come nel punto precedente.
-	
-	\item Assistenza: il dipendente visualizza la richiesta di supporto dal cliente, la descrizione della richiesta, la email del cliente ed eventuali altri dati inseriti dal cliente. Il dipendente potrà rispondere per mail al cliente in base alle esigenze del caso, secondo la propria discrezione.
-	
-	\item Riparazione: il dipendente potrà prendersi carico di una riparazione selezionando e avviando la task. Qualora ci fossero problemi e/o ritardi, il dipendente potrà mettere la task in pausa e riprenderla in qualsiasi momento. Una volta che la riparazione viene terminata, il dipendente segnerà la task come completata o fallita nel caso la riparazione non avesse successo.
-	
-\end{enumerate}
-
-\subsection*{Definizione work-tag}
-Ad ogni profilo dipendente sono associate una o più \textit{work-tag}. Una \textit{work-tag} è una stringa dello stesso tipo di una \textit{task-tag} (Magazzino, Negozio, Assistenza, Riparazione).\\
-Ogni dipendente potrà lavorare solo sulle task che hanno gli stessi o meno \textit{task-tag} rispetto ai \textit{work-tag} del dipendente.
-
+Il sito deve dare la possibilità al dipendente di autenticarsi attraverso la pagina di login (RF1) inserendo le proprie credenziali (email e password) fornitegli dal manager, in modo da poter accedere alle funzionalità dei clienti  e quelle riservate ai dipendenti elencate qui sotto.
 
 \subsection*{RF9 Pagina Task}
 
-Il sito deve offrire una pagina “Task” ai dipendenti autenticati:
+Il sito deve offrire una pagina “Task” ai dipendenti autenticati, il sistema delle \textit{task} è definito nel capitolo 5 a pagina \pageref{chap:tasks}, si consiglia di leggere tale capitolo prima di continuare.
 
 \begin{enumerate}
 	\item La pagina permetterà al dipendente di visualizzare una lista di task e i corrispettivi \textit{task-tag}.
 	
-	\item Le task visualizzate sono automaticamente selezionate per il dipendente autenticato dall’applicazione in base ai \textit{work-tag} associati al proprio profilo
+	\item Le task visualizzate sono automaticamente selezionate per il dipendente autenticato dall’applicazione in base ai \textit{work-tag} associati al proprio profilo.
 	
-	\item Le task visualizzate sono solo quelle con lo stato "Da eseguire" oppure "In pausa"
+	\item Le task visualizzate sono solo quelle con lo stato "Da eseguire" oppure "In pausa".
 
 	
 \end{enumerate}
 
 \subsubsection*{RF9.1 Interagire con le tasks}
 
-Nella pagina task, il dipendente deve essere in grado di:
-
+Nella pagina "Task", il dipendente deve essere in grado di:
 
 \begin{enumerate}
 	\item Selezionare una task dalla lista da eseguire o da quelle messe in pausa, contrassegnandola come in lavorazione, solo nel caso in cui il dipendente non presenti alcuna task in lavorazione.
@@ -430,15 +387,25 @@ Nella pagina task, il dipendente deve essere in grado di:
 	\item Mettere in pausa la task in esecuzione, la task verrà contrassegnata come “In pausa” e il dipendente potrà selezionare una nuova task dalla lista.
 	
 	\item Contrassegnare una task come “completata” e salvarla in una lista di task completate, insieme al nome del / dei dipendente/i responsabili del completamente e alla data, oppure come “fallita” nel caso ci fossero stati dei problemi. Il dipendente allora potrà scegliere una nuova task dalla lista.
+	
+	\item Creare una nuova task di qualsiasi tipologia, impostando \textit{task-tag} e la descrizione (anche vuota).
+\end{enumerate}
+
+\subsection*{RF10 Magazzino}
+Il dipendente deve aver la possibilità di interagire con il magazzino in un'apposita pagina, in particolare:
+\begin{enumerate}
+	\item Visualizzare i prodotti all'interno del magazzino ordinati per nome o per data di arrivo, in modo crescente o decrescente.
+	\item Aggiungere articoli.
+	\item Rimuovere articoli.
 \end{enumerate}
 
 \subsection{Manager}
 Il sito deve dare la possibilità di autenticazione del manager nella pagina di login, fornendo email e password del profilo manager.
 
-\subsection*{RF10}
-Se un profilo è di tipo manager, deve poter accedere a tutte le funzionalità del profilo “dipendente” specificate sopra. In aggiunta il manager deve essere in grado di:
+\subsection*{RF11}
+Se un profilo è di tipo manager, deve poter accedere a tutte le funzionalità del profilo “dipendente” specificate sopra.
 
-\subsubsection*{RF10.1 Gestione dei Dipendenti}
+\subsubsection*{RF11.1 Gestione dei Dipendenti}
 Il manager deve essere in grado di:
 
 \begin{enumerate}
@@ -473,10 +440,10 @@ Il manager deve essere in grado di:
 		\hline
 		OS1 Autenticazione & RF1, RF2 \\
 		\hline
-		OS2 Magazzino & RF9 \\
+		OS2 Magazzino & RF9, RF10 \\
 		\hline
 		OS3 Negozio &
-		RF3, RF9 \\
+		RF3, RF9, RF10 \\
 		\hline
 		OS4 Riparazione & RF6, RF9\\
 		\hline
@@ -484,7 +451,7 @@ Il manager deve essere in grado di:
 		\hline
 		OS6 Feedback & RF8, RF9 \\
 		\hline
-		OS7 Gestione dei Dipendenti & RF10 \\
+		OS7 Gestione dei Dipendenti & RF11 \\
 		\hline
 		OS8 Gestione Task & RF9 \\
 		\hline
@@ -513,8 +480,7 @@ Il sito deve gestire ogni comunicazione in maniera sicura, sia tra utenti e serv
 		\item Il sito deve utilizzare i protocolli tls e https per ogni comunicazione tra utenti e servizi.
 	\end{itemize}
 	\item Il sito deve verificare l’identità dell’utente attraverso il 2FA come specificato nel RF1.
-	\item Il sito deve garantire che le transazioni economiche siano gestite in maniera sicura. 
-	\item Il sito deve, in fase di registrazione, controllare la sicurezza della password, ossia assicurarsi che la password  abbia almeno una lunghezza pari a 10 caratteri e presenti almeno un numero, una lettera maiuscola e un carattere speciale dalla lista \begin{verbatim} ! ? $ % ^ & * ( ) _ - + = { [ } ] : ; @ # | \ < , > . \end{verbatim}
+	\item Il sito deve, in fase di registrazione e di modifica password, controllare la sicurezza della password, ossia assicurarsi che la password  abbia almeno una lunghezza pari a 10 caratteri e presenti almeno un numero, una lettera maiuscola e un carattere speciale dalla lista \begin{verbatim} ! ? $ % ^ & * ( ) _ - + = { [ } ] : ; @ # | \ < , > . \end{verbatim}
 \end{enumerate}
 
 
@@ -619,27 +585,34 @@ La backend presenta un’architettura basata su microservizi indipendenti che co
 \subsection{Sistemi Esterni}
 L’applicazione si interfaccerà con i seguenti sistemi esterni:
 
-\begin{itemize}
-	\item Sistemi di pagamento: PayPal, NEXI
-	\item Sistema di contabilità della banca
-\end{itemize}
+\subsubsection{Sistemi di Pagamento}
+La backend si interfaccierà con Paypal Name-Value-Pair (NVP) e NEXI XPay per effettuare i pagamenti nella pagina "Negozio" (RF3). 
+
+\subsubsection{Databases}
+La backend utilizzerà il servizio MongoDB Cluster Atlas per interagire con databases distribuiti, in particolare i database per gli utenti registrati, le task e il magazzino.
+
+\subsubsection{OpenStreetMap}
+Nella pagina di informazioni, l'applicazione userà OpenStreetMap per visualizzare la posizione dell'azienda nella mappa.
+
+\subsubsection{2FA}
+Il sito utilizzerà un servizio esterno per effettuare l'autenticazione a 2 fattori.
 
 \subsection{Descrizione Microservizi}
 
 \subsubsection*{Home}
-Home permette di reinderizzare l'utente al microservizio desiderato tra Autenticazione, Negozio, Task e Gestione Dipendenti, in base al livello di autorizzazione.
+Home presenta la pagina principale "Home" e permette di reinderizzare l'utente al microservizio desiderato tra Autenticazione, Negozio, Magazzino, Task, Gestione Dipendenti, in base al livello di autorizzazione.
 
 \subsubsection*{Autenticazione}
-Il microservizio gestisce la registrazione e l'autenticazione degli utenti. Utilizza un database non relazionale per memorizzare i profili e le rispettive informazioni.
+Il microservizio gestisce la registrazione e l'autenticazione degli utenti. Si interfaccia ad un database non relazionale esterno per memorizzare i profili e le rispettive informazioni.
 
 \subsubsection*{Server Mail}
 L'applicazione prevede di implementare un server SMTP per l’invio delle mail a tutti i tipi di utente e prevede una mail aziendale per i dipendenti e per i manager.
 
 \subsubsection*{Gestione delle Task}
-Il microservizio utilizza un database non relazionale per memorizzare le task ed organizzarle tra i vari dipendenti.
+Il microservizio si interfaccia con database esterno non relazionale per memorizzare le task, mostrarle ai dipendenti e salvarne lo stato (definito nel capitolo 6).
 
 \subsubsection*{Gestione dei Dipendenti}
-Il microservizio è in grado dileggere e scrivere nel database delle task e dei dipendenti.
+Il microservizio è in grado di leggere e scrivere nel database delle task e degli utenti registrati.
 
 \subsubsection*{Magazzino}
 Il microservizio utilizza un database non relazionale per memorizzare gli articoli contenuti all’interno del magazzino, oltre che alle operazioni svolte, come:
@@ -650,24 +623,18 @@ Il microservizio utilizza un database non relazionale per memorizzare gli artico
 	\item la rimozione di un articolo esistente
 \end{itemize}
 
-\subsubsection*{Negozio}
-Il sito utilizzerà un’API esterna per effettuare le transazioni dei pagamenti ed organizzare la contabilità. Inoltre si interfaccia con il magazzino per mostrare gli articoli vendibili.
-
-\iffalse 
-\subsubsection*{Contatti}
-L'applicazione si interfaccia con OpenStreetMaps per visualizzare la posizione dell’azienda sulla mappa.
-\fi
-
 \subsection{Grafici}
 
 In seguito uno schema di alto livello dei collegamenti tra i diversi microservizi. In blu i microservizi, in giallo i sistemi esterni, in verde i databases.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{back_end_short}
-	\caption{Microservizi disponibili per tutti}
+	\includegraphics[width=1\textwidth]{back_end_short}
+	\caption{Schema di alto livello della back end}
 \end{figure}	
 
+% removed
+\iffalse
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.4\textwidth]{admin_back_end}
@@ -679,7 +646,7 @@ In seguito uno schema di alto livello dei collegamenti tra i diversi microserviz
 	\includegraphics[width=1.1\textwidth]{backend_D1}
 	\caption{Microservizi disponibili per tutti, con maggiore dettaglio}
 \end{figure}
-
+\fi
 
 
 % -----------------------------
@@ -709,6 +676,49 @@ Il team di sviluppo ha suddiviso l’obiettivo del progetto in obiettivi seconda
 	\end{center}
 \end{table}
 
+\chapter{Il sistema Task}
+\label{chap:tasks}
+
+Il sistema delle task è centrale alla gestione dell'attività aziendale e al funzionamento dell'applicazione. In seguito vi è una descrizione del suo funzionamento
+
+\subsubsection*{Definizione Task e Task-tag}
+
+Una task è un'attività sulla quale un dipendente o un manager può decidere di lavorare. Esistono diverse tipologie di task, caratterizzate da una \textit{task-tag}.e una descrizione di massimo 200 caratteri.\\
+Una \textit{task-tag} è una e una sola stringa tra le seguenti:
+\begin{itemize}
+	\item Magazzino
+	\item Negozio
+	\item Assistenza e Supporto
+	\item Riparazione
+\end{itemize}
+Le tasks possono essere in uno dei seguenti stati: 
+\begin{itemize}
+	\item Da eseguire
+	\item In lavorazione
+	\item In pausa
+	\item Completata
+	\item Fallita
+\end{itemize}
+
+\subsubsection*{Significato delle singole tasks}
+
+In seguito vi è una descrizione del significato di ogni tipologia di task:
+
+\begin{enumerate}
+	\item Magazzino: il dipendente accede alla pagina del magazzino (RF10) per apportare eventuali modifiche o visualizzare i vari articoli.
+	
+	\item Negozio: il dipendente si assume il compito di rimanere alla cassa per interagire con eventuali clienti.
+	
+	\item Assistenza: il dipendente visualizza la richiesta di supporto dal cliente tramite mail. Il dipendente potrà rispondere per mail al cliente in base alle esigenze del caso, secondo la propria discrezione.
+	
+	\item Riparazione: il dipendente potrà prendersi carico di una riparazione selezionando e avviando la task. Qualora ci fossero problemi e/o ritardi, il dipendente potrà mettere la task in pausa e riprenderla in qualsiasi momento. Una volta che la riparazione viene terminata, il dipendente segnerà la task come completata o fallita nel caso la riparazione non avesse successo.
+	
+\end{enumerate}
+
+\subsection*{Definizione work-tag}
+Ad ogni profilo dipendente sono associate una o più \textit{work-tag}. Una \textit{work-tag} è una stringa dello stesso tipo di una \textit{task-tag} (Magazzino, Negozio, Assistenza, Riparazione).\\
+Ogni dipendente potrà lavorare solo sulle task che hanno gli stessi o meno \textit{task-tag} rispetto ai \textit{work-tag} del dipendente.
+
 
 \chapter{Tecniche e Strumentazione}
 Diversi strumenti e tecniche sono state scelte accuratamente in base alla situazione posta dall’obiettivo. Di seguito un elenco degli strumenti utilizzati per la realizzazione del progetto:
@@ -718,7 +728,6 @@ Diversi strumenti e tecniche sono state scelte accuratamente in base alla situaz
 	\item GitHub \qquad \url{https://github.com/}
 	\item Google Suite \qquad \url{https://workspace.google.it/intl/it/}
 	\item LaTeX \qquad \url{https://www.latex-project.org/}
-	\item Photoshop \qquad \url{https://www.adobe.com/it/products/photoshop.html}
 	\item VSCode \qquad \url{https://code.visualstudio.com/}
 	\item Figma \qquad \url{https://www.figma.com/}
 	\item Coolors \qquad \url{https://coolors.co/}
