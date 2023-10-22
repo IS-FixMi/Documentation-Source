@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.25)  13 OCT 2023 19:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.25)  22 OCT 2023 18:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -652,7 +652,7 @@ Package rerunfilecheck Info: File `D1.out' has not changed.
 Here is how much of TeX's memory you used:
  19200 strings out of 477985
  360698 string characters out of 5840058
- 1860388 words of memory out of 5000000
+ 1861388 words of memory out of 5000000
  38914 multiletter control sequences out of 15000+600000
  516207 words of font info for 45 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -666,7 +666,7 @@ cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
 ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
 per/sfrm1000.pfb>
-Output written on D1.pdf (25 pages, 314515 bytes).
+Output written on D1.pdf (25 pages, 314513 bytes).
 PDF statistics:
  468 PDF objects out of 1000 (max. 8388607)
  408 compressed objects within 5 object streams

@@ -198,7 +198,7 @@ In vista di questo, la seguente sezione verrà divisa in base al tipo di utente 
 \subsection*{RF1 login}
 Il sito deve presentare una pagina di login:
 \begin{enumerate}
-	\item La pagina richiede due campi “email” e “password” associati ad un profilo per identificarsi ed accedere alle varie funzionalità dell’applicazione in base al proprio livello di autorizzazione (Manger, Dipendente, Cliente) specificate più avanti.
+	\item La pagina richiede due campi “email” e “password” associati ad un profilo per identificarsi ed accedere alle varie funzionalità dell’applicazione in base al proprio livello di autorizzazione (Manager, Dipendente, Cliente) specificate più avanti.
 	
 	\item L'utente verrà autenticato se e solo se i campi "email" e "password" corrispondono entrambi ad un profilo già registrato nel sistema.
 	
@@ -223,7 +223,7 @@ Il sito deve presentare una pagina di login:
 \subsubsection*{RF1.3 Cambio Password}
 Il sito deve offrire la possibilità all’utente di cambiare password:
 	\begin{enumerate}
-		\item L'applicazione invierà un link all'utente attraverso email che porterà ad una nuova pagina. La pagina presenterà un campo "nuova password".
+		\item L'applicazione deve inviare un link all'utente attraverso email che porterà ad una nuova pagina. La pagina presenterà un campo "nuova password".
 		
 		\item La nuova password dovrà essere digitata due volte per ridurre la probabilità di errori di battitura.
 		
@@ -489,25 +489,25 @@ Il manager deve essere in grado di:
 
 
 \section{Requisiti Non Funzionali}
-Di seguito vengono elencati i requisiti non funzionali dell’applicazione, numerati con acronimo RNF
+Di seguito vengono elencati i requisiti non funzionali dell’applicazione, numerati con acronimo RNF.
 
 \subsection*{RNF1 Intuitività e Accessibilità}
 Il sito deve apparire semplice, sia sotto l'aspetto visivo che sotto l'aspetto pratico:
 \begin{enumerate}
 	\item In media l’utente deve essere in grado di capire le funzionalità con una sola lettura della descrizione.
 	\item Il sito deve essere disponibile sia in lingua italiana che in lingua inglese, l’utente con un livello di lingua A1 è in grado di leggere e comprendere il contenuto.
-	\item Il sito deve avere un design consistente nella sua interezza, utilizzando un singolo font e una palette fissa di colori
+	\item Il sito deve avere un design consistente nella sua interezza, utilizzando un singolo font e una palette fissa di colori.
 \end{enumerate}
 \subsection*{RNF2 Sicurezza}
-Il sito deve gestire ogni comunicazione in maniera sicura, sia tra utenti e server, che tra i servizi esterni di cui usufruisce
+Il sito deve gestire ogni comunicazione in maniera sicura, sia tra utenti e server, che tra i servizi esterni di cui usufruisce:
 \begin{enumerate}
-	\item Il sito deve garantire che i dati sensibili siano crittografati e inaccessibili a soggetti indesiderati
+	\item Il sito deve garantire che i dati sensibili siano crittografati e inaccessibili a soggetti indesiderati.
 	\begin{itemize}
-		\item Il sito deve utilizzare un sistema di hashing delle password per il controllo e la memorizzazione
-		\item Il sito deve utilizzare i protocolli tls e https per la comunicazione, come specificato nel capitolo 3.2-Design del back-end
+		\item Il sito deve utilizzare un algoritmo di hashing di tipo SHA-3 per il controllo e la memorizzazione delle passwords.
+		\item Il sito deve utilizzare i protocolli tls e https per ogni comunicazione tra utenti e servizi.
 	\end{itemize}
-	\item Il sito deve verificare l’identità dell’utente attraverso il 2FA come specificato nel RF1
-	\item Il sito deve garantire che le transazioni economiche siano gestite in maniera sicura 
+	\item Il sito deve verificare l’identità dell’utente attraverso il 2FA come specificato nel RF1.
+	\item Il sito deve garantire che le transazioni economiche siano gestite in maniera sicura. 
 	\item Il sito deve, in fase di registrazione, controllare la sicurezza della password, ossia assicurarsi che la password  abbia almeno una lunghezza pari a 10 caratteri e presenti almeno un numero, una lettera maiuscola e un carattere speciale dalla lista \begin{verbatim} ! ? $ % ^ & * ( ) _ - + = { [ } ] : ; @ # | \ < , > . \end{verbatim}
 \end{enumerate}
 
@@ -526,11 +526,11 @@ Le principali aree di focus del GDPR includono il consenso esplicito per la racc
 	 
 \end{enumerate}
 \subsection*{RNF5 Performante}
-Il sito deve offrire velocità di accesso ai servizi offerti in tempi rapidi
+Il sito deve offrire velocità di accesso ai servizi offerti in tempi rapidi:
 \begin{enumerate}
-	\item Il sito deve aggiornare la lista degli articoli presenti in negozio, in caso di modifica al magazzino, in meno di un secondo
+	\item Il sito deve aggiornare la lista degli articoli presenti in negozio, in caso di modifica al magazzino, in meno di un secondo.
 	\item Il sito deve inviare le mail di 2FA(specificata nell'RF1) in meno di 5 secondi.
-	\item Il sito deve aggiornare la lista delle task (in caso di completamento, aggiunta, messa in pausa) in meno di un secondo 
+	\item Il sito deve aggiornare la lista delle task (in caso di completamento, aggiunta, messa in pausa) in meno di un secondo.
 \end{enumerate}
 
 \subsection*{RNF6 Compatibilità e Portabilità}
@@ -575,8 +575,8 @@ Il sito deve essere "responsive", ossia deve potersi adattare alla dimensione de
 	\item Al sito deve essere affiancato, prima e dopo il rilascio ufficiale, un team di manutenzione che si occupi di testare ogni funzionalità periodicamente e che, su richiesta qualora ci siano problemi, sia pronto a intervenire tempestivamente
 	\item Il sito, al fine di essere facilmente mantenibile, deve possedere un codice sorgente con le seguenti caratteristiche:
 	\begin{itemize}
-		\item Il codice sorgente del back-end deve essere modulare, utilizzando un'architettura a microservizi come descritto nel capitolo 3.2 - Design del back-end
-		\item Il codice sorgente deve rispettare le linee guida ufficiali del linguaggio scelto
+		\item Il codice sorgente del back-end deve essere modulare, utilizzando un'architettura a microservizi come descritto nel capitolo 3.2 - Design del back-end.
+		\item Il codice sorgente deve rispettare le linee guida ufficiali del linguaggio scelto.
 	
 	\end{itemize} 
 \end{enumerate}
@@ -595,7 +595,7 @@ Nella seguente sezione verranno mostrate alcune grafiche al fine di visualizzare
 
 \section{Design del Back End}
 
-Nella seguente sezione vengono riportate le specifiche generali per quanto riguarda la back-end dell’applicazione
+Nella seguente sezione vengono riportate le specifiche generali per quanto riguarda la back-end dell’applicazione.
 
 \subsection{Divisione in Microservizi}
 
@@ -611,7 +611,7 @@ La backend presenta un’architettura basata su microservizi indipendenti che co
 \end{itemize}
 
 \subsection{Sistemi Esterni}
-L’applicazione si interfaccerà con i seguenti sistemi esterni
+L’applicazione si interfaccerà con i seguenti sistemi esterni:
 
 \begin{itemize}
 	\item Sistemi di pagamento: PayPal, NEXI

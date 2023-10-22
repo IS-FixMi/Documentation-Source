@@ -15,5 +15,5 @@ All latex source files are located here
 - [ ] Utenti e Sistemi Esterni
 - [ ] Diagramma di Contesto
 - [ ] Definizione dei Componenti
-- [ ] Diagamma dei Componenti
+- [ ] Diagramma dei Componenti
 
