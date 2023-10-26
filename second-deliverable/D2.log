@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2023.10.11)  25 OCT 2023 17:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2023.10.11)  26 OCT 2023 20:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -499,48 +499,59 @@ File: images/shop_diagram_1.png Graphic file (type png)
 <use images/shop_diagram_1.png>
 Package pdftex.def Info: images/shop_diagram_1.png  used on input line 166.
 (pdftex.def)             Requested size: 345.0pt x 181.43143pt.
- [7 <./images/Register_swimlane.drawio.png>] [8 <./images/shop_diagram_1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 196--196
+ [7 <./images/Register_swimlane.drawio.png>]
+<images/Riparazione_UCD.drawio.png, id=116, 436.63126pt x 633.36626pt>
+File: images/Riparazione_UCD.drawio.png Graphic file (type png)
+<use images/Riparazione_UCD.drawio.png>
+Package pdftex.def Info: images/Riparazione_UCD.drawio.png  used on input line 172.
+(pdftex.def)             Requested size: 345.0pt x 500.45052pt.
+ [8 <./images/shop_diagram_1.png>] [9 <./images/Riparazione_UCD.drawio.png>]
+Overfull \hbox (62.66751pt too wide) in paragraph at lines 198--199
+[]\OT1/cmr/m/n/10 [ Ex-cep-tion 2]: Se l'utente non ha com-pi-lato i campi "nome","cognome","email","numero
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
 []\OT1/cmr/m/n/10 Linguaggio Com-
  []
 
 
-Underfull \hbox (badness 3291) in paragraph at lines 196--197
+Underfull \hbox (badness 3291) in paragraph at lines 224--225
 []\OT1/cmr/m/n/10 In me-dia l'utente deve
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--197
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
 \OT1/cmr/m/n/10 es-sere in grado di
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--197
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
 \OT1/cmr/m/n/10 capire le fun-zion-alit^^Ra
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--197
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
 \OT1/cmr/m/n/10 dell'applicazione con
  []
 
 
-Underfull \hbox (badness 7344) in paragraph at lines 196--197
+Underfull \hbox (badness 7344) in paragraph at lines 224--225
 \OT1/cmr/m/n/10 una sola let-tura della
  []
 
 
-Overfull \hbox (3.9803pt too wide) in paragraph at lines 192--200
+Overfull \hbox (3.9803pt too wide) in paragraph at lines 220--228
  [] 
  []
 
-[9]
+[11]
 Chapter 2.
-[10
+[12
 
 ]
 Chapter 3.
-[11
+[13
 
 ] (D2.aux)
  ***********
@@ -556,17 +567,17 @@ Package rerunfilecheck Info: File `D2.out' has not changed.
 (rerunfilecheck)             Checksum: 7154840A05F3A3A99FC6DB9FAE176D20;1785.
  ) 
 Here is how much of TeX's memory you used:
- 19318 strings out of 475247
- 367615 string characters out of 5756847
- 1924785 words of memory out of 5000000
- 40500 multiletter control sequences out of 15000+600000
+ 19336 strings out of 475247
+ 368019 string characters out of 5756847
+ 1926785 words of memory out of 5000000
+ 40510 multiletter control sequences out of 15000+600000
  561475 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,12n,107p,476b,504s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Riginel\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Riginel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Riginel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Riginel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Riginel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Riginel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Riginel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Riginel/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsl10.pfb>
-Output written on D2.pdf (12 pages, 255808 bytes).
+Output written on D2.pdf (14 pages, 291095 bytes).
 PDF statistics:
- 194 PDF objects out of 1000 (max. 8388607)
- 40 named destinations out of 1000 (max. 500000)
- 131 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 212 PDF objects out of 1000 (max. 8388607)
+ 48 named destinations out of 1000 (max. 500000)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 

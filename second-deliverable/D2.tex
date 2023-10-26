@@ -168,7 +168,35 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 
 
 \subsection*{RF6 Riparazione}
-
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Riparazione_UCD.drawio.png}
+	Use Case Diagram  della riparazione
+\end{figure}
+\subsubsection*{Descrizione Use Case "Riparazione"}
+\textbf{Titolo}: Riparazione
+\textbf{Riassunto}: Questo use case descrive come un utente può richiedere una riparazione e visualizzarne lo stato
+\textbf{Descrizione}:
+	\begin{enumerate}
+		\item L'utente autenticato seleziona la pagina "Riparazioni";
+		\item Il sito mostra lo stato delle riparazioni già richieste dall'utente[Exception 1];
+		\item Il sito mostra un form per richiedere una nuova riparazione con i seguenti campi:
+		\begin{itemize}
+			\item nome[Exception 2];
+			\item cognome[Exception 2]; 
+			\item email[Exception 2];
+			\item numero di telefono[Exception 2];
+			\item descrizione del problema[Exception 2];
+			\item foto (( facoltativo ));
+		\end{itemize}
+		\item L'utente, appena compilato il form, può inviarlo premendo l'apposito pulsante;
+		\item Il sistema, appena ricevuta la richiesta di riparazione, la inserisce nel sistema delle task come "task riparazione";
+		
+	\end{enumerate}
+\textbf{Exceptions}
+\begin{itemize}
+	\item {[Exception 1]}: Se L'utente non ha nessuna riparazione richiesta, l'elenco sarà vuoto;
+	\item {[ Exception 2]}: Se l'utente non ha compilato i campi "nome","cognome","email","numero di telefono","descrizione del problema" non può inviare la richiesta;
+\end{itemize}
 \subsection*{RF7 Assistenza}
 
 \subsection*{RF8 Feedback}
