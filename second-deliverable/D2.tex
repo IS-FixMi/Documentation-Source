@@ -38,6 +38,7 @@
 	urlcolor=black
 }
 
+\usepackage{amsmath}
 % Remove che "Chapter" string before chapters
 \iffalse
 \makeatletter
@@ -210,8 +211,8 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 \pagebreak
 
 \section{Requisiti Non Funzionali}
+Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sistema utilizzando tabelle strutturate e specificando misure facilmente misurabili
 
-TODO: Gli stessi del D1 ma messi in una tabella + unità di misura di ogni requisito
 
 \subsection*{RNF1 Intuitività e Accessibilità}
 % table
@@ -224,17 +225,172 @@ TODO: Gli stessi del D1 ma messi in una tabella + unità di misura di ogni requi
 		Linguaggio Comprensibile & In media l’utente deve essere in grado di capire le funzionalità dell'applicazione con una
 		sola lettura della descrizione &  \\
 		\hline
+		Presenza della lingua inglese e italiana & Il sito presenta sia la lingua italiana che quella inglese, l'utente con un livello di lingua A1 è in grado di leggere e comprendere il contenuto & Certificato linguistico \\ % I found no other way...
+		\hline
+		Consistenza & Il sito deve avere un design consistente, utilizzando un singolo font e una palette fissa di colori & numero di font utilizzati, numero di colori utilizzati  \\% I found no other way... 
+		\hline
 	\end{tabular}
 \end{center}
 
 \subsection*{RNF2 Sicurezza}
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{3cm}|p{4cm}|p{4cm}|  }
+		\hline
+		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
+		\hline
+		Protezione dati & Il sito deve proteggere i dati sensibili: 
+		\begin{itemize}
+			\item Utilizzo di hashing SHA-3 per le password;
+			\item Utilizzo dei protocolli tls e https per ogni comunicazione tra utenti e servizi;
+		\end{itemize} & \\
+		\hline
+		2 Factor Authentication & Il sito deve verificare l'identità dell'utente attraverso il 2FA & \\
+		\hline
+		Conformità password & La password di un utente deve avere una lunghezza minima di 10 caratteri e deve presentare almeno un numero,una lettera maiuscola, e un carattere speciale &
+		numero dei caratteri, presenza di numeri,lettere maiuscole e caratteri speciali della lista
+		\begin{verbatim} ! ? $ % ^ & * ( ) _ \end{verbatim} \begin{verbatim}- + = { [ } ] : ;\end{verbatim} \begin{verbatim}@ # | \ < , > . \end{verbatim} \\
+		\hline
+		
+	\end{tabular}
+\end{center}
 \subsection*{RNF3 Privacy}
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{3cm}|p{4cm}|p{4cm}|  }
+		\hline
+		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
+		\hline
+		GDPR & il sito deve essere conforme alle principali direttive del GDPR, tra cui il consenso esplicito per la raccolta dei dati, la trasparenza nell'uso dei dati, la possibilità di accesso e cancellazione dei dati personali da parte dell'individuo, e misure di sicurezza per proteggere tali dati & Conforme \\
+		\hline
+	\end{tabular}
+\end{center}
 \subsection*{RNF4 Affidabilità e Disponibilità}
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{3cm}|p{4cm}|p{4cm}|  }
+		\hline
+		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
+		\hline
+		Risultati desiderati & La probabilità che il sito fornisca i risultati desiderati senza interruzioni o tempi di inattività deve essere maggiore del 99\% & $\frac{\text{risultati ricevuti con successo}}{\text{risultati totali}} $ \\ % There was no other way...
+		\hline
+		Operatività &  la probabilit`a che il sito rimanga operativo in un determinato momento
+		indipendentemente dal numero di guasti gi`a subiti dal sistema deve essere
+		maggiore del 99\% & $ \frac{\text{secondi di attività dal lancio}}{\text{secondi totali dal lancio}} $\\
+		\hline 
+	\end{tabular}
+\end{center}
 \subsection*{RNF5 Performante}
-\subsection*{RNF6 Compatibilità e Portabilità}
-\subsection*{RNF7 Mantenibilità e Scalabilità}
-\subsection*{RNF8 Conformità}
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{3cm}|p{4cm}|p{4cm}|  }
+		\hline
+		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
+		\hline
+		Aggiornamento negozio & Il sito deve aggiornare la lista degli articoli presenti in negozio, in caso di modifica al magazzino, in meno di un secondo. & tempo \\
+		\hline 
+		2 Factor Authentication & Il sito deve inviare la mail di 2FA in meno di 5 secondi & tempo \\
+		\hline
+		Lista delle Task & Il sito deve aggiornare la lista delle task in meno di un secondo & tempo \\ 
+		\hline
 
+	\end{tabular}
+\end{center}
+\subsection*{RNF6 Compatibilità e Portabilità}
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{3cm}|p{4cm}|p{4cm}|  }
+		\hline
+		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
+		\hline
+		Compatibilità dispositivi lato client & L'applicazione lato cliente  deve essere disponibile per dispositivi aventi un browser che supporta \begin{itemize}
+		\item html5
+		\item https
+		\item tls 1.2
+		\end{itemize} & \\
+		\hline
+		Compatibilità dispositivi lato server & L'applicazione lato server deve essere disponibile per computer che supportino: 
+		\begin{itemize}
+			\item Node js 18.18.0 LTS
+			\item MongoDB 7.0
+		\end{itemize}
+		& \\
+		\hline 
+		Responsive su TV e monitor di PC e Laptop & Il sito deve potersi adattare alla dimensione degli schermi con Aspect Ratio da 4:3, 16:9, 21:9 & Aspect Ratio \\
+		\hline
+		Responsive su Smartphone & Il sito deve potersi adattare agli schermi dei seguenti Smartphone: 
+		\begin{itemize}
+			\item Iphone X,XR,11,\dots , 14
+			\item Tutti i modelli Xiaomi dal 2018 in poi 
+			\item Tutti i modelli Samsung dal 2018 in poi
+			\item Tutti i modelli Motorola dal 2018 in poi 
+			\item Tutti i modelli Huawei dal 2018 in poi 
+		\end{itemize}
+		& \\
+		
+		\hline
+		
+	\end{tabular}
+\end{center}
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{3cm}|p{4cm}|p{4cm}|  }
+		\hline
+		Responsive su Tablet & Il sito deve potersi adattare agli schermi dei seguenti Tablet: 
+		\begin{itemize}
+			\item Ipad Air, Pro dal 2018 in poi
+			\item Tutti i modelli Xiaomi dal 2018 in poi
+			\item Tutti i modelli Samsung dal 2018 in poi
+		\end{itemize} & \\
+		\hline
+		
+		
+	\end{tabular}
+\end{center}
+\subsection*{RNF7 Mantenibilità e Scalabilità}
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{3cm}|p{4cm}|p{4cm}|  }
+		\hline
+		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
+		\hline
+		Team di manutenzione &  Al sito deve essere affiancato, prima e dopo il rilascio ufficiale, un team di
+		manutenzione che si occupi di testare ogni funzionalit`a periodicamente e
+		che, su richiesta qualora ci siano problemi, sia pronto a intervenire tempestivamente
+		 & \\
+		\hline
+		sito facilmente mantenibile & Il sito deve possedere le seguenti caratteristiche
+		\begin{itemize}
+			\item Il codice sorgente del back-end dev'essere modulare, utilizzando un'architetture a microserivizi
+			\item Il codice sorgetne deve rispettare le linee guida del linguaggio scelto
+		\end{itemize}
+		& Conformità Linee guida Javascript
+		\\  \hline
+
+	\end{tabular}
+\end{center}
+\subsection*{RNF8 Conformità}
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{3cm}|p{4cm}|p{4cm}|  }
+		\hline
+		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
+		\hline
+		Conformità leggi & L'applicazione deve essere conforme alle normative di legge in materia di siti web imposti dall'Unione Europea & Conforme \\
+		\hline
+		Conformità GDPR & L'applicazione deve essere conforme al GDPR, come descritto in RNF3 & Conforme \\
+		\hline
+		Conformità W3C WAI & L'applicazione deve essere conforme al W3C WAI (Web Accessibility Initiative) & Conforme \\ 
+		\hline
+	\end{tabular}
+
+\end{center}
 \chapter{Analisi del Constesto}
 
 \section{Utenti e Sistemi Esterni}
