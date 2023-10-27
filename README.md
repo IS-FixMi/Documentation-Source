@@ -13,6 +13,11 @@ All latex source files are located here
 - [x] Aggiungere autenticazione e database esterni, aggiornare i diagrammi del documento (Giovanni)
 - [ ] Rileggere il D1 e aggiungere un glossario
 
+- Punti da discutere:
+    - Il feedback delle recensioni deve essere salvato da qualche parte. Dunque creiamo un nuovo db?
+      In caso è da modificare i RF e back-end del D1
+    - Fare il grafico del sistema di task insieme
+
 # D2 TODO
 - [x] Stabilire i ruoli e compiti
 - [ ] Definire gli attori

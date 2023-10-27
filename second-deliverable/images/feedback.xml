@@ -1,0 +1,49 @@
+<mxfile host="Electron" modified="2023-10-27T14:04:54.463Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="YKYTZUdasoOeyXr7Rx7h" version="22.0.3" type="device">
+  <diagram name="Page-1" id="Nkc1zZJCU4MrWuXkuEMp">
+    <mxGraphModel dx="1408" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="49jE2HfMSWG2rgXXSlcL-1" target="49jE2HfMSWG2rgXXSlcL-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-1" value="Cliente /&lt;br&gt;Dipendente /&lt;br&gt;Manager" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="110" y="320" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-11" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="49jE2HfMSWG2rgXXSlcL-4" target="49jE2HfMSWG2rgXXSlcL-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-12" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="49jE2HfMSWG2rgXXSlcL-4" target="49jE2HfMSWG2rgXXSlcL-8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-13" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="49jE2HfMSWG2rgXXSlcL-4" target="49jE2HfMSWG2rgXXSlcL-7" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-14" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="49jE2HfMSWG2rgXXSlcL-4" target="49jE2HfMSWG2rgXXSlcL-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-4" value="Inviare Feedback" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="294" y="310" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-5" value="Recensire la disponibilità dell&#39;azienda" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="174" y="180" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-6" value="Recensire la velocità di riparazione" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="170" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-7" value="Descrivere la propria soddisfazione sulla riparazione" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="310" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-8" value="Descrivere la propria soddisfazione sul sito web" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="440" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-9" value="Proporre idee per migliorare" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="190" y="440" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="49jE2HfMSWG2rgXXSlcL-15" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.783;entryY=0.975;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="49jE2HfMSWG2rgXXSlcL-4" target="49jE2HfMSWG2rgXXSlcL-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
