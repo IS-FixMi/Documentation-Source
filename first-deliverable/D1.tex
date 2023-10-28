@@ -10,7 +10,7 @@
 	\end{tikzpicture}
 	\huge 
 	\fi
-	FixMi \\
+	Fix Mi \\
 	Analisi dei Requisiti
 }
 \author{Giovanni Santini, Riginel Ungureanu, Valerio Asaro}
@@ -71,13 +71,13 @@
 		\textnormal{ \LARGE{Corso di Ingegneria del Software\\}}
 		\vspace{30mm}
 		\fontsize{10mm}{7mm}\selectfont 
-		\textup{FixMi \\ Analisi dei Requisiti}\\
+		\textup{Fix Mi \\ Analisi dei Requisiti}\\
 	\end{center}
 	
 	\vspace{25mm}
 	
 	\centering
-	\large Giovanni Santini\\ Riginel Ungureanu \\ Valerio Asaro
+	\large Giovanni Santini \\ Riginel Ungureanu \\ Valerio Asaro
 	
 	\vspace{20mm}
 	
@@ -99,7 +99,7 @@
 
 
 \section{Scopo del documento}
-Il seguente documento riporta la definizione e l'analisi del progetto "FixMi" in linguaggio naturale.
+Il seguente documento riporta la definizione e l'analisi del progetto "Fix Mi" in linguaggio naturale.
 In particolare il documento mira a:
 
 \begin{enumerate}
@@ -145,45 +145,44 @@ Di seguito vengono illustrati in maniera discorsiva gli obiettivi principali e s
 
 \section{Obiettivo Principale}
 
-L’obiettivo del progetto è la realizzazione di una Web-App denominata "Fix Mi": un'applicazione web gestionale sviluppata per un negozio di articoli informatici ed elettronici “retrò”. Tale software svolgerà il ruolo di supporto all’attività di commercio e riparazione dei dispositivi elettronici mettendo in comunicazione datore di lavoro, dipendenti e clienti.
+L’obiettivo del progetto è la realizzazione di una Web-App denominata "Fix Mi": un'applicazione web gestionale sviluppata per un negozio di articoli informatici ed elettronici. Tale software svolgerà il ruolo di supporto all’attività di commercio e riparazione dei dispositivi elettronici mettendo in comunicazione datore di lavoro, dipendenti e clienti.
 
 
 \section{Obiettivi Secondari}
 
-Successivamente vengono elencati gli obiettivi secondari del progetto, numerati tramite acronimo OSx (Obiettivi Secondari), dove x è il numero che identifica inequivocabilmente un obiettivo da un altro. Questi obiettivi estendono quello principale e non sono da considerare di minore importanza durante l’analisi dei requisiti.
+Successivamente vengono elencati gli obiettivi secondari del progetto, numerati tramite acronimo "OSx" (Obiettivi Secondari), dove x è il numero che identifica inequivocabilmente un obiettivo da un altro. Questi obiettivi estendono quello principale e non sono da considerare di minore importanza durante l’analisi dei requisiti.
 
 
 \subsection*{OS1 Autenticazione}
-L’applicazione dispone di un sistema di distinzione dei ruoli Manager, Dipendenti e Clienti. Tale sistema permetterà diverse funzionalità in base al livello di autorizzazione.
-
+L’applicazione dispone di un sistema di distinzione dei ruoli: "Amministratore", "Dipendente" e "Cliente". Il sistema permetterà diverse funzionalità in base al livello di autorizzazione di cui si dispone.
 
 
 \subsection*{OS2 Magazzino}
-Il sito presenta ai dipendenti e al manager un sistema di gestione del magazzino con il quale si potrà aggiungere e rimuovere merce, oltre a controllarne la disponibilità.
+Il sito fornisce ai dipendenti e all'amministratore un sistema di gestione del magazzino con il quale si potrà aggiungere e rimuovere merce, oltre a controllarne la quantità disponibile.
 
 
 \subsection*{OS3 Negozio}
-Il sito offre ai clienti uno shop, con catalogo interfacciato con il magazzino, che permette loro di effettuare acquisti. I dipendenti potranno vedere gli ordini e le richieste di vendita in modo da gestirle.
+Il sito offre ai clienti un negozio, il cui catalogo si interfaccia con il magazzino precedentemente descritto (OS2), che permetta loro di inserire degli articoli nel carrello e, successivamente, di effettuarne l'acquisto. I dipendenti potranno visualizzare e gestire gli ordini e le richieste di vendita effettuate dai clienti.
 
 
 \subsection*{OS4 Riparazione}
-L’applicazione permette ai clienti di richiedere la riparazione di un proprio articolo ed organizzare l’attività di riparazione di tale articolo tra i dipendenti.
+L’applicazione offre ai clienti la possibilità di richiedere la riparazione di un proprio articolo, inoltre offre ai dipendenti la possibilità di organizzare l’attività di riparazione di tale articolo.
 
 
 \subsection*{OS5 Assistenza}
-Il sito presenta ai clienti la lista dei contatti dell’azienda, nonché la possibilità di inserire una richiesta di assistenza relativa al sito, un ordine, o una riparazione. I dipendenti potranno gestire le richieste e comunicare direttamente con i clienti.
+Il sito presenta ai clienti la lista dei contatti aziendali, nonché la possibilità di inserire una richiesta di assistenza relativa al sito, un ordine o una riparazione. I dipendenti potranno gestire le richieste e comunicare direttamente con i clienti.
 
 
-\subsection*{OS6 Feedback}
-Gli utenti potranno inviare feedback sulla qualità del servizio offertogli.
+\subsection*{OS6 Feedback} %Questo vorrei chiamarlo "riscontri" o qualche altro sinonimo in italiano....
+Il sito dispone agli utenti un'area "feedback" in cui potranno inviare dei giudizi sulla qualità del servizio offertogli e dei suggerimenti su come migliorare ulteriormente quest'ultimo.
 
 \subsection*{OS7 Gestione Dipendenti}
 
-Il manager può gestire i profili dei dipendenti. Ciò include l’aggiunta di un nuovo profilo, la rimozione o la modifica. Il sito inoltre permette di vedere le statistiche dei dipendenti.
+L'amministratore può gestire i profili di tutti i dipendenti, visualizzarne le statistiche e lo storico delle attività. Inoltre si affida all'amministratore il compito di aggiungere, rimuovere e modificare i profili "Dipendente" nel corso del tempo dell'attività aziendale.
 
 
-\subsection*{OS8 Gestione Task}
-L’applicazione presenta ai dipendenti e al manager un sistema di gestione delle varie tipologie di task, ossia le varie attività che i dipendenti devono svolgere, assegnando ad ogni dipendente delle task appropriate alle proprie abilità.
+\subsection*{OS8 Gestione Task}%Anche questo vorrei non chiamarlo task...
+L’applicazione presenta ai dipendenti e all'amministratore un sistema di gestione delle task, ossia le varie attività che i dipendenti devono completare. Il ruolo dell'amministratore prevede la gestione e l'assegnazione di tali task ai dipendenti.
 
 
 \chapter{Requisiti}
@@ -273,7 +272,7 @@ Per terminare la registrazione con successo, l'applicazione deve verificare la m
 Il sito presenta all’utente non autenticato una pagina "Negozio”: 
 
 \begin{enumerate}
-	\item La pagina permette di visualizzare gli oggeti presenti nel magazzino al momento del caricamento della stessa
+	\item La pagina permette di visualizzare gli oggetti presenti nel magazzino al momento del caricamento della stessa
 	
 	\item L’utente deve essere in grado di ordinare gli oggetti per nome o per prezzo tramite un bottone, ricercare una stringa tra tutti gli oggetti nel magazzino tramite una barra di ricerca.
 	
@@ -303,9 +302,9 @@ Il sito deve avere una pagina dedicata al carrello del cliente.
 Il sito deve permettere al cliente autenticato, nella pagina dedicata a un specifico articolo, di inserirlo nel proprio carrello attraverso un pulsante.
 
 \begin{enumerate}
-	\item La pagina deve avere un elenco di tutti i prodotti che sono stati immessi nel carrello. Ogni prodotto nell’elenco deve  avere il nome, il prezzo, una foto e  un pulsante “rimuovi”
+	\item La pagina deve avere un elenco di tutti i prodotti che sono stati immessi nel carrello. Ogni prodotto contenuto in elenco deve mostrare il nome, il prezzo, una foto e un pulsante “Rimuovi”.
 	
-	\item La pagina deve permettere al cliente di rimuovere un elemento dal proprio carrello premendo il pulsante “rimuovi” dell’elemento.
+	\item La pagina deve permettere al cliente di rimuovere un elemento dal proprio carrello premendo il pulsante “Rimuovi” posizionato accanto ad ogni elemento.
 
 	\item Ogni prodotto deve portare alla pagina dedicata allo stesso cliccando sul nome nell’elenco.
 	
@@ -319,20 +318,20 @@ Il sito deve permettere al cliente autenticato, nella pagina dedicata a un speci
 La pagina deve fornire diversi metodi di pagamento:
 
 \begin{enumerate}
-	\item La pagina deve fornire il pagamento tramite Paypal e Bancomat con circuiti Visa e Mastercast.
+	\item La pagina deve fornire il pagamento tramite "Paypal" e "Bancomat" con circuiti "Visa" e "Mastercast". %Mastercard?
 	\item Una volta effettuato il pagamento con successo, il sito deve fornire un riepilogo dell’acquisto e un messaggio che invita il cliente a recarsi in negozio per il ritiro dei prodotti.
 	\item Il sito deve creare per i dipendenti una task “magazzino” (RF9), dettagliando i prodotti richiesti.
 	\item Il sito deve inviare i dettagli del pagamento al software di accounting scelto.
-	\item Il sito deve svuotare gli elementi del carrello dell’utente una volta effettuato il pagamento.
+	\item Il sito deve svuotare gli elementi selezionati dal carrello dell’utente una volta effettuato il pagamento.
 \end{enumerate}
 
 \subsection*{RF6 Riparazione}
 
-Il sito deve offrire al cliente la possibilità di inviare, attraverso un'apposito form, una richiesta di riparazione per un proprio articolo di elettronica.
+Il sito deve offrire al cliente la possibilità di inviare, compilando un apposito documento, una richiesta di riparazione per un proprio articolo di elettronica.
 \begin{enumerate}
 
 	
-	\item Il form ha i campi "nome", "cognome", "email", "numero di telefono", "descrizione del problema", "foto" e un bottone "Invia".
+	\item Il documento richiede i campi "nome", "cognome", "email", "numero di telefono", "descrizione del problema" e, se necessario, "foto". Una volta compilato il documento potrà essere spedito attraverso un apposito bottone etichettato "Invia".
 	
 	\item Successivamente all’invio della richiesta da parte del cliente, l’applicazione deve generare una task di tipo “riparazione”. Il sistema di task è specificato in RF9
 	
@@ -356,7 +355,7 @@ Il sito deve dare la possibilità al cliente di inviare anonimamente del feedbac
 \begin{enumerate}
 	\item La pagina contiene i campi "disponibilità azienda", "velocità riparazione", "soddisfazione riparazione", "soddisfazione sito web", "idee per migliorare" e un bottone "Invia".
 	
-	\item Il sito deve implementare un sistema per evitare lo spam da parte dei soggetti maliziosi, oltre che un filtro  per le profanità.
+	\item Il sito deve implementare un sistema per evitare lo "spam" da parte dei soggetti maliziosi, oltre che un filtro  per le profanità. %Aggiungere spam al glossario
 	
 \end{enumerate}
 
@@ -565,7 +564,7 @@ L'applicazione deve essere conforme alle normative di legge in materia di siti w
 Nella seguente sezione verranno mostrate alcune grafiche al fine di visualizzare come il sito mostrerà le proprie funzionalità all’utente e ai dipendenti.
 
 \subsection*{Schermata di Login}
-In seguito viene mostrata la schermata di Login di Fix Mi, esso rispecchia le caratteristiche descritte dal (RF1) e viene mostrato attraverso le tre tipologie di schermo discusse nel (RNF6).
+In seguito viene mostrata la schermata di Login di Fix Mi, esso rispecchia le caratteristiche descritte dal (RF1) e viene mostrato attraverso le tre tipologie di schermo discusse nel (RNF6). 
 
 \begin{figure}[h]
 	\centering
