@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.25)  28 OCT 2023 18:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.25)  28 OCT 2023 18:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -562,7 +562,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.28 ...}Tecniche e Strumentazione}{25}{chapter.6}
+l.28 ...}Tecniche e Strumentazione}{26}{chapter.6}
                                                   % [1
 
 ])
@@ -573,64 +573,66 @@ l.28 ...}Tecniche e Strumentazione}{25}{chapter.6}
 Chapter 1.
 [4
 
-] [5]
+] [5] [6]
 Chapter 2.
-[6
+[7
 
 ]
-Overfull \hbox (3.16727pt too wide) in paragraph at lines 227--228
+Overfull \hbox (3.16727pt too wide) in paragraph at lines 226--227
 \OT1/cmr/m/n/10 mail, il codice prece-dente non sar^^Ra pi^^Ru valido per ef-fe
 t-tuare l'autenticazione. 
  []
 
-[7] [8] [9] [10] [11]
-Overfull \hbox (0.52841pt too wide) in paragraph at lines 397--398
+[8] [9] [10] [11]
+Overfull \hbox (142.85294pt too wide) in paragraph at lines 365--367
+\OT1/cmr/m/n/10 soggetti mal-iziosi, oltre che un fil-tro per le pro-fanit^^Ra.
+ >>>>>>> 5e308060f95d24a462aad6bbda95693e58d07010 
+ []
+
+[12]
+Overfull \hbox (0.52841pt too wide) in paragraph at lines 402--403
 \OT1/cmr/m/n/10 Il dipen-dente deve aver la pos-si-bilit^^Ra di in-ter-a-gire c
 on il mag-a-zz-ino in un'apposita
  []
 
-[12]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[13{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [14]
-[15] [16] [17]
+[13] [14{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+[15] [16] [17] [18]
 Chapter 3.
-<images/login_snapshot.png, id=330, 3954.775pt x 1882.03125pt>
+<images/login_snapshot.png, id=336, 3954.775pt x 1882.03125pt>
 File: images/login_snapshot.png Graphic file (type png)
 <use images/login_snapshot.png>
-Package pdftex.def Info: images/login_snapshot.png  used on input line 573.
+Package pdftex.def Info: images/login_snapshot.png  used on input line 578.
 (pdftex.def)             Requested size: 345.0pt x 164.17764pt.
-[18
+[19
 
  <./images/login_snapshot.png>]
-Overfull \hbox (4.77834pt too wide) in paragraph at lines 580--581
+Overfull \hbox (4.77834pt too wide) in paragraph at lines 585--586
 \OT1/cmr/m/n/10 Nella seguente sezione ven-gono ri-por-tate le speci-fiche gen-
 er-ali per quanto riguarda
  []
 
-[19] [20]
-<images/back_end_short.png, id=358, 733.74126pt x 663.47874pt>
+[20] [21]
+<images/back_end_short.png, id=363, 733.74126pt x 663.47874pt>
 File: images/back_end_short.png Graphic file (type png)
 <use images/back_end_short.png>
-Package pdftex.def Info: images/back_end_short.png  used on input line 642.
+Package pdftex.def Info: images/back_end_short.png  used on input line 647.
 (pdftex.def)             Requested size: 345.0pt x 311.96666pt.
- [21 <./images/back_end_short.png>]
+ [22 <./images/back_end_short.png>]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 677--677
+Underfull \hbox (badness 10000) in paragraph at lines 682--682
 []\OT1/cmr/m/n/10 Leader del team di
  []
 
-[22
+[23
 
 ]
 Chapter 5.
-[23
+[24
 
-] [24]
+] [25]
 Chapter 6.
-[25
+[26
 
 ] (./D1.aux)
 
@@ -641,13 +643,13 @@ Package rerunfilecheck Info: File `D1.out' has not changed.
 (rerunfilecheck)             Checksum: 19278AFDEE4CB1873D5EE184C87CC1B7;3178.
  ) 
 Here is how much of TeX's memory you used:
- 19204 strings out of 477985
- 360856 string characters out of 5840058
+ 19206 strings out of 477985
+ 360870 string characters out of 5840058
  1861388 words of memory out of 5000000
  38906 multiletter control sequences out of 15000+600000
  516207 words of font info for 45 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 102i,11n,104p,425b,539s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,11n,104p,417b,580s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-dist/fonts/type1/publ
@@ -657,10 +659,10 @@ cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
 ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
 per/sfrm1000.pfb>
-Output written on D1.pdf (26 pages, 2113477 bytes).
+Output written on D1.pdf (27 pages, 2114935 bytes).
 PDF statistics:
- 486 PDF objects out of 1000 (max. 8388607)
- 427 compressed objects within 5 object streams
- 193 named destinations out of 1000 (max. 500000)
+ 491 PDF objects out of 1000 (max. 8388607)
+ 431 compressed objects within 5 object streams
+ 195 named destinations out of 1000 (max. 500000)
  204 words of extra memory for PDF output out of 10000 (max. 10000000)
 
