@@ -11,7 +11,7 @@
 	\end{tikzpicture}
 	\huge 
 	\fi
-	FixMi \\
+	Fix Mi \\
 	Analisi dei Requisiti
 }
 \author{Giovanni Santini, Riginel Ungureanu, Valerio Asaro}
@@ -62,7 +62,7 @@
 	%title page
 	\begin{titlepage}
 		\begin{figure}[t]
-			\centering\includegraphics[width=0.3\textwidth]{unitn-logo}
+			\centering\includegraphics[width=0.3\textwidth]{images/unitn-logo}
 		\end{figure}
 		\begin{center}
 			\textsc{ \LARGE{Università degli Studi di Trento \\}}
@@ -70,7 +70,7 @@
 			\textnormal{ \LARGE{Corso di Ingegneria del Software\\}}
 			\vspace{30mm}
 			\fontsize{10mm}{7mm}\selectfont 
-			\textup{FixMi \\ Specifica dei Requisiti}\\
+			\textup{Fix Mi \\ Specifica dei Requisiti}\\
 		\end{center}
 		
 		\vspace{25mm}
@@ -112,14 +112,14 @@
 			\hline
 			\centering Campo & \qquad\qquad Valore \\ % I found no other way...
 			\hline
-			Titolo del Documento & Specifica dei Reqiusiti \\
+			Titolo del Documento & Specifica dei Requisiti \\
 			\hline
-			Titolo del Progetto & FixMe \\
+			Titolo del Progetto & Fix Mi \\
 			\hline
 			Autori del Documento &
 			Giovanni Santini \\ & Riginel Ungureanu \\ & Valerio Asaro \\
 			\hline
-			Project Manager & Riginel Ungureanu\\
+			Amministratore Progetto & Riginel Ungureanu\\
 			\hline
 			Versione del documento & 1.0 \\
 			\hline
@@ -132,12 +132,11 @@
 	
 \section{Requisiti Funzionali}
 
-TODO: Qui per ogni requisito funzionale del D1 dobbiamo fare uno o più diagrammi in base all'esigenza tra i seguenti:
 \begin{itemize}
 	\item Use Case Diagram: Visione esterna del sistema
 	\item Sequence Diagram: Rappresenta come gli oggetti collaborano
 	\item State Machine Diagram: Stati e Transizioni
-	\item Activity Diagram: Attività che triggano altre (tasks)
+	\item Activity Diagram: Attività che innescano altre attività (tasks)
 	\item Spiegazione in italiano (da mettere sempre)
 \end{itemize}
 
@@ -186,12 +185,12 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 	Use Case Diagram  della riparazione
 \end{figure}
 \subsubsection*{Descrizione Use Case "Riparazione"}
-\textbf{Titolo}: Riparazione
-\textbf{Riassunto}: Questo use case descrive come un utente può richiedere una riparazione e visualizzarne lo stato
+\textbf{Titolo}: Riparazione \newline
+\textbf{Riassunto}: Questo use case descrive come un utente può richiedere una riparazione e visualizzarne lo stato. \newline
 \textbf{Descrizione}:
 	\begin{enumerate}
 		\item L'utente autenticato seleziona la pagina "Riparazioni";
-		\item Il sito mostra lo stato delle riparazioni già richieste dall'utente[Exception 1];
+		\item Il sito mostra lo stato delle riparazioni già richieste dall'utente [Exception 1];
 		\item Il sito mostra un form per richiedere una nuova riparazione con i seguenti campi:
 		\begin{itemize}
 			\item nome[Exception 2];
@@ -226,8 +225,10 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 \subsection*{RF9 Tasks}
 
 \subsection*{RF10 Magazzino}
+\centering\includegraphics[width=1\textwidth]{images/magazzino_UCD.png}
 
 \subsection*{RF11 Gestione Dipendenti}
+\centering\includegraphics[width=1\textwidth]{images/gestione_dipendenti_UCD.png}  % Non riesco a fare in modo che l'immagine si veda abbastanza grande, probabilmente il grafico stesso è troppo grande.....lo aggiusterò in seguito....credo....probabilmente c'ò solo da posizionare gli elementi in maniera corretta....
 
 \pagebreak
 
@@ -246,7 +247,7 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		Linguaggio Comprensibile & In media l’utente deve essere in grado di capire le funzionalità dell'applicazione con una
 		sola lettura della descrizione & Il numero di click sbagliati che l'utente fa deve essere minore di 4\\
 		\hline
-		Presenza della lingua inglese e italiana & Il sito presenta sia la lingua italiana che quella inglese, l'utente con un livello di lingua A1 è in grado di leggere e comprendere il contenuto & Certificato linguistico \\ % I found no other way...
+		Presenza della lingua inglese e italiana & Il sito presenta sia la lingua Italiana che quella inglese, l'utente con un livello di lingua A1 è in grado di leggere e comprendere il contenuto & Certificato linguistico \\ % I found no other way...
 		\hline
 		Consistenza & Il sito deve avere un design consistente, utilizzando un singolo font e una palette fissa di colori & numero di font utilizzati, numero di colori utilizzati  \\% I found no other way... 
 		\hline
@@ -270,8 +271,7 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		2 Factor Authentication & Il sito deve verificare l'identità dell'utente attraverso il 2FA & \\
 		\hline
 		Conformità password & La password di un utente deve avere una lunghezza minima di 10 caratteri e deve presentare almeno un numero,una lettera maiuscola, e un carattere speciale &
-		numero dei caratteri, presenza di numeri,lettere maiuscole e caratteri speciali della lista
-		\begin{verbatim} ! ? $ % ^ & * ( ) _ \end{verbatim} \begin{verbatim}- + = { [ } ] : ;\end{verbatim} \begin{verbatim}@ # | \ < , > . \end{verbatim} \\
+		numero dei caratteri, presenza di numeri,lettere maiuscole e caratteri speciali della lista:		\begin{verbatim} ! ? $ % ^ & * ( ) _ \end{verbatim} \begin{verbatim}- + = { [ } ] : ;\end{verbatim} \begin{verbatim}@ # | \ < , > . \end{verbatim} \\
 		\hline
 		
 	\end{tabular}
@@ -296,11 +296,10 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		\hline
 		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
 		\hline
-		Risultati desiderati & La probabilità che il sito fornisca i risultati desiderati senza interruzioni o tempi di inattività deve essere maggiore del 99\% & $\frac{\text{risultati ricevuti con successo}}{\text{risultati totali}} $ \\ % There was no other way...
+		Risultati desiderati & La probabilità che il sito fornisca i risultati desiderati senza interruzioni o tempi di inattività deve essere maggiore del 99\% (novantanove percento) & $\frac{\text{risultati ricevuti con successo}}{\text{risultati totali}} $ \\ % There was no other way...
 		\hline
-		Operatività &  la probabilit`a che il sito rimanga operativo in un determinato momento
-		indipendentemente dal numero di guasti gi`a subiti dal sistema deve essere
-		maggiore del 99\% & $ \frac{\text{secondi di attività dal lancio}}{\text{secondi totali dal lancio}} $\\
+		Operatività &  la probabilità che il sito rimanga operativo in un determinato momento
+		indipendentemente dal numero di guasti già subiti dal sistema deve essere maggiore del 99\% (novantanove percento) & $ \frac{\text{secondi di attività dal lancio}}{\text{secondi totali dal lancio}} $\\
 		\hline 
 	\end{tabular}
 \end{center}
@@ -312,11 +311,11 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		\hline
 		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
 		\hline
-		Aggiornamento negozio & Il sito deve aggiornare la lista degli articoli presenti in negozio, in caso di modifica al magazzino, in meno di un secondo. & tempo \\
+		Aggiornamento negozio & Il sito deve aggiornare la lista degli articoli presenti in negozio, in caso di modifica al magazzino, in meno di un secondo. & Secondi \\
 		\hline 
-		2 Factor Authentication & Il sito deve inviare la mail di 2FA in meno di 5 secondi & tempo \\
+		2 Factor Authentication (2FA)& Il sito deve inviare la mail di 2FA in meno di cinque secondi. & Secondi \\
 		\hline
-		Lista delle Task & Il sito deve aggiornare la lista delle task in meno di un secondo & tempo \\ 
+		Lista delle Task & Il sito deve aggiornare la lista delle task in meno di un secondo. & Secondi \\ 
 		\hline
 
 	\end{tabular}

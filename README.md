@@ -6,6 +6,12 @@ All latex source files are located here
 - [x] Aggiungere requisiti non funzionali, guardando le slides del 05/10/23 (Riginel)
 - [x] Copiare RNF su latex (Giovanni)
 - [ ] Sviluppare la Front-End
+  - [x] Sviluppare la schermata Login
+  - [ ] Sviluppare la schermata Negozio
+  - [x] Sviluppare la schermata Magazzino
+  - [x] Sviluppare la schermata Riparazione
+  - [ ] Sviluppare la schermata Tasks
+  - [ ] Sviluppare la schermata Gestione dipendenti
 - [x] Rivedere scrittura Back-End (Riginel)
 - [x] Aggiungere RF Magazzino (Giovanni)
 - [x] Togliere la Contabilità (Giovanni)
