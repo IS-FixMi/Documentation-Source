@@ -18,7 +18,7 @@ All latex source files are located here
 - [x] Rivedere le descrizioni delle task, spostare le definizioni delle task in una parte appropriata, cambiare RF9.1 (Giovanni)
 - [x] Aggiungere autenticazione e database esterni, aggiornare i diagrammi del documento (Giovanni)
 - [ ] Rileggere il D1 e aggiungere un glossario
-
+- [ ] Databse Negozio
 - Punti da discutere:
     - Il feedback delle recensioni deve essere salvato da qualche parte. Dunque creiamo un nuovo db?
       In caso è da modificare i RF e back-end del D1
@@ -27,10 +27,10 @@ All latex source files are located here
 # D2 TODO
 - [x] Stabilire i ruoli e compiti
 - [ ] Definire gli attori
-- [ ] Requisiti Funzionali
+- [x] Requisiti Funzionali
 - [ ] Requisiti non funzionali
-- [ ] Utenti e Sistemi Esterni
-- [ ] Diagramma di Contesto
+- [ ] Utenti e Sistemi Esterni: aspettare di chiedere al tutorato
+- [ ] Diagramma di Contesto: ogni microservizio
 - [ ] Definizione dei Componenti
 - [ ] Diagramma dei Componenti
 
