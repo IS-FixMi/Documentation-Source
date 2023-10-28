@@ -76,7 +76,7 @@
 		\vspace{25mm}
 		
 		\centering
-		\large Giovanni Santini\\ Riginel Ungureanu \\ Valerio Asaro
+		\large Gruppo G43: \\ Giovanni Santini\\ Riginel Ungureanu \\ Valerio Asaro
 		
 		\vspace{20mm}
 		
@@ -161,7 +161,7 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 	diagramma delle Attività swimlane della registrazione
 \end{figure}
 
-\subsection*{RF4 About Contatti}
+\subsection*{RF4 Informazioni /  Contatti}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/contatti_sequence_diagram.png}
@@ -253,11 +253,11 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
 		\hline
 		Linguaggio Comprensibile & In media l’utente deve essere in grado di capire le funzionalità dell'applicazione con una
-		sola lettura della descrizione & Il numero di click sbagliati che l'utente fa deve essere minore di 4\\
+		sola lettura della descrizione. & In media, il numero di click errati che l'utente compie deve essere minore di 4. \\
 		\hline
-		Presenza della lingua inglese e italiana & Il sito presenta sia la lingua Italiana che quella inglese, l'utente con un livello di lingua A1 è in grado di leggere e comprendere il contenuto & Certificato linguistico \\ % I found no other way...
+		Presenza della lingua Inglese e Italiana & Il sito presenta sia la lingua Italiana che quella Inglese, l'utente con un livello di lingua "A1" è in grado di leggere e comprendere il contenuto. & La scelta del vocabolario linguistico utilizzato è conforme con il vocabolario Italiano di livello A1 e Inglese livello A1.\\ % I found no other way...
 		\hline
-		Consistenza & Il sito deve avere un design consistente, utilizzando un singolo font e una palette fissa di colori & numero di font utilizzati, numero di colori utilizzati  \\% I found no other way... 
+		Consistenza & Il sito deve avere un design consistente, utilizzando un singolo font e una palette fissa di colori. & numero di font utilizzati uguale a 1, numero di colori utilizzati minore di 6.  \\% I found no other way... 
 		\hline
 	\end{tabular}
 \end{center}
@@ -270,16 +270,12 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		\hline
 		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
 		\hline
-		Protezione dati & Il sito deve proteggere i dati sensibili: 
-		\begin{itemize}
-			\item Utilizzo di hashing SHA-3 per le password;
-			\item Utilizzo dei protocolli tls e https per ogni comunicazione tra utenti e servizi;
-		\end{itemize} & \\
+		Protezione dati & Il sito deve proteggere i dati sensibili utilizzando un algoritmo di hashing "SHA-3" per sarlvare e controllare le password e protocolli tls e https per ogni comunicazione tra utenti e servizi. & L'applicazione utilizza un algoritmo di hashing "SHA-3" nel salvataggio e controllo di password nel database e utilizza protocolli "tls" e "https" per ogni comunicazione tra utenti e servizi.\\
 		\hline
-		2 Factor Authentication & Il sito deve verificare l'identità dell'utente attraverso il 2FA & \\
+		2 Factor Authentication (2FA) & Il sito deve verificare l'identità dell'utente attraverso il 2FA. & Impossibilità di accedere al sito senza 2FA.\\
 		\hline
-		Conformità password & La password di un utente deve avere una lunghezza minima di 10 caratteri e deve presentare almeno un numero,una lettera maiuscola, e un carattere speciale &
-		numero dei caratteri, presenza di numeri,lettere maiuscole e caratteri speciali della lista:		\begin{verbatim} ! ? $ % ^ & * ( ) _ \end{verbatim} \begin{verbatim}- + = { [ } ] : ;\end{verbatim} \begin{verbatim}@ # | \ < , > . \end{verbatim} \\
+		Conformità password & La password di un utente deve avere una lunghezza minima di 10 caratteri e deve presentare almeno un numero,una lettera maiuscola, e un carattere speciale. &
+		numero dei caratteri maggiore di nove, presenza di almeno un numero,lettera maiuscola e carattere speciala dalla seguente lista:		\begin{verbatim} ! ? $ % ^ & * ( ) _ \end{verbatim} \begin{verbatim}- + = { [ } ] : ;\end{verbatim} \begin{verbatim}@ # | \ < , > . \end{verbatim} \\
 		\hline
 		
 	\end{tabular}
@@ -428,28 +424,32 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 TODO: Enumerare gli Utenti e Sistemi Esterni
 
 
-\subsection*{Utente}
+\subsection{Utente}
 
-\subsection*{Cliente}
+\subsection{Cliente}
 
-\subsection*{Manager}
+\subsection{Dipendente}
 
-\subsection*{Server Mail}
+\subsection{Manager}
 
-\subsection*{Database Autenticazione}
+\subsection{Server Mail}
 
-\subsection*{Database Magazzino}
+\subsection{Database Autenticazione}
 
-\subsection*{Databse Task}
+\subsection{Database Magazzino}
 
-\subsection*{PayPal}
+\subsection{Database Task}
 
-\subsection*{Nexi}
+\subsection{PayPal}
 
-\subsection*{OpenStreetMap}
+\subsection{Nexi}
 
-\subsection*{2FA}
+\subsection{OpenStreetMap}
 
+\subsection{2FA}
+
+\subsection{Microservizi}
+Autentication Server, Microservizio Task
 
 
 \section{Diagramma di Contesto}

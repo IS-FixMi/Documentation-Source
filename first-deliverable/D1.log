@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.25)  28 OCT 2023 18:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.9.25)  28 OCT 2023 19:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -583,14 +583,8 @@ Overfull \hbox (3.16727pt too wide) in paragraph at lines 226--227
 t-tuare l'autenticazione. 
  []
 
-[8] [9] [10] [11]
-Overfull \hbox (142.85294pt too wide) in paragraph at lines 365--367
-\OT1/cmr/m/n/10 soggetti mal-iziosi, oltre che un fil-tro per le pro-fanit^^Ra.
- >>>>>>> 5e308060f95d24a462aad6bbda95693e58d07010 
- []
-
-[12]
-Overfull \hbox (0.52841pt too wide) in paragraph at lines 402--403
+[8] [9] [10] [11] [12]
+Overfull \hbox (0.52841pt too wide) in paragraph at lines 399--400
 \OT1/cmr/m/n/10 Il dipen-dente deve aver la pos-si-bilit^^Ra di in-ter-a-gire c
 on il mag-a-zz-ino in un'apposita
  []
@@ -598,32 +592,27 @@ on il mag-a-zz-ino in un'apposita
 [13] [14{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 [15] [16] [17] [18]
 Chapter 3.
-<images/login_snapshot.png, id=336, 3954.775pt x 1882.03125pt>
+<images/login_snapshot.png, id=335, 3954.775pt x 1882.03125pt>
 File: images/login_snapshot.png Graphic file (type png)
 <use images/login_snapshot.png>
-Package pdftex.def Info: images/login_snapshot.png  used on input line 578.
+Package pdftex.def Info: images/login_snapshot.png  used on input line 575.
 (pdftex.def)             Requested size: 345.0pt x 164.17764pt.
 [19
 
  <./images/login_snapshot.png>]
-Overfull \hbox (4.77834pt too wide) in paragraph at lines 585--586
+Overfull \hbox (4.77834pt too wide) in paragraph at lines 582--583
 \OT1/cmr/m/n/10 Nella seguente sezione ven-gono ri-por-tate le speci-fiche gen-
 er-ali per quanto riguarda
  []
 
 [20] [21]
-<images/back_end_short.png, id=363, 733.74126pt x 663.47874pt>
+<images/back_end_short.png, id=362, 733.74126pt x 663.47874pt>
 File: images/back_end_short.png Graphic file (type png)
 <use images/back_end_short.png>
-Package pdftex.def Info: images/back_end_short.png  used on input line 647.
+Package pdftex.def Info: images/back_end_short.png  used on input line 644.
 (pdftex.def)             Requested size: 345.0pt x 311.96666pt.
  [22 <./images/back_end_short.png>]
 Chapter 4.
-
-Underfull \hbox (badness 10000) in paragraph at lines 682--682
-[]\OT1/cmr/m/n/10 Leader del team di
- []
-
 [23
 
 ]
@@ -643,8 +632,8 @@ Package rerunfilecheck Info: File `D1.out' has not changed.
 (rerunfilecheck)             Checksum: 19278AFDEE4CB1873D5EE184C87CC1B7;3178.
  ) 
 Here is how much of TeX's memory you used:
- 19206 strings out of 477985
- 360870 string characters out of 5840058
+ 19205 strings out of 477985
+ 360863 string characters out of 5840058
  1861388 words of memory out of 5000000
  38906 multiletter control sequences out of 15000+600000
  516207 words of font info for 45 fonts, out of 8000000 for 9000
@@ -659,10 +648,10 @@ cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr
 ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
 per/sfrm1000.pfb>
-Output written on D1.pdf (27 pages, 2114935 bytes).
+Output written on D1.pdf (27 pages, 2114671 bytes).
 PDF statistics:
- 491 PDF objects out of 1000 (max. 8388607)
- 431 compressed objects within 5 object streams
- 195 named destinations out of 1000 (max. 500000)
+ 490 PDF objects out of 1000 (max. 8388607)
+ 430 compressed objects within 5 object streams
+ 194 named destinations out of 1000 (max. 500000)
  204 words of extra memory for PDF output out of 10000 (max. 10000000)
 

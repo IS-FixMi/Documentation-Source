@@ -18,11 +18,6 @@ All latex source files are located here
 - [x] Rivedere le descrizioni delle task, spostare le definizioni delle task in una parte appropriata, cambiare RF9.1 (Giovanni)
 - [x] Aggiungere autenticazione e database esterni, aggiornare i diagrammi del documento (Giovanni)
 - [ ] Rileggere il D1 e aggiungere un glossario
-- [ ] Databse Negozio
-- Punti da discutere:
-    - Il feedback delle recensioni deve essere salvato da qualche parte. Dunque creiamo un nuovo db?
-      In caso è da modificare i RF e back-end del D1
-    - Fare il grafico del sistema di task insieme
 
 # D2 TODO
 - [x] Stabilire i ruoli e compiti
@@ -34,3 +29,12 @@ All latex source files are located here
 - [ ] Definizione dei Componenti
 - [ ] Diagramma dei Componenti
 
+Entro il 5 novembre:
+- Ognuno per i propri requisiti su trello, deve aggiungere una descrizione a parole e/o un secondo grafico, oltre a UCD.
+- Scegliere i RNF su trello e scrivere la misura eventualmente modificando la descrizione.
+- Fare RF Task dopo aver chiesto al tutorato
+- Ognuno per i propri requisiti, deve fare la definizione dei componenti
+- Valerio farà le descrizioni degli utenti e sistemi esterni, riguarderà i grafici dei RF
+- Fare una lista delle interfacce date e offerte
+- Riginel si guarda il diagramma di contesto
+- Ognuno fa una lista delle interfacce dei propri RF di Trello
