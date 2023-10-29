@@ -30,11 +30,24 @@ All latex source files are located here
 - [ ] Diagramma dei Componenti
 
 Entro il 5 novembre:
-- [ ]Ognuno per i propri requisiti su trello, deve aggiungere una descrizione a parole e/o un secondo grafico, oltre a UCD.
-- [ ]Scegliere i RNF su trello e scrivere la misura eventualmente modificando la descrizione.
-- [ ]Fare RF Task dopo aver chiesto al tutorato
+- [ ] Ognuno per i propri requisiti su trello, deve aggiungere una descrizione a parole e/o un secondo grafico, oltre a UCD.
+- [ ] Scegliere i RNF su trello e scrivere la misura eventualmente modificando la descrizione.
+- [ ] Fare RF Task dopo aver chiesto al tutorato
 - [ ] Ognuno per i propri requisiti, deve fare la definizione dei componenti
-- [x] Valerio farà le descrizioni degli utenti e sistemi esterni, riguarderà i grafici dei RF
+- [ ] Valerio farà le descrizioni degli utenti e sistemi esterni, riguarderà i grafici dei RF
+  - [x] Utenti e sistemi esterni
+  - [ ] UCD RF1
+  - [ ] UCD RF2
+  - [ ] UCD RF3
+  - [ ] UCD RF4
+  - [ ] UCD RF5
+  - [x] UCD RF6
+  - [x] UCD RF7
+  - [ ] UCD RF8
+  - [ ] UCD RF9
+  - [ ] UCD RF10
+  - [ ] UCD RF11
+  - [ ] Ridefinire il concetto di aggiornamento password nel D1 e nel D2 (RF1)
 - [ ] Fare una lista delle interfacce date e offerte
-- [ ]Riginel si guarda il diagramma di contesto
-- [ ]Ognuno fa una lista delle interfacce dei propri RF di Trello
+- [ ] Riginel si guarda il diagramma di contesto
+- [ ] Ognuno fa una lista delle interfacce dei propri RF di Trello

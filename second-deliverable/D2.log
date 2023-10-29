@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.22)  29 OCT 2023 14:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.22)  29 OCT 2023 21:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -711,25 +711,25 @@ Package pdftex.def Info: images/negozio_sequence_diagram.png  used on input lin
 e 178.
 (pdftex.def)             Requested size: 345.0pt x 292.49088pt.
  [9 <./images/contatti_sequence_diagram.png> <./images/shop_diagram_1.png>]
-<images/Riparazione_UCD.drawio.png, id=197, 485.815pt x 663.47874pt>
-File: images/Riparazione_UCD.drawio.png Graphic file (type png)
-<use images/Riparazione_UCD.drawio.png>
-Package pdftex.def Info: images/Riparazione_UCD.drawio.png  used on input line 
-184.
-(pdftex.def)             Requested size: 345.0pt x 471.1643pt.
- [10 <./images/negozio_sequence_diagram.png>] [11 <./images/Riparazione_UCD.dra
-wio.png>]
+<images/RF6_riparazione_UCD.png, id=197, 676.5275pt x 714.67pt>
+File: images/RF6_riparazione_UCD.png Graphic file (type png)
+<use images/RF6_riparazione_UCD.png>
+Package pdftex.def Info: images/RF6_riparazione_UCD.png  used on input line 184
+.
+(pdftex.def)             Requested size: 345.0pt x 364.45506pt.
+ [10 <./images/negozio_sequence_diagram.png>] [11 <./images/RF6_riparazione_UCD
+.png>]
 Overfull \hbox (1.80623pt too wide) in paragraph at lines 210--211
 []\OT1/cmr/m/n/10 [ Ex-cep-tion 2]: Se l'utente non ha com-pi-lato i campi "nom
 e","cognome","e-
  []
 
-<images/RF7_assistenza_UCD.png, id=209, 723.70375pt x 774.895pt>
+<images/RF7_assistenza_UCD.png, id=212, 723.70375pt x 694.595pt>
 File: images/RF7_assistenza_UCD.png Graphic file (type png)
 <use images/RF7_assistenza_UCD.png>
 Package pdftex.def Info: images/RF7_assistenza_UCD.png  used on input line 215.
 
-(pdftex.def)             Requested size: 345.0pt x 369.40323pt.
+(pdftex.def)             Requested size: 345.0pt x 331.12311pt.
 [12]
 <images/feedback_UCD.png, id=221, 582.175pt x 382.42876pt>
 File: images/feedback_UCD.png Graphic file (type png)
@@ -1107,12 +1107,12 @@ Package rerunfilecheck Info: File `D2.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  20103 strings out of 474503
- 372685 string characters out of 5756704
+ 372664 string characters out of 5756704
  1933043 words of memory out of 5000000
  41681 multiletter control sequences out of 15000+600000
  562097 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,14n,107p,437b,511s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,14n,107p,437b,528s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
 live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2023/texmf-d
@@ -1122,7 +1122,7 @@ ic/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10
 .pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/
 texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on D2.pdf (28 pages, 541863 bytes).
+Output written on D2.pdf (28 pages, 527299 bytes).
 PDF statistics:
  369 PDF objects out of 1000 (max. 8388607)
  290 compressed objects within 3 object streams

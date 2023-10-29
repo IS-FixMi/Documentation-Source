@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-10-28T14:18:27.168Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.69" etag="VlXjCsPB8w6C0YcmABx5" version="22.0.8" type="device">
+<mxfile host="app.diagrams.net" modified="2023-10-29T20:58:52.198Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.76" etag="bkMvzugYS6xUNeJ-qI9n" version="22.0.8" type="device">
   <diagram name="Page-1" id="Z4_eRxGVvsaGhDBjDhxM">
-    <mxGraphModel dx="1598" dy="638" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2040" dy="678" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -113,6 +113,45 @@
         </mxCell>
         <mxCell id="FojROJ0jqVKMRAztfl5_-33" value="Visualizzare l&#39;indirizzo aziendale" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="600" y="360" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="66uIl--biRbzDrW8p2jX-1" target="66uIl--biRbzDrW8p2jX-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-1" value="Manager" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="-720" y="220" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="66uIl--biRbzDrW8p2jX-2" target="66uIl--biRbzDrW8p2jX-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-2" value="Dipendente" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="-620" y="220" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="66uIl--biRbzDrW8p2jX-3" target="66uIl--biRbzDrW8p2jX-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-3" value="Cliente" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="-530" y="220" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="66uIl--biRbzDrW8p2jX-4" target="66uIl--biRbzDrW8p2jX-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-4" value="Utente" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="-443" y="220" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-9" value="Visualizzare le informazioni aziendali" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-488" y="360" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="66uIl--biRbzDrW8p2jX-11" target="66uIl--biRbzDrW8p2jX-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-11" value="Visualizzare le posizioni geografiche aziendali" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-280" y="360" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="66uIl--biRbzDrW8p2jX-12" target="66uIl--biRbzDrW8p2jX-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="66uIl--biRbzDrW8p2jX-12" value="OpenStreetMap" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="-235" y="220" width="30" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
