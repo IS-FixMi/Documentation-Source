@@ -30,11 +30,11 @@ All latex source files are located here
 - [ ] Diagramma dei Componenti
 
 Entro il 5 novembre:
-- Ognuno per i propri requisiti su trello, deve aggiungere una descrizione a parole e/o un secondo grafico, oltre a UCD.
-- Scegliere i RNF su trello e scrivere la misura eventualmente modificando la descrizione.
-- Fare RF Task dopo aver chiesto al tutorato
-- Ognuno per i propri requisiti, deve fare la definizione dei componenti
-- Valerio farà le descrizioni degli utenti e sistemi esterni, riguarderà i grafici dei RF
-- Fare una lista delle interfacce date e offerte
-- Riginel si guarda il diagramma di contesto
-- Ognuno fa una lista delle interfacce dei propri RF di Trello
+- [ ]Ognuno per i propri requisiti su trello, deve aggiungere una descrizione a parole e/o un secondo grafico, oltre a UCD.
+- [ ]Scegliere i RNF su trello e scrivere la misura eventualmente modificando la descrizione.
+- [ ]Fare RF Task dopo aver chiesto al tutorato
+- [ ] Ognuno per i propri requisiti, deve fare la definizione dei componenti
+- [x] Valerio farà le descrizioni degli utenti e sistemi esterni, riguarderà i grafici dei RF
+- [ ] Fare una lista delle interfacce date e offerte
+- [ ]Riginel si guarda il diagramma di contesto
+- [ ]Ognuno fa una lista delle interfacce dei propri RF di Trello

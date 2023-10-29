@@ -212,7 +212,7 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 \subsection*{RF7 Assistenza}
 
 \begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/assistenza_UCD.png}
+	\centering\includegraphics[width=1\textwidth]{images/RF7_assistenza_UCD.png}
 \end{figure}
 
 
@@ -417,36 +417,70 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 \end{center}
 
 
-\chapter{Analisi del Constesto}
+\chapter{Analisi del Contesto}
 
 \section{Utenti e Sistemi Esterni}
 
-TODO: Enumerare gli Utenti e Sistemi Esterni
+Sono stati individuati tutti gli Utenti ed i Sistemi Esterni che fanno parte del funzionamento del sistema "Fix Mi".\\Segue una elencazione di ogni elemento con una descrizione breve adibita.
 
 
 \subsection{Utente}
+Con il termine "Utente" si definisce una qualsiasi persona che abbia fatto accesso al sistema senza essersi identificati. L'Utente è in grado di:
+\begin{itemize}
+	\item Accedere all'area "Negozio" per visualizzare il catalogo.
+	\item Accedere all'area "Informazioni / Contatti" e visualizzarne i dettagli. 
+	%tutti i dettagli in esso contenuti, tra cui numeri telefonici, indirizzi di posta elettronica e posizione geografica aziendale.
+\end{itemize}
+
 
 \subsection{Cliente}
 
+Con il termine "Cliente" si intende un Utente che abbia compiuto con successo la registrazione nel sistema e che successivamente abbia fatto l'accesso nel suo profilo. Il Cliente, oltre a potere accedere a tutti i servizi offerti ad un profilo "Utente", è in grado di
+\begin{itemize}
+	\item Inserire gli articoli dell'area "Negozio" nel proprio carrello e, successivamente, effettuarne l'acquisto.
+	\item Accedere all'area "Riparazione" per visualizzare la lista di riparazioni in corso, creare una nuova richiesta di Riparazione o eliminarne una esistente.
+	%\item Inviare feedback riguardo la qualità dei servizi offerti. (Lmao non ho ancora capito se questo c'è oppure no).
+\end{itemize}
 \subsection{Dipendente}
+
+Con il termine "Dipendente" si intende quella persona che abbia stipulato un contratto di lavoro con l'azienda. Il Dipendente, oltre a poter usufruire di tutti i servizi adibiti ad un profilo Cliente, può:
+\begin{itemize}
+	\item Accedere all'area "Magazzino" per visualizzare la lista dei prodotti posseduti, aggiungere un nuovo articolo o rimuoverne uno esistente.
+	\item Accedere all'area "Task" per visualizzare la lista delle Task, crearne una nuova, contrassegnarla o rimuoverne una esistente. 
+\end{itemize}
 
 \subsection{Manager}
 
+Con il termine "Manager" si intende quella persona che abbia il completo controllo del sistema e dell'azienda. Il Manager, oltre a potere accedere a tutte le aree offerte al profilo Dipendente, è in grado di:
+\begin{itemize}
+	\item Accedere all'area "Gestione Dipendenti" per visualizzarne la lista, aggiungere un nuovo profilo Dipendente o eliminarne uno esistente.
+\end{itemize}
+
 \subsection{Server Mail}
+Attraverso la Server Mail, il sistema è in grado di mandare e ricevere e-mail. 
 
 \subsection{Database Autenticazione}
+Il database "Autenticazione" ("Auth") memorizza i dati utilizzati a riconoscere i profili creati durante la registrazione nel sistema.
+%memorizza i dati utilizzati durante la fase di registrazione di un Utente, controllando che essi non siano già esistenti o errati. In fase di Login tali dati verranno controllati per verificare che l'Utente stia facendo accesso ad un profilo esistente.  (Non sono sicuro di questo ma beh lo lascio qui cosi nel caso per cambiarlo non ci vuole niente)
 
 \subsection{Database Magazzino}
+Il database "Magazzino" contiene la lista di prodotti contenuti nel catalogo dell'azienda.
 
 \subsection{Database Task}
+Il database "Task" contiene la lista di tutte le task, il loro tag e lo stato.
 
 \subsection{PayPal}
+Il servizio esterno "PayPal" permette al Cliente di effettuare acquisti all'interno del sistema.
 
 \subsection{Nexi}
+Il servizio esterno "NeXi" permette al Cliente di effettuare acquisti all'interno del sistema.
 
 \subsection{OpenStreetMap}
+Il servizio esterno "OpenStreetMap" fornisce dati geografici al sistema.%per visualizzare la posizione aziendale geografica in cartina.
 
 \subsection{2FA}
+Il 2FA ("Two Factor Authentication") si occupa di verificare che la e-mail inserita dall'utente in procinto di registrarsi o accedere sia corretta ed esistente.
+%In particolare il codice contenuto nel 2FA viene spedito all'indirizzo di posta elettronica inserito dall'Utente che, nel caso sia inesistente, non potrebbe essere visualizzato. (Non sono sicuro se scrivere anche questo o no....)
 
 \subsection{Microservizi}
 Autentication Server, Microservizio Task
