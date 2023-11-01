@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.22)  29 OCT 2023 21:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.22)  1 NOV 2023 18:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -661,11 +661,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
 [3]
 Chapter 1.
-<images/Login_UCD.drawio.png, id=152, 532.99126pt x 473.77pt>
-File: images/Login_UCD.drawio.png Graphic file (type png)
-<use images/Login_UCD.drawio.png>
-Package pdftex.def Info: images/Login_UCD.drawio.png  used on input line 145.
-(pdftex.def)             Requested size: 345.0pt x 306.67451pt.
+<images/UCD/RF1_login_UCD.png, id=152, 689.57625pt x 584.1825pt>
+File: images/UCD/RF1_login_UCD.png Graphic file (type png)
+<use images/UCD/RF1_login_UCD.png>
+Package pdftex.def Info: images/UCD/RF1_login_UCD.png  used on input line 145.
+(pdftex.def)             Requested size: 345.0pt x 292.2688pt.
 [4
 
 {c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
@@ -676,13 +676,13 @@ Package pdftex.def Info: images/Login_Swimlane.drawio.png  used on input line 1
 50.
 (pdftex.def)             Requested size: 345.0pt x 420.56258pt.
 
-[5 <./images/Login_UCD.drawio.png>]
-<images/Registrazione_UCD.drawio.png, id=166, 497.86pt x 423.5825pt>
-File: images/Registrazione_UCD.drawio.png Graphic file (type png)
-<use images/Registrazione_UCD.drawio.png>
-Package pdftex.def Info: images/Registrazione_UCD.drawio.png  used on input lin
-e 155.
-(pdftex.def)             Requested size: 345.0pt x 293.5326pt.
+[5 <./images/UCD/RF1_login_UCD.png>]
+<images/UCD/RF2_registrazione_UCD.png, id=166, 504.88625pt x 463.7325pt>
+File: images/UCD/RF2_registrazione_UCD.png Graphic file (type png)
+<use images/UCD/RF2_registrazione_UCD.png>
+Package pdftex.def Info: images/UCD/RF2_registrazione_UCD.png  used on input li
+ne 155.
+(pdftex.def)             Requested size: 345.0pt x 316.88356pt.
  [6 <./images/Login_Swimlane.drawio.png>]
 <images/Register_swimlane.drawio.png, id=173, 564.1075pt x 553.06625pt>
 File: images/Register_swimlane.drawio.png Graphic file (type png)
@@ -691,7 +691,7 @@ Package pdftex.def Info: images/Register_swimlane.drawio.png  used on input lin
 e 160.
 (pdftex.def)             Requested size: 345.0pt x 338.24759pt.
 
-[7 <./images/Registrazione_UCD.drawio.png>]
+[7 <./images/UCD/RF2_registrazione_UCD.png>]
 <images/contatti_sequence_diagram.png, id=181, 901.3675pt x 483.8075pt>
 File: images/contatti_sequence_diagram.png Graphic file (type png)
 <use images/contatti_sequence_diagram.png>
@@ -711,46 +711,42 @@ Package pdftex.def Info: images/negozio_sequence_diagram.png  used on input lin
 e 178.
 (pdftex.def)             Requested size: 345.0pt x 292.49088pt.
  [9 <./images/contatti_sequence_diagram.png> <./images/shop_diagram_1.png>]
-<images/RF6_riparazione_UCD.png, id=197, 676.5275pt x 714.67pt>
-File: images/RF6_riparazione_UCD.png Graphic file (type png)
-<use images/RF6_riparazione_UCD.png>
-Package pdftex.def Info: images/RF6_riparazione_UCD.png  used on input line 184
-.
+<images/UCD/RF6_riparazione_UCD.png, id=197, 676.5275pt x 714.67pt>
+File: images/UCD/RF6_riparazione_UCD.png Graphic file (type png)
+<use images/UCD/RF6_riparazione_UCD.png>
+Package pdftex.def Info: images/UCD/RF6_riparazione_UCD.png  used on input line
+ 184.
 (pdftex.def)             Requested size: 345.0pt x 364.45506pt.
- [10 <./images/negozio_sequence_diagram.png>] [11 <./images/RF6_riparazione_UCD
-.png>]
-Overfull \hbox (1.80623pt too wide) in paragraph at lines 210--211
-[]\OT1/cmr/m/n/10 [ Ex-cep-tion 2]: Se l'utente non ha com-pi-lato i campi "nom
-e","cognome","e-
- []
-
-<images/RF7_assistenza_UCD.png, id=212, 723.70375pt x 694.595pt>
-File: images/RF7_assistenza_UCD.png Graphic file (type png)
-<use images/RF7_assistenza_UCD.png>
-Package pdftex.def Info: images/RF7_assistenza_UCD.png  used on input line 215.
-
-(pdftex.def)             Requested size: 345.0pt x 331.12311pt.
-[12]
+ [10 <./images/negozio_sequence_diagram.png>] [11 <./images/UCD/RF6_riparazione
+_UCD.png>]
+<images/UCD/RF7_assistenza_UCD.png, id=212, 633.36626pt x 784.9325pt>
+File: images/UCD/RF7_assistenza_UCD.png Graphic file (type png)
+<use images/UCD/RF7_assistenza_UCD.png>
+Package pdftex.def Info: images/UCD/RF7_assistenza_UCD.png  used on input line 
+215.
+(pdftex.def)             Requested size: 345.0pt x 427.57013pt.
+ [12]
 <images/feedback_UCD.png, id=221, 582.175pt x 382.42876pt>
 File: images/feedback_UCD.png Graphic file (type png)
 <use images/feedback_UCD.png>
-Package pdftex.def Info: images/feedback_UCD.png  used on input line 222.
+Package pdftex.def Info: images/feedback_UCD.png  used on input line 223.
 (pdftex.def)             Requested size: 310.4979pt x 203.97005pt.
- [13 <./images/RF7_assistenza_UCD.png>]
-<images/magazzino_UCD.png, id=228, 772.8875pt x 574.145pt>
-File: images/magazzino_UCD.png Graphic file (type png)
-<use images/magazzino_UCD.png>
-Package pdftex.def Info: images/magazzino_UCD.png  used on input line 229.
-(pdftex.def)             Requested size: 345.0pt x 256.28656pt.
+ [13 <./images/UCD/RF7_assistenza_UCD.png>]
+<images/UCD/RF10_magazzino_UCD.png, id=228, 543.02875pt x 583.17876pt>
+File: images/UCD/RF10_magazzino_UCD.png Graphic file (type png)
+<use images/UCD/RF10_magazzino_UCD.png>
+Package pdftex.def Info: images/UCD/RF10_magazzino_UCD.png  used on input line 
+230.
+(pdftex.def)             Requested size: 345.0pt x 370.51906pt.
  [14 <./images/feedback_UCD.png>]
-<images/gestione_dipendenti_UCD.png, id=235, 1740.5025pt x 825.0825pt>
-File: images/gestione_dipendenti_UCD.png Graphic file (type png)
-<use images/gestione_dipendenti_UCD.png>
-Package pdftex.def Info: images/gestione_dipendenti_UCD.png  used on input line
- 239.
-(pdftex.def)             Requested size: 345.0pt x 163.54057pt.
-
-[15 <./images/magazzino_UCD.png> <./images/gestione_dipendenti_UCD.png>]
+<images/UCD/RF11_gestionedipendenti_UCD.png, id=235, 723.70375pt x 784.9325pt>
+File: images/UCD/RF11_gestionedipendenti_UCD.png Graphic file (type png)
+<use images/UCD/RF11_gestionedipendenti_UCD.png>
+Package pdftex.def Info: images/UCD/RF11_gestionedipendenti_UCD.png  used on in
+put line 237.
+(pdftex.def)             Requested size: 345.0pt x 374.18823pt.
+ [15 <./images/UCD/RF10_magazzino_UCD.png>] [16 <./images/UCD/RF11_gestionedipe
+ndenti_UCD.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 255--255
 []\OT1/cmr/m/n/10 Linguaggio Com-
  []
@@ -865,7 +861,7 @@ Overfull \hbox (3.9803pt too wide) in paragraph at lines 269--282
  [] 
  []
 
-[16]
+[17]
 Underfull \hbox (badness 1484) in paragraph at lines 291--291
 []\OT1/cmr/m/n/10 il sito deve es-sere con-
  []
@@ -895,7 +891,7 @@ Overfull \hbox (3.9803pt too wide) in paragraph at lines 287--294
  [] 
  []
 
-[17]
+[18]
 Underfull \hbox (badness 10000) in paragraph at lines 303--303
 []\OT1/cmr/m/n/10 La prob-a-bilit^^Ra che il
  []
@@ -940,7 +936,7 @@ Overfull \hbox (3.9803pt too wide) in paragraph at lines 314--326
  [] 
  []
 
-[18]
+[19]
 Underfull \hbox (badness 4328) in paragraph at lines 335--335
 []\OT1/cmr/m/n/10 Compatibilit^^Ra dis-
  []
@@ -985,11 +981,11 @@ Overfull \hbox (3.9803pt too wide) in paragraph at lines 331--363
  [] 
  []
 
-[19]
+[20]
 Overfull \vbox (52.39996pt too high) has occurred while \output is active []
 
 
-[20]
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 368--368
 []\OT1/cmr/m/n/10 Responsive su
  []
@@ -1069,7 +1065,7 @@ Overfull \hbox (3.9803pt too wide) in paragraph at lines 383--401
  [] 
  []
 
-[21]
+[22]
 Underfull \hbox (badness 10000) in paragraph at lines 413--413
 []\OT1/cmr/m/n/10 Conformit^^Ra W3C
  []
@@ -1084,13 +1080,13 @@ Overfull \hbox (3.9803pt too wide) in paragraph at lines 405--416
  [] 
  []
 
-[22] [23]
+[23] [24]
 Chapter 2.
-[24
+[25
 
-] [25] [26]
+] [26] [27]
 Chapter 3.
-[27
+[28
 
 ] (./D2.aux)
  ***********
@@ -1106,8 +1102,8 @@ Package rerunfilecheck Info: File `D2.out' has not changed.
 (rerunfilecheck)             Checksum: 0CE8064B3CC0714A0F99C1D1481FFA81;3267.
  ) 
 Here is how much of TeX's memory you used:
- 20103 strings out of 474503
- 372664 string characters out of 5756704
+ 20104 strings out of 474503
+ 372860 string characters out of 5756704
  1933043 words of memory out of 5000000
  41681 multiletter control sequences out of 15000+600000
  562097 words of font info for 50 fonts, out of 8000000 for 9000
@@ -1122,10 +1118,10 @@ ic/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10
 .pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/
 texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on D2.pdf (28 pages, 527299 bytes).
+Output written on D2.pdf (29 pages, 523289 bytes).
 PDF statistics:
- 369 PDF objects out of 1000 (max. 8388607)
- 290 compressed objects within 3 object streams
- 76 named destinations out of 1000 (max. 500000)
+ 373 PDF objects out of 1000 (max. 8388607)
+ 293 compressed objects within 3 object streams
+ 77 named destinations out of 1000 (max. 500000)
  270 words of extra memory for PDF output out of 10000 (max. 10000000)
 

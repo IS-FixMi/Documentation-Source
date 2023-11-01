@@ -36,8 +36,8 @@ Entro il 5 novembre:
 - [ ] Ognuno per i propri requisiti, deve fare la definizione dei componenti
 - [ ] Valerio farà le descrizioni degli utenti e sistemi esterni, riguarderà i grafici dei RF
   - [x] Utenti e sistemi esterni
-  - [ ] UCD RF1
-  - [ ] UCD RF2
+  - [x] UCD RF1
+  - [x] UCD RF2
   - [ ] UCD RF3
   - [ ] UCD RF4
   - [ ] UCD RF5
@@ -45,9 +45,9 @@ Entro il 5 novembre:
   - [x] UCD RF7
   - [ ] UCD RF8
   - [ ] UCD RF9
-  - [ ] UCD RF10
-  - [ ] UCD RF11
-  - [ ] Ridefinire il concetto di aggiornamento password nel D1 e nel D2 (RF1)
+  - [x] UCD RF10
+  - [x] UCD RF11
+  - [x] Ridefinire il concetto di aggiornamento password nel D1 e nel D2 (RF1)
 - [ ] Fare una lista delle interfacce date e offerte
 - [ ] Riginel si guarda il diagramma di contesto
 - [ ] Ognuno fa una lista delle interfacce dei propri RF di Trello

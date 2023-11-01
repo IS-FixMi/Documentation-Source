@@ -198,7 +198,7 @@ Segue la lista dei Requisiti Funzionali (RF) individuati per il progetto.
 Il sito deve manifestare una distinzione esplicita tra i tre tipi di utente, ossia Cliente, Dipendente e Manager, ognuno con accesso a funzionalità e privilegi diversi.
 In vista di questo, la seguente sezione verrà divisa in base al tipo di utente interessato.
 
-\subsection{Utente Non Autenticato}
+\subsection{Utente}
 
 \subsection*{RF1 login}
 Il sito deve presentare una pagina di login:
@@ -227,18 +227,16 @@ Il sito deve presentare una pagina di login:
 
 	\end{enumerate}
 	
-\subsubsection*{RF1.3 Cambio Password}
-Il sito deve offrire la possibilità all’utente di cambiare password:
+	\subsubsection*{RF1.3 Cambio Password}
+	Il sito deve offrire la possibilità al cliente di cambiare password: \\
+	Il sistema chiede al cliente di inserire l'email associata al profilo di cui si vuole cambiare password, dopodichè verrà inviato un codice 2FA a suddetta e-mail. Inserito il codice corretto il sistema permetterà al cliente di inserire la nuova password.
 	\begin{enumerate}
-		\item L'applicazione deve inviare un link all'utente attraverso e-mail che porterà ad una nuova pagina. La pagina presenterà un campo "nuova password".
-		
 		\item La nuova password dovrà essere digitata due volte per ridurre la probabilità di errori di battitura.
 		
 		\item La nuova password deve rispettare i vincoli specificati in RNF2.
 		
 		\item Qualora non vi fosse alcun profilo associato alla la mail inserita, il processo fallirà e verrà caricata la pagina di login.
 	\end{enumerate}
-
 
 \subsection*{RF2 Registrazione}
 Il sito deve dare la possibilità ad un utente di registrarsi:
@@ -269,7 +267,7 @@ Per terminare la registrazione con successo, l'applicazione deve verificare la m
 
 
 \subsection*{RF3 Negozio}
-Il sito presenta all’utente non autenticato una pagina "Negozio”: 
+Il sito presenta all’utente una pagina "Negozio”: 
 
 \begin{enumerate}
 	\item La pagina permette di visualizzare gli oggetti presenti nel magazzino al momento del caricamento della stessa
@@ -295,7 +293,7 @@ L’applicazione deve offrire all’utente una pagina dove sono visibili dati ut
 Il sito deve dare la possibilità al cliente di autenticarsi attraverso la pagina di login come specificato in RF1 inserendo le proprie credenziali (e-mail e password) inserite in fase di registrazione, in modo da poter accedere alle funzionalità elencate di seguito:
 
 \subsection*{RF5 Negozio}
-Il sito deve permettere al cliente, oltre alle funzionalità definite in RF3 per gli utenti non autenticati, le seguenti funzionalità:
+Il sito deve permettere al cliente, oltre alle funzionalità definite in RF3 per gli utenti, le seguenti funzionalità:
 
 \subsubsection{RF5.1 Carrello}
 Il sito deve avere una pagina dedicata al carrello del cliente.
