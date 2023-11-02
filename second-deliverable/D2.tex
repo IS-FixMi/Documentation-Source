@@ -161,17 +161,19 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 	diagramma delle Attività swimlane della registrazione
 \end{figure}
 
-\subsection*{RF4 Informazioni /  Contatti}
+\subsection*{RF4 Informazioni / Contatti}
 
 \begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/contatti_sequence_diagram.png}
+	\centering\includegraphics[width=1\textwidth]{images/UCD/RF4_infocontatti_UCD.png}
+	Use Case Diagram (UCD) di RF4 "Informazioni / Contatti"
 \end{figure}
 
 
-\subsection*{RF3 Negozio utente non autenticato + RF5 Negozio utente autenticato}
+\subsection*{RF3 Negozio Utente e RF5 Negozio Cliente}
 
 \begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/shop_diagram_1.png}
+	\centering\includegraphics[width=1\textwidth]{images/UCD/RF3+5_negozio_UCD.png}
+	Use Case Diagram (UCD) di RF3 e RF5 "Negozio"
 \end{figure}
 
 \begin{figure}[H]
@@ -220,7 +222,8 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 \subsection*{RF8 Feedback}
 
 \begin{figure}[H]
-	\centering\includegraphics[width=0.9\textwidth]{images/feedback_UCD.png}
+	\centering\includegraphics[width=1\textwidth]{images/UCD/RF8_feedback_UCD.png}
+	Use Case Diagram (UCD) di RF8 "Feedback"
 \end{figure}
 
 \subsection*{RF9 Tasks}
@@ -459,21 +462,11 @@ Con il termine "Manager" si intende quella persona che abbia il completo control
 \subsection{Server Mail}
 Attraverso la Server Mail, il sistema è in grado di mandare e ricevere e-mail. 
 
-\subsection{Database Autenticazione}
-Il database "Autenticazione" ("Auth") memorizza i dati utilizzati a riconoscere i profili creati durante la registrazione nel sistema.
-%memorizza i dati utilizzati durante la fase di registrazione di un Utente, controllando che essi non siano già esistenti o errati. In fase di Login tali dati verranno controllati per verificare che l'Utente stia facendo accesso ad un profilo esistente.  (Non sono sicuro di questo ma beh lo lascio qui cosi nel caso per cambiarlo non ci vuole niente)
+\subsection{Database}
+Il database memorizza il catalogo del negozio, l'inventario del magazzino e le informazioni riguardanti i profili gestiti dal sistema (es. e-mail e password).
 
-\subsection{Database Magazzino}
-Il database "Magazzino" contiene la lista di prodotti contenuti nel catalogo dell'azienda.
-
-\subsection{Database Task}
-Il database "Task" contiene la lista di tutte le task, il loro tag e lo stato.
-
-\subsection{PayPal}
-Il servizio esterno "PayPal" permette al Cliente di effettuare acquisti all'interno del sistema.
-
-\subsection{Nexi}
-Il servizio esterno "NeXi" permette al Cliente di effettuare acquisti all'interno del sistema.
+\subsection{PayPal e Nexi}
+I servizi esterni "PayPal" e "Nexi" permettono al Cliente di effettuare acquisti all'interno del sistema.
 
 \subsection{OpenStreetMap}
 Il servizio esterno "OpenStreetMap" fornisce dati geografici al sistema.%per visualizzare la posizione aziendale geografica in cartina.

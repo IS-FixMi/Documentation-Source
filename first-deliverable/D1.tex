@@ -241,7 +241,7 @@ Il sito deve presentare una pagina di login:
 \subsection*{RF2 Registrazione}
 Il sito deve dare la possibilità ad un utente di registrarsi:
 \begin{enumerate}
-	\item La pagina presenta i campi "e-mail", "password" (due volte), "username" e "nazionalità". 
+	\item La pagina presenta i campi "e-mail", "password" (due volte), "nome" e "nazionalità". 
 	\item La password deve essere conforme come specificato in RNF2.
 \end{enumerate}
 
@@ -367,30 +367,40 @@ Il sito deve dare la possibilità al dipendente di autenticarsi attraverso la pa
 
 \subsection*{RF9 Pagina Task}
 
-Il sito deve offrire una pagina “Task” ai dipendenti autenticati, il sistema delle \textit{task} è definito nel capitolo 5 a pagina \pageref{chap:tasks}, si consiglia di leggere tale capitolo prima di continuare.
+Il sito deve offrire una pagina “Task” ai dipendenti autenticati, il sistema delle \textit{Task} è definito qui di seguito:
 
-\begin{enumerate}
-	\item La pagina permetterà al dipendente di visualizzare una lista di task e i corrispettivi \textit{task-tag}.
-	
-	\item Le task visualizzate sono automaticamente selezionate per il dipendente autenticato dall’applicazione in base ai \textit{work-tag} associati al proprio profilo.
-	
-	\item Le task visualizzate sono solo quelle con lo stato "Da eseguire" oppure "In pausa".
+\subsubsection*{RF9.1 Definizione Task}
 
-	
-\end{enumerate}
+Una task è un'attività sulla quale un dipendente o un manager può decidere di lavorare. Esistono diverse tipologie di Task, caratterizzate da una \textit{Task-Tag} ed una descrizione di massimo 200 caratteri.\\
+Una \textit{Task-Tag} è una e una sola stringa tra le seguenti:
 
-\subsubsection*{RF9.1 Interagire con le tasks}
+\subsubsection*{Magazzino} Il dipendente accede alla pagina del magazzino (RF10) per apportare eventuali modifiche o visualizzare i vari articoli.
+	
+\subsubsection*{Negozio} Il dipendente si assume il compito di rimanere alla cassa per interagire con eventuali clienti.
+	
+\subsubsection*{Assistenza} Il dipendente visualizza la richiesta di supporto dal cliente tramite e-mail. Il dipendente potrà rispondere per e-mail al cliente in base alle esigenze del caso, secondo la propria discrezione.
+	
+\subsubsection*{Riparazione} Il dipendente potrà prendersi carico di una riparazione selezionando e avviando la task. Qualora ci fossero problemi e/o ritardi, il dipendente potrà mettere la task in pausa e riprenderla in qualsiasi momento. Una volta che la riparazione viene terminata, il dipendente segnerà la task come completata o fallita nel caso la riparazione non avesse successo.
+
+\subsubsection*{RF9.2 Definizione Work-Tag}
+Ad ogni profilo dipendente sono associate una o più \textit{Work-Tag}. Una \textit{Work-Tag} è una stringa dello stesso tipo di una \textit{Task-Tag}.\\
+Ogni dipendente potrà lavorare solo sulle task che hanno gli stessi o meno \textit{Task-Tag} rispetto ai \textit{Work-Tag} del dipendente.
+
+\subsubsection*{RF9.3 Interagire con le Task}
 
 Nella pagina "Task", il dipendente deve essere in grado di:
 
 \begin{enumerate}
-	\item Selezionare una task dalla lista da eseguire o da quelle messe in pausa, contrassegnandola come in lavorazione, solo nel caso in cui il dipendente non presenti alcuna task in lavorazione.
+	\item Visualizzare la lista delle Task ed i corrispettivi \textit{Task-Tag} selezionate per il dipendente in base al suo corrispettivo \textit{Work-Tag}.
 	
-	\item Mettere in pausa la task in esecuzione, la task verrà contrassegnata come “In pausa” e il dipendente potrà selezionare una nuova task dalla lista.
+	\item Selezionare una Task dalla lista da eseguire o da quelle messe in pausa, contrassegnandola come in lavorazione, solo nel caso in cui il dipendente non presenti alcuna task in lavorazione.
 	
-	\item Contrassegnare una task come “completata” e salvarla in una lista di task completate, insieme al nome del / dei dipendente/i responsabili del completamente e alla data, oppure come “fallita” nel caso ci fossero stati dei problemi. Il dipendente allora potrà scegliere una nuova task dalla lista.
+	\item Mettere in pausa la Task in esecuzione, la Task verrà contrassegnata come “In pausa” e il dipendente potrà selezionare una nuova Task dalla lista.
 	
-	\item Creare una nuova task di qualsiasi tipologia, impostando \textit{task-tag} e la descrizione (anche vuota).
+	\item Contrassegnare una Task come “completata” e salvarla in una lista di Task completate, insieme al nome del / dei dipendente/i responsabili del completamento e alla data, oppure come “fallita” nel caso ci fossero stati dei problemi. Il dipendente allora potrà scegliere una nuova Task dalla lista.
+	
+	\item Creare una nuova Task di qualsiasi tipologia, impostando \textit{Task-Tag} e la descrizione (anche vuota).
+	
 \end{enumerate}
 
 \subsection*{RF10 Magazzino}
@@ -412,22 +422,22 @@ Il manager deve essere in grado di:
 
 \begin{enumerate}
 	
-	\item Aggiungere profili “dipendente” dall’applicazione inserendo l’e-mail del profilo in un apposito campo
+	\item Aggiungere profili “Dipendente” dall’applicazione inserendo l’e-mail del profilo in un apposito campo.
 	\item Aggiungere dati Anagrafici associati all'account dipendente , "nome", "cognome", "data di nascita", "giorno assunzione".
 	\item Rimuovere dipendenti tramite un bottone che permette di selezionare la 
 	e-mail del dipendente e rimuoverla dalla lista dipendenti.
 	
-	\item Assegnare e rimuovere una o più \textit{work-tag} ai dipendenti. 
+	\item Assegnare e rimuovere una o più \textit{Work-Tag} ai dipendenti. 
 	
 	\item Visualizzare informazioni dei dipendenti in apposita pagina, in particolare:
 	
 	\begin{itemize}
 		\item Informazioni Biografiche.
-		\item Storico con attività e record delle task svolte / in svolgimento. Lo storico deve poter essere filtrato e ordinato tramite data di inizio e fine task, nome dipendente, lista di task-tag.
+		\item Storico con attività e record delle Task svolte / in svolgimento. Lo storico deve poter essere filtrato e ordinato tramite data di inizio e fine Task, nome dipendente, lista di Task-Tag.
 		
 	\end{itemize}
 	
-	\item Il profilo manager ha tutte le \textit{work-tag} assegnate per il proprio profilo.
+	\item Il profilo manager ha tutte le \textit{Work-Tag} assegnate per il proprio profilo.
 		
 \end{enumerate}
 
@@ -502,8 +512,8 @@ Le principali aree di focus del GDPR includono il consenso esplicito per la racc
 Il sito deve offrire velocità di accesso ai servizi offerti in tempi rapidi:
 \begin{enumerate}
 	\item Il sito deve aggiornare la lista degli articoli presenti in negozio, in caso di modifica al magazzino, in meno di un secondo.
-	\item Il sito deve inviare le mail di 2FA(specificata nell'RF1) in meno di 5 secondi.
-	\item Il sito deve aggiornare la lista delle task (in caso di completamento, aggiunta, messa in pausa) in meno di un secondo.
+	\item Il sito deve inviare le e-mail di 2FA(specificata nell'RF1) in meno di 5 secondi.
+	\item Il sito deve aggiornare la lista delle Task (in caso di completamento, aggiunta, messa in pausa) in meno di un secondo.
 \end{enumerate}
 
 \subsection*{RNF6 Compatibilità e Portabilità}
@@ -563,15 +573,35 @@ L'applicazione deve essere conforme alle normative di legge in materia di siti w
 
 \section{Design del Front End}
 
-Nella seguente sezione verranno mostrate alcune grafiche al fine di visualizzare come il sito mostrerà le proprie funzionalità all’utente e ai dipendenti.
+In seguito vengono mostrate schermate delle principali aree di Fix Mi, essi rispecchiano le caratteristiche descritte dal (RF1) e vengono mostrate attraverso le tre tipologie di schermo discusse nel (RNF6). 
 
-\subsection*{Schermata di Login}
-In seguito viene mostrata la schermata di Login di Fix Mi, esso rispecchia le caratteristiche descritte dal (RF1) e viene mostrato attraverso le tre tipologie di schermo discusse nel (RNF6). 
+\subsection*{Schermata Login}
+
+La schermata "Login" permette all'utente di inserire l'email e la password del suo profilo ed in seguito di premere il bottone "ACCEDI", nel caso in cui l'utente non abbia ancora creato un proprio profilo egli potrà farlo accedendo all'area "Registrazione" attraverso il bottone "REGISTRATI".
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=1\textwidth]{images/login_snapshot}
-	\caption{La schermata di Login di Fix Mi}
+	\includegraphics[width=1\textwidth]{images/Snapshots/login_snapshot.png}
+	\caption{Schermata "Login" di "Fix Mi"}
+\end{figure}	
+
+\subsection*{Schermata Home}
+
+La schermata "Home" permette di raggiungere tutte le aree principali del sistema attraverso appositi bottoni etichettati con il nome della suddetta area. In altro è presente una barra di navigazione, un bottone per accedere alle impostazioni ed uno per accedere al proprio profilo. In basso sono presenti le principali informazioni aziendali.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{images/Snapshots/mainpage_snapshot.png}
+	\caption{Schermata "Home" di "Fix Mi"}
+\end{figure}	
+
+\subsection*{Schermata Magazzino}
+La schermata "Magazzino" permette al Dipendente ed al Manager di poter gestire il catalogo aziendale. E' possibile fare una ricerca più accurata inserendo valide informazioni nei quattro campi presenti nella parte superiore della schermata.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{images/Snapshots/magazzino_snapshot.png}
+	\caption{Schermata "Magazzino" di "Fix Mi"}
 \end{figure}	
 
 
@@ -581,14 +611,14 @@ Nella seguente sezione vengono riportate le specifiche generali per quanto rigua
 
 \subsection{Divisione in Microservizi}
 
-La backend presenta un’architettura basata su microservizi indipendenti che comunicano tramite API. In particolare i microservizi sono:
+La Back-End presenta un’architettura basata su microservizi indipendenti che comunicano tramite API. In particolare i microservizi sono:
 \begin{itemize}
 	\item Home
 	\item Autenticazione
 	\item Negozio
 	\item Magazzino
 	\item Task
-	\item Mail Server
+	\item E-mail Server
 	\item Gestione Dipendenti
 \end{itemize}
 
@@ -599,7 +629,7 @@ L’applicazione si interfaccerà con i seguenti sistemi esterni:
 La backend si interfaccierà con Paypal Name-Value-Pair (NVP) e NEXI XPay per effettuare i pagamenti nella pagina "Negozio" (RF3). 
 
 \subsubsection{Databases}
-La back-end utilizzerà il servizio "MongoDB Cluster Atlas" per interagire con databases distribuiti, in particolare i database per gli utenti registrati, le task e il magazzino.
+La Back-End utilizzerà il servizio "MongoDB Cluster Atlas" per interagire con databases distribuiti, in particolare i database per gli utenti registrati, le Task e il magazzino.
 
 \subsubsection{OpenStreetMap}
 Nella pagina di informazioni, l'applicazione userà OpenStreetMap per visualizzare la posizione dell'azienda nella mappa.
@@ -615,14 +645,14 @@ Home presenta la pagina principale "Home" e permette di reinderizzare l'utente a
 \subsubsection*{Autenticazione}
 Il microservizio gestisce la registrazione e l'autenticazione degli utenti. Si interfaccia ad un database non relazionale esterno per memorizzare i profili e le rispettive informazioni.
 
-\subsubsection*{Server Mail}
-L'applicazione prevede di implementare un server SMTP per l’invio delle mail a tutti i tipi di utente e prevede una mail aziendale per i dipendenti e per i manager.
+\subsubsection*{Server E-mail}
+L'applicazione prevede di implementare un server SMTP per l’invio delle e-mail a tutti i tipi di utente e prevede una e-mail aziendale per i dipendenti e per i manager.
 
 \subsubsection*{Gestione delle Task}
-Il microservizio si interfaccia con database esterno non relazionale per memorizzare le task, mostrarle ai dipendenti e salvarne lo stato (definito nel capitolo 6).
+Il microservizio si interfaccia con database esterno non relazionale per memorizzare le Task, mostrarle ai dipendenti e salvarne lo stato (definito nel capitolo 6).
 
 \subsubsection*{Gestione dei Dipendenti}
-Il microservizio è in grado di leggere e scrivere nel database delle task e degli utenti registrati.
+Il microservizio è in grado di leggere e scrivere nel database delle Task e degli utenti registrati.
 
 \subsubsection*{Magazzino}
 Il microservizio utilizza un database non relazionale per memorizzare gli articoli contenuti all’interno del magazzino, oltre che alle operazioni svolte, come:
@@ -686,50 +716,6 @@ Il team di sviluppo ha suddiviso l’obiettivo del progetto in obiettivi seconda
 	\end{center}
 \end{table}
 
-\chapter{Il sistema Task}
-\label{chap:tasks}
-
-Il sistema delle task è centrale alla gestione dell'attività aziendale e al funzionamento dell'applicazione. In seguito vi è una descrizione del suo funzionamento
-
-\subsubsection*{Definizione Task e Task-tag}
-
-Una task è un'attività sulla quale un dipendente o un manager può decidere di lavorare. Esistono diverse tipologie di task, caratterizzate da una \textit{task-tag}.e una descrizione di massimo 200 caratteri.\\
-Una \textit{task-tag} è una e una sola stringa tra le seguenti:
-\begin{itemize}
-	\item Magazzino
-	\item Negozio
-	\item Assistenza e Supporto
-	\item Riparazione
-\end{itemize}
-Le tasks possono essere in uno dei seguenti stati: 
-\begin{itemize}
-	\item Da eseguire
-	\item In lavorazione
-	\item In pausa
-	\item Completata
-	\item Fallita
-\end{itemize}
-
-\subsubsection*{Significato delle singole tasks}
-
-In seguito vi è una descrizione del significato di ogni tipologia di task:
-
-\begin{enumerate}
-	\item Magazzino: il dipendente accede alla pagina del magazzino (RF10) per apportare eventuali modifiche o visualizzare i vari articoli.
-	
-	\item Negozio: il dipendente si assume il compito di rimanere alla cassa per interagire con eventuali clienti.
-	
-	\item Assistenza: il dipendente visualizza la richiesta di supporto dal cliente tramite mail. Il dipendente potrà rispondere per mail al cliente in base alle esigenze del caso, secondo la propria discrezione.
-	
-	\item Riparazione: il dipendente potrà prendersi carico di una riparazione selezionando e avviando la task. Qualora ci fossero problemi e/o ritardi, il dipendente potrà mettere la task in pausa e riprenderla in qualsiasi momento. Una volta che la riparazione viene terminata, il dipendente segnerà la task come completata o fallita nel caso la riparazione non avesse successo.
-	
-\end{enumerate}
-
-\subsection*{Definizione work-tag}
-Ad ogni profilo dipendente sono associate una o più \textit{work-tag}. Una \textit{work-tag} è una stringa dello stesso tipo di una \textit{task-tag} (Magazzino, Negozio, Assistenza, Riparazione).\\
-Ogni dipendente potrà lavorare solo sulle task che hanno gli stessi o meno \textit{task-tag} rispetto ai \textit{work-tag} del dipendente.
-
-
 \chapter{Tecniche e Strumentazione}
 Diversi strumenti e tecniche sono state scelte accuratamente in base alla situazione posta dall’obiettivo. Di seguito un elenco degli strumenti utilizzati per la realizzazione del progetto:
 
@@ -743,5 +729,20 @@ Diversi strumenti e tecniche sono state scelte accuratamente in base alla situaz
 	\item Coolors \qquad \url{https://coolors.co/}
 	\item Diagrams \qquad \url{https://app.diagrams.net/}
 \end{itemize}
+
+\chapter{Glossario}
+%Glossario da aggiungere solo verso la fine, quando sapremo che il documento sarà pronto..
+Possibili parole da aggiungere nel glossario (ordine alfabetico):
+\subsubsection*{2FA}
+\subsubsection*{Back-End}
+\subsubsection*{E-mail}
+\subsubsection*{Microservizio}
+\subsubsection*{Front-End}
+\subsubsection*{OTP}
+\subsubsection*{Password}
+\subsubsection*{Task}
+\subsubsection*{Task-Tag}
+\subsubsection*{Work-Tag}
+
 
 \end{document}

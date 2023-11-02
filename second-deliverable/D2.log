@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.22)  1 NOV 2023 18:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.22)  2 NOV 2023 13:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -629,7 +629,7 @@ Package hyperref Info: Link coloring ON on input line 59.
 \@outlinefile=\write4
 \openout4 = `D2.out'.
 
-<images/unitn-logo.png, id=103, 903.375pt x 501.875pt>
+<images/unitn-logo.png, id=91, 903.375pt x 501.875pt>
 File: images/unitn-logo.png Graphic file (type png)
 <use images/unitn-logo.png>
 Package pdftex.def Info: images/unitn-logo.png  used on input line 65.
@@ -654,330 +654,334 @@ been already used, duplicate ignored
 l.96 	\newpage
                [1
 
-] [2]
+]
 Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
  []
 
-[3]
+[2]
 Chapter 1.
-<images/UCD/RF1_login_UCD.png, id=152, 689.57625pt x 584.1825pt>
+<images/UCD/RF1_login_UCD.png, id=133, 603.25375pt x 545.03625pt>
 File: images/UCD/RF1_login_UCD.png Graphic file (type png)
 <use images/UCD/RF1_login_UCD.png>
 Package pdftex.def Info: images/UCD/RF1_login_UCD.png  used on input line 145.
-(pdftex.def)             Requested size: 345.0pt x 292.2688pt.
-[4
+(pdftex.def)             Requested size: 345.0pt x 311.70515pt.
+[3
 
 {c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-<images/Login_Swimlane.drawio.png, id=159, 453.695pt x 553.06625pt>
+<images/Login_Swimlane.drawio.png, id=140, 453.695pt x 553.06625pt>
 File: images/Login_Swimlane.drawio.png Graphic file (type png)
 <use images/Login_Swimlane.drawio.png>
 Package pdftex.def Info: images/Login_Swimlane.drawio.png  used on input line 1
 50.
 (pdftex.def)             Requested size: 345.0pt x 420.56258pt.
 
-[5 <./images/UCD/RF1_login_UCD.png>]
-<images/UCD/RF2_registrazione_UCD.png, id=166, 504.88625pt x 463.7325pt>
+[4 <./images/UCD/RF1_login_UCD.png>]
+<images/UCD/RF2_registrazione_UCD.png, id=147, 504.88625pt x 463.7325pt>
 File: images/UCD/RF2_registrazione_UCD.png Graphic file (type png)
 <use images/UCD/RF2_registrazione_UCD.png>
 Package pdftex.def Info: images/UCD/RF2_registrazione_UCD.png  used on input li
 ne 155.
 (pdftex.def)             Requested size: 345.0pt x 316.88356pt.
- [6 <./images/Login_Swimlane.drawio.png>]
-<images/Register_swimlane.drawio.png, id=173, 564.1075pt x 553.06625pt>
+ [5 <./images/Login_Swimlane.drawio.png>]
+<images/Register_swimlane.drawio.png, id=153, 564.1075pt x 553.06625pt>
 File: images/Register_swimlane.drawio.png Graphic file (type png)
 <use images/Register_swimlane.drawio.png>
 Package pdftex.def Info: images/Register_swimlane.drawio.png  used on input lin
 e 160.
 (pdftex.def)             Requested size: 345.0pt x 338.24759pt.
 
-[7 <./images/UCD/RF2_registrazione_UCD.png>]
-<images/contatti_sequence_diagram.png, id=181, 901.3675pt x 483.8075pt>
-File: images/contatti_sequence_diagram.png Graphic file (type png)
-<use images/contatti_sequence_diagram.png>
-Package pdftex.def Info: images/contatti_sequence_diagram.png  used on input li
-ne 167.
-(pdftex.def)             Requested size: 345.0pt x 185.17757pt.
- [8 <./images/Register_swimlane.drawio.png>]
-<images/shop_diagram_1.png, id=187, 872.25874pt x 458.71375pt>
-File: images/shop_diagram_1.png Graphic file (type png)
-<use images/shop_diagram_1.png>
-Package pdftex.def Info: images/shop_diagram_1.png  used on input line 174.
-(pdftex.def)             Requested size: 345.0pt x 181.43143pt.
-<images/negozio_sequence_diagram.png, id=188, 811.03pt x 687.56876pt>
+[6 <./images/UCD/RF2_registrazione_UCD.png>]
+<images/UCD/RF4_infocontatti_UCD.png, id=161, 603.25375pt x 422.57875pt>
+File: images/UCD/RF4_infocontatti_UCD.png Graphic file (type png)
+<use images/UCD/RF4_infocontatti_UCD.png>
+Package pdftex.def Info: images/UCD/RF4_infocontatti_UCD.png  used on input lin
+e 167.
+(pdftex.def)             Requested size: 345.0pt x 241.67194pt.
+ [7 <./images/Register_swimlane.drawio.png>]
+<images/UCD/RF3+5_negozio_UCD.png, id=167, 576.1525pt x 784.9325pt>
+File: images/UCD/RF3+5_negozio_UCD.png Graphic file (type png)
+<use images/UCD/RF3+5_negozio_UCD.png>
+Package pdftex.def Info: images/UCD/RF3+5_negozio_UCD.png  used on input line 1
+75.
+(pdftex.def)             Requested size: 345.0pt x 470.02892pt.
+ [8 <./images/UCD/RF4_infocontatti_UCD.png>]
+<images/negozio_sequence_diagram.png, id=174, 811.03pt x 687.56876pt>
 File: images/negozio_sequence_diagram.png Graphic file (type png)
 <use images/negozio_sequence_diagram.png>
 Package pdftex.def Info: images/negozio_sequence_diagram.png  used on input lin
-e 178.
+e 180.
 (pdftex.def)             Requested size: 345.0pt x 292.49088pt.
- [9 <./images/contatti_sequence_diagram.png> <./images/shop_diagram_1.png>]
-<images/UCD/RF6_riparazione_UCD.png, id=197, 676.5275pt x 714.67pt>
+ [9 <./images/UCD/RF3+5_negozio_UCD.png>]
+<images/UCD/RF6_riparazione_UCD.png, id=182, 676.5275pt x 714.67pt>
 File: images/UCD/RF6_riparazione_UCD.png Graphic file (type png)
 <use images/UCD/RF6_riparazione_UCD.png>
 Package pdftex.def Info: images/UCD/RF6_riparazione_UCD.png  used on input line
- 184.
+ 186.
 (pdftex.def)             Requested size: 345.0pt x 364.45506pt.
  [10 <./images/negozio_sequence_diagram.png>] [11 <./images/UCD/RF6_riparazione
 _UCD.png>]
-<images/UCD/RF7_assistenza_UCD.png, id=212, 633.36626pt x 784.9325pt>
+<images/UCD/RF7_assistenza_UCD.png, id=197, 633.36626pt x 784.9325pt>
 File: images/UCD/RF7_assistenza_UCD.png Graphic file (type png)
 <use images/UCD/RF7_assistenza_UCD.png>
 Package pdftex.def Info: images/UCD/RF7_assistenza_UCD.png  used on input line 
-215.
+217.
 (pdftex.def)             Requested size: 345.0pt x 427.57013pt.
  [12]
-<images/feedback_UCD.png, id=221, 582.175pt x 382.42876pt>
-File: images/feedback_UCD.png Graphic file (type png)
-<use images/feedback_UCD.png>
-Package pdftex.def Info: images/feedback_UCD.png  used on input line 223.
-(pdftex.def)             Requested size: 310.4979pt x 203.97005pt.
+<images/UCD/RF8_feedback_UCD.png, id=206, 513.92pt x 733.74126pt>
+File: images/UCD/RF8_feedback_UCD.png Graphic file (type png)
+<use images/UCD/RF8_feedback_UCD.png>
+Package pdftex.def Info: images/UCD/RF8_feedback_UCD.png  used on input line 22
+5.
+(pdftex.def)             Requested size: 345.0pt x 492.57814pt.
  [13 <./images/UCD/RF7_assistenza_UCD.png>]
-<images/UCD/RF10_magazzino_UCD.png, id=228, 543.02875pt x 583.17876pt>
+<images/UCD/RF10_magazzino_UCD.png, id=213, 543.02875pt x 583.17876pt>
 File: images/UCD/RF10_magazzino_UCD.png Graphic file (type png)
 <use images/UCD/RF10_magazzino_UCD.png>
 Package pdftex.def Info: images/UCD/RF10_magazzino_UCD.png  used on input line 
-230.
+233.
 (pdftex.def)             Requested size: 345.0pt x 370.51906pt.
- [14 <./images/feedback_UCD.png>]
-<images/UCD/RF11_gestionedipendenti_UCD.png, id=235, 723.70375pt x 784.9325pt>
+
+[14 <./images/UCD/RF8_feedback_UCD.png>]
+<images/UCD/RF11_gestionedipendenti_UCD.png, id=220, 723.70375pt x 784.9325pt>
 File: images/UCD/RF11_gestionedipendenti_UCD.png Graphic file (type png)
 <use images/UCD/RF11_gestionedipendenti_UCD.png>
 Package pdftex.def Info: images/UCD/RF11_gestionedipendenti_UCD.png  used on in
-put line 237.
+put line 240.
 (pdftex.def)             Requested size: 345.0pt x 374.18823pt.
  [15 <./images/UCD/RF10_magazzino_UCD.png>] [16 <./images/UCD/RF11_gestionedipe
 ndenti_UCD.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 255--255
+Underfull \hbox (badness 10000) in paragraph at lines 258--258
 []\OT1/cmr/m/n/10 Linguaggio Com-
  []
 
 
-Underfull \hbox (badness 3291) in paragraph at lines 255--256
+Underfull \hbox (badness 3291) in paragraph at lines 258--259
 []\OT1/cmr/m/n/10 In me-dia l'utente deve
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
+Underfull \hbox (badness 10000) in paragraph at lines 258--259
 \OT1/cmr/m/n/10 es-sere in grado di
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
+Underfull \hbox (badness 10000) in paragraph at lines 258--259
 \OT1/cmr/m/n/10 capire le fun-zion-alit^^Ra
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
+Underfull \hbox (badness 10000) in paragraph at lines 258--259
 \OT1/cmr/m/n/10 dell'applicazione con
  []
 
 
-Underfull \hbox (badness 7344) in paragraph at lines 255--256
+Underfull \hbox (badness 7344) in paragraph at lines 258--259
 \OT1/cmr/m/n/10 una sola let-tura della
  []
 
 
-Underfull \hbox (badness 1152) in paragraph at lines 256--257
+Underfull \hbox (badness 1152) in paragraph at lines 259--260
 []\OT1/cmr/m/n/10 In me-dia, il nu-mero di
  []
 
 
-Underfull \hbox (badness 1838) in paragraph at lines 256--257
+Underfull \hbox (badness 1838) in paragraph at lines 259--260
 \OT1/cmr/m/n/10 click er-rati che l'utente
  []
 
 
-Underfull \hbox (badness 7814) in paragraph at lines 258--259
+Underfull \hbox (badness 7814) in paragraph at lines 261--262
 []\OT1/cmr/m/n/10 La scelta del vo-cabo-
  []
 
 
-Underfull \hbox (badness 5105) in paragraph at lines 260--260
+Underfull \hbox (badness 5105) in paragraph at lines 263--263
 \OT1/cmr/m/n/10 sign con-sis-tente, uti-liz-
  []
 
 
-Overfull \hbox (3.9803pt too wide) in paragraph at lines 251--263
+Overfull \hbox (3.9803pt too wide) in paragraph at lines 254--266
  [] 
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 273--273
+Underfull \hbox (badness 1178) in paragraph at lines 276--276
 \OT1/cmr/m/n/10 dati sen-si-bili uti-liz-zando
  []
 
 
-Underfull \hbox (badness 1584) in paragraph at lines 273--273
+Underfull \hbox (badness 1584) in paragraph at lines 276--276
 \OT1/cmr/m/n/10 "SHA-3" per sar-l-vare e
  []
 
 
-Underfull \hbox (badness 5847) in paragraph at lines 273--273
+Underfull \hbox (badness 5847) in paragraph at lines 276--276
 \OT1/cmr/m/n/10 ogni co-mu-ni-cazione tra
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 273--274
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
 []\OT1/cmr/m/n/10 L'applicazione uti-lizza
  []
 
 
-Underfull \hbox (badness 1077) in paragraph at lines 273--274
+Underfull \hbox (badness 1077) in paragraph at lines 276--277
 \OT1/cmr/m/n/10 "SHA-3" nel sal-vatag-gio
  []
 
 
-Underfull \hbox (badness 1789) in paragraph at lines 273--274
+Underfull \hbox (badness 1789) in paragraph at lines 276--277
 \OT1/cmr/m/n/10 e con-trollo di pass-word
  []
 
 
-Underfull \hbox (badness 3612) in paragraph at lines 273--274
+Underfull \hbox (badness 3612) in paragraph at lines 276--277
 \OT1/cmr/m/n/10 nel database e uti-lizza
  []
 
 
-Underfull \hbox (badness 4168) in paragraph at lines 273--274
+Underfull \hbox (badness 4168) in paragraph at lines 276--277
 \OT1/cmr/m/n/10 per ogni co-mu-ni-cazione
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--275
+Underfull \hbox (badness 10000) in paragraph at lines 278--278
 []\OT1/cmr/m/n/10 Il sito deve ver-i-fi-care
  []
 
 
-Underfull \hbox (badness 2635) in paragraph at lines 275--275
+Underfull \hbox (badness 2635) in paragraph at lines 278--278
 \OT1/cmr/m/n/10 l'identit^^Ra dell'utente at-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
+Underfull \hbox (badness 10000) in paragraph at lines 280--280
 []\OT1/cmr/m/n/10 Conformit^^Ra pass-
  []
 
 
-Overfull \hbox (3.9803pt too wide) in paragraph at lines 269--282
+Overfull \hbox (3.9803pt too wide) in paragraph at lines 272--285
  [] 
  []
 
 [17]
-Underfull \hbox (badness 1484) in paragraph at lines 291--291
+Underfull \hbox (badness 1484) in paragraph at lines 294--294
 []\OT1/cmr/m/n/10 il sito deve es-sere con-
  []
 
 
-Underfull \hbox (badness 1546) in paragraph at lines 291--291
+Underfull \hbox (badness 1546) in paragraph at lines 294--294
 \OT1/cmr/m/n/10 la rac-colta dei dati, la
  []
 
 
-Underfull \hbox (badness 3460) in paragraph at lines 291--291
+Underfull \hbox (badness 3460) in paragraph at lines 294--294
 \OT1/cmr/m/n/10 trasparenza nell'uso dei
  []
 
 
-Underfull \hbox (badness 2181) in paragraph at lines 291--291
+Underfull \hbox (badness 2181) in paragraph at lines 294--294
 \OT1/cmr/m/n/10 dati per-son-ali da parte
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 291--291
+Underfull \hbox (badness 1577) in paragraph at lines 294--294
 \OT1/cmr/m/n/10 si-curezza per pro-teggere
  []
 
 
-Overfull \hbox (3.9803pt too wide) in paragraph at lines 287--294
+Overfull \hbox (3.9803pt too wide) in paragraph at lines 290--297
  [] 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 306--306
 []\OT1/cmr/m/n/10 La prob-a-bilit^^Ra che il
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 306--306
 \OT1/cmr/m/n/10 sito for-nisca i risul-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 306--306
 \OT1/cmr/m/n/10 tati desiderati senza
  []
 
 
-Underfull \hbox (badness 2772) in paragraph at lines 303--303
+Underfull \hbox (badness 2772) in paragraph at lines 306--306
 \OT1/cmr/m/n/10 in-ter-ruzioni o tempi di
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 306--306
 \OT1/cmr/m/n/10 inat-tivit^^Ra deve es-sere
  []
 
 
-Underfull \hbox (badness 1990) in paragraph at lines 305--306
+Underfull \hbox (badness 1990) in paragraph at lines 308--309
 \OT1/cmr/m/n/10 dal sis-tema deve es-sere
  []
 
 
-Overfull \hbox (3.9803pt too wide) in paragraph at lines 299--309
+Overfull \hbox (3.9803pt too wide) in paragraph at lines 302--312
  [] 
  []
 
 
-Underfull \hbox (badness 3029) in paragraph at lines 318--318
+Underfull \hbox (badness 3029) in paragraph at lines 321--321
 \OT1/cmr/m/n/10 in ne-gozio, in caso di
  []
 
 
-Overfull \hbox (3.9803pt too wide) in paragraph at lines 314--326
+Overfull \hbox (3.9803pt too wide) in paragraph at lines 317--329
  [] 
  []
 
 [19]
-Underfull \hbox (badness 4328) in paragraph at lines 335--335
+Underfull \hbox (badness 4328) in paragraph at lines 338--338
 []\OT1/cmr/m/n/10 Compatibilit^^Ra dis-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--335
+Underfull \hbox (badness 10000) in paragraph at lines 338--338
 \OT1/cmr/m/n/10 deve es-sere disponi-bile
  []
 
 
-Underfull \hbox (badness 4328) in paragraph at lines 341--341
+Underfull \hbox (badness 4328) in paragraph at lines 344--344
 []\OT1/cmr/m/n/10 Compatibilit^^Ra dis-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--348
+Underfull \hbox (badness 10000) in paragraph at lines 351--351
 []\OT1/cmr/m/n/10 Il sito deve pot-ersi
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--350
+Underfull \hbox (badness 10000) in paragraph at lines 353--353
 []\OT1/cmr/m/n/10 Responsive su
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
+Underfull \hbox (badness 10000) in paragraph at lines 353--354
 []\OT1/cmr/m/n/10 Il sito deve pot-ersi
  []
 
 
-Underfull \hbox (badness 1231) in paragraph at lines 355--356
+Underfull \hbox (badness 1231) in paragraph at lines 358--359
 \OT1/cmr/m/n/10 torola dal 2018 in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 356--357
+Underfull \hbox (badness 10000) in paragraph at lines 359--360
 []\OT1/cmr/m/n/10 Tutti i mod-elli
  []
 
 
-Overfull \hbox (3.9803pt too wide) in paragraph at lines 331--363
+Overfull \hbox (3.9803pt too wide) in paragraph at lines 334--366
  [] 
  []
 
@@ -986,97 +990,97 @@ Overfull \vbox (52.39996pt too high) has occurred while \output is active []
 
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 368--368
+Underfull \hbox (badness 10000) in paragraph at lines 371--371
 []\OT1/cmr/m/n/10 Responsive su
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--369
+Underfull \hbox (badness 10000) in paragraph at lines 371--372
 []\OT1/cmr/m/n/10 Il sito deve pot-ersi
  []
 
 
-Underfull \hbox (badness 1400) in paragraph at lines 370--371
+Underfull \hbox (badness 1400) in paragraph at lines 373--374
 []\OT1/cmr/m/n/10 Ipad Air, Pro dal
  []
 
 
-Overfull \hbox (3.9803pt too wide) in paragraph at lines 366--378
+Overfull \hbox (3.9803pt too wide) in paragraph at lines 369--381
  [] 
  []
 
 
-Underfull \hbox (badness 1442) in paragraph at lines 387--390
+Underfull \hbox (badness 1442) in paragraph at lines 390--393
 \OT1/cmr/m/n/10 zion-alit`a pe-ri-odica-mente
  []
 
 
-Underfull \hbox (badness 6204) in paragraph at lines 387--390
+Underfull \hbox (badness 6204) in paragraph at lines 390--393
 \OT1/cmr/m/n/10 ci siano prob-lemi, sia
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 392--392
+Underfull \hbox (badness 10000) in paragraph at lines 395--395
 []\OT1/cmr/m/n/10 sito facil-mente
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
 []\OT1/cmr/m/n/10 Il codice sor-
  []
 
 
-Underfull \hbox (badness 1102) in paragraph at lines 394--395
+Underfull \hbox (badness 1102) in paragraph at lines 397--398
 \OT1/cmr/m/n/10 gente del back-end
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
 \OT1/cmr/m/n/10 dev'essere mod-u-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
 \OT1/cmr/m/n/10 lare, uti-liz-zando
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
 \OT1/cmr/m/n/10 un'architetture a
  []
 
 
-Underfull \hbox (badness 5417) in paragraph at lines 395--396
+Underfull \hbox (badness 5417) in paragraph at lines 398--399
 []\OT1/cmr/m/n/10 Il codice sor-getne
  []
 
 
-Underfull \hbox (badness 1859) in paragraph at lines 395--396
+Underfull \hbox (badness 1859) in paragraph at lines 398--399
 \OT1/cmr/m/n/10 nee guida del lin-
  []
 
 
-Underfull \hbox (badness 2717) in paragraph at lines 397--398
+Underfull \hbox (badness 2717) in paragraph at lines 400--401
 []\OT1/cmr/m/n/10 Conformit^^Ra Li-nee guida
  []
 
 
-Overfull \hbox (3.9803pt too wide) in paragraph at lines 383--401
+Overfull \hbox (3.9803pt too wide) in paragraph at lines 386--404
  [] 
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 413--413
+Underfull \hbox (badness 10000) in paragraph at lines 416--416
 []\OT1/cmr/m/n/10 Conformit^^Ra W3C
  []
 
 
-Underfull \hbox (badness 1968) in paragraph at lines 413--413
+Underfull \hbox (badness 1968) in paragraph at lines 416--416
 \OT1/cmr/m/n/10 con-forme al W3C WAI
  []
 
 
-Overfull \hbox (3.9803pt too wide) in paragraph at lines 405--416
+Overfull \hbox (3.9803pt too wide) in paragraph at lines 408--419
  [] 
  []
 
@@ -1099,13 +1103,13 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.57274pt have occurred.
 
 Package rerunfilecheck Info: File `D2.out' has not changed.
-(rerunfilecheck)             Checksum: 0CE8064B3CC0714A0F99C1D1481FFA81;3267.
+(rerunfilecheck)             Checksum: B0490247520C6539FF9AA0529DD3B6B1;2860.
  ) 
 Here is how much of TeX's memory you used:
- 20104 strings out of 474503
- 372860 string characters out of 5756704
+ 20098 strings out of 474503
+ 372850 string characters out of 5756704
  1933043 words of memory out of 5000000
- 41681 multiletter control sequences out of 15000+600000
+ 41678 multiletter control sequences out of 15000+600000
  562097 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,14n,107p,437b,528s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1118,10 +1122,10 @@ ic/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10
 .pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/
 texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on D2.pdf (29 pages, 523289 bytes).
+Output written on D2.pdf (29 pages, 497316 bytes).
 PDF statistics:
- 373 PDF objects out of 1000 (max. 8388607)
- 293 compressed objects within 3 object streams
- 77 named destinations out of 1000 (max. 500000)
- 270 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 358 PDF objects out of 1000 (max. 8388607)
+ 278 compressed objects within 3 object streams
+ 74 named destinations out of 1000 (max. 500000)
+ 246 words of extra memory for PDF output out of 10000 (max. 10000000)
 

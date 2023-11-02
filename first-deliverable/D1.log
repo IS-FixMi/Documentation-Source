@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.22)  1 NOV 2023 16:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.10.22)  2 NOV 2023 14:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -576,7 +576,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.28 ...}Tecniche e Strumentazione}{26}{chapter.6}
+l.28 ...}{\numberline {6}Glossario}{28}{chapter.6}
                                                   % [1
 
 ])
@@ -597,45 +597,78 @@ Overfull \hbox (3.16727pt too wide) in paragraph at lines 226--227
 t-tuare l'autenticazione. 
  []
 
-[8] [9] [10] [11] [12]
-Overfull \hbox (0.52841pt too wide) in paragraph at lines 397--398
+[8] [9] [10] [11] [12] [13]
+Overfull \hbox (0.52841pt too wide) in paragraph at lines 407--408
 \OT1/cmr/m/n/10 Il dipen-dente deve aver la pos-si-bilit^^Ra di in-ter-a-gire c
 on il mag-a-zz-ino in un'apposita
  []
 
-[13] [14{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-[15] [16] [17] [18]
-Chapter 3.
-<images/login_snapshot.png, id=334, 3954.775pt x 1882.03125pt>
-File: images/login_snapshot.png Graphic file (type png)
-<use images/login_snapshot.png>
-Package pdftex.def Info: images/login_snapshot.png  used on input line 573.
-(pdftex.def)             Requested size: 345.0pt x 164.17764pt.
-[19
+[14]
 
- <./images/login_snapshot.png>]
-Overfull \hbox (4.77834pt too wide) in paragraph at lines 580--581
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+[16] [17] [18] [19]
+Chapter 3.
+<images/Snapshots/login_snapshot.png, id=341, 3954.775pt x 1882.03125pt>
+File: images/Snapshots/login_snapshot.png Graphic file (type png)
+<use images/Snapshots/login_snapshot.png>
+Package pdftex.def Info: images/Snapshots/login_snapshot.png  used on input lin
+e 584.
+(pdftex.def)             Requested size: 345.0pt x 164.17764pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<images/Snapshots/mainpage_snapshot.png, id=343, 3947.74875pt x 1869.98625pt>
+File: images/Snapshots/mainpage_snapshot.png Graphic file (type png)
+<use images/Snapshots/mainpage_snapshot.png>
+Package pdftex.def Info: images/Snapshots/mainpage_snapshot.png  used on input 
+line 594.
+(pdftex.def)             Requested size: 345.0pt x 163.41225pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[20
+
+]
+<images/Snapshots/magazzino_snapshot.png, id=350, 3954.775pt x 1874.00125pt>
+File: images/Snapshots/magazzino_snapshot.png Graphic file (type png)
+<use images/Snapshots/magazzino_snapshot.png>
+Package pdftex.def Info: images/Snapshots/magazzino_snapshot.png  used on input
+ line 603.
+(pdftex.def)             Requested size: 345.0pt x 163.47716pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (4.77834pt too wide) in paragraph at lines 610--611
 \OT1/cmr/m/n/10 Nella seguente sezione ven-gono ri-por-tate le speci-fiche gen-
 er-ali per quanto riguarda
  []
 
-[20] [21]
-<images/back_end_short.png, id=361, 733.74126pt x 663.47874pt>
+[21 <./images/Snapshots/login_snapshot.png>] [22 <./images/Snapshots/mainpage_s
+napshot.png>] [23 <./images/Snapshots/magazzino_snapshot.png>]
+<images/back_end_short.png, id=378, 733.74126pt x 663.47874pt>
 File: images/back_end_short.png Graphic file (type png)
 <use images/back_end_short.png>
-Package pdftex.def Info: images/back_end_short.png  used on input line 642.
+Package pdftex.def Info: images/back_end_short.png  used on input line 672.
 (pdftex.def)             Requested size: 345.0pt x 311.96666pt.
- [22 <./images/back_end_short.png>]
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[24] [25 <./images/back_end_short.png>]
 Chapter 4.
-[23
+[26
 
 ]
 Chapter 5.
-[24
+[27
 
-] [25]
+]
 Chapter 6.
-[26
+[28
 
 ] (./D1.aux)
  ***********
@@ -648,16 +681,16 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 3.57274pt have occurred.
 
 Package rerunfilecheck Info: File `D1.out' has not changed.
-(rerunfilecheck)             Checksum: 734A6952B1FD3AC69AFFAE216C9A8AB1;3092.
+(rerunfilecheck)             Checksum: 135588D3D18CE7AF9E86FB80D1448645;3056.
  ) 
 Here is how much of TeX's memory you used:
- 19409 strings out of 474503
- 361299 string characters out of 5756704
+ 19431 strings out of 474503
+ 362033 string characters out of 5756704
  1932043 words of memory out of 5000000
- 40890 multiletter control sequences out of 15000+600000
+ 40899 multiletter control sequences out of 15000+600000
  561989 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,11n,107p,417b,582s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,11n,107p,426b,541s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
 live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2023
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2023/texmf-d
@@ -667,10 +700,10 @@ ic/amsfonts/cm/cmr17.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmsl10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c
 :/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on D1.pdf (27 pages, 2114602 bytes).
+Output written on D1.pdf (29 pages, 6402102 bytes).
 PDF statistics:
- 489 PDF objects out of 1000 (max. 8388607)
- 429 compressed objects within 5 object streams
- 193 named destinations out of 1000 (max. 500000)
- 204 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 513 PDF objects out of 1000 (max. 8388607)
+ 447 compressed objects within 5 object streams
+ 206 named destinations out of 1000 (max. 500000)
+ 214 words of extra memory for PDF output out of 10000 (max. 10000000)
 

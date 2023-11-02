@@ -38,16 +38,17 @@ Entro il 5 novembre:
   - [x] Utenti e sistemi esterni
   - [x] UCD RF1
   - [x] UCD RF2
-  - [ ] UCD RF3
-  - [ ] UCD RF4
-  - [ ] UCD RF5
+  - [x] UCD RF3
+  - [x] UCD RF4
+  - [x] UCD RF5
   - [x] UCD RF6
   - [x] UCD RF7
-  - [ ] UCD RF8
+  - [x] UCD RF8
   - [ ] UCD RF9
   - [x] UCD RF10
   - [x] UCD RF11
   - [x] Ridefinire il concetto di aggiornamento password nel D1 e nel D2 (RF1)
+  - [x] Riscrivere il capitolo "Task" nel suo apposito spazio all'interno di RF9
 - [ ] Fare una lista delle interfacce date e offerte
 - [ ] Riginel si guarda il diagramma di contesto
 - [ ] Ognuno fa una lista delle interfacce dei propri RF di Trello
