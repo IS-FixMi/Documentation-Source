@@ -17,24 +17,27 @@ All latex source files are located here
 - [x] Togliere la Contabilità (Giovanni)
 - [x] Rivedere le descrizioni delle task, spostare le definizioni delle task in una parte appropriata, cambiare RF9.1 (Giovanni)
 - [x] Aggiungere autenticazione e database esterni, aggiornare i diagrammi del documento (Giovanni)
+- [ ] Modificare i database mettendone uno unico (Giovanni)
 - [ ] Rileggere il D1 e aggiungere un glossario
 
 # D2 TODO
 - [x] Stabilire i ruoli e compiti
-- [ ] Definire gli attori
+- [x] Definire gli attori
 - [x] Requisiti Funzionali
-- [ ] Requisiti non funzionali
-- [ ] Utenti e Sistemi Esterni: aspettare di chiedere al tutorato
-- [ ] Diagramma di Contesto: ogni microservizio
-- [ ] Definizione dei Componenti
-- [ ] Diagramma dei Componenti
+- [x] Requisiti non funzionali
+- [x] Utenti e Sistemi Esterni: aspettare di chiedere al tutorato
+- [ ] Diagramma di Contesto: ogni microservizio, da fare insieme
+- [ ] Definizione dei Componenti: API per ogni RF
+- [ ] Diagramma dei Componenti, prima per ogni microservizio, poi quelo generale, da fare insieme
 
-Entro il 5 novembre:
+Entro il 11 novembre:
 - [ ] Ognuno per i propri requisiti su trello, deve aggiungere una descrizione a parole e/o un secondo grafico, oltre a UCD.
-- [ ] Scegliere i RNF su trello e scrivere la misura eventualmente modificando la descrizione.
-- [ ] Fare RF Task dopo aver chiesto al tutorato
+- [x] Scegliere i RNF su trello e scrivere la misura eventualmente modificando la descrizione.
+- [x] Fare RF Task dopo aver chiesto al tutorato
+    - [ ] Scrivere descrizione task
 - [ ] Ognuno per i propri requisiti, deve fare la definizione dei componenti
-- [ ] Valerio farà le descrizioni degli utenti e sistemi esterni, riguarderà i grafici dei RF
+    - [ ] Ognuno fa una lista delle interfacce dei propri RF di Trello
+- [x] Valerio farà le descrizioni degli utenti e sistemi esterni, riguarderà i grafici dei RF
   - [x] Utenti e sistemi esterni
   - [x] UCD RF1
   - [x] UCD RF2
@@ -44,11 +47,9 @@ Entro il 5 novembre:
   - [x] UCD RF6
   - [x] UCD RF7
   - [x] UCD RF8
-  - [ ] UCD RF9
+  - [x] UCD RF9
   - [x] UCD RF10
   - [x] UCD RF11
   - [x] Ridefinire il concetto di aggiornamento password nel D1 e nel D2 (RF1)
   - [x] Riscrivere il capitolo "Task" nel suo apposito spazio all'interno di RF9
-- [ ] Fare una lista delle interfacce date e offerte
 - [ ] Riginel si guarda il diagramma di contesto
-- [ ] Ognuno fa una lista delle interfacce dei propri RF di Trello

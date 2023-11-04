@@ -163,6 +163,9 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 
 \subsection*{RF4 Informazioni / Contatti}
 
+\textbf{Titolo}: Informazioni / Contatti\\
+\textbf{Descrizione}: L'utente cliccando la pagina "Informazioni / Contatti" visualizza le informazioni e i contatti dell'azienda, quali una descrizione, l'indirizzo e la posizione nella mappa, contatti telefonici, e-amil e FAQ.
+
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/UCD/RF4_infocontatti_UCD.png}
 	Use Case Diagram (UCD) di RF4 "Informazioni / Contatti"
@@ -228,6 +231,18 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 
 \subsection*{RF9 Tasks}
 
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/UCD/RF9_task_UCD.png}
+	Use Case Diagram (UCD) di RF9 "Task"
+\end{figure}
+
+Descrizione a parola qua
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/state_diagram_task.png}
+	State Diagram di RF9 "Task"
+\end{figure}
+
 \subsection*{RF10 Magazzino}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/UCD/RF10_magazzino_UCD.png}
@@ -244,7 +259,7 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 \pagebreak
 
 \section{Requisiti Non Funzionali}
-Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sistema utilizzando tabelle strutturate e specificando misure facilmente misurabili
+Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sistema utilizzando tabelle strutturate e specificando misure facilmente misurabili.
 
 
 \subsection*{RNF1 Intuitività e Accessibilità}
@@ -278,7 +293,7 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		2 Factor Authentication (2FA) & Il sito deve verificare l'identità dell'utente attraverso il 2FA. & Impossibilità di accedere al sito senza 2FA.\\
 		\hline
 		Conformità password & La password di un utente deve avere una lunghezza minima di 10 caratteri e deve presentare almeno un numero,una lettera maiuscola, e un carattere speciale. &
-		numero dei caratteri maggiore di nove, presenza di almeno un numero,lettera maiuscola e carattere speciala dalla seguente lista:		\begin{verbatim} ! ? $ % ^ & * ( ) _ \end{verbatim} \begin{verbatim}- + = { [ } ] : ;\end{verbatim} \begin{verbatim}@ # | \ < , > . \end{verbatim} \\
+		Numero dei caratteri maggiore di nove, presenza di almeno un numero,lettera maiuscola e carattere speciala dalla seguente lista:		\begin{verbatim} ! ? $ % ^ & * ( ) _ \end{verbatim} \begin{verbatim}- + = { [ } ] : ;\end{verbatim} \begin{verbatim}@ # | \ < , > . \end{verbatim} \\
 		\hline
 		
 	\end{tabular}
@@ -291,7 +306,7 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		\hline
 		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
 		\hline
-		GDPR & il sito deve essere conforme alle principali direttive del GDPR, tra cui il consenso esplicito per la raccolta dei dati, la trasparenza nell'uso dei dati, la possibilità di accesso e cancellazione dei dati personali da parte dell'individuo, e misure di sicurezza per proteggere tali dati & Conforme \\
+		GDPR & il sito deve essere conforme alle principali direttive del GDPR, tra cui il consenso esplicito per la raccolta dei dati, la trasparenza nell'uso dei dati, la possibilità di accesso e cancellazione dei dati personali da parte dell'individuo, e misure di sicurezza per proteggere tali dati. & Conforme al regolamento. \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -303,10 +318,10 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		\hline
 		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
 		\hline
-		Risultati desiderati & La probabilità che il sito fornisca i risultati desiderati senza interruzioni o tempi di inattività deve essere maggiore del 99\% (novantanove percento) & $\frac{\text{risultati ricevuti con successo}}{\text{risultati totali}} $ \\ % There was no other way...
+		Risultati desiderati & La probabilità che il sito fornisca i risultati desiderati senza interruzioni o tempi di inattività deve essere maggiore del 99\% (novantanove percento) & $\frac{\text{risultati ricevuti con successo}}{\text{risultati totali}}$ maggiore di 0.99 in media.\\ % There was no other way...
 		\hline
 		Operatività &  la probabilità che il sito rimanga operativo in un determinato momento
-		indipendentemente dal numero di guasti già subiti dal sistema deve essere maggiore del 99\% (novantanove percento) & $ \frac{\text{secondi di attività dal lancio}}{\text{secondi totali dal lancio}} $\\
+		indipendentemente dal numero di guasti già subiti dal sistema deve essere maggiore del 99\% (novantanove percento) & $ \frac{\text{secondi di attività dal lancio}}{\text{secondi totali dal lancio}}$ maggiore di 0.99 in media.\\
 		\hline 
 	\end{tabular}
 \end{center}
@@ -318,11 +333,11 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		\hline
 		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
 		\hline
-		Aggiornamento negozio & Il sito deve aggiornare la lista degli articoli presenti in negozio, in caso di modifica al magazzino, in meno di un secondo. & Secondi \\
+		Aggiornamento negozio & Il sito deve elaborare l'inserimento di un articolo nel magazzino in meno di un secondo. & Il numero di secondi trascorsi da quanto viene premuto il bottone "inserisci articolo" a quando l'articolo è presente nel magazzino deve essere minore di uno. \\
 		\hline 
-		2 Factor Authentication (2FA)& Il sito deve inviare la mail di 2FA in meno di cinque secondi. & Secondi \\
+		2 Factor Authentication (2FA)& Il sito deve inviare la mail di 2FA in meno di cinque secondi. & Secondi trascorsi da quando è stato richiesto l'invio di un coridce 2FA a quando il codice è presente nella mail minore di 5 (cinque) secondi. \\
 		\hline
-		Lista delle Task & Il sito deve aggiornare la lista delle task in meno di un secondo. & Secondi \\ 
+		Lista delle Task & Il sito deve aggiornare la lista delle task in meno di un secondo. & Il numero di secondi trascorsi per eseguire e terminare l'operazione di inserimento di una task nel database minore di 1. \\ 
 		\hline
 
 	\end{tabular}
@@ -335,20 +350,19 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		\hline
 		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
 		\hline
-		Compatibilità dispositivi lato client & L'applicazione lato cliente  deve essere disponibile per dispositivi aventi un browser che supporta \begin{itemize}
-		\item html5
+		Compatibilità dispositivi lato client & L'applicazione lato client  deve essere disponibile per dispositivi aventi un browser che supporta \begin{itemize}
+		\item componenti html5 utilizzati
 		\item https
 		\item tls 1.2
-		\end{itemize} & \\
+		\end{itemize} &  L'applicazine ulizza https, tls 1,2 e html5.  \\
 		\hline
 		Compatibilità dispositivi lato server & L'applicazione lato server deve essere disponibile per computer che supportino: 
 		\begin{itemize}
 			\item Node js 18.18.0 LTS
-			\item MongoDB 7.0
 		\end{itemize}
-		& \\
+		&  L'applicazione utilizza Node js 18.18.0 LTS. \\
 		\hline 
-		Responsive su TV e monitor di PC e Laptop & Il sito deve potersi adattare alla dimensione degli schermi con Aspect Ratio da 4:3, 16:9, 21:9 & Aspect Ratio \\
+		Responsive su TV e monitor di PC e Laptop & Il sito deve potersi adattare alla dimensione degli schermi con Aspect Ratio da 4:3, 16:9, 21:9 & L'utente è in grado di eseguire correttamente ogni funzionalità dell'applicazione su schermi con aspectratio 4:3, 16:9 e 21:9. \\
 		\hline
 		Responsive su Smartphone & Il sito deve potersi adattare agli schermi dei seguenti Smartphone: 
 		\begin{itemize}
@@ -358,7 +372,7 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 			\item Tutti i modelli Motorola dal 2018 in poi 
 			\item Tutti i modelli Huawei dal 2018 in poi 
 		\end{itemize}
-		& \\
+		&  L'utente è in grado di eseguire correttamente ogni funzionalità dell'applicazione sui dispositivi elencati. \\
 		
 		\hline
 		
@@ -373,7 +387,7 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 			\item Ipad Air, Pro dal 2018 in poi
 			\item Tutti i modelli Xiaomi dal 2018 in poi
 			\item Tutti i modelli Samsung dal 2018 in poi
-		\end{itemize} & \\
+		\end{itemize} & L'utente è in grado di eseguire correttamente ogni funzionalità dell'applicazione sui dispositivi elencati. \\
 		\hline
 		
 		
@@ -390,14 +404,14 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		Team di manutenzione &  Al sito deve essere affiancato, prima e dopo il rilascio ufficiale, un team di
 		manutenzione che si occupi di testare ogni funzionalit`a periodicamente e
 		che, su richiesta qualora ci siano problemi, sia pronto a intervenire tempestivamente
-		 & \\
+		 & E' presente un team che una volta al mese testa il sistema e le sue funzionalità, in grado di presentarsi all'azienda in meno di un giorno. \\
 		\hline
 		sito facilmente mantenibile & Il sito deve possedere le seguenti caratteristiche
 		\begin{itemize}
 			\item Il codice sorgente del back-end dev'essere modulare, utilizzando un'architetture a microserivizi
 			\item Il codice sorgetne deve rispettare le linee guida del linguaggio scelto
 		\end{itemize}
-		& Conformità Linee guida Javascript
+		& Conformità Linee guida Javascript, architettura divisa in microservizi.
 		\\  \hline
 
 	\end{tabular}
@@ -409,11 +423,11 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 		\hline
 		\centering Proprietà & \qquad\quad Descrizione & \qquad\qquad Misura\\ % I found no other way...
 		\hline
-		Conformità leggi & L'applicazione deve essere conforme alle normative di legge in materia di siti web imposti dall'Unione Europea & Conforme \\
+		Conformità leggi & L'applicazione deve essere conforme alle normative di legge in materia di siti web imposti dall'Unione Europea & Conforme ai regolamenti. \\
 		\hline
-		Conformità GDPR & L'applicazione deve essere conforme al GDPR, come descritto in RNF3 & Conforme \\
+		Conformità GDPR & L'applicazione deve essere conforme al GDPR, come descritto in RNF3 & Conforme ai regolamenti.\\
 		\hline
-		Conformità W3C WAI & L'applicazione deve essere conforme al W3C WAI (Web Accessibility Initiative) & Conforme \\ 
+		Conformità W3C WAI & L'applicazione deve essere conforme al W3C WAI (Web Accessibility Initiative) & Conforme ai regolamenti.\\ 
 		\hline
 	\end{tabular}
 

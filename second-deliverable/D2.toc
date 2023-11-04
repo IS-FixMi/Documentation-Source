@@ -2,20 +2,20 @@
 \contentsline {section}{\numberline {0.2}Informazioni del Documento}{2}{section.0.2}%
 \contentsline {chapter}{\numberline {1}Requisiti}{3}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Requisiti Funzionali}{3}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Requisiti Non Funzionali}{17}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Analisi del Contesto}{25}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Utenti e Sistemi Esterni}{25}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Utente}{25}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Cliente}{25}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Dipendente}{26}{subsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.1.4}Manager}{26}{subsection.2.1.4}%
-\contentsline {subsection}{\numberline {2.1.5}Server Mail}{26}{subsection.2.1.5}%
-\contentsline {subsection}{\numberline {2.1.6}Database}{26}{subsection.2.1.6}%
-\contentsline {subsection}{\numberline {2.1.7}PayPal e Nexi}{26}{subsection.2.1.7}%
-\contentsline {subsection}{\numberline {2.1.8}OpenStreetMap}{26}{subsection.2.1.8}%
-\contentsline {subsection}{\numberline {2.1.9}2FA}{27}{subsection.2.1.9}%
-\contentsline {subsection}{\numberline {2.1.10}Microservizi}{27}{subsection.2.1.10}%
-\contentsline {section}{\numberline {2.2}Diagramma di Contesto}{27}{section.2.2}%
-\contentsline {chapter}{\numberline {3}Analisi dei Componenti}{28}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Definizione dei Componenti}{28}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Diagramma dei Componenti}{28}{section.3.2}%
+\contentsline {section}{\numberline {1.2}Requisiti Non Funzionali}{19}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Analisi del Contesto}{27}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Utenti e Sistemi Esterni}{27}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Utente}{27}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Cliente}{27}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Dipendente}{28}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Manager}{28}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Server Mail}{28}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Database}{28}{subsection.2.1.6}%
+\contentsline {subsection}{\numberline {2.1.7}PayPal e Nexi}{28}{subsection.2.1.7}%
+\contentsline {subsection}{\numberline {2.1.8}OpenStreetMap}{28}{subsection.2.1.8}%
+\contentsline {subsection}{\numberline {2.1.9}2FA}{29}{subsection.2.1.9}%
+\contentsline {subsection}{\numberline {2.1.10}Microservizi}{29}{subsection.2.1.10}%
+\contentsline {section}{\numberline {2.2}Diagramma di Contesto}{29}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Analisi dei Componenti}{30}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Definizione dei Componenti}{30}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Diagramma dei Componenti}{30}{section.3.2}%
