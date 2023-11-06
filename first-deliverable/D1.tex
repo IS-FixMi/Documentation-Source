@@ -227,16 +227,22 @@ Il sito deve presentare una pagina di login:
 
 	\end{enumerate}
 	
-	\subsubsection*{RF1.3 Cambio Password}
-	Il sito deve offrire la possibilità al cliente di cambiare password: \\
-	Il sistema chiede al cliente di inserire l'email associata al profilo di cui si vuole cambiare password, dopodichè verrà inviato un codice 2FA a suddetta e-mail. Inserito il codice corretto il sistema permetterà al cliente di inserire la nuova password.
+	\subsubsection*{RF1.3 Recupero / Cambio Password}
+	Il sito deve offrire la possibilità all'utente di cambiare password nel caso avesse già un accout:
 	\begin{enumerate}
+			
+	\item Il sistema chiede all'utente di inserire l'email associata al profilo di cui si vuole cambiare password, dopodichè verrà inviato un codice 2FA a suddetta e-mail. Inserito il codice corretto il sistema permetterà al cliente di inserire la nuova password.
+
 		\item La nuova password dovrà essere digitata due volte per ridurre la probabilità di errori di battitura.
 		
 		\item La nuova password deve rispettare i vincoli specificati in RNF2.
 		
 		\item Qualora non vi fosse alcun profilo associato alla la mail inserita, il processo fallirà e verrà caricata la pagina di login.
 	\end{enumerate}
+	
+	\subsubsection{RF1.4 Log Out}
+	
+	Una volta autenticato, l'applicazione deve dare la possibilità al cliente / dipendenti / manager di uscire dal proprio profilo.
 
 \subsection*{RF2 Registrazione}
 Il sito deve dare la possibilità ad un utente di registrarsi:
@@ -267,10 +273,10 @@ Per terminare la registrazione con successo, l'applicazione deve verificare la m
 
 
 \subsection*{RF3 Negozio}
-Il sito presenta all’utente una pagina "Negozio”: 
+Il sito deve presentare presenta una pagina "Negozio”: 
 
 \begin{enumerate}
-	\item La pagina permette di visualizzare gli oggetti presenti nel magazzino al momento del caricamento della stessa
+	\item La pagina deve permettere di visualizzare gli oggetti presenti nel magazzino al momento del caricamento della stessa
 	
 	\item L’utente deve essere in grado di ordinare gli oggetti per nome o per prezzo tramite un bottone, ricercare una stringa tra tutti gli oggetti nel magazzino tramite una barra di ricerca.
 	
@@ -372,6 +378,14 @@ Il sito deve offrire una pagina “Task” ai dipendenti autenticati, il sistema
 \subsubsection*{RF9.1 Definizione Task}
 
 Una task è un'attività sulla quale un dipendente o un manager può decidere di lavorare. Esistono diverse tipologie di Task, caratterizzate da una \textit{Task-Tag} ed una descrizione di massimo 200 caratteri.\\
+Le tasks possono essere in uno dei seguenti stati: 
+\begin{itemize}
+	\item Da eseguire
+	\item In lavorazione
+	\item In pausa
+	\item Completata
+	\item Fallita
+\end{itemize}
 Una \textit{Task-Tag} è una e una sola stringa tra le seguenti:
 
 \subsubsection*{Magazzino} Il dipendente accede alla pagina del magazzino (RF10) per apportare eventuali modifiche o visualizzare i vari articoli.
@@ -511,7 +525,7 @@ Le principali aree di focus del GDPR includono il consenso esplicito per la racc
 \subsection*{RNF5 Performante}
 Il sito deve offrire velocità di accesso ai servizi offerti in tempi rapidi:
 \begin{enumerate}
-	\item Il sito deve aggiornare la lista degli articoli presenti in negozio, in caso di modifica al magazzino, in meno di un secondo.
+	\item Il sito deve elaborare l'inserimento di un articolo nel magazzino in meno di un secondo.
 	\item Il sito deve inviare le e-mail di 2FA(specificata nell'RF1) in meno di 5 secondi.
 	\item Il sito deve aggiornare la lista delle Task (in caso di completamento, aggiunta, messa in pausa) in meno di un secondo.
 \end{enumerate}
@@ -529,7 +543,6 @@ Tra i principali vi sono:
 	\item Dal lato server, computer che supporti:
 	\begin{itemize}
 		\item Node js 18.18.0 LTS
-		\item MongoDB 7.0
 	\end{itemize}
 \end{enumerate}
 Il sito deve essere "responsive", ossia deve potersi adattare alla dimensione degli schermi dei principali dispositivi in commercio, quali:
