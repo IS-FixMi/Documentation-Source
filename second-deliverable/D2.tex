@@ -28,6 +28,10 @@
 \usepackage{fancyhdr}
 % \setlength{\headheight}{15.2pt}
 
+% underlining
+\usepackage{ulem}
+
+
 % Table of contents link to corresponding sections
 \usepackage{hyperref}
 \hypersetup{
@@ -210,7 +214,7 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 			\item foto (( facoltativo ));
 		\end{itemize}
 		\item L'utente, appena compilato il form, può inviarlo premendo l'apposito pulsante;
-		\item Il sistema, appena ricevuta la richiesta di riparazione, la inserisce nel sistema delle task come "task riparazione";
+		\item Il sistema, appena ricevuta la richiesta d.i riparazione, la inserisce nel sistema delle task come "task riparazione";
 		
 	\end{enumerate}
 \textbf{Exceptions}
@@ -445,7 +449,7 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 Sono stati individuati tutti gli Utenti ed i Sistemi Esterni che fanno parte del funzionamento del sistema "Fix Mi".\\Segue una elencazione di ogni elemento con una descrizione breve adibita.
 
 
-\subsection{Utente}
+\subsection*{Utente}
 Con il termine "Utente" si definisce una qualsiasi persona che abbia fatto accesso al sistema senza essersi identificati. L'Utente è in grado di:
 \begin{itemize}
 	\item Accedere all'area "Negozio" per visualizzare il catalogo.
@@ -454,7 +458,7 @@ Con il termine "Utente" si definisce una qualsiasi persona che abbia fatto acces
 \end{itemize}
 
 
-\subsection{Cliente}
+\subsection*{Cliente}
 
 Con il termine "Cliente" si intende un Utente che abbia compiuto con successo la registrazione nel sistema e che successivamente abbia fatto l'accesso nel suo profilo. Il Cliente, oltre a potere accedere a tutti i servizi offerti ad un profilo "Utente", è in grado di
 \begin{itemize}
@@ -462,7 +466,7 @@ Con il termine "Cliente" si intende un Utente che abbia compiuto con successo la
 	\item Accedere all'area "Riparazione" per visualizzare la lista di riparazioni in corso, creare una nuova richiesta di Riparazione o eliminarne una esistente.
 	%\item Inviare feedback riguardo la qualità dei servizi offerti. (Lmao non ho ancora capito se questo c'è oppure no).
 \end{itemize}
-\subsection{Dipendente}
+\subsection*{Dipendente}
 
 Con il termine "Dipendente" si intende quella persona che abbia stipulato un contratto di lavoro con l'azienda. Il Dipendente, oltre a poter usufruire di tutti i servizi adibiti ad un profilo Cliente, può:
 \begin{itemize}
@@ -470,30 +474,30 @@ Con il termine "Dipendente" si intende quella persona che abbia stipulato un con
 	\item Accedere all'area "Task" per visualizzare la lista delle Task, crearne una nuova, contrassegnarla o rimuoverne una esistente. 
 \end{itemize}
 
-\subsection{Manager}
+\subsection*{Manager}
 
 Con il termine "Manager" si intende quella persona che abbia il completo controllo del sistema e dell'azienda. Il Manager, oltre a potere accedere a tutte le aree offerte al profilo Dipendente, è in grado di:
 \begin{itemize}
 	\item Accedere all'area "Gestione Dipendenti" per visualizzarne la lista, aggiungere un nuovo profilo Dipendente o eliminarne uno esistente.
 \end{itemize}
 
-\subsection{Server Mail}
+\subsection*{Server Mail}
 Attraverso la Server Mail, il sistema è in grado di mandare e ricevere e-mail. 
 
-\subsection{Database}
+\subsection*{Database}
 Il database memorizza il catalogo del negozio, l'inventario del magazzino e le informazioni riguardanti i profili gestiti dal sistema (es. e-mail e password).
 
-\subsection{PayPal e Nexi}
+\subsection*{PayPal e Nexi}
 I servizi esterni "PayPal" e "Nexi" permettono al Cliente di effettuare acquisti all'interno del sistema.
 
-\subsection{OpenStreetMap}
+\subsection*{OpenStreetMap}
 Il servizio esterno "OpenStreetMap" fornisce dati geografici al sistema.%per visualizzare la posizione aziendale geografica in cartina.
 
-\subsection{2FA}
+\subsection*{2FA}
 Il 2FA ("Two Factor Authentication") si occupa di verificare che la e-mail inserita dall'utente in procinto di registrarsi o accedere sia corretta ed esistente.
 %In particolare il codice contenuto nel 2FA viene spedito all'indirizzo di posta elettronica inserito dall'Utente che, nel caso sia inesistente, non potrebbe essere visualizzato. (Non sono sicuro se scrivere anche questo o no....)
 
-\subsection{Microservizi}
+\subsection*{Microservizi}
 Autentication Server, Microservizio Task
 
 
@@ -513,7 +517,7 @@ Spiegare la back-end andando su vari livelli di dettaglio:
 Componenti interni della mia applicazione e come interagiscono\\
 Sostanzialmente sono i componenti usati nei RF in questo documento
 
-\subsection{Autenticazione}
+\subsection*{Autenticazione}
 \subsubsection{Descrizione: } Questa componente corrisponde al microservizio Autenticazione. Si occupa del controllo dell'accesso ai servizi dell'applicazione da parte degli utenti,
 e fornisce i dati di autenticazione e di anagrafica degli utenti agli altri componenti che li richiedono.
 Di questo componente fanno parte due sub-componenti, Login e Registrazione, descritti successivamente.
@@ -547,7 +551,7 @@ Possono essere richiesti tutti i dati o solo alcuni
 	\item ruolo (cliente, dipendente o manager)
 	\item nazionalità
 \end{itemize}
-\subsection{Login}
+\subsection*{Login}
 \subsubsection{Descrizione: }Questa componente si occupa del processo di login, descritto in RF1
 \subsubsection{Interfaccia richiesta - Email e password: } Viene richiesta l'email e la password all'utente che vuole autenticarsi
 \subsubsection{Interfaccia richiesta - Verifica credenziali }La componente richiede la verifica delle credenziali da parte della componente Autenticazione
@@ -557,7 +561,7 @@ Possono essere richiesti tutti i dati o solo alcuni
 \subsubsection{Interfaccia richiesta - Token utente} Viene richiesto alla componente "Autenticazione" il token dell'utente appena autenticato
 \subsubsection{Interfaccia fornita - Token utente} Viene fornito all'utente il proprio token
 
-\subsection{Cambio password}
+\subsection*{Cambio password}
 \subsubsection{Descrizione: }Questa componente si occupa del processo di cambio password, descritto in RF1
 \subsubsection{Interfaccia richiesta - Email: } Viene richiesta all'utente che vuole cambiare password la propria mail
 \subsubsection{Interfaccia richiesta - Dati personali utente: } La componente richiede alla componente "Autenticazione" l'esistenza di un utente con la mail fornita
@@ -566,7 +570,7 @@ Possono essere richiesti tutti i dati o solo alcuni
 \subsubsection{Interfaccia richiesta - Nuova password} Viene richiesto all'utente l'inserimento della nuova password due volte
 \subsubsection{Interfaccia fornita - Nuova password} Viene fornita la nuova password al database, che procede ad aggiornarla
 
-\subsection{Registrazione}
+\subsection*{Registrazione}
 \subsubsection{Descrizione: } Questa componente si occupa del processo di registrazione, descritto in RF2
 \subsubsection{Interfaccia richiesta - Dati registrazione utente: }Per registrarsi, vengono richiesti all'ospite i seguenti dati
 \begin{itemize}
@@ -583,6 +587,62 @@ per decidere se procedere o meno con la registrazione
 \subsubsection{Interfaccia fornita - Nuovo utente} Vengono forniti i dati della registrazione dell'utente al componente "Autenticazione", con il ruolo "cliente"
 \subsubsection{Interfaccia richiesta - Token utente} Viene richiesto alla componente "Autenticazione" il token dell'utente appena registrato
 \subsubsection{Interfaccia fornita - Token utente} Viene fornito all'utente il proprio token
+
+\subsection*{Negozio}
+
+\textbf{Descrizione}: Questa componente si occupa di mostrare  ed interagire con il negozio ad ogni tipo di utente in base al livello di privilegi dello stesso. In particolare permette di ricercare un articolo nel negozio, ordinarlo in ordine alfabetico e permettere di agigungere un prodotto al carrello.
+\\
+\\
+\uline{\textit{Interfaccia Richiesta - Lista Articoli.}} Il Negozio si aspetta di ricevere la lista degli articoli presenti nel magazzino per poterli mostrare, ossia il nome dell'articolo, una foto e una descrizione. \\ \\
+\uline{\textit{Interfaccia Richiesta - Cerca Articoli}}
+Il Negozio può visualizzare la lista degli articoli presenti nel magazzino tali che il nome contiene una stringa di ricerca.
+\uline{\textit{Interfaccia Richiesta - Aggiungi al Carrello.}} Tramite il negozio si può aggiungere un elemento al carrello prima di poterlo acquistare. \\ \\
+\uline{\textit{Interfaccia Richiesta - Token Utente.}} Il Negozio utilizzerà il token utente per verificare il livello di privilegio dell'utente.
+
+\subsection*{Carrello}
+
+\textbf{Descrizione}: Questa componente registra l'inserimento e la rimozione degli articoli nel carrello e permette di effettuare l'acquisto di tali articoli. \\ \\
+\uline{\textit{Interfaccia Fornita - Aggiungi al Carrello.}} Il carrello permette al Negozio di poter aggiungere articoli e salvarli nel carrello.\\ \\
+\uline{\textit{Interfaccia Richiesta - Aggiungi Articolo.}} Il Carrello si interfaccia con un database per il salvataggio degli articoli nel carrello oltre la sessione.\\ \\
+\uline{\textit{Interfaccia Richiesta - Rimozione Articolo.}} 
+Il Carrello si interfaccia con un database per rimuovere un articolo dal carrello in modo permanente.\\ \\
+\uline{\textit{Interfaccia Richiesta - Svuota Carrello.}}
+Il Carrello si interfaccia con un database per svuotare tutti i dati degli articoli presenti nel carrello in modo permanente.\\ \\
+\uline{\textit{Interfaccia Richiesta - Token Utente.}} Il carrello utilizzerà il token utente per verificare il livello di privilegio dell'utente.\\ \\
+\uline{\textit{Interfaccia Richiesta - Pagamento}}
+Il Carrello si interfaccia con un sistema esterno per effettuare il pagamento degli articoli salvati nel carrello.
+
+\subsection*{Home}
+% Non so se assistenza, feedback e riparazione vanno qua dentro
+
+\subsection*{Magazzino}
+
+\textbf{Descrizione: } Questa componente permette il salvataggio e rimozione degli articoli in un database esterno.\\ \\
+\uline{\textit{Interfaccia Fortnita - Aggiungi Articolo}}
+Il Magazzino permette l'aggiunta di un articolo per essere salvato per un periodo prolungato.\\ \\
+\uline{\textit{Interfaccia Fornita - Rimuovi Articolo}}
+Il Magazzino permette la rimozione di un articolo dallo stesso.\\ \\
+\uline{\textit{Interfaccia Fornita - Lista Articoli}}
+Il Magazzino permette ad altre componenti di aver accesso a tutti articoli presenti, inoltre la lista può essere inviata in senso alfabetico crescente o descrescente.\\ \\
+\uline{\textit{interfaccia Fornita - Cerca Articoli}}
+Il Magazzino permette di ricercare gli arcioli che contengono una certa stringa.\\ \\
+\uline{\textit{Interfaccia Richiesta - Token Utente.}} Il Magazzino utilizzerà il token utente per verificare il livello di privilegio dell'utente.\\ \\
+\uline{\textit{Interfaccia Richiesta - Aggiungi Elemento}}
+Il Magazzino si interfaccia con un database esterno per il salvataggio degli articoli.\\ \\
+\uline{\textit{Interfaccia Richiesta - Rimuovi Elemento}}
+Il Magazzino si interfaccia con un database esterno per la rimozione permanente di un articolo.\\ \\
+\uline{\textit{Interfaccia Richiesta - Lista Articoli}}
+Il Magazzino si interfaccia con un database esterno per ottenere una lista degli articoli salvati del database.\\ \\
+\uline{\textit{Interfaccia Richiesta - Cerca element}}
+Il Magazzino si interfaccia con un database esterno per cercare gli articoli che contengono una stringa nel nome.\\ \\
+\subsection*{Task}
+
+\subsection*{E-mail server}
+
+\subsection*{Gestione Dipendenti}
+
+% \subsection{Database} ?
+
 
 \section{Diagramma dei Componenti}
 
