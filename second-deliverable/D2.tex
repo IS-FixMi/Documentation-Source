@@ -257,12 +257,67 @@ Descrizione a parola qua
 	Use Case Diagram (UCD) di RF10 "Magazzino"
 \end{figure}
 
+\subsubsection*{Descrizione Use Case "Magazzino"}
+\textbf{Titolo}: Magazzino \newline
+\textbf{Riassunto}: Questo use case descrive come il manager ed i dipendenti possono visualizzare e gestire gli articoli presenti nel magazzino. \newline
+\textbf{Descrizione}:
+\begin{enumerate}
+	\item Il dipendente seleziona la pagina "Magazzino";
+	\item Il sito mostra la lista degli articoli disponibili [Exception 1];
+	\item Il sito presenta un bottone in alto a destra etichettato "Ordina per" che permette di visualizzare gli articoli presenti per:
+	\begin{itemize}
+		\item nome[Exception 2];
+		\item quantità[Exception 2];
+	\end{itemize}
+	\item Il sito presenta un bottone accanto ad ogni articolo etichettato "Rimuovi" che permette di eliminare quell'articolo dal magazzino;
+	\item Il sito presenta un bottone in alto a destra etichettato "Aggiungi nuovo articolo" che permette di aggiungere un nuovo articolo.
+	
+\end{enumerate}
+\textbf{Exceptions}
+\begin{itemize}
+	\item {[Exception 1]}: Se non vi sono articoli presenti nel sistema l'elenco sarà vuoto;
+	\item {[Exception 2]}: Se il manager non ha compilato i campi "nome","cognome","data di nascita", "data di assunzione", "e-mail","password" non può creare il nuovo profilo dipendente;
+	\item {[Exception 3]}: Se il dipendente non ha nessun work-tag assegnato la lista risulterà essere vuota;
+\end{itemize}
+
 \subsection*{RF11 Gestione Dipendenti}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/UCD/RF11_gestionedipendenti_UCD.png}
 	Use Case Diagram (UCD) di RF11 "Gestione Dipendenti
 \end{figure}
+
+\subsubsection*{Descrizione Use Case "Gestione Dipendenti"}
+\textbf{Titolo}: Gestione Dipendenti \newline
+\textbf{Riassunto}: Questo use case descrive come il manager può visualizzare e gestire i dipendenti. \newline
+\textbf{Descrizione}:
+\begin{enumerate}
+	\item Il manager seleziona la pagina "Gestione Dipendenti";
+	\item Il sito mostra la lista dei dipendenti [Exception 1];
+	\item Il sito presenta un bottone in alto a destra etichettato "Aggiungi nuovo dipendente" che permette di creare un nuovo profilo inserendo i seguenti campi:
+	\begin{itemize}
+		\item nome[Exception 2];
+		\item cognome[Exception 2]; 
+		\item data di nascita[Exception 2];
+		\item data di assunzione[Exception 2];
+		\item e-mail[Exception 2];
+		\item password[Exception 2];
+		\item foto (( facoltativo ));
+	\end{itemize}
+	\item Il sito presenta un bottone accanto ad ogni dipendente etichettato "Rimuovi" che permette di eliminare quel profilo dipendente;
+	\item Il sito presenta un bottone accanto ad ogni dipendente etichettato "Gestisci work-tag" che permette di visualizzare la lista di work-tag assegnati a quel dipendente [Exception 3], inoltre permette di:
+	\begin{itemize}
+		\item Aggiungere un nuovo work-tag;
+		\item Rimuovere un work-tag;;
+	\end{itemize}
+	
+\end{enumerate}
+\textbf{Exceptions}
+\begin{itemize}
+	\item {[Exception 1]}: Se non vi sono dipendenti presenti nel sistema l'elenco sarà vuoto;
+	\item {[Exception 2]}: Se il manager non ha compilato i campi "nome","cognome","data di nascita", "data di assunzione", "e-mail","password" non può creare il nuovo profilo dipendente;
+	\item {[Exception 3]}: Se il dipendente non ha nessun work-tag assegnato la lista risulterà essere vuota;
+\end{itemize}
 
 \pagebreak
 
@@ -590,7 +645,7 @@ per decidere se procedere o meno con la registrazione
 
 \subsection*{Negozio}
 
-\textbf{Descrizione}: Questa componente si occupa di mostrare  ed interagire con il negozio ad ogni tipo di utente in base al livello di privilegi dello stesso. In particolare permette di ricercare un articolo nel negozio, ordinarlo in ordine alfabetico e permettere di agigungere un prodotto al carrello.
+\textbf{Descrizione}: Questa componente si occupa di mostrare  ed interagire con il negozio ad ogni tipo di utente in base al livello di privilegi dello stesso. In particolare permette di ricercare un articolo nel negozio, ordinarlo in ordine alfabetico e permettere di aggiungere un prodotto al carrello.
 \\
 \\
 \uline{\textit{Interfaccia Richiesta - Lista Articoli.}} Il Negozio si aspetta di ricevere la lista degli articoli presenti nel magazzino per poterli mostrare, ossia il nome dell'articolo, una foto e una descrizione. \\ \\
@@ -625,7 +680,7 @@ Il Magazzino permette la rimozione di un articolo dallo stesso.\\ \\
 \uline{\textit{Interfaccia Fornita - Lista Articoli}}
 Il Magazzino permette ad altre componenti di aver accesso a tutti articoli presenti, inoltre la lista può essere inviata in senso alfabetico crescente o descrescente.\\ \\
 \uline{\textit{interfaccia Fornita - Cerca Articoli}}
-Il Magazzino permette di ricercare gli arcioli che contengono una certa stringa.\\ \\
+Il Magazzino permette di ricercare gli articoli che contengono una certa stringa.\\ \\
 \uline{\textit{Interfaccia Richiesta - Token Utente.}} Il Magazzino utilizzerà il token utente per verificare il livello di privilegio dell'utente.\\ \\
 \uline{\textit{Interfaccia Richiesta - Aggiungi Elemento}}
 Il Magazzino si interfaccia con un database esterno per il salvataggio degli articoli.\\ \\
