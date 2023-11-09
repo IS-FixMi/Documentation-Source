@@ -573,13 +573,13 @@ Componenti interni della mia applicazione e come interagiscono\\
 Sostanzialmente sono i componenti usati nei RF in questo documento
 
 \subsection*{Autenticazione}
-\subsubsection{Descrizione: } Questa componente corrisponde al microservizio Autenticazione. Si occupa del controllo dell'accesso ai servizi dell'applicazione da parte degli utenti,
+\textbf{Descrizione: } Questa componente corrisponde al microservizio Autenticazione. Si occupa del controllo dell'accesso ai servizi dell'applicazione da parte degli utenti,
 e fornisce i dati di autenticazione e di anagrafica degli utenti agli altri componenti che li richiedono.
-Di questo componente fanno parte due sub-componenti, Login e Registrazione, descritti successivamente.
-\subsubsection{Interfaccia richiesta - Token utente: }La componente richiede al database il token di un utente
-\subsubsection{Interfaccia fornita - Token utente: }La componente fornisce il token di un determinato utente alle componenti che lo richiedono
-\subsubsection{Interfaccia fornita - Verifica token utente: }La componente verifica l'esistenza di un determinato utente su richiesta di altre componenti, e 
-\subsubsection{Interfaccia richiesta - Dati personali utente: } La componente richiede al database i dati personali di un determinato utente, quali:
+
+\uline{\textit{Interfaccia richiesta - Token utente: }}La componente richiede al database il token di un utente
+\\ \\ \uline{\textit{Interfaccia fornita - Token utente: }}La componente fornisce il token di un determinato utente alle componenti che lo richiedono
+\\ \\ \uline{\textit{Interfaccia fornita - Verifica token utente: }}La componente verifica l'esistenza di un determinato utente su richiesta di altre componenti, comunicando anche il ruolo di quel determinato utente
+\\ \\ \uline{\textit{Interfaccia richiesta - Dati personali utente: }} La componente richiede al database i dati personali di un determinato utente, quali:
 \begin{itemize}
 	\item username
 	\item email
@@ -587,10 +587,9 @@ Di questo componente fanno parte due sub-componenti, Login e Registrazione, desc
 	\item nazionalità
 \end{itemize}  
 Possono essere richiesti tutti i dati o solo alcuni
-\subsubsection{Interfaccia fornita - Dati personali utente: }La componente fornisce i dati personali di un determinato utente ai componenti che li richiedono
-\subsubsection{Interfaccia fornita - Verifica credenziali: }La componente verifica che le credenziali di un utente fornite siano corrette 
-
-\subsubsection{Interfaccia richiesta - Nuovo utente: }La componente riceve i dati per la creazione di un nuovo utente. I dati sono i seguenti:
+\\ \\ \uline{\textit{Interfaccia fornita - Dati personali utente: }}La componente fornisce i dati personali di un determinato utente ai componenti che li richiedono
+\\ \\ \uline{\textit{Interfaccia fornita - Verifica credenziali: }}La componente verifica che le credenziali di un utente fornite siano corrette 
+\\ \\ \uline{\textit{Interfaccia richiesta - Nuovo utente: }}La componente riceve i dati per la creazione di un nuovo utente. I dati sono i seguenti:
 \begin{itemize}
 	\item username
 	\item email
@@ -598,7 +597,7 @@ Possono essere richiesti tutti i dati o solo alcuni
 	\item ruolo (cliente dipendente o manager)
 	\item nazionalità
 \end{itemize}
-\subsubsection{Interfaccia fornita - Nuovo utente: }La componente fornisce al database i seguenti dati per la creazione di un nuovo utente.
+\uline{\textit{Interfaccia fornita - Nuovo utente: }}La componente fornisce al database i seguenti dati per la creazione di un nuovo utente.
 \begin{itemize}
 	\item username
 	\item email
@@ -606,28 +605,29 @@ Possono essere richiesti tutti i dati o solo alcuni
 	\item ruolo (cliente, dipendente o manager)
 	\item nazionalità
 \end{itemize}
+\uline{\textit{Interfaccia fornita - Verifica esistenza email: }} La componente verifica se la mail appartiene già a un utente del sistema
+Di questo componente fanno parte due sub-componenti, Login e Registrazione, descritte di seguito.
 \subsection*{Login}
-\subsubsection{Descrizione: }Questa componente si occupa del processo di login, descritto in RF1
-\subsubsection{Interfaccia richiesta - Email e password: } Viene richiesta l'email e la password all'utente che vuole autenticarsi
-\subsubsection{Interfaccia richiesta - Verifica credenziali }La componente richiede la verifica delle credenziali da parte della componente Autenticazione
-\subsubsection{Interfaccia fornita - Codice 2FA} La componente fornisce alla componente "Server mail" il codice 2 Factor Authentication da inviare all'utente
-
-\subsubsection{Interfaccia richiesta - 2FA } Viene richiesto all'utente l'inserimento del codice 2 Factor Authentication ricevuto tramite mail
-\subsubsection{Interfaccia richiesta - Token utente} Viene richiesto alla componente "Autenticazione" il token dell'utente appena autenticato
-\subsubsection{Interfaccia fornita - Token utente} Viene fornito all'utente il proprio token
+\textbf{Descrizione: }Questa componente si occupa del processo di login, descritto in RF1
+\\ \\ \uline{\textit{Interfaccia richiesta - Email e password: }} Viene richiesta l'email e la password all'utente che vuole autenticarsi
+\\ \\ \uline{\textit{Interfaccia richiesta - Verifica credenziali }}La componente richiede la verifica delle credenziali da parte della componente Autenticazione
+\\ \\ \uline{\textit{Interfaccia fornita - Codice 2FA}} La componente fornisce alla componente "Server mail" il codice 2 Factor Authentication da inviare all'utente
+\uline{\textit{Interfaccia richiesta - Controllo 2FA }} Viene richiesto all'utente l'inserimento del codice 2 Factor Authentication ricevuto tramite mail
+\\ \\ \uline{\textit{Interfaccia richiesta - Token utente}} Viene richiesto alla componente "Autenticazione" il token dell'utente appena autenticato
+\\ \\ \uline{\textit{Interfaccia fornita - Token utente}} Viene fornito all'utente il proprio token
 
 \subsection*{Cambio password}
-\subsubsection{Descrizione: }Questa componente si occupa del processo di cambio password, descritto in RF1
-\subsubsection{Interfaccia richiesta - Email: } Viene richiesta all'utente che vuole cambiare password la propria mail
-\subsubsection{Interfaccia richiesta - Dati personali utente: } La componente richiede alla componente "Autenticazione" l'esistenza di un utente con la mail fornita
-\subsubsection{Interfaccia fornita - Codice 2FA: } La componente fornisce alla componente "Server mail" Il codice 2 Factor Authentication da inviare all'utente
-\subsubsection{Interfaccia richiesta - 2FA: } Viene richiesto all'utente l'inserimento del codice 2 Factor Authentication appena ricevuto
-\subsubsection{Interfaccia richiesta - Nuova password} Viene richiesto all'utente l'inserimento della nuova password due volte
-\subsubsection{Interfaccia fornita - Nuova password} Viene fornita la nuova password al database, che procede ad aggiornarla
+\textbf{Descrizione: }Questa componente si occupa del processo di cambio password, descritto in RF1
+\\ \\ \uline{\textit{Interfaccia richiesta - Email: }} Viene richiesta all'utente che vuole cambiare password la propria mail
+\\ \\ \uline{\textit{Interfaccia richiesta - Dati personali utente: }} La componente richiede alla componente "Autenticazione" l'esistenza di un utente con la mail fornita
+\\ \\ \uline{\textit{Interfaccia fornita - Codice 2FA: }} La componente fornisce alla componente "Server mail" Il codice 2 Factor Authentication da inviare all'utente
+\\ \\ \uline{\textit{Interfaccia richiesta - 2FA: }} Viene richiesto all'utente l'inserimento del codice 2 Factor Authentication appena ricevuto
+\\ \\ \uline{\textit{Interfaccia richiesta - Nuova password}} Viene richiesto all'utente l'inserimento della nuova password due volte
+\\ \\ \uline{\textit{Interfaccia fornita - Nuova password}} Viene fornita la nuova password al database, che procede ad aggiornarla
 
 \subsection*{Registrazione}
-\subsubsection{Descrizione: } Questa componente si occupa del processo di registrazione, descritto in RF2
-\subsubsection{Interfaccia richiesta - Dati registrazione utente: }Per registrarsi, vengono richiesti all'ospite i seguenti dati
+\textbf{Descrizione: } Questa componente si occupa del processo di registrazione, descritto in RF2
+\\ \\ \uline{\textit{Interfaccia richiesta - Dati registrazione utente: }}Per registrarsi, vengono richiesti all'ospite i seguenti dati
 \begin{itemize}
 	\item email
 	\item password
@@ -635,13 +635,13 @@ Possono essere richiesti tutti i dati o solo alcuni
 	\item username
 	\item nazionalità
 \end{itemize}
-\subsubsection{Interfaccia richiesta - Dati personali utente: }La componente richiede alla componente "Autenticazione" l'esistenza di un utente con la mail e l'username forniti,
+\uline{\textit{Interfaccia richiesta - Verifica esistenza email: }}La componente richiede alla componente "Autenticazione" l'esistenza di un utente con la mail fornita,
 per decidere se procedere o meno con la registrazione
-\subsubsection{Interfaccia fornita - Codice 2FA: } La componente fornisce Il codice 2 Factor Authentication alla componente "Server mail", da inviare all'ospite che vuole registrarsi
-\subsubsection{Interfaccia richiesta - 2FA: } La componente richiede all'ospite il codice 2FA appena ricevuto tramite mail
-\subsubsection{Interfaccia fornita - Nuovo utente} Vengono forniti i dati della registrazione dell'utente al componente "Autenticazione", con il ruolo "cliente"
-\subsubsection{Interfaccia richiesta - Token utente} Viene richiesto alla componente "Autenticazione" il token dell'utente appena registrato
-\subsubsection{Interfaccia fornita - Token utente} Viene fornito all'utente il proprio token
+\\ \\ \uline{\textit{Interfaccia fornita - Codice 2FA: }} La componente fornisce Il codice 2 Factor Authentication alla componente "Server mail", da inviare all'ospite che vuole registrarsi
+\\ \\ \uline{\textit{Interfaccia richiesta - Controllo 2FA: }} La componente richiede all'ospite il codice 2FA appena ricevuto tramite mail
+\\ \\ \uline{\textit{Interfaccia fornita - Nuovo utente}} Vengono forniti i dati della registrazione dell'utente al componente "Autenticazione", con il ruolo "cliente"
+\\ \\ \uline{\textit{Interfaccia richiesta - Token utente}} Viene richiesto alla componente "Autenticazione" il token dell'utente appena registrato
+\\ \\ \uline{\textit{Interfaccia fornita - Token utente}} Viene fornito all'utente il proprio token
 
 \subsection*{Negozio}
 
