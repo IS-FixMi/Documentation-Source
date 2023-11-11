@@ -587,9 +587,8 @@ e fornisce i dati di autenticazione e di anagrafica degli utenti agli altri comp
 	\item nazionalità
 \end{itemize}  
 Possono essere richiesti tutti i dati o solo alcuni
-\\ \\ \uline{\textit{Interfaccia fornita - Dati personali utente: }}La componente fornisce i dati personali di un determinato utente ai componenti che li richiedono
 \\ \\ \uline{\textit{Interfaccia fornita - Verifica credenziali: }}La componente verifica che le credenziali di un utente fornite siano corrette 
-\\ \\ \uline{\textit{Interfaccia richiesta - Nuovo utente: }}La componente riceve i dati per la creazione di un nuovo utente. I dati sono i seguenti:
+\\ \\ \uline{\textit{Interfaccia fornita - Nuovo utente: }}La componente riceve i dati per la creazione di un nuovo utente. I dati sono i seguenti:
 \begin{itemize}
 	\item username
 	\item email
@@ -597,7 +596,7 @@ Possono essere richiesti tutti i dati o solo alcuni
 	\item ruolo (cliente dipendente o manager)
 	\item nazionalità
 \end{itemize}
-\uline{\textit{Interfaccia fornita - Nuovo utente: }}La componente fornisce al database i seguenti dati per la creazione di un nuovo utente.
+\uline{\textit{Interfaccia richiesta - Nuovo utente: }}La componente fornisce al database i seguenti dati per la creazione di un nuovo utente.
 \begin{itemize}
 	\item username
 	\item email
@@ -619,7 +618,7 @@ Di questo componente fanno parte due sub-componenti, Login e Registrazione, desc
 \subsection*{Cambio password}
 \textbf{Descrizione: }Questa componente si occupa del processo di cambio password, descritto in RF1
 \\ \\ \uline{\textit{Interfaccia richiesta - Email: }} Viene richiesta all'utente che vuole cambiare password la propria mail
-\\ \\ \uline{\textit{Interfaccia richiesta - Dati personali utente: }} La componente richiede alla componente "Autenticazione" l'esistenza di un utente con la mail fornita
+\\ \\ \uline{\textit{Interfaccia richiesta - Verifica esistenza email}}: La componente richiede alla componente "Autenticazione" l'esistenza di un profilo utente con la email fornita.
 \\ \\ \uline{\textit{Interfaccia richiesta - Invio Codice 2FA: }} La componente fornisce alla componente "Server mail" Il codice 2 Factor Authentication da inviare all'utente
 \\ \\ \uline{\textit{Interfaccia richiesta - 2FA: }} Viene richiesto all'utente l'inserimento del codice 2 Factor Authentication appena ricevuto
 \\ \\ \uline{\textit{Interfaccia richiesta - Nuova password}} Viene richiesto all'utente l'inserimento della nuova password due volte
@@ -751,7 +750,7 @@ Il Magazzino si interfaccia con un database esterno per cercare gli articoli che
 
 \subsection*{Task}
 
-\textbf{Descrizione}: Questa componente si occupa di gestire il sistema task della applicazione.
+\textbf{Descrizione}: Questa componente si occupa di gestire il sistema task della applicazione.\\\\
 \uline{\textit{Interfaccia Richiesta - Token Utente}}:
 La componente richiede al dipendente(o manager) il proprio token utente \\ \\
 \uline{\textit{Interfaccia Richiesta - Verifica token utente}}: 
@@ -768,28 +767,26 @@ La componente richiede al database di inserire una work-tag per un determinato d
 La componente fornisce la possibilità di rimuovere work-tag per un determinato dipendente alle componenti che lo richiedono.\\ \\ 
 \uline{\textit{Interfaccia Richiesta - Rimozione work-tag dipendente}}:  
 La componente richiede al database di rimuovere una work-tag per un determinato dipendente \\ \\ 
-
 \uline{\textit{Interfaccia Richiesta - Creazione task}}:
-La componente richiede al database di creare una task \\
+La componente richiede al database di creare una task \\\\
 \uline{\textit{Interfaccia Fornita - Creazione task}}: 
-La componente fornisce la possibilità di creare una task da parte delle componenti che lo richiedono \\
+La componente fornisce la possibilità di creare una task da parte delle componenti che lo richiedono \\\\
 \uline{\textit{Interfaccia richiesta - Lista task in lavorazione}}: 
-La componente richiede al database la lista delle task in lavorazione, filtrata in base a vari filtri\\
+La componente richiede al database la lista delle task in lavorazione, filtrata in base a vari filtri\\\\
 \uline{\textit{Interfaccia fornita - Lista task in lavorazione}}: 
-La componente permette al dipendente di vedere  la lista delle task in lavorazione\\
+La componente permette al dipendente di vedere  la lista delle task in lavorazione\\\\
 \uline{\textit{Interfaccia richiesta - Lista task in pausa/da eseguire}}: 
-La componente richiede al database la lista delle task in pausa/da eseguire, filtrata in base a vari filtri\\
+La componente richiede al database la lista delle task in pausa/da eseguire, filtrata in base a vari filtri\\\\
 \uline{\textit{Interfaccia fornita - Lista task in pausa/da eseguire}}: 
-La componente permette al dipendente di vedere la lista delle task che può eseguire\\
+La componente permette al dipendente di vedere la lista delle task che può eseguire\\\\
 \uline{\textit{Interfaccia fornita - Scelta task}}: 
-La componente permette al dipendente di scegliere una task da eseguire\\
+La componente permette al dipendente di scegliere una task da eseguire\\\\
 \uline{\textit{Interfaccia richiesta - modifica stato task}}:
- La componente richiede al database di modificare lo stato di una task\\
+ La componente richiede al database di modificare lo stato di una task\\\\
 \uline{\textit{Interfaccia fornita - modifica stato task}}: 
-La componente permette al dipendente di modificare lo stato della task scelta\\
-
+La componente permette al dipendente di modificare lo stato della task scelta\\\\
 \uline{\textit{Interfaccia fornita - Lista task riparazione}}:
-La componente permette alla componente "Riparazione" di richiedere la lista delle riparazioni richieste da un determinato cliente
+La componente permette alla componente "Riparazione" di richiedere la lista delle riparazioni richieste da un determinato cliente\\\\
 \uline{\textit{Interfaccia fornita - Storico task dipendente}}:
 La componente permette alla componente "Gestione Dipendenti" di richiedere la lista delle task svolte/in svolgimento di un determinato dipendente
 
@@ -797,22 +794,21 @@ La componente permette alla componente "Gestione Dipendenti" di richiedere la li
 
 
 \subsection*{Gestione Dipendenti}
-\textbf{Descrizione}: Questa componente si occupa della gestione dei profili dei dipendenti, della loro creazione,modifica e eliminazione.
-
+\textbf{Descrizione}: Questa componente si occupa della gestione dei profili dei dipendenti, della loro creazione,modifica e eliminazione.\\\\
 \uline{\textit{Interfaccia Richiesta - Token Utente}}:
 La componente richiede al manager il proprio token utente \\ \\
 \uline{\textit{Interfaccia Richiesta - Verifica token utente}}: 
 La componente richiede la verifica del token utente alla componente "Autenticazione", per verificare se ha il ruolo adeguato per poter accedere \\ \\ 
 \uline{\textit{Interfaccia Richiesta - Lista dipendenti}}:
-La componente richiede al database la lista dei dipendenti e le corrispettive informazioni anagrafiche
+La componente richiede al database la lista dei dipendenti e le corrispettive informazioni anagrafiche\\\\
 \uline{\textit{Interfaccia Fornita - Lista dipendenti}}:
-La componente fornisce al manager la lista dei dipendenti
+La componente fornisce al manager la lista dei dipendenti\\\\
 \uline{\textit{Interfaccia Fornita - Informazioni dipendente}}:
-La componente fornisce al manager le informazioni di un determinato dipendente
+La componente fornisce al manager le informazioni di un determinato dipendente\\\\
 \uline{\textit{Interfaccia Fornita - Rimuovere profilo}}:
-La componente fornisce al manager la possibilità di rimuovere un profilo dipendente
+La componente fornisce al manager la possibilità di rimuovere un profilo dipendente\\\\
 \uline{\textit{Interfaccia Richiesta - Rimuovere profilo}}:
-La componente richiede al database la rimozione di un profilo dipendente dal database
+La componente richiede al database la rimozione di un profilo dipendente dal database\\\\
 \uline{\textit{Interfaccia Fornita - Aggiungere profilo}}:
 La componente fornisce al manager la possibilità di aggiungere un nuovo profilo dipendente inserendo i seguenti parametri:
 \begin{itemize}
@@ -824,17 +820,20 @@ La componente fornisce al manager la possibilità di aggiungere un nuovo profilo
 	\item password
 	\item foto(opzionale)
 \end{itemize}
-
+\uline{\textit{Interfaccia Richiesta - Nuovo utente}}: 
+La componente richiede alla componente "Registrazione" la creazione di un nuovo utente con il ruolo "dipendente"\\\\
+\uline{\textit{Interfaccia Richiesta - Aggiungere profilo}}:
+La componente richiede al database l'aggiunta di un nuovo profilo dipendente\\\\
 \uline{\textit{Interfaccia Richiesta -Aggiunta work-tag dipendente}}:
-La componente richiede alla componente "Task" l'aggiunta di una work-tag al profilo di un determinato dipendente
+La componente richiede alla componente "Task" l'aggiunta di una work-tag al profilo di un determinato dipendente\\\\
 \uline{\textit{Interfaccia Fornita - Aggiunta work-tag dipendente}}:
-La componente fornisce al manager la possibilità di aggiungere una work-tag a un determinato dipendente.
+La componente fornisce al manager la possibilità di aggiungere una work-tag a un determinato dipendente.\\\\
 \uline{\textit{Interfaccia Richiesta - Rimozione work-tag dipendente}}:
-La componente richiede alla componente "Task" l'aggiunta di una work-tag al profilo di un determinato dipendente
+La componente richiede alla componente "Task" l'aggiunta di una work-tag al profilo di un determinato dipendente\\\\
 \uline{\textit{Interfaccia Fornita - Rimozione work-tag dipendente}}:
-La componente fornisce al manager la possibilità di eliminare una work-tag di un determinato dipendente.
+La componente fornisce al manager la possibilità di eliminare una work-tag di un determinato dipendente.\\\\
 \uline{\textit{Interfaccia richiesta - Storico task dipendente}}:
-La componente richiede alla componente "Task" lo storico delle task di un determinato dipendente.
+La componente richiede alla componente "Task" lo storico delle task di un determinato dipendente.\\\\
 \uline{\textit{Interfaccia fornita - Storico task dipendente}}:
 La componente fornisce al manager la possibilità di visualizzare lo storico delle task di un determinato dipendente
 
