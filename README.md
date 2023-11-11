@@ -53,3 +53,5 @@ Entro il 11 novembre:
   - [x] Ridefinire il concetto di aggiornamento password nel D1 e nel D2 (RF1)
   - [x] Riscrivere il capitolo "Task" nel suo apposito spazio all'interno di RF9
 - [ ] Riginel si guarda il diagramma di contesto
+- [ ] Aggiornare i nomi degli attori dei grafici UCD
+- [ ] Riformattare le definizioni dei componenti(METTERE I PUNTI)

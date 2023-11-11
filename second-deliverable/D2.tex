@@ -504,8 +504,8 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 Sono stati individuati tutti gli Utenti ed i Sistemi Esterni che fanno parte del funzionamento del sistema "Fix Mi".\\Segue una elencazione di ogni elemento con una descrizione breve adibita.
 
 
-\subsection*{Utente}
-Con il termine "Utente" si definisce una qualsiasi persona che abbia fatto accesso al sistema senza essersi identificati. L'Utente è in grado di:
+\subsection*{Utente non autenticato/Ospite}
+Con il termine "Utente non autenticato" o "Ospite" si definisce una qualsiasi persona che abbia fatto accesso al sistema senza essersi identificati. L'Ospite è in grado di:
 \begin{itemize}
 	\item Accedere all'area "Negozio" per visualizzare il catalogo.
 	\item Accedere all'area "Informazioni / Contatti" e visualizzarne i dettagli. 
@@ -536,6 +536,8 @@ Con il termine "Manager" si intende quella persona che abbia il completo control
 	\item Accedere all'area "Gestione Dipendenti" per visualizzarne la lista, aggiungere un nuovo profilo Dipendente o eliminarne uno esistente.
 \end{itemize}
 
+\subsection*{Utente}
+Con il termine "Utente" si intende qualsiasi persona che abbia un account, che sia di tipo "Cliente", "Dipendente", o "Manager"
 \subsection*{Server Mail}
 Attraverso la Server Mail, il sistema è in grado di mandare e ricevere e-mail. 
 
@@ -548,12 +550,22 @@ I servizi esterni "PayPal" e "Nexi" permettono al Cliente di effettuare acquisti
 \subsection*{OpenStreetMap}
 Il servizio esterno "OpenStreetMap" fornisce dati geografici al sistema.%per visualizzare la posizione aziendale geografica in cartina.
 
-\subsection*{2FA}
-Il 2FA ("Two Factor Authentication") si occupa di verificare che la e-mail inserita dall'utente in procinto di registrarsi o accedere sia corretta ed esistente.
-%In particolare il codice contenuto nel 2FA viene spedito all'indirizzo di posta elettronica inserito dall'Utente che, nel caso sia inesistente, non potrebbe essere visualizzato. (Non sono sicuro se scrivere anche questo o no....)
+\subsection*{Microservizio Autenticazione}
+Con il termine "Microservizio Autenticazione" si intende il microservizio dell'applicazione che si occupa di gestire l'autenticazione degli utenti e il processo di login,registrazione e cambio password
+\subsection*{Microservizio Task}
+Con il termine "Microservizio Task" si intende il microservizio dell'applicazione che si occupa della gestione delle task.
+\subsection*{Email Server}
+Con il termine "Email Server" si intende il server aziendale per la gestione delle Email.
+\begin{itemize}
+	\item permette l'invio dei codici 2FA ("2 Factor Authentication")
+	\item contiene le Email aziendali dei dipendenti e del manager
+	\item viene usato dai dipendenti e dal manager per l'invio di email 
+\end{itemize}
+\subsection*{Microservizio Magazzino}
+Con il termine "Microservizio Magazzino" si intende il microservizio dell'applicazione che si occupa di gestire l'inventario aziendale.
 
-\subsection*{Microservizi}
-Autentication Server, Microservizio Task
+
+
 
 
 \section{Diagramma di Contesto}
@@ -647,37 +659,53 @@ per decidere se procedere o meno con la registrazione
 \uline{\textit{Interfaccia fornita - Invio Codice 2FA}}:
 La componente fornisce la possibilità di inviare una mail con un codice 2FA all'email di un determinato utente.
 \subsection*{Negozio}
-
 \textbf{Descrizione}: Questa componente si occupa di mostrare  ed interagire con il negozio ad ogni tipo di utente in base al livello di privilegi dello stesso. In particolare permette di ricercare un articolo nel negozio, ordinarlo in ordine alfabetico e permettere di aggiungere un prodotto al carrello.
 \\
 \\
 \uline{\textit{Interfaccia Richiesta - Lista Articoli.}} Il Negozio si aspetta di ricevere la lista degli articoli presenti nel magazzino per poterli mostrare, ossia il nome dell'articolo, una foto e una descrizione. \\ \\
 \uline{\textit{Interfaccia Richiesta - Cerca Articoli}}
-Il Negozio può visualizzare la lista degli articoli presenti nel magazzino tali che il nome contiene una stringa di ricerca.
+Il Negozio può visualizzare la lista degli articoli presenti nel magazzino tali che il nome contiene una stringa di ricerca.\\\\
 \uline{\textit{Interfaccia Richiesta - Aggiungi al Carrello.}} Tramite il negozio si può aggiungere un elemento al carrello prima di poterlo acquistare. \\ \\
-\uline{\textit{Interfaccia Richiesta - Token Utente.}} Il Negozio utilizzerà il token utente per verificare il livello di privilegio dell'utente.
+\uline{\textit{Interfaccia Richiesta - Token Utente.}} 
+Viene richiesto all'utente il proprio token identificativo\\ \\
+\uline{\textit{Interfaccia Richiesta - Verifica Token Utente.}} 
+La componente richiede la verifica del token utente alla componente "Autenticazione"\\\\
 
 \subsection*{Carrello}
 
 \textbf{Descrizione}: Questa componente registra l'inserimento e la rimozione degli articoli nel carrello e permette di effettuare l'acquisto di tali articoli. \\ \\
-\uline{\textit{Interfaccia Fornita - Aggiungi al Carrello.}} Il carrello permette al Negozio di poter aggiungere articoli e salvarli nel carrello.\\ \\
-\uline{\textit{Interfaccia Richiesta - Aggiungi Articolo.}} Il Carrello si interfaccia con un database per il salvataggio degli articoli nel carrello oltre la sessione.\\ \\
+\uline{\textit{Interfaccia Richiesta - Lista carrello}}:
+La componente richiede al database gli elementi del carrello di un determinato utente. \\\\
+\uline{\textit{Interfaccia Fornita - Lista carrello}}:
+La componente fornisce il proprio carrello all'utente che lo richiede.\\\\
+\uline{\textit{Interfaccia Fornita - Aggiungi al Carrello.}} 
+Il carrello permette al Negozio di poter aggiungere articoli e salvarli nel carrello.\\ \\
+\uline{\textit{Interfaccia Richiesta - Aggiungi Articolo.}} 
+Il Carrello si interfaccia con un database per il salvataggio degli articoli nel carrello oltre la sessione.\\ \\
 \uline{\textit{Interfaccia Richiesta - Rimozione Articolo.}} 
 Il Carrello si interfaccia con un database per rimuovere un articolo dal carrello in modo permanente.\\ \\
+\uline{\textit{Interfaccia Fornita - Rimozione Articolo}}
+Il Carrello fornisce all'utente la possibilità di rimuovere elementi dal carrello\\\\
 \uline{\textit{Interfaccia Richiesta - Svuota Carrello.}}
 Il Carrello si interfaccia con un database per svuotare tutti i dati degli articoli presenti nel carrello in modo permanente.\\ \\
-\uline{\textit{Interfaccia Richiesta - Token Utente.}} Il carrello utilizzerà il token utente per verificare il livello di privilegio dell'utente.\\ \\1
+\uline{\textit{Interfaccia Fornita - Svuota Carrello.}}
+Il Carrello fornisce all'utente la possibilità di rimuovere tutti gli articoli dal proprio carrello\\ \\
+\uline{\textit{Interfaccia Richiesta - Token Utente.}} 
+Viene richiesto all'utente il proprio token identificativo\\ \\
+\uline{\textit{Interfaccia Richiesta - Verifica Token Utente.}} 
+La componente richiede la verifica del token utente alla componente "Autenticazione"\\\\
 \uline{\textit{Interfaccia Richiesta - Pagamento}}
-Il Carrello si interfaccia con un sistema esterno per effettuare il pagamento degli articoli salvati nel carrello.
+Il Carrello si interfaccia con un sistema esterno per effettuare il pagamento degli articoli salvati nel carrello.\\\\
+\uline{\textit{Interfaccia Fornita - Pagamento}}
+Il carrello fornisce all'utente la possibilità di pagare utilizzando Nexi o Paypal
 
-\subsection*{Home}
 % Non so se assistenza, feedback e riparazione vanno qua dentro
 \subsection*{Riparazione}
-\textbf{Descrizione}: Questa componente si occupa di prendere le richieste di riparazione degli utenti e di mostrare quelle già richieste
+\textbf{Descrizione}: Questa componente si occupa di prendere le richieste di riparazione degli utenti e di mostrare quelle già richieste\\\\
 \uline{\textit{Interfaccia Richiesta - Token utente}}: 
-Viene richiesto all'utente il proprio token identificativo\\
+Viene richiesto all'utente il proprio token identificativo\\\\
 \uline{\textit{Interfaccia Richiesta - Verifica token utente}}:
-La componente richiede la verifica del token utente alla componente "Autenticazione"\\
+La componente richiede la verifica del token utente alla componente "Autenticazione"\\\\
 \uline{\textit{Interfaccia Richiesta - Nuova riparazione}}:
 La componente richiede all'utente le informazioni riguardanti la richiesta di riparazione:
 \begin{itemize}
@@ -689,18 +717,18 @@ La componente richiede all'utente le informazioni riguardanti la richiesta di ri
 	\item foto(opzionale)
 \end{itemize}
 \uline{\textit{Interfaccia richiesta - Creazione task}}: 
-La componente richiede alla componente "Task" la creazione di una nuova task riparazione con i dettagli inseriti dall'utente\\
+La componente richiede alla componente "Task" la creazione di una nuova task riparazione con i dettagli inseriti dall'utente\\\\
 \uline{\textit{Interfaccia fornita - Lista riparazioni}}: 
-La componente fornisce all'utente la lista delle riparazioni che ha richiesto in precedenza\\
+La componente fornisce all'utente la lista delle riparazioni che ha richiesto in precedenza\\\\
 \uline{\textit{Interfaccia richiesta -Lista task riparazione}}: 
 La componente richiede alla componente "Task" la lista delle riparazioni richieste dall'utente in precedenza
 
 \subsection*{Assistenza}:
-Questa componente si occupa di raccogliere le richieste di assistenza degli utenti
+Questa componente si occupa di raccogliere le richieste di assistenza degli utenti\\\\
 \uline{\textit{Interfaccia Richiesta - Token utente}}: 
-Viene richiesto all'utente il proprio token identificativo\\
+Viene richiesto all'utente il proprio token identificativo\\\\
 \uline{\textit{Interfaccia Richiesta - Verifica token utente}}:
-La componente richiede la verifica del token utente alla componente "Autenticazione"\\
+La componente richiede la verifica del token utente alla componente "Autenticazione"\\\\
 \uline{\textit{Interfaccia Richiesta - Richiesta assistenza}}:
 La componente richiede all'utente le informazioni riguardanti la propria richiesta di assistenza:
 \begin{itemize}
@@ -747,6 +775,10 @@ Il Magazzino si interfaccia con un database esterno per la rimozione permanente 
 Il Magazzino si interfaccia con un database esterno per ottenere una lista degli articoli salvati del database.\\ \\
 \uline{\textit{Interfaccia Richiesta - Cerca element}}
 Il Magazzino si interfaccia con un database esterno per cercare gli articoli che contengono una stringa nel nome.\\ \\
+\uline{\textit{Interfaccia Richiesta - Token Utente.}} 
+Viene richiesto all'utente il proprio token identificativo\\ \\
+\uline{\textit{Interfaccia Richiesta - Verifica Token Utente.}} 
+La componente richiede la verifica del token utente alla componente "Autenticazione"\\\\
 
 \subsection*{Task}
 
