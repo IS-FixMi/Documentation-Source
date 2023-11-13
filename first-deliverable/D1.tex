@@ -1,4 +1,5 @@
 \documentclass{report}
+\usepackage{float}
 
 % depricated
 \title{
@@ -276,11 +277,11 @@ Per terminare la registrazione con successo, l'applicazione deve verificare la m
 Il sito deve presentare presenta una pagina "Negozio”: 
 
 \begin{enumerate}
-	\item La pagina deve permettere di visualizzare gli oggetti presenti nel magazzino al momento del caricamento della stessa
+	\item La pagina deve permettere di visualizzare gli oggetti presenti nel magazzino al momento del caricamento della stessa.
 	
-	\item L’utente deve essere in grado di ordinare gli oggetti per nome o per prezzo tramite un bottone, ricercare una stringa tra tutti gli oggetti nel magazzino tramite una barra di ricerca.
+	\item L’utente deve essere in grado di ordinare gli oggetti per nome o per prezzo tramite un bottone, ricercare una stringa tra tutti gli oggetti nel magazzino.
 	
-	\item Ogni oggetto deve avere una pagina dedicata accessibile tramite un click sull’oggetto
+	\item Ogni oggetto deve avere una pagina dedicata accessibile.
 \end{enumerate}
 
 
@@ -303,12 +304,12 @@ Il sito deve permettere al cliente, oltre alle funzionalità definite in RF3 per
 
 \subsubsection{RF5.1 Carrello}
 Il sito deve avere una pagina dedicata al carrello del cliente.
-Il sito deve permettere al cliente, nella pagina dedicata a un specifico articolo, di inserirlo nel proprio carrello attraverso un pulsante.
+Il sito deve permettere al cliente, nella pagina dedicata a un specifico articolo, di inserirlo nel proprio carrello.
 
 \begin{enumerate}
 	\item La pagina deve avere un elenco di tutti i prodotti che sono stati immessi nel carrello. Ogni prodotto contenuto in elenco deve mostrare il nome, il prezzo, una foto e un pulsante “Rimuovi”.
 	
-	\item La pagina deve permettere al cliente di rimuovere un elemento dal proprio carrello premendo il pulsante “Rimuovi” posizionato accanto ad ogni elemento.
+	\item La pagina deve permettere al cliente di rimuovere un elemento dal proprio carrello. % premendo il pulsante “Rimuovi” posizionato accanto ad ogni elemento.
 
 	\item Ogni prodotto deve portare alla pagina dedicata allo stesso cliccando sul nome nell’elenco.
 	
@@ -592,7 +593,7 @@ In seguito vengono mostrate schermate delle principali aree di Fix Mi, essi risp
 
 La schermata "Login" permette all'utente di inserire l'email e la password del suo profilo ed in seguito di premere il bottone "ACCEDI", nel caso in cui l'utente non abbia ancora creato un proprio profilo egli potrà farlo accedendo all'area "Registrazione" attraverso il bottone "REGISTRATI".
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{images/Snapshots/login_snapshot.png}
 	\caption{Schermata "Login" di "Fix Mi"}
@@ -602,7 +603,7 @@ La schermata "Login" permette all'utente di inserire l'email e la password del s
 
 La schermata "Home" permette di raggiungere tutte le aree principali del sistema attraverso appositi bottoni etichettati con il nome della suddetta area. In altro è presente una barra di navigazione, un bottone per accedere alle impostazioni ed uno per accedere al proprio profilo. In basso sono presenti le principali informazioni aziendali.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{images/Snapshots/mainpage_snapshot.png}
 	\caption{Schermata "Home" di "Fix Mi"}
@@ -611,7 +612,7 @@ La schermata "Home" permette di raggiungere tutte le aree principali del sistema
 \subsection*{Schermata Magazzino}
 La schermata "Magazzino" permette al Dipendente ed al Manager di poter gestire il catalogo aziendale. E' possibile fare una ricerca più accurata inserendo valide informazioni nei quattro campi presenti nella parte superiore della schermata.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{images/Snapshots/magazzino_snapshot.png}
 	\caption{Schermata "Magazzino" di "Fix Mi"}
@@ -680,21 +681,21 @@ Il microservizio utilizza un database non relazionale per memorizzare gli artico
 
 In seguito uno schema di alto livello dei collegamenti tra i diversi microservizi. In blu i microservizi, in giallo i sistemi esterni, in verde i databases.
 
-\begin{figure}[h]
-	\centering
+\begin{figure}[H]
+	%\centering
 	\includegraphics[width=1\textwidth]{images/back_end_short}
 	\caption{Schema di alto livello della back end}
 \end{figure}	
 
 % removed
 \iffalse
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth]{images/admin_back_end}
 	\caption{Gestione Dipendenti, disponibile solo per il manager}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1.1\textwidth]{images/backend_D1}
 	\caption{Microservizi disponibili per tutti, con maggiore dettaglio}
