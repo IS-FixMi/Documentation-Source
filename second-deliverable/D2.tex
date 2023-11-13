@@ -125,7 +125,7 @@
 			\hline
 			Amministratore Progetto & Riginel Ungureanu\\
 			\hline
-			Versione del documento & 1.0 \\
+			Versione del documento & 1.1 \\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -135,7 +135,7 @@
 
 	
 \section{Requisiti Funzionali}
-TODO Intro qui
+Nel presente capitolo vengono riportati i requisiti funzionali (RF) del sistema utilizzando il linguaggio naturale e Use Case Diagram (UCD) scritti in UML.
 
 \subsection*{RF1 Login }
 \begin{figure}[H]
@@ -563,8 +563,12 @@ Con il termine "Microservizio Magazzino" si intende il microservizio dell'applic
 TODO
 
 \chapter{Analisi dei Componenti}
+Nel presente capitolo viene presentata l’architettura in termini di componenti interni al sistema definiti sulla base dei requisiti analizzati nei precedenti documenti, minimizzando il livello di coesione. Viene poi adottato l’uso di Component Diagram per rappresentare l’interconnessione tra i vari componenti, identificando quindi le interfacce tra questi e verso sistemi esterni. Viene infine valutato il livello di accoppiamento tra i componenti.
+
 
 \section{Definizione dei Componenti}
+In questa sezione vengono definiti i componenti.
+
 
 TODO: Componenti interni della mia applicazione e come interagiscono\\
 Sostanzialmente sono i componenti usati nei RF in questo documento
@@ -573,19 +577,18 @@ Sostanzialmente sono i componenti usati nei RF in questo documento
 
 \section{Diagramma dei Componenti}
 
-TODO Intro
-
 Per semplificare i collegamenti a livello grafico abbiamo diviso in due grafici diversi le componenti che riguardano l'autenticazione dal il resto delle componenti.
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/autenticazione_diagramma_dei_componenti.png}
-	Diagramma delle Componenti 1
+	Diagramma delle Componenti 1 per l'applicazione FixMi
 \end{figure}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/diagramma_dei_componenti.png}
-	Diagramma delle Componenti 2
+	Diagramma delle Componenti 2 per l'applicazione FixMi
 \end{figure}
+A seguire una descrizione dei componenti e delle interfacce presenti nel diagramma.
 
 \subsection*{Autenticazione}
 \textbf{Descrizione: } Questa componente corrisponde al microservizio Autenticazione. Si occupa del controllo dell'accesso ai servizi dell'applicazione da parte degli utenti,

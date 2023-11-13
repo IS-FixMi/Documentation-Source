@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-11-04T15:28:44.244Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="26RufDoMEN5mmjyfO_vz" version="22.0.3" type="device">
+<mxfile host="Electron" modified="2023-11-13T14:42:42.399Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="kRVJ2w-vHBSvW_aliFBD" version="22.0.3" type="device">
   <diagram name="Page-1" id="3eGqsdFhyAEMAfgzght5">
     <mxGraphModel dx="453" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -9,7 +9,7 @@
             <mxPoint x="825" y="230" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="5yFARiaUlGnjJ97QzOku-1" value="Utente" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+        <mxCell id="5yFARiaUlGnjJ97QzOku-1" value="Utente non&lt;br&gt;Autenticato" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="810" y="140" width="30" height="60" as="geometry" />
         </mxCell>
         <mxCell id="5yFARiaUlGnjJ97QzOku-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;" parent="1" source="5yFARiaUlGnjJ97QzOku-2" target="5yFARiaUlGnjJ97QzOku-8" edge="1">
@@ -44,7 +44,7 @@
             <mxPoint x="5" y="1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="XB9lAXFF97Wl2L_9f8y9-2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;dashed=1;dashPattern=12 12;" edge="1" parent="1" source="5yFARiaUlGnjJ97QzOku-2" target="XB9lAXFF97Wl2L_9f8y9-1">
+        <mxCell id="XB9lAXFF97Wl2L_9f8y9-2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;dashed=1;dashPattern=12 12;" parent="1" source="5yFARiaUlGnjJ97QzOku-2" target="XB9lAXFF97Wl2L_9f8y9-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5yFARiaUlGnjJ97QzOku-2" value="Effettuare la registrazione" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -74,7 +74,7 @@
         <mxCell id="5yFARiaUlGnjJ97QzOku-10" value="Microservizio&lt;br&gt;Autenticazione" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="640" y="335" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="XB9lAXFF97Wl2L_9f8y9-1" value="conferma password" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="XB9lAXFF97Wl2L_9f8y9-1" value="conferma password" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1010" y="490" width="120" height="80" as="geometry" />
         </mxCell>
       </root>

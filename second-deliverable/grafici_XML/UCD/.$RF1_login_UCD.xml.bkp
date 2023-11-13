@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-11-04T15:09:03.234Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="LCW48hmc-cfbqhuaxn1R" version="22.0.3" type="device">
+<mxfile host="Electron" modified="2023-11-04T15:29:50.588Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="x5TdNX4MxSu8EEwzFMyB" version="22.0.3" type="device">
   <diagram name="Page-1" id="pKTsiGST29bBd4hEa-rp">
-    <mxGraphModel dx="1543" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1303" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -19,7 +19,7 @@
             <mxGeometry x="-110" y="50" width="30" height="60" as="geometry" />
           </mxCell>
         </object>
-        <mxCell id="uwSqg4LzAu4REpCGPPBr-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" target="7if4nECEzAWvR8DDyzDp-5">
+        <mxCell id="uwSqg4LzAu4REpCGPPBr-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" target="7if4nECEzAWvR8DDyzDp-5" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="60" y="110" as="sourcePoint" />
           </mxGeometry>
@@ -118,20 +118,26 @@
             <mxPoint x="8" y="10" as="offset" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="UxxApaWQU0jOs5JKgGrJ-2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;" edge="1" parent="1" source="7if4nECEzAWvR8DDyzDp-5" target="UxxApaWQU0jOs5JKgGrJ-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="7if4nECEzAWvR8DDyzDp-5" value="Recupero / Cambio password" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry y="160" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="7if4nECEzAWvR8DDyzDp-8" value="Inserire nuova password" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="170" y="320" width="120" height="80" as="geometry" />
+          <mxGeometry x="180" y="280" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="uwSqg4LzAu4REpCGPPBr-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" edge="1" parent="1" source="uwSqg4LzAu4REpCGPPBr-2" target="7if4nECEzAWvR8DDyzDp-5">
+        <mxCell id="uwSqg4LzAu4REpCGPPBr-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="uwSqg4LzAu4REpCGPPBr-2" target="7if4nECEzAWvR8DDyzDp-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="uwSqg4LzAu4REpCGPPBr-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="uwSqg4LzAu4REpCGPPBr-2" target="rx2kFZjUbHCGg4qBnTcN-3">
+        <mxCell id="uwSqg4LzAu4REpCGPPBr-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="uwSqg4LzAu4REpCGPPBr-2" target="rx2kFZjUbHCGg4qBnTcN-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="uwSqg4LzAu4REpCGPPBr-2" value="Microservizio&lt;br&gt;Autenticazione" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+        <mxCell id="uwSqg4LzAu4REpCGPPBr-2" value="Microservizio&lt;br&gt;Autenticazione" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="-110" y="170" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="UxxApaWQU0jOs5JKgGrJ-1" value="Inserire nuova password" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="160" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

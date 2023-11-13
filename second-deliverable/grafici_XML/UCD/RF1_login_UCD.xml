@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-11-04T15:29:50.588Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="x5TdNX4MxSu8EEwzFMyB" version="22.0.3" type="device">
+<mxfile host="Electron" modified="2023-11-13T14:41:43.111Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="r0_CwIMILG8X87n3769a" version="22.0.3" type="device">
   <diagram name="Page-1" id="pKTsiGST29bBd4hEa-rp">
     <mxGraphModel dx="1303" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -14,7 +14,7 @@
             <mxPoint x="-80" y="80" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <object label="Utente" id="eLw8XQJtUljUaBECCjRF-1">
+        <object label="Utente non&lt;br&gt;Autenticato" id="eLw8XQJtUljUaBECCjRF-1">
           <mxCell style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
             <mxGeometry x="-110" y="50" width="30" height="60" as="geometry" />
           </mxCell>
@@ -24,25 +24,9 @@
             <mxPoint x="60" y="110" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <object label="Cliente" id="FRUKObkOkFEhVqv0D7p3-15">
+        <object label="Utente" id="FRUKObkOkFEhVqv0D7p3-15">
           <mxCell style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
             <mxGeometry x="45" y="20" width="30" height="60" as="geometry" />
-          </mxCell>
-        </object>
-        <mxCell id="FRUKObkOkFEhVqv0D7p3-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" parent="1" source="FRUKObkOkFEhVqv0D7p3-16" target="FRUKObkOkFEhVqv0D7p3-15" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <object label="Dipendente" id="FRUKObkOkFEhVqv0D7p3-16">
-          <mxCell style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
-            <mxGeometry x="120" y="20" width="30" height="60" as="geometry" />
-          </mxCell>
-        </object>
-        <mxCell id="FRUKObkOkFEhVqv0D7p3-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" parent="1" source="FRUKObkOkFEhVqv0D7p3-17" target="FRUKObkOkFEhVqv0D7p3-16" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <object label="Amministratore" id="FRUKObkOkFEhVqv0D7p3-17">
-          <mxCell style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
-            <mxGeometry x="200" y="20" width="30" height="60" as="geometry" />
           </mxCell>
         </object>
         <mxCell id="rx2kFZjUbHCGg4qBnTcN-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;" parent="1" source="rx2kFZjUbHCGg4qBnTcN-3" target="rx2kFZjUbHCGg4qBnTcN-10" edge="1">
@@ -118,7 +102,7 @@
             <mxPoint x="8" y="10" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="UxxApaWQU0jOs5JKgGrJ-2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;" edge="1" parent="1" source="7if4nECEzAWvR8DDyzDp-5" target="UxxApaWQU0jOs5JKgGrJ-1">
+        <mxCell id="UxxApaWQU0jOs5JKgGrJ-2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;" parent="1" source="7if4nECEzAWvR8DDyzDp-5" target="UxxApaWQU0jOs5JKgGrJ-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="7if4nECEzAWvR8DDyzDp-5" value="Recupero / Cambio password" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -136,7 +120,7 @@
         <mxCell id="uwSqg4LzAu4REpCGPPBr-2" value="Microservizio&lt;br&gt;Autenticazione" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
           <mxGeometry x="-110" y="170" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="UxxApaWQU0jOs5JKgGrJ-1" value="Inserire nuova password" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="UxxApaWQU0jOs5JKgGrJ-1" value="Inserire nuova password" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="210" y="160" width="120" height="80" as="geometry" />
         </mxCell>
       </root>

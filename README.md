@@ -53,8 +53,7 @@ Entro il 11 novembre:
   - [x] Riscrivere il capitolo "Task" nel suo apposito spazio all'interno di RF9
 
 
-- [ ] Riginel si guarda il diagramma di contesto
-- [ ] Aggiornare i nomi degli attori dei grafici UCD
-- [x] Riformattare le definizioni dei componenti
-- [ ] Aggiungere introduzioni ad ogni sezione
+- [x] Aggiornare i nomi degli attori dei grafici UCD (Giovanni)
+- [x] Riformattare le definizioni dei componenti (Giovanni)
+- [x] Aggiungere introduzioni ad ogni sezione (Giovanni)
 - [ ] Scrivere la definizione delle componenti
