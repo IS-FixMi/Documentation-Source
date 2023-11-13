@@ -27,16 +27,15 @@ All latex source files are located here
 - [x] Requisiti non funzionali
 - [x] Utenti e Sistemi Esterni: aspettare di chiedere al tutorato
 - [ ] Diagramma di Contesto: ogni microservizio, da fare insieme
-- [ ] Definizione dei Componenti: API per ogni RF
-- [ ] Diagramma dei Componenti, prima per ogni microservizio, poi quelo generale, da fare insieme
+- [ ] Definizione dei Componenti
+- [x] Diagramma dei Componenti, prima per ogni microservizio, poi quelo generale, da fare insieme
 
 Entro il 11 novembre:
 - [ ] Ognuno per i propri requisiti su trello, deve aggiungere una descrizione a parole e/o un secondo grafico, oltre a UCD.
 - [x] Scegliere i RNF su trello e scrivere la misura eventualmente modificando la descrizione.
 - [x] Fare RF Task dopo aver chiesto al tutorato
     - [ ] Scrivere descrizione task
-- [ ] Ognuno per i propri requisiti, deve fare la definizione dei componenti
-    - [ ] Ognuno fa una lista delle interfacce dei propri RF di Trello
+- [x] Ognuno fa una lista delle interfacce dei propri RF di Trello
 - [x] Valerio farà le descrizioni degli utenti e sistemi esterni, riguarderà i grafici dei RF
   - [x] Utenti e sistemi esterni
   - [x] UCD RF1
@@ -52,6 +51,10 @@ Entro il 11 novembre:
   - [x] UCD RF11
   - [x] Ridefinire il concetto di aggiornamento password nel D1 e nel D2 (RF1)
   - [x] Riscrivere il capitolo "Task" nel suo apposito spazio all'interno di RF9
+
+
 - [ ] Riginel si guarda il diagramma di contesto
 - [ ] Aggiornare i nomi degli attori dei grafici UCD
-- [ ] Riformattare le definizioni dei componenti(METTERE I PUNTI)
+- [x] Riformattare le definizioni dei componenti
+- [ ] Aggiungere introduzioni ad ogni sezione
+- [ ] Scrivere la definizione delle componenti
