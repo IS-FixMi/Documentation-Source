@@ -591,74 +591,99 @@ Per semplificare i collegamenti a livello grafico abbiamo diviso in due grafici 
 A seguire una descrizione dei componenti e delle interfacce presenti nel diagramma.
 
 \subsection*{Autenticazione}
-\textbf{Descrizione: } Questa componente corrisponde al microservizio Autenticazione. Si occupa del controllo dell'accesso ai servizi dell'applicazione da parte degli utenti,
-e fornisce i dati di autenticazione e di anagrafica degli utenti agli altri componenti che li richiedono.\\ \\
-\uline{\textit{Interfaccia richiesta - Token utente: }}La componente richiede al database il token di un utente.
-\\ \\ \uline{\textit{Interfaccia fornita - Token utente: }}La componente fornisce il token di un determinato utente alle componenti che lo richiedono.
-\\ \\ \uline{\textit{Interfaccia fornita - Verifica token utente: }}La componente verifica l'esistenza di un determinato utente su richiesta di altre componenti, comunicando anche il ruolo di quel determinato utente.
-\\ \\ \uline{\textit{Interfaccia richiesta - Dati personali utente: }} La componente richiede al database i dati personali di un determinato utente, quali:
+\textbf{Descrizione}: Questa componente corrisponde al microservizio Autenticazione. Si occupa del controllo dell'accesso ai servizi dell'applicazione da parte degli utenti,
+e fornisce un metodo di verifica dei dati di autenticazione degli utenti agli altri componenti che li richiedono.\\ \\
+\uline{\textit{Interfaccia fornita - Token utente}}: 
+La componente fornisce il token di un determinato utente alle componenti che lo richiedono.\\ \\ 
+\uline{\textit{Interfaccia fornita - Verifica token utente}}: 
+La componente verifica l'esistenza di un determinato utente su richiesta di altre componenti, comunicando anche il ruolo di quel determinato utente.\\ \\ 
+\uline{\textit{Interfaccia richiesta - Dati autenticazione utente db}}: 
+La componente richiede al database i dati personali di un determinato utente data l'email dello stesso. Questi dati sono:
 \begin{itemize}
 	\item username
-	\item email
+	\item password hash
 	\item ruolo (cliente, dipendente o manager)
-	\item nazionalità
-\end{itemize}  
-Possono essere richiesti tutti i dati o solo alcuni.
-\\ \\ \uline{\textit{Interfaccia fornita - Verifica credenziali: }}La componente verifica che le credenziali di un utente fornite siano corrette.
-\\ \\ \uline{\textit{Interfaccia fornita - Nuovo utente: }}La componente riceve i dati per la creazione di un nuovo utente. I dati sono i seguenti:
+\end{itemize}
+\uline{\textit{Interfaccia fornita - Verifica credenziali}}: 
+La componente, su richiesta di altre componenti, verifica che le credenziali(Email e password) di un determinato utente siano corrette.\\ \\ 
+\uline{\textit{Interfaccia fornita - Nuovo utente}}: 
+La componente riceve i dati per la creazione di un nuovo utente. I dati sono i seguenti:
 \begin{itemize}
 	\item username
 	\item email
 	\item password
 	\item ruolo (cliente dipendente o manager)
-	\item nazionalità
 \end{itemize}
-\uline{\textit{Interfaccia richiesta - Nuovo utente: }}La componente fornisce al database i seguenti dati per la creazione di un nuovo utente.
+\uline{\textit{Interfaccia richiesta - Nuovo utente db}}: 
+La componente fornisce al database i seguenti dati per la creazione di un nuovo utente.
 \begin{itemize}
 	\item username
 	\item email
 	\item password hash
 	\item ruolo (cliente, dipendente o manager)
-	\item nazionalità
+	
 \end{itemize}
-\uline{\textit{Interfaccia fornita - Verifica esistenza email: }} La componente verifica se la mail appartiene già a un utente del sistema
-Di questo componente fanno parte due sub-componenti, Login e Registrazione, descritte di seguito.
+\uline{\textit{Interfaccia fornita - Verifica esistenza email}}: 
+La componente verifica se la mail fornita è già registrata in un account utente.\\\\
+\uline{\textit{Interfaccia fornita - Aggiorna password}}:
+La componente, su richiesta di altre componenti, aggiorna la password di un determinato utente.\\\\
+\uline{\textit{Interfaccia richiesta - Aggiorna password db}}: 
+La componente aggiorna la hash della password di un determinato utente sul database.  \\\\
+\uline{\textit{Interfaccia Richiesta - Elimina utente db}}: 
+La componente richiede al database l'eliminazione dei dati di un determinato utente.\\\\
+\uline{\textit{Interfaccia Fornita - Elimina utente}}: 
+La componente fornisce alle altre componenti la possibilità di eliminare i dati di un determinato utente.
 \subsection*{Login}
-\textbf{Descrizione: }Questa componente si occupa del processo di login, descritto in RF1.
-\\ \\ \uline{\textit{Interfaccia richiesta - Email e password: }} Viene richiesta l'email e la password all'utente che vuole autenticarsi.
-\\ \\ \uline{\textit{Interfaccia richiesta - Verifica credenziali }}: La componente richiede la verifica delle credenziali da parte della componente Autenticazione.
-\\ \\ \uline{\textit{Interfaccia richiesta - Invio Codice 2FA}}: La componente fornisce al Email Server il codice 2 Factor Authentication da inviare all'utente.\\ \\
-\uline{\textit{Interfaccia richiesta - Controllo 2FA }}: Viene richiesto all'utente l'inserimento del codice 2 Factor Authentication ricevuto tramite mail.
-\\ \\ \uline{\textit{Interfaccia richiesta - Token utente}}: Viene richiesto alla componente "Autenticazione" il token dell'utente appena autenticato.
-\\ \\ \uline{\textit{Interfaccia fornita - Token utente}}: Viene fornito all'utente il proprio token.\\ \\
-\uline{\textit{Interfaccia fornita - Aggiorna password}}: Viene aggiornata la password di un utente con quella ricevuta.
+\textbf{Descrizione}: Questa componente si occupa del processo di login, descritto in RF1.\\ \\ 
+\uline{\textit{Interfaccia richiesta - Email e password}}: 
+Viene richiesta l'email e la password all'ospite che vuole autenticarsi.\\ \\ 
+\uline{\textit{Interfaccia richiesta - Verifica credenziali}}: 
+La componente richiede la verifica delle credenziali(E-mail e password) dell'ospite che vuole autenticarsi alla componente Autenticazione.\\ \\ 
+\uline{\textit{Interfaccia richiesta - Invio Codice 2FA}}: 
+La componente fornisce al E-mail Server il codice 2 Factor Authentication da inviare alla E-mail dell'utente.\\ \\
+\uline{\textit{Interfaccia richiesta - Controllo 2FA}}: 
+Viene richiesto all'utente l'inserimento del codice 2 Factor Authentication ricevuto tramite mail.\\ \\ 
+\uline{\textit{Interfaccia richiesta - Token utente}}: 
+Viene richiesto alla componente "Autenticazione" il token dell'utente appena autenticato, per poi inviarlo all'utente.
 
 \subsection*{Cambio password}
-\textbf{Descrizione: }Questa componente si occupa del processo di cambio password, descritto in RF1.
-\\ \\ \uline{\textit{Interfaccia richiesta - Email:}} Viene richiesta all'utente che vuole cambiare password la propria mail.
-\\ \\ \uline{\textit{Interfaccia richiesta - Verifica esistenza email}}: La componente richiede alla componente "Autenticazione" l'esistenza di un profilo utente con la email fornita.
-\\ \\ \uline{\textit{Interfaccia richiesta - Invio Codice 2FA: }} La componente fornisce al Email Server il codice 2 Factor Authentication da inviare all'utente.
-\\ \\ \uline{\textit{Interfaccia richiesta - 2FA: }} Viene richiesto all'utente l'inserimento del codice 2 Factor Authentication appena ricevuto.
-\\ \\ \uline{\textit{Interfaccia richiesta - Nuova password}}: Viene richiesto all'utente l'inserimento della nuova password due volte.
-\\ \\ \uline{\textit{Interfaccia richiesta - Aggiorna password}}: Viene aggiornata la password con quella inserita.
+\textbf{Descrizione}: Questa componente si occupa del processo di cambio password, descritto in RF1.\\ \\ 
+\uline{\textit{Interfaccia richiesta - E-mail}}: 
+Viene richiesta la propria E-Mail all'utente che vuole cambiare password .\\ \\
+\uline{\textit{Interfaccia richiesta - Verifica esistenza email}}: 
+La componente richiede alla componente "Autenticazione" l'esistenza di un profilo utente con la email fornita.\\ \\ 
+\uline{\textit{Interfaccia richiesta - Invio Codice 2FA}}: 
+La componente fornisce al Email Server il codice 2 Factor Authentication da inviare all'utente.\\ \\ 
+\uline{\textit{Interfaccia richiesta - Controllo 2FA}}:
+Viene richiesto all'utente l'inserimento del codice 2 Factor Authentication appena ricevuto.\\ \\ 
+\uline{\textit{Interfaccia richiesta - Nuova password}}: 
+Viene richiesto all'utente l'inserimento della nuova password.\\ \\
+\uline{\textit{Interfaccia richiesta - Aggiorna password}}: 
+La componente richiede alla componente autenticazione l'aggiornamento della password precedente dell'account utente con quella appena inserita.
 
 \subsection*{Registrazione}
-\textbf{Descrizione: } Questa componente si occupa del processo di registrazione, descritto in RF2.
-\\ \\ \uline{\textit{Interfaccia richiesta - Dati registrazione utente: }}Per registrarsi, vengono richiesti all'ospite i seguenti dati:
+\textbf{Descrizione}: Questa componente si occupa del processo di registrazione, descritto in RF2.\\ \\ 
+\uline{\textit{Interfaccia richiesta - Dati registrazione utente}}: 
+Per registrarsi, vengono richiesti all'ospite i seguenti dati:
 \begin{itemize}
 	\item email
 	\item password
 	\item conferma password
 	\item username
-	\item nazionalità
 \end{itemize}
-\uline{\textit{Interfaccia richiesta - Verifica esistenza email: }}La componente richiede alla componente "Autenticazione" l'esistenza di un utente con la mail fornita,
-per decidere se procedere o meno con la registrazione.
-\\ \\ \uline{\textit{Interfaccia richiesta - Invio Codice 2FA: }} La componente fornisce Il codice 2 Factor Authentication al Email Server, da inviare all'ospite che vuole registrarsi.
-\\ \\ \uline{\textit{Interfaccia richiesta - Controllo 2FA: }} La componente richiede all'ospite il codice 2FA appena ricevuto tramite e-mail.
-\\ \\ \uline{\textit{Interfaccia fornita - Nuovo utente}}: Vengono forniti i dati della registrazione dell'utente al componente "Autenticazione", con il ruolo "cliente".
-\\ \\ \uline{\textit{Interfaccia richiesta - Token utente}}: Viene richiesto alla componente "Autenticazione" il token dell'utente appena registrato.
-\\ \\ \uline{\textit{Interfaccia fornita - Token utente}}: Viene fornito all'utente il proprio token.
+\uline{\textit{Interfaccia richiesta - Verifica esistenza email}}: 
+La componente richiede alla componente "Autenticazione" l'esistenza di un utente con la mail fornita,
+per decidere se procedere o meno con la registrazione.\\ \\ 
+\uline{\textit{Interfaccia richiesta - Invio Codice 2FA}}: 
+La componente fornisce il codice 2 Factor Authentication al Email Server, da inviare all'ospite che vuole registrarsi.\\ \\ 
+\uline{\textit{Interfaccia richiesta - Controllo 2FA}}: 
+La componente richiede all'ospite il codice 2FA appena ricevuto tramite e-mail.\\ \\ 
+\uline{\textit{Interfaccia richiesta - Nuovo utente}}: 
+Vengono forniti i dati della registrazione dell'utente al componente "Autenticazione", con il ruolo "cliente".\\ \\ 
+\uline{\textit{Interfaccia richiesta - Token utente}}: 
+Viene richiesto alla componente "Autenticazione" il token dell'utente appena registrato.\\ \\ 
+\uline{\textit{Interfaccia fornita - Token utente}}: 
+Viene fornito all'utente il proprio token.
 
 \iffalse
 \subsection*{Server mail}
@@ -667,29 +692,41 @@ per decidere se procedere o meno con la registrazione.
 La componente fornisce la possibilità di inviare una mail con un codice 2FA all'email di un determinato utente.
 \fi
 \subsection*{Negozio}
-\textbf{Descrizione}: Questa componente si occupa di mostrare  ed interagire con il negozio ad ogni tipo di utente in base al livello di privilegi dello stesso. In particolare permette di ricercare un articolo nel negozio, ordinarlo in ordine alfabetico e permettere di aggiungere un prodotto al carrello.
-\\
-\\
-\uline{\textit{Interfaccia Richiesta - Lista Articoli}}: Il Negozio si aspetta di ricevere la lista degli articoli presenti nel magazzino per poterli mostrare, ossia il nome dell'articolo, una foto e una descrizione. \\ \\
-\uline{\textit{Interfaccia Richiesta - Cerca Articoli}}: Il Negozio può visualizzare la lista degli articoli presenti nel magazzino tali che il nome contiene una stringa di ricerca.\\\\
-\uline{\textit{Interfaccia Richiesta - Aggiungi al Carrello}}: Tramite il negozio si può aggiungere un elemento al carrello prima di poterlo acquistare. \\ \\
-\uline{\textit{Interfaccia Richiesta - Token Utente}}: Viene richiesto all'utente il proprio token identificativo.\\ \\
-\uline{\textit{Interfaccia Richiesta - Verifica Token Utente}}: La componente richiede la verifica del token utente alla componente "Autenticazione".\\\\
+\textbf{Descrizione}: Questa componente si occupa di mostrare  ed interagire con il negozio ad ogni tipo di utente in base al livello di privilegi dello stesso. In particolare permette di ricercare un articolo nel negozio, ordinarlo in ordine alfabetico e permettere di aggiungere un prodotto al carrello.\\\\
+\uline{\textit{Interfaccia Richiesta - Lista Articoli}}: 
+Il Negozio si aspetta di ricevere la lista degli articoli presenti nel magazzino per poterli mostrare, ossia il nome dell'articolo, una foto e una descrizione. \\ \\
+\uline{\textit{Interfaccia Richiesta - Cerca Articoli}}: 
+Il Negozio può visualizzare la lista degli articoli presenti nel magazzino tali che il nome contiene una stringa di ricerca.\\\\
+\uline{\textit{Interfaccia Richiesta - Aggiungi al Carrello}}: 
+Tramite il negozio si può aggiungere un elemento al carrello prima di poterlo acquistare. \\ \\
+\uline{\textit{Interfaccia Richiesta - Token Utente}}: 
+Viene richiesto all'utente il proprio token identificativo.\\ \\
+\uline{\textit{Interfaccia Richiesta - Verifica Token Utente}}: 
+La componente richiede la verifica del token utente alla componente "Autenticazione".\\\\
 
 \subsection*{Carrello}
-
 \textbf{Descrizione}: Questa componente registra l'inserimento e la rimozione degli articoli nel carrello e permette di effettuare l'acquisto di tali articoli. \\ \\
-\uline{\textit{Interfaccia Richiesta - Lista carrello}}: La componente richiede al database gli elementi del carrello di un determinato utente. \\\\
-\uline{\textit{Interfaccia Fornita - Lista carrello}}: La componente fornisce il proprio carrello all'utente che lo richiede.\\\\
-\uline{\textit{Interfaccia Fornita - Aggiungi al Carrello:}} Il carrello permette al Negozio di poter aggiungere articoli e salvarli nel carrello.\\ \\
-\uline{\textit{Interfaccia Richiesta - Aggiungi Articolo}}: Il Carrello si interfaccia con un database per il salvataggio degli articoli nel carrello oltre la sessione.\\ \\
-\uline{\textit{Interfaccia Richiesta - Rimozione Articolo}}: Il Carrello si interfaccia con un database per rimuovere un articolo dal carrello in modo permanente.\\ \\
-\uline{\textit{Interfaccia Fornita - Rimozione Articolo}}: Il Carrello fornisce all'utente la possibilità di rimuovere elementi dal carrello\\\\
-\uline{\textit{Interfaccia Richiesta - Svuota Carrello}}: Il Carrello si interfaccia con un database per svuotare tutti i dati degli articoli presenti nel carrello in modo permanente.\\ \\
-\uline{\textit{Interfaccia Fornita - Svuota Carrello:}}
+\uline{\textit{Interfaccia Richiesta - Lista carrello db}}: 
+La componente richiede al database gli elementi del carrello di un determinato utente. \\\\
+\uline{\textit{Interfaccia Fornita - Lista carrello}}: 
+La componente fornisce il proprio carrello all'utente che lo richiede.\\\\
+\uline{\textit{Interfaccia Richiesta - Aggiungi Articolo db}}:
+ La componente richiede al database di salvare un articolo nel carrello di un determinato utente\\\\ 
+\uline{\textit{Interfaccia Fornita - Aggiungi al Carrello}}: 
+Il carrello permette al Negozio di poter aggiungere articoli e salvarli nel carrello.\\ \\
+%\uline{\textit{Interfaccia Richiesta - Aggiungi Articolo}}: Il Carrello si interfaccia con un database per il salvataggio degli articoli nel carrello oltre la sessione.\\ \\
+\uline{\textit{Interfaccia Richiesta - Rimozione Articolo db}}: 
+Il Carrello si interfaccia con un database per rimuovere un articolo dal carrello in modo permanente.\\ \\
+\uline{\textit{Interfaccia Fornita - Rimozione Articolo}}: 
+Il Carrello fornisce all'utente la possibilità di rimuovere elementi dal carrello\\\\
+\uline{\textit{Interfaccia Richiesta - Svuota Carrello db}}: 
+Il Carrello si interfaccia con un database per svuotare tutti i dati degli articoli presenti nel carrello in modo permanente.\\ \\
+\uline{\textit{Interfaccia Fornita - Svuota Carrello}}:
 Il Carrello fornisce all'utente la possibilità di rimuovere tutti gli articoli dal proprio carrello\\ \\
-\uline{\textit{Interfaccia Richiesta - Token Utente}}: Viene richiesto all'utente il proprio token identificativo\\ \\
-\uline{\textit{Interfaccia Richiesta - Verifica Token Utente}}: La componente richiede la verifica del token utente alla componente "Autenticazione"\\\\
+\uline{\textit{Interfaccia Richiesta - Token Utente}}: 
+Viene richiesto all'utente il proprio token identificativo\\ \\
+\uline{\textit{Interfaccia Richiesta - Verifica Token Utente}}: 
+La componente richiede la verifica del token utente alla componente "Autenticazione"\\\\
 \uline{\textit{Interfaccia Richiesta - Pagamento}}:
 Il Carrello si interfaccia con un sistema esterno per effettuare il pagamento degli articoli salvati nel carrello.\\\\
 \uline{\textit{Interfaccia Fornita - Pagamento}}:
@@ -714,9 +751,10 @@ La componente richiede all'utente le informazioni riguardanti la richiesta di ri
 \end{itemize}
 \uline{\textit{Interfaccia richiesta - Creazione task}}: 
 La componente richiede alla componente "Task" la creazione di una nuova task riparazione con i dettagli inseriti dall'utente.\\\\
-\uline{\textit{Interfaccia fornita - Lista riparazioni}}: 
+
+\uline{\textit{Interfaccia fornita - Lista riparazioni}}: %questa la lasciamo come interfaccia??
 La componente fornisce all'utente la lista delle riparazioni che ha richiesto in precedenza.\\\\
-\uline{\textit{Interfaccia richiesta -Lista task riparazione}}: 
+\uline{\textit{Interfaccia richiesta - Lista task riparazione}}: 
 La componente richiede alla componente "Task" la lista delle riparazioni richieste dall'utente in precedenza.
 
 \subsection*{Assistenza}
@@ -737,7 +775,7 @@ La componente richiede alla componente "Task" la creazione di una nuova task "as
 \subsection*{Feedback}
 \textbf{Descrizione}: Questa componente si occupa di raccogliere i feedback degli utenti.\\ \\
 \uline{\textit{Interfaccia Richiesta - Token utente}}: 
-1Viene richiesto all'utente il proprio token identificativo\\ \\
+Viene richiesto all'utente il proprio token identificativo\\ \\
 \uline{\textit{Interfaccia Richiesta - Verifica token utente}}:
 La componente richiede la verifica del token utente alla componente "Autenticazione".\\ \\
 \uline{\textit{Interfaccia Richiesta - Dati feedback}}:
@@ -754,26 +792,26 @@ La componente richiede alla componente "Task" la creazione di una nuova task "as
 
 \subsection*{Magazzino}
 \textbf{Descrizione: } Questa componente permette il salvataggio e rimozione degli articoli in un database esterno.\\ \\
-\uline{\textit{Interfaccia Fortnita - Aggiungi Articolo}}:
-Il Magazzino permette l'aggiunta di un articolo per essere salvato per un periodo prolungato.\\ \\
+\uline{\textit{Interfaccia Fornita - Aggiungi Articolo}}:
+Il Magazzino permette all'utente di aggiungere un articolo al magazzino  \\ \\%specificando cosa?
 \uline{\textit{Interfaccia Fornita - Rimuovi Articolo}}:
 Il Magazzino permette la rimozione di un articolo dallo stesso.\\ \\
 \uline{\textit{Interfaccia Fornita - Lista Articoli}}:
 Il Magazzino permette ad altre componenti di aver accesso a tutti articoli presenti, inoltre la lista può essere inviata in senso alfabetico crescente o descrescente.\\ \\
 \uline{\textit{interfaccia Fornita - Cerca Articoli}}:
-Il Magazzino permette di ricercare gli articoli che contengono una certa stringa.\\ \\
-\uline{\textit{Interfaccia Richiesta - Aggiungi Elemento}}:
+Il Magazzino permette di ricercare gli articoli la cui descrizione contiene una certa stringa.\\ \\
+\uline{\textit{Interfaccia Richiesta - Aggiungi Elemento db}}:
 Il Magazzino si interfaccia con un database esterno per il salvataggio degli articoli.\\ \\
-\uline{\textit{Interfaccia Richiesta - Rimuovi Elemento}}:
+\uline{\textit{Interfaccia Richiesta - Rimuovi Elemento db}}:
 Il Magazzino si interfaccia con un database esterno per la rimozione permanente di un articolo.\\ \\
-\uline{\textit{Interfaccia Richiesta - Lista Articoli}}:
+\uline{\textit{Interfaccia Richiesta - Lista Articoli db}}:
 Il Magazzino si interfaccia con un database esterno per ottenere una lista degli articoli salvati del database.\\ \\
-\uline{\textit{Interfaccia Richiesta - Cerca element}}:
+\uline{\textit{Interfaccia Richiesta - Cerca elemento db}}:
 Il Magazzino si interfaccia con un database esterno per cercare gli articoli che contengono una stringa nel nome.\\ \\
 \uline{\textit{Interfaccia Richiesta - Token Utente}}:
 Viene richiesto all'utente il proprio token identificativo.\\ \\
 \uline{\textit{Interfaccia Richiesta - Verifica Token Utente}}: 
-La componente richiede la verifica del token utente alla componente "Autenticazione".\\
+La componente richiede la verifica del token utente alla componente "Autenticazione", anche per verificare che abbia il ruolo adeguato.\\
 
 \subsection*{Task}
 
@@ -782,33 +820,33 @@ La componente richiede la verifica del token utente alla componente "Autenticazi
 La componente richiede al dipendente(o manager) il proprio token utente \\ \\
 \uline{\textit{Interfaccia Richiesta - Verifica token utente}}: 
 La componente richiede la verifica del token utente alla componente "Autenticazione", per verificare se ha il ruolo adeguato per poter accedere. \\ \\ 
-\uline{\textit{Interfaccia Richiesta - work-tag dipendente}}: 
+\uline{\textit{Interfaccia Richiesta - work-tag dipendente db}}: 
 La componente richiede al database le work-tag di un determinato dipendente. \\ \\
 \uline{\textit{Interfaccia Fornita - work-tag dipendente}}: 
 la componente fornisce le work-tag di un dipendente alle componenti che lo richiedono.\\ \\
 \uline{\textit{Interfaccia Fornita - Aggiunta work-tag dipendente}}: 
 La componente fornisce la possibilità di aggiungere work-tag per un determinato dipendente alle componenti che lo richiedono.\\ \\
-\uline{\textit{Interfaccia Richiesta - Aggiunta work-tag dipendente}}: 
+\uline{\textit{Interfaccia Richiesta - Aggiunta work-tag dipendente db}}: 
 La componente richiede al database di inserire una work-tag per un determinato dipendente\\ \\ 
 \uline{\textit{Interfaccia Fornita - Rimozione work-tag dipendente}}: 
 La componente fornisce la possibilità di rimuovere work-tag per un determinato dipendente alle componenti che lo richiedono.\\ \\ 
-\uline{\textit{Interfaccia Richiesta - Rimozione work-tag dipendente}}:  
+\uline{\textit{Interfaccia Richiesta - Rimozione work-tag dipendente db}}:  
 La componente richiede al database di rimuovere una work-tag per un determinato dipendente. \\ \\ 
-\uline{\textit{Interfaccia Richiesta - Creazione task}}:
+\uline{\textit{Interfaccia Richiesta - Creazione task db}}:
 La componente richiede al database di creare una task. \\\\
 \uline{\textit{Interfaccia Fornita - Creazione task}}: 
 La componente fornisce la possibilità di creare una task da parte delle componenti che lo richiedono. \\\\
-\uline{\textit{Interfaccia richiesta - Lista task in lavorazione}}: 
+\uline{\textit{Interfaccia richiesta - Lista task in lavorazione db}}: 
 La componente richiede al database la lista delle task in lavorazione, filtrata in base a vari filtri.\\\\
 \uline{\textit{Interfaccia fornita - Lista task in lavorazione}}: 
 La componente permette al dipendente di vedere  la lista delle task in lavorazione.\\\\
-\uline{\textit{Interfaccia richiesta - Lista task in pausa/da eseguire}}: 
+\uline{\textit{Interfaccia richiesta - Lista task in pausa/da eseguire db}}: 
 La componente richiede al database la lista delle task in pausa/da eseguire, filtrata in base a vari filtri.\\\\
 \uline{\textit{Interfaccia fornita - Lista task in pausa/da eseguire}}: 
 La componente permette al dipendente di vedere la lista delle task che può eseguire.\\\\
 \uline{\textit{Interfaccia fornita - Scelta task}}: 
 La componente permette al dipendente di scegliere una task da eseguire.\\\\
-\uline{\textit{Interfaccia richiesta - modifica stato task}}:
+\uline{\textit{Interfaccia richiesta - modifica stato task db}}:
  La componente richiede al database di modificare lo stato di una task.\\\\
 \uline{\textit{Interfaccia fornita - modifica stato task}}: 
 La componente permette al dipendente di modificare lo stato della task scelta.\\\\
@@ -826,7 +864,7 @@ La componente permette alla componente "Gestione Dipendenti" di richiedere la li
 La componente richiede al manager il proprio token utente. \\ \\
 \uline{\textit{Interfaccia Richiesta - Verifica token utente}}: 
 La componente richiede la verifica del token utente alla componente "Autenticazione", per verificare se ha il ruolo adeguato per poter accedere. \\ \\ 
-\uline{\textit{Interfaccia Richiesta - Lista dipendenti}}:
+\uline{\textit{Interfaccia Richiesta - Lista dipendenti db}}:
 La componente richiede al database la lista dei dipendenti e le corrispettive informazioni anagrafiche.\\\\
 \uline{\textit{Interfaccia Fornita - Lista dipendenti}}:
 La componente fornisce al manager la lista dei dipendenti.\\\\
@@ -834,8 +872,10 @@ La componente fornisce al manager la lista dei dipendenti.\\\\
 La componente fornisce al manager le informazioni di un determinato dipendente.\\\\
 \uline{\textit{Interfaccia Fornita - Rimuovere profilo}}:
 La componente fornisce al manager la possibilità di rimuovere un profilo dipendente.\\\\
-\uline{\textit{Interfaccia Richiesta - Rimuovere profilo}}:
+\uline{\textit{Interfaccia Richiesta - Rimuovere profilo db}}:
 La componente richiede al database la rimozione di un profilo dipendente dal database.\\\\
+\uline{\textit{Interfaccia Richiesta - Elimina utente}}:
+La componente richiede alla componente "Autenticazione" l'eliminazione dei dati di autenticazione associati a un determinato dipendente. 
 \uline{\textit{Interfaccia Fornita - Aggiungere profilo}}:
 La componente fornisce al manager la possibilità di aggiungere un nuovo profilo dipendente inserendo i seguenti parametri:
 \begin{itemize}
@@ -848,9 +888,21 @@ La componente fornisce al manager la possibilità di aggiungere un nuovo profilo
 	\item foto(opzionale)
 \end{itemize}
 \uline{\textit{Interfaccia Richiesta - Nuovo utente}}: 
-La componente richiede alla componente "Registrazione" la creazione di un nuovo utente con il ruolo "dipendente".\\\\
-\uline{\textit{Interfaccia Richiesta - Aggiungere profilo}}:
-La componente richiede al database l'aggiunta di un nuovo profilo dipendente.\\\\
+La componente richiede alla componente "Autenticazione" la creazione di un nuovo utente con i seguenti campi
+\begin{itemize}
+	\item username: nome del dipendente fornito dal manager
+	\item email: email del dipendente fornita dal manager
+	\item password: password del dipendente fornita dal manager
+\end{itemize}
+\uline{\textit{Interfaccia Richiesta - Aggiungere profilo db}}:
+La componente richiede al database l'aggiunta di un nuovo profilo dipendente con i seguenti campi:
+\begin{itemize}
+	\item nome dipendente
+	\item cognome dipendente
+	\item data di nascita
+	\item data di assunzione
+	\item foto(opzionale)
+\end{itemize}.\\\\
 \uline{\textit{Interfaccia Richiesta -Aggiunta work-tag dipendente}}:
 La componente richiede alla componente "Task" l'aggiunta di una work-tag al profilo di un determinato dipendente.\\\\
 \uline{\textit{Interfaccia Fornita - Aggiunta work-tag dipendente}}:
