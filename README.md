@@ -1,59 +1,26 @@
-# Documentation-Source
-All latex source files are located here
+# Fix Mi
 
-# D1 TODO
-- [x] Scrivere i requisiti non funzionali (Tutti)
-- [x] Aggiungere requisiti non funzionali, guardando le slides del 05/10/23 (Riginel)
-- [x] Copiare RNF su latex (Giovanni)
-- [ ] Sviluppare la Front-End
-  - [x] Sviluppare la schermata Login
-  - [ ] Sviluppare la schermata Negozio
-  - [x] Sviluppare la schermata Magazzino
-  - [x] Sviluppare la schermata Riparazione
-  - [ ] Sviluppare la schermata Tasks
-  - [ ] Sviluppare la schermata Gestione dipendenti
-- [x] Rivedere scrittura Back-End (Riginel)
-- [x] Aggiungere RF Magazzino (Giovanni)
-- [x] Togliere la Contabilità (Giovanni)
-- [x] Rivedere le descrizioni delle task, spostare le definizioni delle task in una parte appropriata, cambiare RF9.1 (Giovanni)
-- [x] Aggiungere autenticazione e database esterni, aggiornare i diagrammi del documento (Giovanni)
-- [ ] Modificare i database mettendone uno unico (Giovanni)
-- [ ] Rileggere il D1 e aggiungere un glossario
+L'organizzazione "Fix Mi" formata dai 3 membri:
+- Giovanni Santini
+- Riginel Ungureanu
+- Valerio Asaro
+contiene la documentazione necessaria per lo sviluppo di un sito web di nome "Fix Mi", un applicativo che funge da
+supporto per il commercio e la riparazione di articoli elettronici forniti da una azienda del settore elettronico-informatico.
 
-# D2 TODO
-- [x] Stabilire i ruoli e compiti
-- [x] Definire gli attori
-- [x] Requisiti Funzionali
-- [x] Requisiti non funzionali
-- [x] Utenti e Sistemi Esterni: aspettare di chiedere al tutorato
-- [ ] Diagramma di Contesto: ogni microservizio, da fare insieme
-- [ ] Definizione dei Componenti
-- [x] Diagramma dei Componenti, prima per ogni microservizio, poi quelo generale, da fare insieme
+In particolare:
 
-Entro il 11 novembre:
-- [ ] Ognuno per i propri requisiti su trello, deve aggiungere una descrizione a parole e/o un secondo grafico, oltre a UCD.
-- [x] Scegliere i RNF su trello e scrivere la misura eventualmente modificando la descrizione.
-- [x] Fare RF Task dopo aver chiesto al tutorato
-    - [ ] Scrivere descrizione task
-- [x] Ognuno fa una lista delle interfacce dei propri RF di Trello
-- [x] Valerio farà le descrizioni degli utenti e sistemi esterni, riguarderà i grafici dei RF
-  - [x] Utenti e sistemi esterni
-  - [x] UCD RF1
-  - [x] UCD RF2
-  - [x] UCD RF3
-  - [x] UCD RF4
-  - [x] UCD RF5
-  - [x] UCD RF6
-  - [x] UCD RF7
-  - [x] UCD RF8
-  - [x] UCD RF9
-  - [x] UCD RF10
-  - [x] UCD RF11
-  - [x] Ridefinire il concetto di aggiornamento password nel D1 e nel D2 (RF1)
-  - [x] Riscrivere il capitolo "Task" nel suo apposito spazio all'interno di RF9
+- Nel "first-deliverable" vengono fissati gli obiettivi del progetto in linguaggio naturale, andando successivamente
+a fissare i requisiti funzionali ed i requsiti non funzionali scaturiti dagli obiettivi;
 
+- Nel "second-deliverable" i requisiti vengono ulterioremente approfonditi, anche attraverso grafici e diagrammi di tipo UML (Unified Modelling Language);
 
-- [x] Aggiornare i nomi degli attori dei grafici UCD (Giovanni)
-- [x] Riformattare le definizioni dei componenti (Giovanni)
-- [x] Aggiungere introduzioni ad ogni sezione (Giovanni)
-- [ ] Scrivere la definizione delle componenti
+# Link Utili
+
+- Link per l'organizzazione "Fix Mi".
+https://github.com/IS-FixMi/Documentation-Source
+
+- Link per l'università di Trento.
+https://www.unitn.it
+
+- Link per la bacheca "Fix Mi" di Trello.
+https://trello.com/b/rqN0823V/is
