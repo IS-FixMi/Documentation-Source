@@ -58,6 +58,9 @@ Questo file contiene i principali aggiornamenti introdotti nella cartella "secon
 16 Novembre 2023
 (Valerio) Aggiunti i diagrammi di contesto all'interno del documento. (3 ore)
 
+16 Novembre 2023
+(Riginel) Modificati i diagrammi di contesto, aggiunte tutte le componenti dentro "Analisi delle Componenti", riformattate e modificate le interfacce nella descrizione delle componenti, modificati i diagrammi delle componenti (6 ore)
+
 # TO-DO 
 - [x] Stabilire i ruoli e compiti.
 - [x] Requisiti Funzionali.
