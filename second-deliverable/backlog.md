@@ -55,7 +55,10 @@ Questo file contiene i principali aggiornamenti introdotti nella cartella "secon
 15 Novembre 2023
 (Valerio) Creazione del backlog dedicato al second deliverable. (30 minuti)
 
-# TO-DO
+16 Novembre 2023
+(Valerio) Aggiunti i diagrammi di contesto all'interno del documento. (3 ore)
+
+# TO-DO 
 - [x] Stabilire i ruoli e compiti.
 - [x] Requisiti Funzionali.
 - [x] Requisiti non funzionali.
@@ -74,16 +77,21 @@ Questo file contiene i principali aggiornamenti introdotti nella cartella "secon
   - [x] UCD RF11.
   
 - [x] Aggiungere una descrizione o un ulteriore grafico ad ogni requisito funzionale.
-- [ ] Diagramma di contesto
+- [x] Diagrammi di contesto (16 Novembre 2023)
     - [x] Diagramma di contesto del microservizio "Negozio".
     - [x] Diagramma di contesto del microservizio "Magazzino".
     - [x] Diagramma di contesto del microservizio "Autenticazione".
-    - [ ] Diagramma di contesto del microservizio "Gestione Dipendenti".
-    - [ ] Diagramma di contesto del microservizio "Feedback".
-    - [ ] Diagramma di contesto del microservizio "Assistenza".
+    - [x] Diagramma di contesto del microservizio "Gestione Dipendenti".
+    - [x] Diagramma di contesto del microservizio "Feedback".
+    - [x] Diagramma di contesto del microservizio "Assistenza".
     - [x] Diagramma di contesto del microservizio "Task".
-    - [ ] Diagramma di contesto dell'applicazione "Fix Mi".
-    - [ ] Aggiungere tutti i diagrammi nel documento e ricontrollarne la correttezza con il resto del gruppo.
+    - [x] Diagramma di contesto dell'applicazione "Fix Mi".
+    - [x] Aggiungere tutti i diagrammi nel documento.
+    - [ ] Ricontrollare la correttezza dei diagrammi con il resto del gruppo.
 
 # Notes
+
+Il diagramma dei componenti ha bisogno di essere rivisionato ed aggiornato.
+Inoltre non sono molto sicuro che il diagramma di contesto di Fix Mi sia corretto, nei prossimi giorni incontriamoci per correggerlo insieme.
+- Valerio
 

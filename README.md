@@ -1,11 +1,12 @@
 # Fix Mi
 
 L'organizzazione "Fix Mi" formata dai 3 membri:
+
 - Giovanni Santini
 - Riginel Ungureanu
 - Valerio Asaro
-contiene la documentazione necessaria per lo sviluppo di un sito web di nome "Fix Mi", un applicativo che funge da
-supporto per il commercio e la riparazione di articoli elettronici forniti da una azienda del settore elettronico-informatico.
+
+contiene la documentazione necessaria per lo sviluppo di un sito web di nome "Fix Mi", un applicativo che si pone l'obiettivo di fungere da supporto per il commercio e la riparazione di articoli elettronici di una azienda nel settore elettronico-informatico.
 
 In particolare:
 
@@ -17,10 +18,13 @@ a fissare i requisiti funzionali ed i requsiti non funzionali scaturiti dagli ob
 # Link Utili
 
 - Link per l'organizzazione "Fix Mi".
+
 https://github.com/IS-FixMi/Documentation-Source
 
 - Link per l'università di Trento.
+
 https://www.unitn.it
 
 - Link per la bacheca "Fix Mi" di Trello.
+
 https://trello.com/b/rqN0823V/is
