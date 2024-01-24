@@ -37,6 +37,9 @@ Questo file contiene i principali aggiornamenti introdotti nella cartella "first
 
 15 Novembre 2023
 (Valerio) Creazione del backlog dedicato al first deliverable e minori modifiche al documento. (30 minuti)
+
+24 Gennaio 2023
+(Valerio) Inserito il glossario, aggiornato il backlog. (30 minuti)
  
 # TO-DO
 
@@ -47,7 +50,9 @@ Questo file contiene i principali aggiornamenti introdotti nella cartella "first
 - [ ] Inserire le ore dedicate alle varie modifiche contenute nel paragrafo "Timestamps".
 - [ ] Inserire ulteriori TO-DO mancanti.
 - [ ] Inserire gli screenshots nella sezione "Front-end".
-- [ ] Aggiungere il glossario.
+- [X] Aggiungere il glossario. (24 Gennaio 2023)
+- [ ] Inserire le user-stories.
+- [ ] Inserire RF12 (Creazione ed eliminazione Task).
 
 # Notes
 
