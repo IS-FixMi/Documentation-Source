@@ -202,29 +202,33 @@ In vista di questo, la seguente sezione verrà divisa in base al tipo di utente 
 \subsection{Utente}
 
 \subsection*{RF1 login}
-Il sito deve presentare una pagina di login:
+Il sito deve presentare una pagina di login.
+
 \begin{enumerate}
-	\item La pagina richiede due campi “e-mail” e “password” e presenta un bottone "login".
+	\item La pagina deve mostrare due campi “e-mail” e “password” e un bottone "login".
 	
-	\item L'utente verrà autenticato se e solo se i campi "e-mail" e "password" inseriti corrispondono entrambi ad un profilo già registrato nel sistema.
+	\item La procedura di accesso deve andare a buon fine se e solo se i campi "e-mail" e "password" inseriti corrispondono entrambi ad un profilo già registrato nel sistema.
 	
-	\item Nel caso il login fallisse, ossia la e-mail o la password non corrispondessero ad un utente registrato, l’applicazione mostrerà una nuova pagina di login.
+	\item L'applicazione deve mostrare una nuova pagina di login ed un messaggio di errore qualora il login fallisse.
 	
-	\item L’utente deve essere in grado di raggiungere la pagina di registrazione specificata in RF2 in qualsiasi momento dalla pagina di login.
-	
+	\item L’utente deve essere in grado di raggiungere la pagina di registrazione specificata in RF2 dalla pagina di login.
 \end{enumerate}
 
+
+\textbf{User Story:}
+Come Utente, volgio poter effettuare il login nel mio profilo per accedere alle funzionalità dedicate.
+
 	\subsubsection{RF1.2 2FA}
-	La pagina di login deve implementare una tecnologia 2FA (Two Factor Authentication) secondo le seguinti modalità:
+	La pagina deve implementare una tecnologia 2FA (Two Factor Authentication) secondo le seguinti modalità:
 	
 	\begin{enumerate}
-	\item L’utente dovrà inserire un codice OTP (One-Time Password), generato sul momento e ottenuto attraverso e-mail, prima di completare ogni accesso all’applicazione. 
+	\item L'applicazione deve generare un codice OTP (One-Time Password) sul momento e inviarlo all'utente attraverso la e-mail inserita.
 	
-	\item 	L’autenticazione non potrà procedere finché l’utente non avrà inserito il corretto codice OTP.
+	\item 	La pagina deve chiedere l'inserimento del codice appena generato per continuare con successo.
 	
-	\item Un codice OTP non sarà più valido dopo minuti 5 dopo la sua generazione.
+	\item Un codice OTP non deve essere più valido dopo minuti 5 dalla la sua generazione.
 	
-	\item L’utente avrà sempre la possibilità di ricevere un nuovo OTP tramite e-mail, il codice precedente non sarà più valido per effettuare l’autenticazione.
+	\item L'applicazione deve dare la possibilità di generare un nuovo codice OTP, sovrascrivendo il codice precedente.
 
 	\end{enumerate}
 	
@@ -232,42 +236,43 @@ Il sito deve presentare una pagina di login:
 	Il sito deve offrire la possibilità all'utente di cambiare password nel caso avesse già un accout:
 	\begin{enumerate}
 			
-	\item Il sistema chiede all'utente di inserire l'email associata al profilo di cui si vuole cambiare password, dopodichè verrà inviato un codice 2FA a suddetta e-mail. Inserito il codice corretto il sistema permetterà al cliente di inserire la nuova password.
-
+	\item Il sistema deve chiedere il campo "e-mail" associata al profilo di cui si vuole cambiare la password.
+		\item L'applicazione deve implementare 2FA come specificato in RF1.2
+		
 		\item La nuova password dovrà essere digitata due volte per ridurre la probabilità di errori di battitura.
 		
 		\item La nuova password deve rispettare i vincoli specificati in RNF2.
-		
-		\item Qualora non vi fosse alcun profilo associato alla la mail inserita, il processo fallirà e verrà caricata la pagina di login.
+		\item La procedura deve fallire qualora non vi esistesse alcun profilo associato alla e-mail inserita nell'ononimo campo.
+
 	\end{enumerate}
 	
 	\subsubsection{RF1.4 Log Out}
 	
-	Una volta autenticato, l'applicazione deve dare la possibilità al cliente / dipendenti / manager di uscire dal proprio profilo.
+	L'applicazione deve dare la possibilità al cliente / dipendenti / manager di uscire dal proprio profilo qualora fosse autenticato.
 
 \subsection*{RF2 Registrazione}
 Il sito deve dare la possibilità ad un utente di registrarsi:
 \begin{enumerate}
-	\item La pagina presenta i campi "e-mail", "password" (due volte), "nome" e "nazionalità". 
+	\item La pagina deve rpresentare i campi "e-mail", "password" (due volte), "nome" e "nazionalità". 
 	\item La password deve essere conforme come specificato in RNF2.
 \end{enumerate}
 
 \subsubsection*{RF2.1 Verifica E-mail}
-Per terminare la registrazione con successo, l'applicazione deve verificare la mail dell'utente
+L'applicazione deve verificare la mail dell'utente per terminare la registrazione con successo:
 
 \begin{enumerate}
 	\item L'applicazione deve inviare un codice di 6 cifre, generato randomicamente sul momento, alla e-mail specificata dall’utente e mostrare un campo "inserisci codice".
 		
-	\item L'applicazione deve dare la possibilità all’utente di inviare un nuovo codice di verifica del profilo. Il codice precedente non sarà più valido per completare la registrazione.
+	\item L'applicazione deve dare la possibilità all’utente di inviare un nuovo codice di verifica del profilo. Il codice precedente non deve essere più valido per completare la registrazione.
 		
 \end{enumerate}
 
 
 \subsubsection*{RF2.2 Terminazione Registrazione}
 \begin{enumerate}
-	\item Qualora il codice inserito nel campo "inserisci codice" corrispondesse a quello inviato tramite e-mail, e i campi "e-mail" e "password" fossero validi, la registrazione terminerà con successo e l'applicazione caricherà automaticamente la pagina di login (RF1).
-	\item Se una delle condizioni del punto precedente non venisse soddisfatta, la registrazione non proseguirà e la pagina permetterà di effettuare modifiche ai dati inseriti nei campi
-	\item Il livello di permessi del nuovo profilo successivamente alla registrazione è di tipo Cliente.
+	\item La registrazione deve terminare con successo, caricando automaticamente la pagina di login (RF1), qualora il codice inserito nel campo "inserisci codice" corrispondesse a quello inviato tramite e-mail, e i campi "e-mail" e "password" fossero validi.
+	\item Se una delle condizioni del punto precedente non venisse soddisfatta, la registrazione non deve proseguire e la pagina deve permettere di effettuare modifiche ai dati inseriti nei campi.
+	\item Il livello di permessi del nuovo profilo successivamente alla registrazione deve essere di tipo Cliente.
 	\item La registrazione non deve terminare con successo se un utente tenta di registrarsi con una e-mail a cui è associato un profilo esistente.
 
 \end{enumerate}
@@ -340,9 +345,9 @@ Il sito deve offrire al cliente la possibilità di inviare, compilando un apposi
 \begin{enumerate}
 
 
-	\item Il documento richiede i campi "nome", "cognome", "e-mail", "numero di telefono", "descrizione del problema" e, se necessario, "foto". Una volta compilato il documento potrà essere spedito attraverso un apposito bottone etichettato "Invia".
+	\item Il documento deve richiedere i campi "nome", "cognome", "e-mail", "numero di telefono", "descrizione del problema" e opzionalmente "foto". Una volta compilato, il documento deve poter essere spedito attraverso un apposito bottone etichettato "Invia".
 	
-	\item Successivamente all’invio della richiesta da parte del cliente, l’applicazione deve generare una task di tipo “riparazione”. Il sistema di task è specificato in RF9
+	\item L’applicazione deve generare una task di tipo “riparazione” successivamente all’invio della richiesta da parte del cliente (il sistema di task è specificato in RF9).
 	
 	\item Qualora il cliente abbia inviato una riparazione, il sito deve mostrare al cliente lo stato della propria riparazione in un'apposita pagina "stato riparazioni", interfacciandosi con il sistema di task specificato in RF9. In caso non vi siano riparazioni, la pagina deve mostrare la scritta "Nessuna riparazione registrata".
 	
@@ -352,9 +357,9 @@ Il sito deve offrire al cliente la possibilità di inviare, compilando un apposi
 Il sito deve permettere al cliente di richiedere assistenza e comunicare con l'azienda attraverso un form:
 
 \begin{enumerate}
-	\item Il form ha i campi "e-mail", "descrizione richiesta" e un bottone "Invia".
+	\item Il form hdeve presentare i campi "e-mail", "descrizione richiesta" e un bottone "Invia".
 	
-	\item Successivamente all’invio della richiesta di assistenza da parte del cliente, l’applicazione deve generare una task di tipo “assistenza”. Il sistema di task è specificato in RF9.
+	\item L’applicazione deve generare una task di tipo “assistenza” successivamente all’invio della richiesta di assistenza da parte del cliente. Il sistema di task è specificato in RF9.
 	
 	
 \end{enumerate}
@@ -362,7 +367,7 @@ Il sito deve permettere al cliente di richiedere assistenza e comunicare con l'a
 \subsection*{RF8 Feedback}
 Il sito deve dare la possibilità al cliente di inviare anonimamente del feedback attraverso una pagina dedicata.
 \begin{enumerate}
-	\item La pagina contiene i campi "disponibilità azienda", "velocità riparazione", "soddisfazione riparazione", "soddisfazione sito web", "idee per migliorare" e un bottone "Invia".
+	\item La pagina deve contenere i campi "disponibilità azienda", "velocità riparazione", "soddisfazione riparazione", "soddisfazione sito web", "idee per migliorare" e un bottone "Invia".
 
 	\item Il sito deve creare una task assistenza con i contenuti dei campi inseriti dall'utente.
 
