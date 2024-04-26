@@ -1,0 +1,37 @@
+<mxfile host="Electron" modified="2024-04-26T13:33:27.339Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="qeFPF96i3TAwfXY9O6SV" version="22.0.3" type="device">
+  <diagram name="Page-1" id="PeN_2NeWz4dRsfyF2hrV">
+    <mxGraphModel dx="250" dy="-1391" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jZ5sBx8XdXX3JLAgvpTe-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endSize=15;startSize=24;startArrow=diamondThin;startFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1427.46" y="3203.63" as="sourcePoint" />
+            <mxPoint x="1427.46" y="3101.63" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZ5sBx8XdXX3JLAgvpTe-2" value="Composizione" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="3061.63" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jZ5sBx8XdXX3JLAgvpTe-3" value="ISA" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1499" y="3061.63" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jZ5sBx8XdXX3JLAgvpTe-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endSize=15;startSize=24;startArrow=none;startFill=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1528.23" y="3203.63" as="sourcePoint" />
+            <mxPoint x="1528.23" y="3101.63" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZ5sBx8XdXX3JLAgvpTe-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endSize=15;startSize=24;startArrow=diamondThin;startFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1336.46" y="3203.63" as="sourcePoint" />
+            <mxPoint x="1336.46" y="3101.63" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZ5sBx8XdXX3JLAgvpTe-6" value="Aggregazione" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1309" y="3061.63" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

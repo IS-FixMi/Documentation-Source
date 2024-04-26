@@ -121,13 +121,23 @@
 In questa sezione dobbiamo partire dal diagramma dei componenti, dove "ogni componente diventa una classe"
 Se ci vengono delle classi troppo grandi o con dati dirondanti vuol dire che dobbiamo splittarle in classi più piccole.
 
-
-\section{Enumerazioni}
+\section{Definizione Simboli}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_definizioni.png}
+	Diagramma delle classi per i simboli 
+\end{figure}
+Definiamo i seguenti simboli riguardanti la relazione tra piu classi:
+\begin{itemize}
+	\item ISA: vi è un rapporto di ereditarietà tra due classi
+	\item Composizione: Stabilisce una relazione per cui una classe è parte di un'altra classe
+	\item Aggregazione: Stabilisce una relazione per cui una classe possiede un'altra classe 
+\end{itemize}
+\section{Tipi di dato}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_Enumi.png}
-	Diagramma delle classi per le Enumerazioni
+	Diagramma delle classi per i tipi di dato
 \end{figure}
-Allo scopo di definire dei tipi di dato chiari e comprensibili, sono state aggiunte le Enumerazioni di cui sotto:
+Allo scopo di definire dei tipi di dato chiari e comprensibili, sono state aggiunte le classi ed enumerazioni di cui sotto:
 \subsection*{Image}
 L'Enumerazione Image rappresenta i diversi formati di immagine utilizzati all'interno dell'applicazione.
 \subsection*{PermissionLevel}
@@ -143,7 +153,7 @@ L'Enumerazione Payment Method rappresenta le piattaforme di pagamento utilizzabi
 \subsection*{TaskStatus}
 L'Enumerazione TaskStatus rappresenta lo stato di una determinata task.
 \subsection*{Date}
-L'Enumerazione Date rappresenta una data
+La classse Date rappresenta una data
 \subsection*{Language}
 L'Enumerazione Language rappresenta una lingua supportata dall'applicazione
 
@@ -308,7 +318,7 @@ Date le seguenti componenti:
 	\item "Cambio Password"
 \end{itemize}
 seguendo ciò che è stato descritto negli RF "1" e "2" sono state individuate le classi e relativi metodi e attributi di cui sotto:
-\subsection{Descrizione}
+\subsection*{Descrizione}
 La classe "Autenticazione" è un singleton che rappresenta il microservizio avente lo stesso nome. 
 Questa classe gestisce i dati di autenticazione dei profili quali e-mail, password e token. 
 La classe contiene una HashMap che associa a ogni profilo un Token identificativo per la sessione.
