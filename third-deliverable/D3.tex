@@ -87,7 +87,6 @@
 	
 	\section{Scopo del documento}
 	
-	Scadenza: 27 Novembre
 	
 	
 	
@@ -114,12 +113,36 @@
 		\end{tabular}
 	\end{center}
 	
-	
+
+
+\iffalse
+\section{Nome}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{URL}
+	Nome dell'immagine
+\end{figure}
+\subsection*{Descrizione}
+Descrivi generalmente cosa fa l'immagine mostrata
+
+Per ogni classe fai una
+\subsubsection{Nome}
+
+in cui spieghi la classe dal punto di vista dell'alto livello, e i metodi (solo quelli non ovvi) mostrati.
+In seguito descrivi come interagisce la classe analizzata con le altre.
+
+
+\fi
 	
 \chapter{Diagramma delle Classi}
 
-In questa sezione dobbiamo partire dal diagramma dei componenti, dove "ogni componente diventa una classe"
-Se ci vengono delle classi troppo grandi o con dati dirondanti vuol dire che dobbiamo splittarle in classi più piccole.
+
+
+
+
+
+
+
+
 
 \section{Definizione Simboli}
 \begin{figure}[H]
@@ -430,6 +453,354 @@ Sono stati individuati i seguenti metodi:
 		\item questo metodo permette a un utente di svolgere il login nel proprio profilo, fornendo l'email e la password. restituisce true se l'operazione è andata a buon fine, false altrimenti
 	\end{itemize}
 \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\section{Task}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_task.png}
+	Diagramma delle classi per la componente "Task"
+\end{figure}
+Data la componente "Task", seguendo ciò che è stato descritto nel Requisito Funzionale numero "9" e definita precedentemente nel rispettivo diagramma, sono state individuate le classi e relativi metodi e attributi di cui sotto:
+\subsection*{Classe Task}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_task1.png}
+	Diagramma delle classi per la componente "Task", 1
+\end{figure}
+\subsection*{Descrizione}
+La classe "Task" definisce, come descritto dal Requisito Funzionale numero "9.1", l'oggetto "Task", da cui "TaskNegozio", "TaskMagazzino" e "TaskSupport" ereditano le proprietà. Le variabili di tipo "Task" vengono poi utilizzate dalla classe "Microservizio Task".
+
+\subsection*{TaskRiparazione}
+Eredita dalla classe "Task", si specializza nella gestione delle Task per la Riparazione. Dato il Requisito Funzionale 9.1, sono stati individuati i seguenti metodi:
+
+\begin{itemize}
+\item private nomeRichiedente: String
+\begin{itemize}
+	\item Una stringa contenente un nome.
+\end{itemize}
+\item private cognomeRichiedente: String
+\begin{itemize}
+	\item Una stringa contenente un cognome.
+\end{itemize}
+\item private emailRichiedente: String
+\begin{itemize}
+	\item Una stringa contenente un indirizzo email.
+\end{itemize}
+\item private image: Image[]
+\begin{itemize}
+	\item Contiene un gruppo di immagini.
+\end{itemize}
+\item private phoneNumber: String
+\begin{itemize}
+	\item Una stringa contenente un numero di telefono.
+\end{itemize}
+\item public getNomeRichiedente(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente il nome del richiedente.
+\end{itemize}
+\item public getCognomeRichiedente(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente il cognome del richiedente.
+\end{itemize}
+\item public getImages(): Image[]
+\begin{itemize}
+	\item Ritorna una stringa contenente le immagini della richiesta di riparazione.
+\end{itemize}
+\item public getEmail(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente l'email del richiedente.
+\end{itemize}
+\item public getPhoneNumber(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente il numero di telefono del richiedente.
+\end{itemize}
+\item private setNomeRichiedente(nome: String): bool
+\begin{itemize}
+	\item Imposta il nome del richiedente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setCognomeRichiedente(cognome: String): bool
+\begin{itemize}
+	\item Imposta il cognome del richiedente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setImages(images: Image[]): bool
+\begin{itemize}
+	\item Imposta le immagini per la richiesta di riparazione, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setEmail(email: String): bool
+\begin{itemize}
+	\item Imposta l'email del richiedente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setPhoneNumber(phoneNumber: String): bool
+\begin{itemize}
+	\item Imposta il numero di telefono del richiedente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\end{itemize}
+
+
+
+\subsection*{TaskAssistenza}
+Eredita dalla classe "Task", si specializza nella gestione delle Task per la Assistenza. Dato il Requisito Funzionale 9.1, sono stati individuati i seguenti metodi:
+\begin{itemize}
+\item private emailRichiedente: String
+\begin{itemize}
+	\item Una stringa contenente un indirizzo email.
+\end{itemize}
+\item public getEmailRichiedente(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente l'email del richiedente.
+\end{itemize}
+\item private  setEmailRichiedente(email: String): bool
+\begin{itemize}
+	\item Imposta l'indirizzo email del richiedente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\end{itemize}
+
+
+\subsection*{TaskFeedback}
+Eredita dalla classe "Task", si specializza nella gestione delle Task per il Feedback. Dato il Requisito Funzionale 9.1, sono stati individuati i seguenti metodi:
+\begin{itemize}
+
+\item private ideePerMigliorare: String
+\begin{itemize}
+	\item Una stringa contenente le idee per migliorare.
+\end{itemize}
+\item private disponibilitàAzienda: String
+\begin{itemize}
+	\item Una stringa contenente la disponibilità dell'azienda.
+\end{itemize}
+\item private velocitàRiparazione: String
+\begin{itemize}
+	\item Una stringa contenente la velocità della riparazione.
+\end{itemize}
+\item private soddisfazioneRiparazione: String
+\begin{itemize}
+	\item Una stringa contenente la soddisfazione della riparazione.
+\end{itemize}
+\item private soddisfazioneSitoWeb: String
+\begin{itemize}
+	\item Una stringa contenente la soddisfazione del sito Web.
+\end{itemize}
+
+\item public getIdeePerMigliorare(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente le idee per migliorare.
+\end{itemize}
+\item public getDisponibilitàAzienda(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente la disponibilità dell'azienda.
+\end{itemize}
+\item public getVelocitàRiparazione(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente la velocità dalla riparazione.
+\end{itemize}
+\item public getSoddisfazioneRiparazione(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente la soddisfazione della riparazione.
+\end{itemize}
+\item public getEmail(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente la soddisfazione del sito web.
+\end{itemize}
+\item private setIdeePerMigliorare(idea: String): bool
+\begin{itemize}
+	\item Imposta una stringa contenente le idee per migliorare il sito, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setDisponibilitàAzienda(disponibilità: String): bool
+\begin{itemize}
+	\item \item Imposta una stringa contenente le disponibilità dell'azienda, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setVelocitàRiparazione(velocità: String): bool
+\begin{itemize}
+	\item Imposta una stringa contenente la velocità della riparazione, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setSoddisfazioneRiparazione(soddisfazione: String): bool
+\begin{itemize}
+	\item Imposta una stringa contenente la soddisfazione della riparazione, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setSoddisfazioneSitoWeb(soddisfazione: String): bool
+\begin{itemize}
+	\item Imposta una stringa contenente la soddisfazione del sito Web, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\end{itemize}
+
+
+
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1.2\textwidth]{images/Diagramma_delle_classi_task2.png}
+	Diagramma delle classi per la componente "Task", 2
+\end{figure}
+\subsection{Microservizio Task}
+\subsection*{Descrizione}
+
+\subsubsection*{Microservizio Task}
+Si pone come tramite tra il dipendente ed il Database Task. Invia e riceve informazioni riguardanti le Task dal Database, permette al dipendente di creare una task, rimuoverla o sceglierla (Cambiandone lo stato in "In Lavorazione"). Per tale scopo, sono stati individuati i seguenti metodi ed attributi:
+
+\begin{itemize}
+\item public creaTask(args):bool
+\begin{itemize}
+    \item Crea un nuovo oggetto di tipo "Task", ritorna un valore booleano per indicare il successo dell'operazione. Gli argomenti contengono i valori dei campi appartenenti alla classe "Task". 
+\end{itemize}
+\item public rimuoviTask(task: Task): bool
+\begin{itemize}
+    \item Rimuove un oggetto di tipo "Task", ritorna un valore booleano per indicare il successo dell'operazione. L'argomento è l'oggetto "Task" da eliminare.
+\end{itemize}
+\item public scegliTask(dipendente: ProfiloDipendente, task: Task): bool
+\begin{itemize}
+    \item Sceglie un oggetto di tipo "Task" da assegnare ad un dipendente, fallisce nel caso in cui un dipendente stia ancora lavorando ad un altra task.
+\end{itemize}
+\item public modificaStatoTask(task: Task, stato: TaskStatus): bool
+\begin{itemize}
+    \item Modifica lo stato di un oggetto di tipo "Task", ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item public getListaTaskInLavorazione(): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task" contenente oggetti "Task" che sono ancora "In Lavorazione".
+\end{itemize}
+\item public getListaTaskInPausa(): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task" contenente oggetti "Task" che sono "In Pausa".
+\end{itemize}
+\item public getStoricoTask(dipendente: ProfiloDipendente): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task" contenente oggetti "Task" completati da un dato dipendente.
+\end{itemize}
+\item private creaTaskDB(args):bool
+\begin{itemize}
+    \item Salva i dati di un oggetto di tipo "Task" all'interno del Database, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private rimuoviTaskDB(task: Task): bool
+\begin{itemize}
+    \item Rimuove i dati di un oggetto di tipo "Task" dal Database, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private getListaTaskInDB(String query): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task" contenente il risultato  di una richiesta effettuata sul Database.
+\end{itemize}
+\item private getStoricoTaskDipendenteDB(dipendente: ProfiloDipendente): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task" contenente lo storico delle task svolte da un dipendente, effettuando una richiesta al DataBase.
+\end{itemize}
+\end{itemize}
+
+\subsubsection*{Database Task}
+La classe "Database Task" permette al Microservizio Task di interfacciarsi con il Database, fornisce metodi utili alla memorizzazione delle tasks, alla loro gestione ed al loro recupero. I metodi individuati sono i seguenti:
+\begin{itemize}
+\item task: Task[]
+\begin{itemize}
+	\item L'insieme di oggetti "Task" memorizzato in maniera persistente.
+\end{itemize}
+\item public addTask(Task): bool
+\begin{itemize}
+    \item Aggiunge un nuovo elemento di tipo "Task" al Database, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item public rimuoviTask(Task): bool
+\begin{itemize}
+    \item Rimuove un elemento esistente di tipo "Task" dal Database, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item public listaTask(String query): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task", risultato della ricerca fatta all'interno del Database tramite la stringa "query".
+\end{itemize}
+\item public storicoTask(ProfiloDipendente): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task" contenente tutte le task completate dal profilo dipendente richiesto.
+\end{itemize}
+\end{itemize}
+
+\subsubsection*{Profilo Dipendente}
+Il dipendente può accedere alla pagina "Tasks"( in cui le può visualizzare, gestire, creare ed eliminare) attraverso il seguente metodo:
+
+\begin{itemize}
+\item public goTasks(): void
+\begin{itemize}
+    \item Porta il dipendente nella pagina per gestire le tasks.
+\end{itemize}
+\iffalse
+METODI PER IL PROFILO
+\item public new(args): ProfiloDipendente
+\begin{itemize}
+    \item Crea e restituisce un nuovo profilo dipendente passando tutte le informazioni necessarie quali "nome", "cognome", "data di nascita" e "giorno di assunzione" come argomenti.
+\end{itemize}
+\item public getName(): String
+\begin{itemize}
+    \item Ritorna il nome del profilo dipendente.
+\end{itemize}
+\item public getSurname(): String
+\begin{itemize}
+    \item Ritorna il cognome del profilo dipendente.
+\end{itemize}
+\item public getDataDiNascita(): Date
+\begin{itemize}
+    \item Ritorna il giorno di nascita del profilo dipendente.
+\end{itemize}
+\item public getGiornoAssunzione(): Date
+\begin{itemize}
+    \item Ritorna il giorno di assunzione del profilo dipendente.
+\end{itemize}
+\item private setName(nome: String): bool
+\begin{itemize}
+    \item Imposta il nome del profilo dipendente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setSurname(cognome: String): bool
+\begin{itemize}
+    \item Imposta il cognome del profilo dipendente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private  setDataDiNascita(dataDiNascita: Date): bool
+\begin{itemize}
+    \item Imposta la data di nascita del profilo dipendente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setGiornoDiAssunzione(giornoAssunzione: Date): bool
+\begin{itemize}
+    \item Imposta il giorno di assunzione del profilo dipendente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private promoteToManager(ProfiloDipendente): bool
+\begin{itemize}
+    \item Trasforma un profilo dipendente in un profilo manager, ritorna un valore boolean per indicare il successo dell'operazione.
+\end{itemize}
+FINE METODI PER IL PROFILO
+\fi
+\iffalse
+METODI NON CERTI
+\item public getWorkTags(): WorkTag[]
+\begin{itemize}
+    \item Riceve le Work Tags del profilo dipendente.
+\end{itemize}
+\item public getCurrTask(): Task
+\begin{itemize}
+    \item Ritorna un oggetto di tipo "Task", che rappresenta la task a cui il dipendente sta lavorando in quel momento.
+\end{itemize}
+\item public setWorkTags(tags: WorkTag[]): bool
+\begin{itemize}
+    \item Imposta le Work Tags del profilo dipendente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item public setCurrTask(task: Task): bool
+\begin{itemize}
+    \item Imposta un oggetto di tipo "Task" come task a cui il dipendente sta lavorando in quel momento, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+FINE METODI NON CERTI
+\fi
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
 \chapter{Codice in Object Constraint Language}	
 In questo capitolo è descritta in modo formale la logica prevista nell’ambito di alcune operazioni di alcune classi.
 Tale logica viene descritta in Object Constraint Language (OCL) perché tali concetti non sono esprimibili in nessun altro modo formale nel contesto di UML.	
