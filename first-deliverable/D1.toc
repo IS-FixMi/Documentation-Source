@@ -6,25 +6,26 @@
 \contentsline {chapter}{\numberline {2}Requisiti}{7}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Requisiti Funzionali}{7}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Utente}{7}{subsection.2.1.1}%
-\contentsline {subsubsection}{RF1.2 2FA}{8}{section*.11}%
-\contentsline {subsubsection}{RF1.4 Log Out}{9}{section*.13}%
+\contentsline {subsubsection}{RF1.2 2FA}{8}{section*.12}%
 \contentsline {subsection}{\numberline {2.1.2}Cliente}{10}{subsection.2.1.2}%
-\contentsline {subsubsection}{RF5.1 Carrello}{11}{section*.20}%
-\contentsline {subsection}{\numberline {2.1.3}Dipendente}{13}{subsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.1.4}Manager}{15}{subsection.2.1.4}%
-\contentsline {subsubsection}{RF11.2 Gestione delle Task}{16}{section*.36}%
-\contentsline {section}{\numberline {2.2}Requisiti Non Funzionali}{17}{section.2.2}%
-\contentsline {chapter}{\numberline {3}Design}{21}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Design del Front End}{21}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Design del Back End}{23}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Divisione in Microservizi}{23}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Sistemi Esterni}{24}{subsection.3.2.2}%
-\contentsline {subsubsection}{Sistemi di Pagamento}{24}{section*.48}%
-\contentsline {subsubsection}{Databases}{24}{section*.49}%
-\contentsline {subsubsection}{OpenStreetMap}{24}{section*.50}%
-\contentsline {subsubsection}{2FA}{24}{section*.51}%
-\contentsline {subsection}{\numberline {3.2.3}Descrizione Microservizi}{24}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Grafici}{25}{subsection.3.2.4}%
-\contentsline {chapter}{\numberline {4}Ruoli e Responsabilità}{27}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Tecniche e Strumentazione}{28}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Glossario}{29}{chapter.6}%
+\contentsline {subsubsection}{RF1.5 Log Out}{11}{section*.20}%
+\contentsline {subsubsection}{RF1.6 Eliminazione profilo}{11}{section*.21}%
+\contentsline {subsubsection}{RF5.1 Carrello}{12}{section*.23}%
+\contentsline {subsection}{\numberline {2.1.3}Dipendente}{14}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Manager}{16}{subsection.2.1.4}%
+\contentsline {subsubsection}{RF11.2 Gestione delle Task}{17}{section*.39}%
+\contentsline {section}{\numberline {2.2}Requisiti Non Funzionali}{18}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Design}{22}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Design del Front End}{22}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Design del Back End}{24}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Divisione in Microservizi}{24}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Sistemi Esterni}{25}{subsection.3.2.2}%
+\contentsline {subsubsection}{Sistemi di Pagamento}{25}{section*.51}%
+\contentsline {subsubsection}{Databases}{25}{section*.52}%
+\contentsline {subsubsection}{OpenStreetMap}{25}{section*.53}%
+\contentsline {subsubsection}{2FA}{25}{section*.54}%
+\contentsline {subsection}{\numberline {3.2.3}Descrizione Microservizi}{25}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Grafici}{26}{subsection.3.2.4}%
+\contentsline {chapter}{\numberline {4}Ruoli e Responsabilità}{28}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Tecniche e Strumentazione}{29}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Glossario}{30}{chapter.6}%

@@ -201,7 +201,12 @@ In vista di questo, la seguente sezione verrà divisa in base al tipo di utente 
 
 \subsection{Utente}
 
-\subsection*{RF1 login}
+\subsection*{RF1 Profilo}
+
+Avere un profilo è il primo passo verso l'interazione con "Fix Mi". Nel momento in cui si crea il proprio profilo si passa dall'essere un "Utente" ad essere un "Cliente", ricevendo nuovi servizi e vantaggi. Di seguito una lista dei requisiti per la corretta implementazione del profilo all'interno del sito web.
+
+\subsubsection*{RF1.1 Login}
+
 Il sito deve presentare una pagina di login.
 
 \begin{enumerate}
@@ -216,13 +221,13 @@ Il sito deve presentare una pagina di login.
 
 
 \textbf{User Story:}
-Come Utente, volgio poter effettuare il login nel mio profilo per accedere alle funzionalità dedicate.
+Come Utente, voglio poter effettuare il login nel mio profilo per accedere alle funzionalità dedicate.
 
 	\subsubsection{RF1.2 2FA}
-	La pagina deve implementare una tecnologia 2FA (Two Factor Authentication) secondo le seguinti modalità:
+	La pagina deve implementare una tecnologia 2FA ("Two Factor Authentication") secondo le seguenti modalità:
 	
 	\begin{enumerate}
-	\item L'applicazione deve generare un codice OTP (One-Time Password) sul momento e inviarlo all'utente attraverso la e-mail inserita.
+	\item L'applicazione deve generare un codice OTP ("One-Time Password") sul momento e inviarlo all'utente attraverso la e-mail inserita.
 	
 	\item 	La pagina deve chiedere l'inserimento del codice appena generato per continuare con successo.
 	
@@ -232,28 +237,23 @@ Come Utente, volgio poter effettuare il login nel mio profilo per accedere alle 
 
 	\end{enumerate}
 	
-	\subsubsection*{RF1.3 Recupero / Cambio Password}
-	Il sito deve offrire la possibilità all'utente di cambiare password nel caso avesse già un accout:
+	\subsubsection*{RF1.3 Reimpostazione/Recupero Password}
+	Il sito deve offrire la possibilità all'utente di recuperare la password nel caso in cui abbia dimenticato quella precedentemente associata al suo profilo:
 	\begin{enumerate}
 			
-	\item Il sistema deve chiedere il campo "e-mail" associata al profilo di cui si vuole cambiare la password.
-		\item L'applicazione deve implementare 2FA come specificato in RF1.2
-		
-		\item La nuova password dovrà essere digitata due volte per ridurre la probabilità di errori di battitura.
-		
-		\item La nuova password deve rispettare i vincoli specificati in RNF2.
-		\item La procedura deve fallire qualora non vi esistesse alcun profilo associato alla e-mail inserita nell'ononimo campo.
+	\item Il sistema deve chiedere il campo "e-mail" associata al profilo di cui si vuole recuperare la password.
+	\item L'applicazione deve implementare 2FA come specificato in RF1.2
+	\item L'utente dovrà inserire una nuova password da associare al profilo.
+	\item L'utente dovrà digitare la nuova password due volte per ridurre la probabilità di errori di battitura.
+	\item La nuova password deve rispettare i vincoli specificati in RNF2.
+	\item La procedura deve fallire qualora non vi esistesse alcun profilo associato alla e-mail inserita nell'omonimo campo.
 
 	\end{enumerate}
-	
-	\subsubsection{RF1.4 Log Out}
-	
-	L'applicazione deve dare la possibilità al cliente / dipendenti / manager di uscire dal proprio profilo qualora fosse autenticato.
 
 \subsection*{RF2 Registrazione}
 Il sito deve dare la possibilità ad un utente di registrarsi:
 \begin{enumerate}
-	\item La pagina deve rpresentare i campi "e-mail", "password" (due volte), "nome" e "nazionalità". 
+	\item La pagina deve rappresentare i campi "e-mail", "password" (due volte), "nome" e "nazionalità". 
 	\item La password deve essere conforme come specificato in RNF2.
 \end{enumerate}
 
@@ -261,7 +261,7 @@ Il sito deve dare la possibilità ad un utente di registrarsi:
 L'applicazione deve verificare la mail dell'utente per terminare la registrazione con successo:
 
 \begin{enumerate}
-	\item L'applicazione deve inviare un codice di 6 cifre, generato randomicamente sul momento, alla e-mail specificata dall’utente e mostrare un campo "inserisci codice".
+	\item L'applicazione deve inviare un codice di 6 cifre, generato in maniera casuale1 sul momento, alla e-mail specificata dall’utente e mostrare un campo "inserisci codice".
 		
 	\item L'applicazione deve dare la possibilità all’utente di inviare un nuovo codice di verifica del profilo. Il codice precedente non deve essere più valido per completare la registrazione.
 		
@@ -295,7 +295,7 @@ L’applicazione deve offrire all’utente una pagina dove sono visibili dati ut
 
 \begin{enumerate}
 	\item Descrizione dell'azienda.
-	\item Una lista contenente varie Frequently Asked Questions (FAQ) riguardo il funzionamento del sito.
+	\item Una lista contenente varie "Frequently Asked Questions" (FAQ) riguardo il funzionamento del sito.
 	\item Contatti dell’impresa: numeri di telefono, e-mail e indirizzo.
 	\item Il sito deve mostrare inoltre un riquadro con una mappa dove è possibile visualizzare la posizione del negozio.
 \end{enumerate}
@@ -303,6 +303,28 @@ L’applicazione deve offrire all’utente una pagina dove sono visibili dati ut
 
 \subsection{Cliente}
 Il sito deve dare la possibilità al cliente di autenticarsi attraverso la pagina di login come specificato in RF1 inserendo le proprie credenziali (e-mail e password) inserite in fase di registrazione, in modo da poter accedere alle funzionalità elencate di seguito:
+
+\subsubsection*{RF1.4 Cambio Password}
+Il sito deve offrire la possibilità all'utente di cambiare password nel caso avesse già un profilo:
+\begin{enumerate}
+	
+	\item Il sistema deve chiedere il campo "e-mail" associata al profilo di cui si vuole cambiare la password.
+	\item L'applicazione deve implementare 2FA come specificato in RF1.2
+	\item La nuova password dovrà essere digitata due volte per ridurre la probabilità di errori di battitura.
+	\item La nuova password deve rispettare i vincoli specificati in RNF2.
+	\item La procedura deve fallire qualora non vi esistesse alcun profilo associato alla e-mail inserita nell'omonimo campo.
+	
+\end{enumerate}
+
+\subsubsection{RF1.5 Log Out}
+
+L'applicazione deve dare la possibilità al cliente / dipendenti / manager di uscire dal proprio profilo qualora fosse autenticato, rendendoli di conseguenza degli "utenti" (2.1.1)
+
+\subsubsection{RF1.6 Eliminazione profilo}
+
+L'applicazione deve dare la possibilità al cliente e ai dipendenti di potere cancellare il proprio profilo, con tutte le relative informazioni e i dati legati alla persona associata ad esso, da ogni tipo di memoria, base di dati o altro metodo di memorizzazione appartenenti all'applicazione "Fix Mi".
+
+	\item Viene richiesto l'inserimento della password legata al profilo una ultima volta prima della definitiva eliminazione.
 
 \subsection*{RF5 Negozio}
 Il sito deve permettere al cliente, oltre alle funzionalità definite in RF3 per gli utenti, le seguenti funzionalità:
@@ -316,7 +338,7 @@ Il sito deve permettere al cliente, nella pagina dedicata a un specifico articol
 	
 	\item La pagina deve permettere al cliente di rimuovere un elemento dal proprio carrello. % premendo il pulsante “Rimuovi” posizionato accanto ad ogni elemento.
 
-	\item Ogni prodotto deve portare alla pagina dedicata allo stesso cliccando sul nome nell’elenco.
+	\item Ogni prodotto deve portare alla pagina dedicata allo stesso cliccando sul nome contenuto in elenco.
 	
 	\item La pagina deve mostrare il prezzo totale, ossia la somma dei prezzi degli elementi del carrello.
 
@@ -331,7 +353,7 @@ La pagina deve fornire diversi metodi di pagamento:
 
 \begin{enumerate}
 
-	\item La pagina deve fornire il pagamento tramite Paypal e Bancomat con circuiti Visa e Mastercard.
+	\item La pagina deve fornire il pagamento tramite "Paypal" e "Bancomat" con circuiti "Visa" e "Mastercard".
 
 	\item Una volta effettuato il pagamento con successo, il sito deve fornire un riepilogo dell’acquisto e un messaggio che invita il cliente a recarsi in negozio per il ritiro dei prodotti.
 	\item Il sito deve creare per i dipendenti una task “magazzino” (RF9), dettagliando i prodotti richiesti.
@@ -354,10 +376,10 @@ Il sito deve offrire al cliente la possibilità di inviare, compilando un apposi
 \end{enumerate}
 
 \subsection*{RF7 Assistenza}
-Il sito deve permettere al cliente di richiedere assistenza e comunicare con l'azienda attraverso un form:
+Il sito deve permettere al cliente di richiedere assistenza e comunicare con l'azienda attraverso un modulo da compilare:
 
 \begin{enumerate}
-	\item Il form hdeve presentare i campi "e-mail", "descrizione richiesta" e un bottone "Invia".
+	\item Il modulo deve presentare i campi "e-mail", "descrizione richiesta" e un bottone "Invia".
 	
 	\item L’applicazione deve generare una task di tipo “assistenza” successivamente all’invio della richiesta di assistenza da parte del cliente. Il sistema di task è specificato in RF9.
 	
@@ -504,13 +526,13 @@ Il manager deve essere in grado di:
 
 
 \section{Requisiti Non Funzionali}
-Di seguito vengono elencati i requisiti non funzionali dell’applicazione, numerati con acronimo RNF.
+Di seguito vengono elencati i requisiti non funzionali dell’applicazione, numerati con acronimo "RNF".
 
 \subsection*{RNF1 Intuitività e Accessibilità}
 Il sito deve apparire semplice, sia sotto l'aspetto visivo che sotto l'aspetto pratico:
 \begin{enumerate}
 	\item In media l’utente deve essere in grado di capire le funzionalità con una sola lettura della descrizione.
-	\item Il sito deve essere disponibile sia in lingua italiana che in lingua inglese, l’utente con un livello di lingua A1 è in grado di leggere e comprendere il contenuto.
+	\item Il sito deve essere disponibile sia in lingua italiana che in lingua inglese, l’utente con un livello di lingua "A1" è in grado di leggere e comprendere il contenuto.
 	\item Il sito deve avere un design consistente nella sua interezza, utilizzando un singolo font e una palette fissa di colori.
 \end{enumerate}
 \subsection*{RNF2 Sicurezza}
@@ -518,8 +540,8 @@ Il sito deve gestire ogni comunicazione in maniera sicura, sia tra utenti e serv
 \begin{enumerate}
 	\item Il sito deve garantire che i dati sensibili siano crittografati e inaccessibili a soggetti indesiderati.
 	\begin{itemize}
-		\item Il sito deve utilizzare un algoritmo di hashing di tipo SHA-3 per il controllo e la memorizzazione delle passwords.
-		\item Il sito deve utilizzare i protocolli tls e https per ogni comunicazione tra utenti e servizi.
+		\item Il sito deve utilizzare un algoritmo di hashing di tipo "SHA-3" per il controllo e la memorizzazione delle passwords.
+		\item Il sito deve utilizzare i protocolli "tls" e "https" per ogni comunicazione tra utenti e servizi.
 	\end{itemize}
 	\item Il sito deve verificare l’identità dell’utente attraverso il 2FA come specificato nel RF1.
 	\item Il sito deve, in fase di registrazione e di modifica password, controllare la sicurezza della password, ossia assicurarsi che la password  abbia almeno una lunghezza pari a 10 caratteri e presenti almeno un numero, una lettera maiuscola e un carattere speciale dalla lista \begin{verbatim} ! ? $ % ^ & * ( ) _ - + = { [ } ] : ; @ # | \ < , > . \end{verbatim}
@@ -543,7 +565,7 @@ Le principali aree di focus del GDPR includono il consenso esplicito per la racc
 Il sito deve offrire velocità di accesso ai servizi offerti in tempi rapidi:
 \begin{enumerate}
 	\item Il sito deve elaborare l'inserimento di un articolo nel magazzino in meno di un secondo.
-	\item Il sito deve inviare le e-mail di 2FA(specificata nell'RF1) in meno di 5 secondi.
+	\item Il sito deve inviare le e-mail di 2FA(specificata in RF1) in meno di 5 secondi.
 	\item Il sito deve aggiornare la lista delle Task (in caso di completamento, aggiunta, messa in pausa) in meno di un secondo.
 \end{enumerate}
 
@@ -656,7 +678,7 @@ La Back-End presenta un’architettura basata su microservizi indipendenti che c
 L’applicazione si interfaccerà con i seguenti sistemi esterni:
 
 \subsubsection{Sistemi di Pagamento}
-La backend si interfaccierà con Paypal Name-Value-Pair (NVP) e NEXI XPay per effettuare i pagamenti nella pagina "Negozio" (RF3). 
+La backend si interfaccierà con "Paypal Name-Value-Pair" (NVP) e "NEXI XPay" per effettuare i pagamenti nella pagina "Negozio" (RF3). 
 
 \subsubsection{Databases}
 La Back-End utilizzerà il servizio "MongoDB Cluster Atlas" per interagire con databases distribuiti, in particolare i database per gli utenti registrati, le Task e il magazzino.
@@ -676,7 +698,7 @@ Home presenta la pagina principale "Home" e permette di reinderizzare l'utente a
 Il microservizio gestisce la registrazione e l'autenticazione degli utenti. Si interfaccia ad un database non relazionale esterno per memorizzare i profili e le rispettive informazioni.
 
 \subsubsection*{Server E-mail}
-L'applicazione prevede di implementare un server SMTP per l’invio delle e-mail a tutti i tipi di utente e prevede una e-mail aziendale per i dipendenti e per i manager.
+L'applicazione prevede di implementare un server "SMTP" per l’invio delle e-mail a tutti i tipi di utente e prevede una e-mail aziendale per i dipendenti e per i manager.
 
 \subsubsection*{Gestione delle Task}
 Il microservizio si interfaccia con database esterno non relazionale per memorizzare le Task, mostrarle ai dipendenti e salvarne lo stato (definito nel capitolo 6).
@@ -695,12 +717,12 @@ Il microservizio utilizza un database non relazionale per memorizzare gli artico
 
 \subsection{Grafici}
 
-In seguito uno schema di alto livello dei collegamenti tra i diversi microservizi. In blu i microservizi, in giallo i sistemi esterni, in verde i databases.
+In seguito uno schema di alto livello dei collegamenti tra i diversi microservizi. In blu i microservizi, in giallo i sistemi esterni, in verde le basi di dati.
 
 \begin{figure}[H]
 	%\centering
 	\includegraphics[width=1\textwidth]{images/back_end_short}
-	\caption{Schema di alto livello della back end}
+	\caption{Schema di alto livello della back-end}
 \end{figure}	
 
 % removed
