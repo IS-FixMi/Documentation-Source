@@ -324,8 +324,12 @@ L'applicazione deve dare la possibilità al cliente / dipendenti / manager di us
 
 L'applicazione deve dare la possibilità al cliente e ai dipendenti di potere cancellare il proprio profilo, con tutte le relative informazioni e i dati legati alla persona associata ad esso, da ogni tipo di memoria, base di dati o altro metodo di memorizzazione appartenenti all'applicazione "Fix Mi".
 
+\begin{enumerate}
+	\item Il sistema deve chiedere il campo "e-mail" associato al profilo che si vuole eliminare.
+	\item L'applicazione deve implementare 2FA come specificato in RF1.2
 	\item Viene richiesto l'inserimento della password legata al profilo una ultima volta prima della definitiva eliminazione.
-
+	\item La procedura deve fallire qualora non vi esistesse alcun profilo associato alla e-mail inserita nell'omonimo campo.
+\end{enumerate}
 \subsection*{RF5 Negozio}
 Il sito deve permettere al cliente, oltre alle funzionalità definite in RF3 per gli utenti, le seguenti funzionalità:
 
