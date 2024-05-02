@@ -87,7 +87,6 @@
 	
 	\section{Scopo del documento}
 	
-	Scadenza: 27 Novembre
 	
 	
 	
@@ -114,9 +113,683 @@
 		\end{tabular}
 	\end{center}
 	
-	
+
+
+\iffalse
+\section{Nome}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{URL}
+	Nome dell'immagine
+\end{figure}
+\subsection*{Descrizione}
+Descrivi generalmente cosa fa l'immagine mostrata
+
+Per ogni classe fai una
+\subsubsection{Nome}
+
+in cui spieghi la classe dal punto di vista dell'alto livello, e i metodi (solo quelli non ovvi) mostrati.
+In seguito descrivi come interagisce la classe analizzata con le altre.
+
+
+\fi
 	
 \chapter{Diagramma delle Classi}
+
+
+
+
+\section{Definizione Simboli}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_definizioni.png}
+	Diagramma delle classi per i simboli 
+\end{figure}
+Definiamo i seguenti simboli riguardanti la relazione tra piu classi:
+\begin{itemize}
+	\item ISA: vi è un rapporto di ereditarietà tra due classi
+	\item Composizione: Stabilisce una relazione per cui una classe è parte di un'altra classe
+	\item Aggregazione: Stabilisce una relazione per cui una classe possiede un'altra classe 
+\end{itemize}
+\section{Tipi di dato}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_Enumi.png}
+	Diagramma delle classi per i tipi di dato
+\end{figure}
+Allo scopo di definire dei tipi di dato chiari e comprensibili, sono state aggiunte le classi ed enumerazioni di cui sotto:
+\subsection*{Image}
+L'Enumerazione Image rappresenta i diversi formati di immagine utilizzati all'interno dell'applicazione.
+\subsection*{PermissionLevel}
+L'Enumerazione PermissionLevel rappresenta il livello di permesso di un certo utente
+\subsection*{TaskTag}
+L'Enumerazione TaskTag rappresenta i vari tipi di TaskTag dell'applicazione
+\subsection*{WorkTag}
+L'Enumerazione WorkTag rappresenta i vari tipi di WorkTag dell'applicazione
+\subsection*{Currency}
+L'Enumerazione Currency rappresenta le valute supportate all'interno dell'applicazione
+\subsection*{Payment Method}
+L'Enumerazione Payment Method rappresenta le piattaforme di pagamento utilizzabili all'interno dell'applicazione 
+\subsection*{TaskStatus}
+L'Enumerazione TaskStatus rappresenta lo stato di una determinata task.
+\subsection*{Date}
+La classse Date rappresenta una data
+\subsection*{Language}
+L'Enumerazione Language rappresenta una lingua supportata dall'applicazione
+
+\section{Microservizio}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_Microservizio.png}
+	Diagramma delle classi per i Microservizi
+\end{figure}
+Data la specifica del Back-End e dato il diagramma di contesto sono state individuate le classi e relativi metodi e attributi di cui sotto
+\subsection*{Descrizione}
+La classe astratta Microservizio rappresenta un microservizio generico dell'applicazione.
+A questi fini sono stati identificati i seguenti attributi e metodi
+\begin{itemize}
+	\item private mid: Int 
+	\begin{itemize}
+		\item questo attributo è un codice identificativo univoco per il microservizio.
+	\end{itemize}
+	\item private indirizzo: IpAddr
+	\begin{itemize}
+		\item questo attributo corrisponde all'indirizzo IP e porta del microservizio.
+	\end{itemize}
+	\item public page: html
+	\begin{itemize}
+		\item questo attributo contiene la pagina principale del microservizio in html 
+	\end{itemize}
+	
+	\item public autenticaUtente(token: Token): PermissionLevel 
+	\begin{itemize}
+		\item il metodo permette di richiedere al "microservizio autenticazione" il livello di permesso di un determinato utente, che ha fornito il suo token di sessione. ritorna il PermissionLevel dell'utente.
+	\end{itemize}
+\end{itemize}
+\subsection*{Classi figlie}
+Le classi figlie di "Microservizio" sono singleton, ciascuna rappresentante uno specifico microservizio dell'applicazione.
+Queste sono le seguenti:
+\begin{itemize}
+	\item Microservizio Task
+	\item Autenticazione
+	\item Negozio
+	\item Home
+	\item Magazzino
+	\item Gestione Dipendenti
+\end{itemize}
+
+\section{Database}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_Database.png}
+	Diagramma delle classi per i Database
+\end{figure}
+Data la specifica del Back-End e il diagramma di Contesto sono state individuate le classi e relativi metodi e attributi di cui sotto:
+\subsection*{Descrizione}
+La classe astratta Database rappresenta un Database generico dell'applicazione.
+A questi fini sono stati identificati i seguenti attributi e metodi
+\begin{itemize}
+	\item private username: String 
+	\begin{itemize}
+		\item questo attributo è l'username necessario per accedere al database
+	\end{itemize}
+	\item private password: Hash 
+	\begin{itemize}
+		\item questo attributo è l'Hash della password necessaria per accedere al database
+	\end{itemize}
+	\item public login(username: String, password: Hash): bool 
+	\begin{itemize}
+		\item questo metodo permette a un utente o a un microservizio di accedere al database per eseguire le proprie query. ritorna true se l'operazione è andata a buon fine, false altrimenti
+	\end{itemize}
+\end{itemize}
+\subsection*{Classi figlie}
+Le classi figlie di Database sono singleton, ciascuna rappresenta un specifico database dell'applicazione. 
+Questi sono: 
+\begin{itemize}
+	\item Database Magazzino
+	\item Database Autenticazione
+	\item Database Task
+\end{itemize}
+\section{Profilo}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_Profilo.png}
+	Diagramma delle classi per i profili
+\end{figure}
+Data l'analisi del Contesto sezione 1 "Utenti e Sistemi Esterni"  sono state individuate le classi e relativi metodi e attributi di cui sotto:
+\subsection*{Descrizione}
+La classe astratta Profilo rappresenta il profilo di un utente del sistema che ha eseguito l'autenticazione.
+L'utente autenticato nel proprio profilo può utilizzare le funzionalità del sistema attraverso i microservizi, e può visitare le varie pagine in base al proprio PermissionLevel. 
+A questi fini sono stati identificati i seguenti metodi e attributi:
+\begin{itemize}
+	\item private email: String
+	\begin{itemize}
+		\item questo attributo è l'email appartenente all'utente
+	\end{itemize}
+	\item private password: Hash 
+	\begin{itemize}
+		\item questo attributo è l'Hash della password dell'utente
+	\end{itemize}
+	\item private permissionLevel: PermissionLevel 
+	\begin{itemize}
+		\item questo attributo è il livello di permesso dell'utente
+	\end{itemize}
+	\item public goHome(): void 
+	\begin{itemize}
+		\item questo metodo permette all'utente di andare alla pagina Home
+	\end{itemize}
+	\item public goNegozio(): void 
+	\begin{itemize}
+		\item questo metodo permette all'utente di andare alla pagina Negozio
+	\end{itemize}
+	\item public checkPassword(hash: Hash): bool 
+	\begin{itemize}
+		\item questo attributo compara l'attributo password con l'hash fornito, ritornando true se combaciano, false altrimenti
+	\end{itemize}
+\end{itemize}
+\subsection*{ProfiloCliente}
+La classe ProfiloCliente, figlia della classe "Profilo" rappresenta il profilo di un cliente
+Sono stati identificati i seguenti metodi e attributi: 
+\begin{itemize}
+	\item private token: Token
+	\begin{itemize}
+		\item questo attributo rappresenta il token di sessione di un cliente
+	\end{itemize}
+	\item private carrello: Carrello
+	\begin{itemize}
+		\item questo attributo rappresenta il carrello del cliente.
+	\end{itemize}
+	\item public new(email: String, password: Hash): ProfiloCliente
+	\begin{itemize}
+		\item questo metodo permette di creare un nuovo ProfiloCliente contenenti l'email e l'hash password forniti.
+	\end{itemize}
+	\item public logOut(profilo: ProfiloCliente): bool
+	\begin{itemize}
+		\item questo metodo permette di eseguire il logOut dall'applicazione, ritorna true se l'operazione è stata eseguita con successo, false altrimenti
+	\end{itemize}
+\end{itemize}
+\subsection*{ProfiloDipendente}
+La classe ProfiloDipendente, figlia della classe "ProfiloCliente" rappresenta il profilo di un dipendente dell'azienda.
+Sono stati identificati i seguenti metodi e attributi: 
+\begin{itemize}
+	\item private workTags: WorkTag[]
+	\begin{itemize}
+		\item questo attributo rappresenta una lista di workTag del dipendente.
+	\end{itemize}
+	\item private promoteToManager(profiloDipendente): bool
+	\begin{itemize}
+		\item questo metodo permette di trasformare il profiloDipendente fornito in un profiloManager
+	\end{itemize}
+\end{itemize}
+\subsection*{ProfiloManager}
+La classe ProfiloManager, figlia della classe "ProfiloDipendente" rappresenta il profilo del manager dell'azienda.
+
+
+
+\section{Autenticazione}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_Autenticazione.png}
+	Diagramma delle classi per la componente "Autenticazione" 
+\end{figure}
+
+Date le seguenti componenti: 
+\begin{itemize}
+	\item "Autenticazione"
+	\item "Login"
+	\item "Registrazione"
+	\item "Cambio Password"
+\end{itemize}
+seguendo ciò che è stato descritto negli RF "1" e "2" sono state individuate le classi e relativi metodi e attributi di cui sotto:
+\subsection*{Descrizione}
+La classe "Autenticazione" è un singleton che rappresenta il microservizio avente lo stesso nome. 
+Questa classe gestisce i dati di autenticazione dei profili quali e-mail, password e token. 
+La classe contiene una HashMap che associa a ogni profilo un Token identificativo per la sessione.
+A questi fini, sono stati identificati i seguenti metodi:
+\begin{itemize}
+	\item public login( email: String, password: String ) : bool
+		\begin{itemize}
+			\item questo metodo permette a un utente di eseguire il login, ritornando true se è avvenuto con successo e false altrimenti
+			\item all'interno del metodo, dopo aver eseguito il controllo dell'esistenza di un profilo con stessa email e password,
+			viene generato un codice 2FA e inviato alla email rispettiva utilizzando i metodi "generaOTP()" e "sendOTP()", per poi aspettare che l'utente lo inserisca
+			\item alla fine del metodo e in caso di esito positivo, un token viene generato , inserito nella session e inviato all'utente utilizzando i metodi generaToken() e sendToken() rispettivamente
+		\end{itemize}
+	\item public verificaOTP( utente: Profilo, otp: OTP): bool
+		\begin{itemize}
+			\item questo metodo è necessario per verificare l'identità dell'utente attraverso il codice OTP, ritornando true se l'OTP inserito è giusto.
+		\end{itemize}
+	\item public sendToken() :bool 
+		\begin{itemize}
+			\item questo metodo permette di inviare ad un utente il suo token
+		\end{itemize}
+	\item public registraUtente(email: String, password: String): bool
+		\begin{itemize}
+			\item questo metodo permette ad un nuovo utente di registrarsi, ritornando true se la registrazione è andata a buon fine
+			\item all'interno del metodo, dopo aver controllato che l'email fornita non appartenga a un profilo esistente, viene generato un codice 2FA e inviato alla email rispettiva utilizzando i metodi "generaToken()" e "sendToken()", per poi aspettare che l'utente lo inserisca
+		\end{itemize}
+	\item public modificaPassword(Profilo, new\_password: Hash ) :bool
+		\begin{itemize}
+			\item questo metodo permette ad un utente di modificare la propria password, fornendo l'hash della nuova password, e ritorna true se la modifica è andata buon fine, false altrimenti
+			\item all'interno del metodo viene generato un codice 2FA e inviato alla email rispettiva utilizzando i metodi "generaToken()" e "sendToken()", per poi aspettare che l'utente lo inserisca
+		\end{itemize}
+	\item private generaOTP(utente: Profilo) : OTP
+		\begin{itemize}
+			\item questo metodo genera un codice OTP per un profilo, ritornandolo 
+		\end{itemize}
+	\item private sendOTP(otp: OTP, email: Email): bool
+		\begin{itemize}
+			\item questo metodo invia un codice OTP alla email fornita, ritornando true se l'operazione è andata a buon fine, false altrimenti
+		\end{itemize}
+	\item private generaToken(utente: Profilo) : Token
+		\begin{itemize}
+			\item questo metodo genera un token per un determinato utente, inserendolo nella session e ritornandolo
+		\end{itemize}
+	\item private addUtenteDB(utente:Profilo): bool
+		\begin{itemize}
+			\item questo metodo chiede al DB di aggiungere un nuovo profilo utente 
+		\end{itemize}
+	\item private getProfiloDB(email: Email) : Profilo
+		\begin{itemize}
+			\item questo metodo chiede al DB il profilo avente la mail fornita. Se esiste viene ritornato il profilo, altrimenti null
+		\end{itemize}
+	\item private modificaPasswordDB(profilo: Profilo, new\_password: Hash) : bool
+		\begin{itemize}
+			\item questo metodo richiede al DB la modifica della password di un dato profilo, e ritorna true se il processo è andato a buon fine, false altrimenti
+		\end{itemize}
+\end{itemize}
+\subsection*{Database Autenticazione}
+La classe Database Autenticazione è un singleton che rappresenta il database contenente i profili. 
+Permette di gestire i profili, aggiungerli ed eliminarli.
+Sono stati individuati i seguenti metodi: 
+\begin{itemize}
+	\item public getClienti(): ProfiloCliente[]
+	\begin{itemize}
+		\item questo metodo ritorna tutti i profili cliente immagazinati
+	\end{itemize}
+	\item public getDipendenti(): ProfiloDipendente[]
+	\begin{itemize}
+		\item questo metodo ritorna tutti i profili dipendente immagazinati
+	\end{itemize}
+	\item public getProfilo(email: String): Profilo
+	\begin{itemize}
+		\item questo metodo ritorna il profilo a cui corrisponde l'email fornita. Se non esiste ritorna null
+	\end{itemize}
+	\item public getCliente(email: String): ProfiloCliente
+	\begin{itemize}
+		\item questo metodo ritorna il profilo cliente a cui corrisponde l'email fornita. se non esiste ritorna null
+	\end{itemize}
+	\item public getDipendente(email String): ProfiloDipendente
+	\begin{itemize}
+		\item questo metodo ritorna il profilo dipendente a cui corrisponde l'email fornita. se non esiste ritorna null
+	\end{itemize}
+	\item public addUtente(profilo: Profilo): bool
+	\begin{itemize}
+		\item questo metodo inserisce il profilo fornito nel database. ritorna true se l'operazione è avvenuta con successo, false altrimenti
+	\end{itemize}
+	\item public eliminaUtente(profilo: Profilo): bool
+	\begin{itemize}
+		\item questo metodo elimina il profilo fornito dal database. ritorna true se l'operazione è avvenuta con successo, false altrimenti
+	\end{itemize}
+	\item public modificaPassword(profilo: Profilo, new\_password: Hash): bool
+	\begin{itemize}
+		\item questo metodo modifica la password immagazzinata nel database del profilo fornito. ritorna true se l'operazione è avvenuta con successo, false altrimenti
+	\end{itemize}
+\end{itemize}
+\subsection*{Email Server}
+La classe Email Server è un singleton che rappresenta il server email utilizzato dall'azienda. permette di inviare email.
+Sono stati individuati i seguenti metodi:
+\begin{itemize}
+	\item public sendEmail(receiver: Email, sender: Email,content: String) : bool
+	\begin{itemize}
+		\item questo metodo invia una mail dall'email del mittente(sender) all'email del destinatario(receiver) con il contenuto(content)
+	\end{itemize}
+\end{itemize}
+\subsection*{Profilo}
+La classe astratta Profilo rappresenta il profilo di un determinato utente. Viene gestito dal microservizio Autenticazione e immagazzinato nel database Autenticazione.
+Sono stati individuati i seguenti metodi:
+\begin{itemize}
+	\item public login(email: String, password: Hash) : bool
+	\begin{itemize}
+		\item questo metodo permette a un utente di svolgere il login nel proprio profilo, fornendo l'email e la password. restituisce true se l'operazione è andata a buon fine, false altrimenti
+	\end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\section{Task}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_task.png}
+	Diagramma delle classi per la componente "Task"
+\end{figure}
+Data la componente "Task", seguendo ciò che è stato descritto nel Requisito Funzionale numero "9" e definita precedentemente nel rispettivo diagramma, sono state individuate le classi e relativi metodi e attributi di cui sotto:
+\subsection*{Classe Task}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_task1.png}
+	Diagramma delle classi per la componente "Task", 1
+\end{figure}
+\subsection*{Descrizione}
+La classe "Task" definisce, come descritto dal Requisito Funzionale numero "9.1", l'oggetto "Task", da cui "TaskNegozio", "TaskMagazzino" e "TaskSupport" ereditano le proprietà. Le variabili di tipo "Task" vengono poi utilizzate dalla classe "Microservizio Task".
+
+\subsection*{TaskRiparazione}
+Eredita dalla classe "Task", si specializza nella gestione delle Task per la Riparazione. Dato il Requisito Funzionale 9.1, sono stati individuati i seguenti metodi:
+
+\begin{itemize}
+\item private nomeRichiedente: String
+\begin{itemize}
+	\item Una stringa contenente un nome.
+\end{itemize}
+\item private cognomeRichiedente: String
+\begin{itemize}
+	\item Una stringa contenente un cognome.
+\end{itemize}
+\item private emailRichiedente: String
+\begin{itemize}
+	\item Una stringa contenente un indirizzo email.
+\end{itemize}
+\item private image: Image[]
+\begin{itemize}
+	\item Contiene un gruppo di immagini.
+\end{itemize}
+\item private phoneNumber: String
+\begin{itemize}
+	\item Una stringa contenente un numero di telefono.
+\end{itemize}
+\item public getNomeRichiedente(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente il nome del richiedente.
+\end{itemize}
+\item public getCognomeRichiedente(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente il cognome del richiedente.
+\end{itemize}
+\item public getImages(): Image[]
+\begin{itemize}
+	\item Ritorna una stringa contenente le immagini della richiesta di riparazione.
+\end{itemize}
+\item public getEmail(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente l'email del richiedente.
+\end{itemize}
+\item public getPhoneNumber(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente il numero di telefono del richiedente.
+\end{itemize}
+\item private setNomeRichiedente(nome: String): bool
+\begin{itemize}
+	\item Imposta il nome del richiedente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setCognomeRichiedente(cognome: String): bool
+\begin{itemize}
+	\item Imposta il cognome del richiedente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setImages(images: Image[]): bool
+\begin{itemize}
+	\item Imposta le immagini per la richiesta di riparazione, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setEmail(email: String): bool
+\begin{itemize}
+	\item Imposta l'email del richiedente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setPhoneNumber(phoneNumber: String): bool
+\begin{itemize}
+	\item Imposta il numero di telefono del richiedente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\end{itemize}
+
+
+
+\subsection*{TaskAssistenza}
+Eredita dalla classe "Task", si specializza nella gestione delle Task per la Assistenza. Dato il Requisito Funzionale 9.1, sono stati individuati i seguenti metodi:
+\begin{itemize}
+\item private emailRichiedente: String
+\begin{itemize}
+	\item Una stringa contenente un indirizzo email.
+\end{itemize}
+\item public getEmailRichiedente(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente l'email del richiedente.
+\end{itemize}
+\item private  setEmailRichiedente(email: String): bool
+\begin{itemize}
+	\item Imposta l'indirizzo email del richiedente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\end{itemize}
+
+
+\subsection*{TaskFeedback}
+Eredita dalla classe "Task", si specializza nella gestione delle Task per il Feedback. Dato il Requisito Funzionale 9.1, sono stati individuati i seguenti metodi:
+\begin{itemize}
+
+\item private ideePerMigliorare: String
+\begin{itemize}
+	\item Una stringa contenente le idee per migliorare.
+\end{itemize}
+\item private disponibilitàAzienda: String
+\begin{itemize}
+	\item Una stringa contenente la disponibilità dell'azienda.
+\end{itemize}
+\item private velocitàRiparazione: String
+\begin{itemize}
+	\item Una stringa contenente la velocità della riparazione.
+\end{itemize}
+\item private soddisfazioneRiparazione: String
+\begin{itemize}
+	\item Una stringa contenente la soddisfazione della riparazione.
+\end{itemize}
+\item private soddisfazioneSitoWeb: String
+\begin{itemize}
+	\item Una stringa contenente la soddisfazione del sito Web.
+\end{itemize}
+
+\item public getIdeePerMigliorare(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente le idee per migliorare.
+\end{itemize}
+\item public getDisponibilitàAzienda(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente la disponibilità dell'azienda.
+\end{itemize}
+\item public getVelocitàRiparazione(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente la velocità dalla riparazione.
+\end{itemize}
+\item public getSoddisfazioneRiparazione(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente la soddisfazione della riparazione.
+\end{itemize}
+\item public getEmail(): String
+\begin{itemize}
+	\item Ritorna una stringa contenente la soddisfazione del sito web.
+\end{itemize}
+\item private setIdeePerMigliorare(idea: String): bool
+\begin{itemize}
+	\item Imposta una stringa contenente le idee per migliorare il sito, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setDisponibilitàAzienda(disponibilità: String): bool
+\begin{itemize}
+	\item \item Imposta una stringa contenente le disponibilità dell'azienda, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setVelocitàRiparazione(velocità: String): bool
+\begin{itemize}
+	\item Imposta una stringa contenente la velocità della riparazione, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setSoddisfazioneRiparazione(soddisfazione: String): bool
+\begin{itemize}
+	\item Imposta una stringa contenente la soddisfazione della riparazione, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setSoddisfazioneSitoWeb(soddisfazione: String): bool
+\begin{itemize}
+	\item Imposta una stringa contenente la soddisfazione del sito Web, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\end{itemize}
+
+
+
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1.2\textwidth]{images/Diagramma_delle_classi_task2.png}
+	Diagramma delle classi per la componente "Task", 2
+\end{figure}
+\subsection{Microservizio Task}
+\subsection*{Descrizione}
+
+\subsubsection*{Microservizio Task}
+Si pone come tramite tra il dipendente ed il Database Task. Invia e riceve informazioni riguardanti le Task dal Database, permette al dipendente di creare una task, rimuoverla o sceglierla (Cambiandone lo stato in "In Lavorazione"). Per tale scopo, sono stati individuati i seguenti metodi ed attributi:
+
+\begin{itemize}
+\item public creaTask(args):bool
+\begin{itemize}
+    \item Crea un nuovo oggetto di tipo "Task", ritorna un valore booleano per indicare il successo dell'operazione. Gli argomenti contengono i valori dei campi appartenenti alla classe "Task". 
+\end{itemize}
+\item public rimuoviTask(task: Task): bool
+\begin{itemize}
+    \item Rimuove un oggetto di tipo "Task", ritorna un valore booleano per indicare il successo dell'operazione. L'argomento è l'oggetto "Task" da eliminare.
+\end{itemize}
+\item public scegliTask(dipendente: ProfiloDipendente, task: Task): bool
+\begin{itemize}
+    \item Sceglie un oggetto di tipo "Task" da assegnare ad un dipendente, fallisce nel caso in cui un dipendente stia ancora lavorando ad un altra task.
+\end{itemize}
+\item public modificaStatoTask(task: Task, stato: TaskStatus): bool
+\begin{itemize}
+    \item Modifica lo stato di un oggetto di tipo "Task", ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item public getListaTaskInLavorazione(): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task" contenente oggetti "Task" che sono ancora "In Lavorazione".
+\end{itemize}
+\item public getListaTaskInPausa(): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task" contenente oggetti "Task" che sono "In Pausa".
+\end{itemize}
+\item public getStoricoTask(dipendente: ProfiloDipendente): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task" contenente oggetti "Task" completati da un dato dipendente.
+\end{itemize}
+\item private creaTaskDB(args):bool
+\begin{itemize}
+    \item Salva i dati di un oggetto di tipo "Task" all'interno del Database, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private rimuoviTaskDB(task: Task): bool
+\begin{itemize}
+    \item Rimuove i dati di un oggetto di tipo "Task" dal Database, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private getListaTaskInDB(String query): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task" contenente il risultato  di una richiesta effettuata sul Database.
+\end{itemize}
+\item private getStoricoTaskDipendenteDB(dipendente: ProfiloDipendente): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task" contenente lo storico delle task svolte da un dipendente, effettuando una richiesta al DataBase.
+\end{itemize}
+\end{itemize}
+
+\subsubsection*{Database Task}
+La classe "Database Task" permette al Microservizio Task di interfacciarsi con il Database, fornisce metodi utili alla memorizzazione delle tasks, alla loro gestione ed al loro recupero. I metodi individuati sono i seguenti:
+\begin{itemize}
+\item task: Task[]
+\begin{itemize}
+	\item L'insieme di oggetti "Task" memorizzato in maniera persistente.
+\end{itemize}
+\item public addTask(Task): bool
+\begin{itemize}
+    \item Aggiunge un nuovo elemento di tipo "Task" al Database, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item public rimuoviTask(Task): bool
+\begin{itemize}
+    \item Rimuove un elemento esistente di tipo "Task" dal Database, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item public listaTask(String query): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task", risultato della ricerca fatta all'interno del Database tramite la stringa "query".
+\end{itemize}
+\item public storicoTask(ProfiloDipendente): Task[]
+\begin{itemize}
+    \item Ritorna una lista di tipo "Task" contenente tutte le task completate dal profilo dipendente richiesto.
+\end{itemize}
+\end{itemize}
+
+\subsubsection*{Profilo Dipendente}
+Il dipendente può accedere alla pagina "Tasks"( in cui le può visualizzare, gestire, creare ed eliminare) attraverso il seguente metodo:
+
+\begin{itemize}
+\item public goTasks(): void
+\begin{itemize}
+    \item Porta il dipendente nella pagina per gestire le tasks.
+\end{itemize}
+\iffalse
+METODI PER IL PROFILO
+\item public new(args): ProfiloDipendente
+\begin{itemize}
+    \item Crea e restituisce un nuovo profilo dipendente passando tutte le informazioni necessarie quali "nome", "cognome", "data di nascita" e "giorno di assunzione" come argomenti.
+\end{itemize}
+\item public getName(): String
+\begin{itemize}
+    \item Ritorna il nome del profilo dipendente.
+\end{itemize}
+\item public getSurname(): String
+\begin{itemize}
+    \item Ritorna il cognome del profilo dipendente.
+\end{itemize}
+\item public getDataDiNascita(): Date
+\begin{itemize}
+    \item Ritorna il giorno di nascita del profilo dipendente.
+\end{itemize}
+\item public getGiornoAssunzione(): Date
+\begin{itemize}
+    \item Ritorna il giorno di assunzione del profilo dipendente.
+\end{itemize}
+\item private setName(nome: String): bool
+\begin{itemize}
+    \item Imposta il nome del profilo dipendente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setSurname(cognome: String): bool
+\begin{itemize}
+    \item Imposta il cognome del profilo dipendente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private  setDataDiNascita(dataDiNascita: Date): bool
+\begin{itemize}
+    \item Imposta la data di nascita del profilo dipendente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private setGiornoDiAssunzione(giornoAssunzione: Date): bool
+\begin{itemize}
+    \item Imposta il giorno di assunzione del profilo dipendente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item private promoteToManager(ProfiloDipendente): bool
+\begin{itemize}
+    \item Trasforma un profilo dipendente in un profilo manager, ritorna un valore boolean per indicare il successo dell'operazione.
+\end{itemize}
+FINE METODI PER IL PROFILO
+\fi
+\iffalse
+METODI NON CERTI
+\item public getWorkTags(): WorkTag[]
+\begin{itemize}
+    \item Riceve le Work Tags del profilo dipendente.
+\end{itemize}
+\item public getCurrTask(): Task
+\begin{itemize}
+    \item Ritorna un oggetto di tipo "Task", che rappresenta la task a cui il dipendente sta lavorando in quel momento.
+\end{itemize}
+\item public setWorkTags(tags: WorkTag[]): bool
+\begin{itemize}
+    \item Imposta le Work Tags del profilo dipendente, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+\item public setCurrTask(task: Task): bool
+\begin{itemize}
+    \item Imposta un oggetto di tipo "Task" come task a cui il dipendente sta lavorando in quel momento, ritorna un valore booleano per indicare il successo dell'operazione.
+\end{itemize}
+FINE METODI NON CERTI
+\fi
+\end{itemize}
+
+
+
+
+
 
 \section{Carrello}
 \begin{figure}[H]
@@ -285,7 +958,7 @@ Questi metodi si interfacciano alla classe Database Magazzino utilizzando i segu
 
 \subsection*{Database Magazzino}
 
-La classe Datamase Magazzino ha il compito di interfacciarsi direttamente con il Database per salvare in modo persistente gli articoli e i carrelli. la classe presenta dei metodi pubblici per interagire con la base di dati come setters e getters. 
+La classe Database Magazzino ha il compito di interfacciarsi direttamente con il Database per salvare in modo persistente gli articoli e i carrelli. la classe presenta dei metodi pubblici per interagire con la base di dati come setters e getters. 
 
 In particolare sono stati individuati i seguenti metodi:
 
@@ -348,7 +1021,7 @@ Vengono definiti i seguenti metodi:
 
 \item cercaArticoli(query: String): Item[]
 \begin{itemize}
-	\item Questo metodo permette di interrogate il Database Magazzino passando come argomento una stringa "query" che contiene la richiesta.
+	\item Questo metodo permette di interrogare il Database Magazzino passando come argomento una stringa "query" che contiene la richiesta.
 \end{itemize}
 
 \item aggiungiArticolo(Item): bool
@@ -374,15 +1047,154 @@ La classe Magazzino interagisce con il Database Magazzino attraverso i metodi:
 
 \subsection*{ProfiloDipendente}
 
-Il profilo dipendnte è in grado di raggiungere la pagina magazzino attraverso il metodo "goMagazzino()".
+Il profilo dipendente è in grado di raggiungere la pagina magazzino attraverso il metodo "goMagazzino()".
 
 \subsection*{Database Magazzino}
 
 La classe magazzino interagisce direttamente con la classe Database Magazzino che garantisce la persistenza dei dati.
 
 
+
+
+
+
+
 \chapter{Codice in Object Constraint Language}	
+In questo capitolo è descritta in modo formale la logica prevista nell’ambito di alcune operazioni di alcune classi.
+Tale logica viene descritta in Object Constraint Language (OCL) perché tali concetti non sono esprimibili in nessun altro modo formale nel contesto di UML.	
+\section{Microservizio Task}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/OCL/OCL_task.png}
+	Diagramma delle classi con linguaggio OCL 
+\end{figure}
+Quando un dipendente sceglie una task su cui lavorare non deve avere nessuna task correntemente assegnata.
+\begin{verbatim}
+	context: Microservizio Task::scegliTask(dipendente, task)
+	pre: dipendente.getCurrTask() = null
+	post: dipendente.currTask = task
+
+\end{verbatim}
+
+\section{Carrello}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/OCL/OCL_carrello.png}
+	Diagramma delle classi con linguaggio OCL 
+\end{figure}
+Per rimuovere un articolo da un carrello è necessario che quell'articolo faccia parte del carrello.
+\begin{verbatim}
+	context: Carrello::removeItem(item)
+	pre: carrello.items->contains(item)
+
+\end{verbatim}
+Per comprare gli articoli del carrello è necessario che il carrello non sia vuoto
+\begin{verbatim}
+	context: Carrello::buy()
+	pre: carrello.items->notEmpty()
+
+\end{verbatim}
+
+\section{Autenticazione}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/OCL/OCL_Autenticazione.PNG}
+	Diagramma delle classi con linguaggio OCL 
+\end{figure}
+una volta generato un Token utente, esso viene automaticamente inserito dentro alla session
+\begin{verbatim}
+	context: Autenticazione::generaToken(utente) returns token
+	post: Autenticazione.session[token] = utente
+
+\end{verbatim}
+Una volta modificata la password di un profilo utente, allora la password contenuta all'interno dello stesso dev'essere quella nuova
+\begin{verbatim}
+	context: Autenticazione::modificaPassword(profilo,new_password) returns boolean
+post: if (boolean) then profilo.password = new_password
+
+\end{verbatim}
+Una volta registrato un utente, il suo profilo deve apparire nel database
+\begin{verbatim}
+	context: Autenticazione::registraUtente(email,password) returns boolean
+	let profilo = profilo creato da registraUtente
+	post: if (boolean) then DatabaseAutenticazione.profili->contains(profilo)
+
+\end{verbatim}
+\section{Gestione Dipendenti}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/OCL/OCL_Gestione_Dipendenti.PNG}
+	Diagramma delle classi con linguaggio OCL 
+\end{figure}
+Una volta che un profilo dipendente viene aggiunto, deve apparire all'interno del database
+\begin{verbatim}
+	context: addDipendente(profiloDipendente) returns boolean
+	post:if (boolean) then DatabaseAutenticazione.profili->contains(profiloDipendente)
+\end{verbatim}
+Una volta che un profilo dipendente viene rimosso, non deve più apparire all'interno del database
+\begin{verbatim}
+	context: removeDipendente(profiloDipendente) returns boolean
+	post:if (boolean) then NOT DatabaseAutenticazione.profili->contains(profiloDipendente)
+
+\end{verbatim}
+
+\section{Negozio}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/OCL/OCL_negozio.png}
+	Diagramma delle classi con linguaggio OCL 
+\end{figure}
+Una volta acquistati gli articoli, il database non deve più contenerli. Inoltre dev'essere creata una task magazzino.
+\begin{verbatim}
+	context: Negozio::acquista(carrello) returns boolean
+	post: if (boolean) then ( NOT DatabaseMagazzino.articoli->contains(carrello.items))
+	AND
+	let t : task magazzino generata 
+	post: if (boolean) then(DatabaseTask.tasks->contains(t) )
 	
+\end{verbatim}
+\section{Assistenza, Riparazione, Feedback}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/OCL/OCL_assistenza_riparazione_feedback.PNG}
+	Diagramma delle classi con linguaggio OCL 
+\end{figure}
+Una volta inviata una richiesta di assistenza, riparazione o feedback, viene creata la corrispettiva task e inserita nel database
+\begin{verbatim}
+	context: Assistenza::inviaAssistenza(args)
+	let t: task assistenza generata
+	post: DatabaseTask.tasks->contains(t)
+
+	context: Feedback::inviaFeedback(args)
+	let t: task feedback generata
+	post: DatabaseTask.tasks->contains(t)
+
+	context: Riparazione::inviaRiparazione(args)
+	let t: task riparazione generata
+	post: DatabaseTask.tasks->contains(t)
+
+\end{verbatim}
+\section{ProfiloDipendente, ProfiloCliente, ProfiloManager}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/OCL/OCL_dipendente.png}
+	Diagramma delle classi con linguaggio OCL 
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/OCL/OCL_cliente.png}
+	Diagramma delle classi con linguaggio OCL 
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/OCL/OCL_manager.png}
+	Diagramma delle classi con linguaggio OCL 
+\end{figure}
+La data d'assunzione del dipendente dev'essere inferiore a quella odierna
+\begin{verbatim}
+	context: ProfiloDipendente inv: giornoAssunzione <= CURR_DATE
+\end{verbatim}
+ProfiloDipendente, ProfiloCliente, ProfiloManager hanno i PermissionLevel rispettivi
+\begin{verbatim}
+	context: ProfiloDipendente inv: permissionLevel = Dipendente
+	context: ProfiloCliente inv: permissionLevel = Cliente
+	context: ProfiloManager inv: permissionLevel = Manager
+\end{verbatim}
+
 \chapter{Diagramma delle classi con codice OCL}
-	
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_OCL.png}
+	Diagramma delle classi con linguaggio OCL 
+\end{figure}
 \end{document}
