@@ -140,19 +140,23 @@
 \section{Requisiti Funzionali}
 Nel presente capitolo vengono riportati i requisiti funzionali (RF) del sistema utilizzando il linguaggio naturale e Use Case Diagram (UCD) scritti in UML.
 
-\subsection*{RF1 Login }
+\subsection*{RF1 Profilo }
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/UCD/RF1_login_UCD.png}
-	Use Case Diagram (UCD) di RF1 "Login"
+	Use Case Diagram (UCD) di RF1.1 "Login", RF1.2 "2FA", RF1.3 "Reimpostazione/Recupero della password", RF1.4 "Cambio password", RF1.5 "Log out" e RF1.6 "Eliminazione profilo".
 \end{figure}
-Per descrivere questo use case, facciamo uso di due diagrammi delle attività swimlane:
+Per descrivere questo use case, facciamo uso di tre diagrammi delle attività swimlane:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/Login_Swimlane.drawio.png}
-	diagramma delle Attività swimlane del Login
+	diagramma delle Attività swimlane di RF1.1 "Login"
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/password_change_swimlane.drawio.png}
-	diagramma delle Attività swimlane del cambio password
+	diagramma delle Attività swimlane di RF1.4 "Cambio password"
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/eliminazione_profilo_swimlane.drawio.png}
+	diagramma delle Attività swimlane di RF1.6 "Eliminazione profilo"
 \end{figure}
 \subsection*{RF2 Registrazione}
 \begin{figure}[H]
