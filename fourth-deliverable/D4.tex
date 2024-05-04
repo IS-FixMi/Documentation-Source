@@ -1,0 +1,133 @@
+\documentclass{report}
+\usepackage{float}
+
+% for the image in the title
+\usepackage{tikz}
+
+% custom spacing
+\usepackage{setspace}
+\onehalfspacing
+
+% footer and header
+\usepackage{fancyhdr}
+% \setlength{\headheight}{15.2pt}
+
+% underlining
+\usepackage{ulem}
+
+
+% Table of contents link to corresponding sections
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\usepackage{amsmath}
+% Remove che "Chapter" string before chapters
+\iffalse
+\makeatletter
+\def\@makechapterhead#1{%
+	\vspace*{50\p@}%
+	{\parindent \z@ \raggedright \normalfont
+		\interlinepenalty\@M
+		\Huge\bfseries  \thechapter.\quad #1\par\nobreak
+		\vskip 40\p@
+}}
+\makeatother
+\fi
+
+% Fancy chapters
+\usepackage[Bjarne]{fncychap}
+% options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+
+\begin{document}
+	
+	
+	%title page
+	\begin{titlepage}
+		\begin{figure}[t]
+			\centering\includegraphics[width=0.3\textwidth]{images/unitn-logo}
+		\end{figure}
+		\begin{center}
+			\textsc{ \LARGE{Università degli Studi di Trento \\}}
+			\textsc{ \LARGE{Facoltà di Informatica\\ }}
+			\textnormal{ \LARGE{Corso di Ingegneria del Software\\}}
+			\vspace{30mm}
+			\fontsize{10mm}{7mm}\selectfont 
+			\textup{Fix Mi \\ Application Implementation and Documentation}\\
+		\end{center}
+		
+		\vspace{25mm}
+		
+		\centering
+		\large Gruppo G43: \\ Giovanni Santini\\ Riginel Ungureanu \\ Valerio Asaro
+		
+		\vspace{20mm}
+		
+		\centering{\large{Anno Accademico 2023/2024 \\ Trento }}
+		
+	\end{titlepage}
+	
+	
+	
+	
+	% use header and footers
+	\pagestyle{fancy}
+	\fancyhead[R]{\chaptername\ \thechapter}  % header
+	
+	%\maketitle
+	\tableofcontents
+	\newpage
+	
+	
+	
+	\section{Scopo del documento}
+	
+	
+	
+	
+	\section{Informazioni del Documento}
+	
+	% table
+	\begin{center} % center the table
+		\centering
+		\begin{tabular}{ |p{4cm}|p{4cm}|  }
+			\hline
+			\centering Campo & \qquad\qquad Valore \\ % I found no other way...
+			\hline
+			Titolo del Documento & Documento di Architettura \\
+			\hline
+			Titolo del Progetto & Fix Mi \\
+			\hline
+			Autori del Documento &
+			Giovanni Santini \\ & Riginel Ungureanu \\ & Valerio Asaro \\
+			\hline
+			Amministratore Progetto & Riginel Ungureanu\\
+			\hline
+			Versione del documento & 1.0 \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	
+	
+\chapter{Backend}
+
+\subsection{Architettura dei Microservizi}
+
+\subsection{Microservizio Autenticazione}
+
+\subsection{Microservizio Task}
+
+\subsection{Microservizio Gestione Dipendenti}
+
+\subsection{Microservizio Home}
+
+\chapter{Frontend}
+
+	
+\end{document}
