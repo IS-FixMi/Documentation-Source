@@ -143,7 +143,7 @@ In seguito descrivi come interagisce la classe analizzata con le altre.
 	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_definizioni.png}
 	Diagramma delle classi per i simboli 
 \end{figure}
-Definiamo i seguenti simboli riguardanti la relazione tra piu classi:
+Definiamo i seguenti simboli riguardanti la relazione tra più classi:
 \begin{itemize}
 	\item ISA: vi è un rapporto di ereditarietà tra due classi
 	\item Composizione: Stabilisce una relazione per cui una classe è parte di un'altra classe
@@ -170,7 +170,7 @@ L'Enumerazione Payment Method rappresenta le piattaforme di pagamento utilizzabi
 \subsection*{TaskStatus}
 L'Enumerazione TaskStatus rappresenta lo stato di una determinata task.
 \subsection*{Date}
-La classse Date rappresenta una data
+La classe Date rappresenta una data
 \subsection*{Language}
 L'Enumerazione Language rappresenta una lingua supportata dall'applicazione
 
@@ -786,9 +786,85 @@ FINE METODI NON CERTI
 \fi
 \end{itemize}
 
+\section{Home}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_home.png}
+	Diagramma delle classi per "Home"
+\end{figure}
+Svolge la funzione di accogliere i visitatori nel sito "Fix Mi" e di permettere loro di accedere ad alcuni dei servizi principali quali:
+\begin{itemize}
+	\item Richiedere assistenza al personale.
+	\item Richiedere una riparazione del proprio prodotto ai tecnici.
+	\item Inviare feedback riguardo alla qualità dei servizi offerti dallo staff e dal sito web.
+\end{itemize}
+\subsection*{Home}
+\subsection*{Descrizione}
+Rappresenta la prima pagina mostrata all'utente o chi, per la prima volta, visita il sito "Fix Mi". Da qui, è possibile raggiungere tutti gli altri servizi attraverso i metodi descritti sotto:
+\begin{itemize}
+	\item public goRiparazione(): void
+	\begin{itemize}
+		\item Manda il browser alla pagina "Riparazione".
+	\end{itemize}
+	\item public goAssistenza(): void
+	\begin{itemize}
+		\item Manda il browser alla pagina "Assistenza".
+	\end{itemize}
+	\item public goFeedback(): void
+	\begin{itemize}
+		\item Manda il browser alla pagina "Feedback".
+	\end{itemize}
+\end{itemize}
 
+\subsection*{Riparazione}
+\subsection*{Descrizione}
+Rappresenta la pagina in cui è possibile richiedere una riparazione dai tecnici "Fix Mi". I metodi individuati sono:
+\begin{itemize}
+	\item public inviaRiparazione(args): void
+	\begin{itemize}
+		\item Manda la richiesta di riparazione compilata dall'utente al sistema.
+	\end{itemize}
+	\item private creaTaskRiparazione(args): void
+	\begin{itemize}
+		\item Crea una nuova task di tipo "Riparazione", contiene le informazioni specifiche alla riparazione stessa passategli per argomenti.
+	\end{itemize}
+	\item public getListaRiparazioni(utente: Profilo): TaskRiparazione[]
+	\begin{itemize}
+		\item Ritorna la lista delle richieste di riparazioni già effettuate da un dato utente passato come argomento al metodo.
+	\end{itemize}
+\end{itemize}
 
+\subsection*{Assistenza}
+\subsection*{Descrizione}
+Rappresenta la pagina in cui è possibile richiedere una assistenza dai tecnici "Fix Mi". I metodi sono:
+\begin{itemize}
+	\item public inviaRiparazione(args): void
+	\begin{itemize}
+		\item Manda la richiesta di assistenza compilata dall'utente al sistema.
+	\end{itemize}
+	\item private creaTaskAssistenza(args): void
+	\begin{itemize}
+		\item Crea una nuova task di tipo "Assistenza" contenente le informazioni specifiche alla assistenza passando le informazioni necessarie per argomento.
+	\end{itemize}
+	%%GETLISTA ASSISTENZA?????
+\end{itemize}
 
+\subsection*{Feedback}
+\subsection*{Descrizione}
+Rappresenta la pagina in cui è possibile mandare un "feedback" riguardo al servizio "Fix Mi". I metodi individuati che verranno utilizzati sono:
+\begin{itemize}
+	\item public inviaFeedback(): void
+	\begin{itemize}
+		\item Manda il feedback compilato dall'utente al sistema.
+	\end{itemize}
+	\item private creaTaskFeedback(args): void
+	\begin{itemize}
+		\item Crea una nuova task di tipo "Feedback", contiene le informazioni specifiche al feedback stesso tramite argomenti passati al metodo.
+	\end{itemize}
+	\item private getListaFeeback(): TaskFeedback[]
+	\begin{itemize}
+		\item Ritorna la lista delle task feedback presenti nel sistema.
+	\end{itemize}
+\end{itemize}
 
 
 \section{Carrello}
@@ -879,7 +955,7 @@ Un Item è un'oggetto presente nel magazzino, che può essere acquistato. Sono s
 
 Segue un'elencazione di metodi getter e setter degli attributi specificati sopra:
 \begin{itemize}
-\item  getName(); String
+\item getName(): String
 
 \item getPicture(): Picture
 
@@ -902,7 +978,6 @@ Segue un'elencazione di metodi getter e setter degli attributi specificati sopra
 \subsection*{ProfiloCliente}
 
 Ogni profilo cliente è composto da uno e uno solo carrello, inizialmente inizializzato con una lista vuota di Items. Il Cliente potrà accedere ed interagire con il proprio carrello nella pagina negozio speficata successivamente.
-
 
 
 \section{Negozio}
