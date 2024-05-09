@@ -87,7 +87,7 @@
 	
 	\section{Scopo del documento}
 	
-	
+	Il presente documento a titolo "Documento di Architettura" segue il documento "Specifica dei Requisiti". Il documento descrive il Diagramma delle Classi in "Unified Modeling Language" (UML), in modo continuativo al Diagramma delle Componenti e del Contesto, ai Requisiti Funzionali e Requisiti Non Funzionali, integrato a codice "Object Constraint Language" (OCL). Le classi definite dovranno essere implementate a livello di codice.
 	
 	
 	\section{Informazioni del Documento}
@@ -135,7 +135,13 @@ In seguito descrivi come interagisce la classe analizzata con le altre.
 	
 \chapter{Diagramma delle Classi}
 
-
+Nel presente capitolo vengono illustrate le classi previste nell'applicazione "FixMi". Tali classi sono rappresentate in "Unified Modeling Language" (UML) e sono caratterizzate da un nome, degli attributi specificando la visibilità ("+" = public, "-" = private) e dei metodi. Ogni metodo è caratterizzato da un valore di ritorno, un nome e degli argomenti. Inoltre alcune classi presentano un tipo al di sopra del nome per identificare proprietà particolari di un classe o aggiungere informazioni, questi sono:
+\begin{itemize}
+	\item "Enumeration": L'oggetto rappresenta un valore che può essere in uno degli stati descritti all'interno dell'oggetto
+	\item "Abstract": Una classe abstract non viene mai istanziata, viene perciò usata per effettuare templating e venir estesa da altre classi.
+	\item "Singleton": Una classe che viene istanziata una ed una sola volta
+\end{itemize}
+Nei diagrammi che seguono vieve rappresentato il rapporto tra diverse classi, utilizzando i simboli definiti sotto.
 
 
 \section{Definizione Simboli}
