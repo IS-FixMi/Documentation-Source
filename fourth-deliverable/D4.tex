@@ -88,7 +88,7 @@
 	\section{Scopo del documento}
 	
 	
-	\section{Implementazioni}
+	\section{Implementazione}
 	
 	\section{Informazioni del Documento}
 	
@@ -163,7 +163,7 @@ Si presti attenzione alla seguente infografica dell'infrastruttura implementata:
 	Schema dei microservizi
 \end{figure}
 
-L'intera infrastruttura viene inizializzata con \textit{Docker Compose}. In particolare, \textit{Docker Compose} si occupa di impostare i containers sullo stesso network con un IP statico e impostare le variabili di ambiente come le porte e gli IP dei rispettivi microservizi, oltre ad inizializzare i containers, le porte e volumi condivisi.
+L'intera infrastruttura viene inizializzata con \textit{Docker Compose}. In particolare, \textit{Docker Compose} si occupa di impostare i containers sullo stesso network con un IP statico e le variabili di ambiente come le porte e gli IP dei rispettivi microservizi, oltre ad inizializzare i containers, le porte e volumi condivisi.
 
 Se eseguito su un singolo host, il network di default segue la seguente struttura:
 \begin{figure}[H]
@@ -172,43 +172,127 @@ Se eseguito su un singolo host, il network di default segue la seguente struttur
 \end{figure}
 
 Docker imposta i microservizi sul network 10.5.0.0/24 con i seguenti IP:
-\begin{itemize}
-	\item "MongoDB": 10.5.0.10/24
-	\item "Microservizio Autenticazione": 10.5.0.11/24
-	\item "Microservizio Task": 10.5.0.12/24
-	\item "Microservizio Home": 10.5.0.13/24
-	\item "Microservizio Gestione Dipendenti": 10.5.0.14/24
-	\item "Reverse Proxy": localhost
-\end{itemize}
+	% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{4cm}|  }
+		\hline
+		\centering Nome Microservizio & \qquad\quad Network IP \\ % I found no other way...
+		\hline
+		MongoDB & 10.5.0.10/24 \\
+		\hline
+		Microservizio Autenticazione & 10.5.0.11/24 \\
+		\hline
+		Microservizio Task & 10.5.0.12/24 \\
+		\hline
+		Microservizio Home & 10.5.0.13/24 \\
+		\hline
+		Microservizio Gestione Dipendenti & 10.5.0.14/24 \\
+		\hline
+		Reverse Proxy & 127.0.0.1 \\
+		\hline
+	\end{tabular}
+\end{center}
 
-Per ogni servizio all'interno dei containers sono state assegnate le seguenti porte:
-\begin{itemize}
-	\item "Backend": 3001
-	\item "Frontend": 3002
-	\item "MongoDB": 27017
-	\item "Reverse Proxy": 7777
-\end{itemize}
+Ad ogni servizio sono state assegnate le seguenti porte:
+
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{4cm}|  }
+		\hline
+		\centering Nome servizio & \qquad\qquad Porta \\ % I found no other way...
+		\hline
+		MongoDB & 27017 \\
+		\hline
+		Backend & 3001 \\
+		\hline
+		frontend & 3002 \\
+		\hline
+		Reverse Proxy & 7777 \\
+		\hline
+	\end{tabular}
+\end{center}
 
 Due microservizi particolari sono il database e il reverse proxy. Il database fornisce la possibilità di salvare in modo permanente i dati dell'applicazione, mentre il reverse proxy permette di accedere facilmente all'ip di un microservizio attraverso una mappatura di ip. I software scelti sono rispettivamente \textit{MongoDB} e \textit{Nginx}.
 
-In particolare, \textit{Nginx} associa i path nel seguente modo:
+In particolare, \textit{Nginx} associa le routes nel seguente modo:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/nginx.png}
 	Schema delle routes di Nginx
 \end{figure}
 
+\subsection*{Codice: Struttura}
+
+La directory radice del progetto contiene i seguenti files:
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/tree.png}
+    Output del comando "tree", mostra i contenuti della directory root del progetto.
+\end{figure}
+
+Segue una descrizione degli stessi:
+\begin{itemize}
+	\item "db": volume condiviso tra il docker container del database e il filesystem dell'host per mantenere persistenza dei dati quando il container viene riavviato o rimosso.
+	\item "docker-compose.yaml": file di configurazione utilizzato da docker compose per inizializzare l'infrastruttura. Contiene le informazioni per avviare gli altri microservizi.
+	\item "fixmi-microservice-gestione-dipendenti"
+	\item "fixmi-microservizio-autenticazione"
+	\item "fixmi-microservizio-home"
+	\item "fixmi-microservizio-task"
+	\item "fixmi-reverse-proxy"
+	\item "init\_scripts": script per inizializzare il database con dei dati di esempio.
+	\item "README.md": contiene informazioni e documentazione sul deploy dell'infrastruttura.
+\end{itemize}
+
 \subsection*{Codice: docker-compose.yaml}
 
-Si prenda come esempio questo frammento di codice per la definizione del microservizio task:
+Si prenda come esempio questo frammento di codice responsabile del setup del microservizio task:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/docker_code_01.png}
 	Estratto dal file "docker-compose.yaml"
 \end{figure}
 
 In questo codice, notiamo che le porte vengono impostate sotto la sezione "ports", così come i volumi e il network. Le variabili d'ambiente contenenti i vari ip e le credenziali del database sono contenute nel file ".env" presente nella radice della cartella.
+La configurazione per gli altri microservizi è simile, con qualche piccola differenza. Qua sotto vengono riportati gli altri microservizi:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/yaml_gestione_dipendenti.png}
+	Codice responsabile per l'avvio del microservizio "Gestione Dipendenti"
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/yaml_autenticazione.png}
+	Codice responsabile per l'avvio del microservizio "Autenticazione"
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/yaml_home.png}
+	Codice responsabile per l'avvio del microservizio "Home"
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/yaml_database.png}
+	Codice responsabile per l'avvio del database
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/yaml_reverse_proxy.png}
+	Codice responsabile per l'avvio del reverse proxy
+\end{figure}
 
 \subsection*{Codice: nginx.conf}
 
+Il file \textit{nginx.conf} all'interno della cartella \textit{fixmi-reverse-proxy} imposta la configurazione per il reverse proxy.
+
+
+TODO
+
+\subsection*{Codice: init-mongo.js}
+
+Il file contiene l'inizializzazione delle entrate del database in formato json. Sono stati individuati due database: "Tasks" e "Users" e le rispettive collezioni "tasks" e "users" (da notare la differenza della prima lettera da maiuscola a minuscola). I contenuti sono i seguenti:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/db-tasks.png}
+	Inizializzazione database "Task"
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/db-users.png}
+	Inizializzazione database "Users"
+\end{figure}
 
 
 \section{Parti comuni ad ogni microservizio}
