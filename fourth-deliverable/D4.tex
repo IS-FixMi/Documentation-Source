@@ -234,11 +234,11 @@ Segue una descrizione degli stessi:
 \begin{itemize}
 	\item "db": volume condiviso tra il docker container del database e il filesystem dell'host per mantenere persistenza dei dati quando il container viene riavviato o rimosso.
 	\item "docker-compose.yaml": file di configurazione utilizzato da docker compose per inizializzare l'infrastruttura. Contiene le informazioni per avviare gli altri microservizi.
-	\item "fixmi-microservice-gestione-dipendenti"
-	\item "fixmi-microservizio-autenticazione"
-	\item "fixmi-microservizio-home"
-	\item "fixmi-microservizio-task"
-	\item "fixmi-reverse-proxy"
+	\item "fixmi-microservice-gestione-dipendenti": cartella contenente il microservizio "Gestione Dipendenti".
+	\item "fixmi-microservizio-autenticazione": cartella contenente il microservizio "Autenticazione".
+	\item "fixmi-microservizio-home": cartella contenente il microservizio "Home".
+	\item "fixmi-microservizio-task": cartella contenente il microservizio "task".
+	\item "fixmi-reverse-proxy": cartella contenente il reverse proxy.
 	\item "init\_scripts": script per inizializzare il database con dei dati di esempio.
 	\item "README.md": contiene informazioni e documentazione sul deploy dell'infrastruttura.
 \end{itemize}
@@ -297,11 +297,69 @@ Il file contiene l'inizializzazione delle entrate del database in formato json. 
 
 \section{Parti comuni ad ogni microservizio}
 
+In questa sezione verrà descritta la struttura che accomuna i vari microservizi.
+
 \subsection{Scelta del Linguaggio}
+
+Il linguaggio scelto per la backend e frontend è \textit{Typescript}: un linguaggio tipizzato che viene tradotto da un compilatore ("transpiler") in Javascript e dunque può essere eseguito in un web browser. Qualsiasi script JavaScript è anche codice TypeScript valido, questo permette all'applicazione di utilizzare l'ampia collezione di pacchetti JavaScript.
 
 \subsection{Frameworks e Dipendenze}
 
+Ogni microservizio utilizza:
+\begin{itemize}
+	\item \textit{ts-node} v10.9.2: ambiente runtime Typescript open source e multipiattaforma per la creazione del server di backend.
+	\item \textit{eslint} v8.56.0: analizzatore di codice statico.
+	\item \textit{nodemon} v3.0.3: tool di assistenza per Node.js. permette il riavvio automatico del server quando viene rilevata una modifica nel codice.
+	\item \textit{express} v4.18.2: framework web per Node.js, utilizzato per la realizzazione di api.
+	\item \textit{React} v18.3.0: libreria UI per javascript, utilizzata per la frontend.
+	\item \textit{tailwindcss} v3.4.1: framework CSS.
+	\item \textit{Jest} v29.7.0 : framework per il testing
+	\item \textit{supertest} v7.0.0: framework per il testing di api, utilizzato insieme a Jest. 
+	\item \textit{concurrently} v8.2.2: esegue più comandi contemporaneamente, utilizzato per eseguire frontend e backend insieme.
+	\item \textit{serve} v14.2.3: hosta un sito statico, utilizzato per hostare la frontend in produzione.
+	\item \textit{dotenv} v16.4.5: permette l'accesso alle variabili di ambiente, utilizzate per la configurazione dei microservizi.
+	\item \textit{body-parser} v1.20.2: permette di leggere il body di una richiesta http.
+	\item \textit{mongodb} v6.5.0: interfaccia per la connessione al microservizio database.
+\end{itemize}
 
+\subsection{Struttura}
+
+La cartella di un microservizio presenta i seguenti files:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/structure.png}
+	Output del comando "tree" all'interno di un microservizio.
+\end{figure}
+Segue una descrizione degli stessi, dall'alto verso il basso:
+\begin{itemize}
+	\item "backend": cartella contenente tutto il codice di Backend in TypeScript.
+	\item "build": cartella contenente l'applicazione web statica generata da React.
+	\item "commands": cartella contenente degli appunti degli sviluppatori durante la creazione del progetto.
+	\item "dist": cartella contenente il codice backend per la produzione, generato dal compilatore di TypeScript.
+	\item "Dockerfile": file contenente le istruzioni per la generazione del contenitore di docker.
+	\item "nix-shell.nix": file contenente l'ambiente di sviluppo per chi sviluppa su NixOS.
+	\item "node\_modules/": cartella contenente i moduli utilizzati dall'applicazione
+	\item "package.json": file che definise le dipendenze e le impostazioni di vari moduli.
+	\item "package-lock.json": contiene le versioni delle dipendenze dei moduli.
+	\item "postcss.config.js": script di configurazione necessario per tailwindcss
+	\item "public": contiene file di accesso pubblico per la frontned, come favicon.ico, robots.txt, index.html.
+	\item "README.md": contiene le informazioni del progetto e le istruzioni per il deploy.
+	\item "src/": cartella contenente tutto il codice per la frontend in tsx.
+	\item "tailwind.config.js": file di configurazione per il funzionamento di tailwindcss
+	\item "tsconfig.json": configurazione per TypeScript.
+\end{itemize}
+
+\subsection{Comandi npm}
+Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite npm. Ogni comando può esssere eseguito digitando "npm run" ed il nome del comando.
+\begin{itemize}
+	\item "startfront": esegue solo la frontend, si aggiorna automaticamente ad ogni modifica del codice
+	\item "buildfront": genera la frontend statica per la production
+	\item "startback": esegue soltanto il server di backend, si aggiorna automaticamente ad ogni modifica del codice
+	\item "start": esegue sia la frontend sia la backend in developement mode
+	\item "production": esegue sia la frontend sia la backend in production mode
+	\item "lint": esegue un'analisi stica del codice
+	\item "test": esegue gli script di testing del codice.
+\end{itemize}
+	
 
 \section{Microservizio Autenticazione}
 
