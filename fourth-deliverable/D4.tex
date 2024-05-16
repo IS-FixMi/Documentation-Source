@@ -276,10 +276,30 @@ La configurazione per gli altri microservizi è simile, con qualche piccola diff
 
 \subsection*{Codice: nginx.conf}
 
-Il file \textit{nginx.conf} all'interno della cartella \textit{fixmi-reverse-proxy} imposta la configurazione per il reverse proxy.
+Il file \textit{nginx.conf} all'interno della cartella \textit{fixmi-reverse-proxy} imposta la configurazione per il reverse proxy. Questo microservizio si occupa di instradare le richieste ai vari microservizi. Segue un'estratto della configurazione:
 
 
-TODO
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/nginx_config_home.png}
+	Estratto da "fixmi-reverse-proxy/nginx.conf", definizione delle routes "/home" e "/api/home"
+\end{figure}
+
+La variabile "worker\_connections" definisce il numero di connessioni simultanee che il servizio può gestire. Il blocco "http" e il blocco "server" contengono le configurazioni delle routes, in particolare in questo esempio notiamo che la route "/home/" viene passata a "http://10.5.0.13:3002/" ossia la frontend del microservizio "home", mentre "/api/home/" rimanda a "http://10.5.0.13:3001/api/home/" ossia la backend del microservizio "home". Vengono inoltre impostati alcuni headers dopo la dicitura "proxy\_set\_header".
+
+Di seguito vengono riportate le altre routes:
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/nginx_config_tasks.png}
+	Routes "/tasks" e "/api/tasks"
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/nginx_config_dipendenti.png}
+	Routes "/dipendenti" e "/api/dipendenti"
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/nginx_config_auth.png}
+	Routes "/auth" e "/api/auth"
+\end{figure}
 
 \subsection*{Codice: init-mongo.js}
 
@@ -364,6 +384,26 @@ Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite n
 \section{Microservizio Autenticazione}
 
 \section{Microservizio Task}
+
+\subsection*{Crea Task}
+
+\subsection*{Modifica Stato Task}
+
+\subsection*{Scegli Task}
+
+\subsection*{Get Lista Task In Lavorazione}
+
+\subsection*{Get Lista Task Da Eseguire}
+
+\subsection*{Get Lista Task In Pausa}
+
+\subsection*{Get Storico Task}
+
+\subsection*{Testing routes}
+
+\subsubsection*{Greet}
+\subsubsection*{Test Task}
+\subsubsection*{Test DB}
 
 \section{Microservizio Gestione Dipendenti}
 
