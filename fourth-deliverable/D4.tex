@@ -483,7 +483,7 @@ Segeue l'implementazione nel linguaggio "Typescript":
 	Diagramma delle risorse per l'API "Scegli Task".
 \end{figure}
 
-La risorsa "Scegli Task", accessibile tramite la route "/api/tasks/scegliTask" permette di assegnare una task ad un dipendente o ad un manager. L'API richiede i seguenti campi:
+La risorsa "Scegli Task", accessibile tramite la route "/api/tasks/scegliTask" permette di assegnare una task ad un dipendente o ad un manager. L'API richiede tutti i seguenti campi:
 
 \begin{itemize}
 	\item "token": il codice numerico che identifica una sessione autenticata, ottenuto attraverso il microservizio autenticazione.
@@ -502,8 +502,6 @@ La response body `e in formato application/json. Di seguito le possibili rispost
 		200 OK & \{Success: "task assigned to the user" \}  & La procedura è terminata con successo	\\ 
 		\hline
 		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti. \\
-		\hline
-		400 BAD REQUEST & \{ error: "task not found" \} & Il valore "taskId" inviato non è valido \\
 		\hline
 		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
 		\hline
@@ -655,6 +653,188 @@ Sono stati realizzati i seguenti tests per coprire ogni possibile risultato dell
 
 
 \subsection*{Modifica Stato Task}
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/model_modifica_task.png}
+	
+	Modello delle risorse per "/api/tasks/modificaStatoTask".
+\end{figure}
+
+La risorsa "Modifica Stato Task" è accessibile tramite la route "/api/tasks/modificaStatoTask". Permette al dipendente o al manager di impostare un nuovo stato ad una task presente nel database. Gli stati possibili sono definiti nell'enum TaskStatus e sono i seguenti: "DaEseguire", "InLavorazione", "InPausa". "Completata".
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_enum_taskStatus.png}
+	
+	Definizione dell'enum "TaskStatus" in "backend/enums/TaskStatus.ts".
+\end{figure}
+
+La risorsa richiede tutti i seguenti campi nel body:
+\begin{itemize}
+	\item "taskid": identificativo univoco di una task
+	\item "token": token ottenuto dal microservizio autenticazione
+	\item "taskStatus": il nuovo stato che verrà impostato nella task
+\end{itemize}
+
+Il corpo della risposta è in formato application/json e riporta le seguenti risposte:
+
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{Success: "Task status changed succesfully" \}  & La procedura è terminata con successo	\\ 
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti. \\
+		\hline
+		400 BAD REQUEST & \{error: "Wrong status", missingFields \} & Lo status inviato non è valido (non corrisponde ad uno dei valori dell'enum). \\
+		\hline
+		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		\hline
+		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		\hline
+		404 NOT FOUND & \{ error: "Task not found" \} & Non è stata trovata alcuna task con il taskid inviato. \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Segue la definizione secondo OpenAPI:
+
+\begin{verbatim}
+openapi: 3.0.3
+    info:
+    title: Task Status Modification API
+    version: 1.0.0
+paths:
+    /api/tasks/modificaStatoTask:
+        post:
+            summary: Change task status
+            description: Questa route permette al dipendente o al
+                         manager di cambiare lo stato di una task.
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                token:
+                                    type: string
+                                    description: Il token dell'utente
+                                    example: 171595638452613
+                                taskid:
+                                    type: string
+                                    description: Identificativo della task
+                                    example: 66476aa0726f8460bce4a26d
+                                taskStatus:
+                                    type: TaskStatus
+                                    description: Il nuovo stato della task.
+                                    example: Completata
+                            required:
+                                - token
+                                - taskid
+                                - taskStatus
+            responses:
+                '200':
+                    description: Task status changed successfully
+                        content:
+                            application/json:
+                                schema:
+                                    type: objectà
+                                    properties:
+                                        Success:
+                                            type: string
+                                            example: "Task status
+                                                      changed successfully"
+                '400':
+                    description: Bad Request
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: "missing fields"
+                                    missingFields:
+                                        type: array
+                                    items:
+                                        type: string
+                                required:
+                                    - error
+                                    - missingFields
+                '401':
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: "user not found
+                                                  with the given token"
+                                required:
+                                    - error
+                '403':
+                    description: Forbidden
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: "User not authorized"
+                                required:
+                                    - error
+                '404':
+                    description: Not Found
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: "Task not found"
+                               required:
+                                   - error
+\end{verbatim}
+
+Il codice è il seguente:
+\begin{figure}[H]
+	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato.png}
+	
+	Estratto da "backend/routes/modificaStatoTask".
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_query.png}
+	
+	Funzione "checkStatus()" e "executeQuery()".
+\end{figure}
+
+Sono stati creati i seguenti tests:
+
+\begin{figure}[H]
+	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test1.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test2.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test4.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test5.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test6.png}
+\end{figure}
 
 
 \subsection*{Get Lista Task In Lavorazione}
