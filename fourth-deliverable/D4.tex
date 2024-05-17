@@ -15,6 +15,8 @@
 % underlining
 \usepackage{ulem}
 
+% verbatim indentation
+\usepackage{fancyvrb}
 
 % Table of contents link to corresponding sections
 \usepackage{hyperref}
@@ -368,6 +370,26 @@ Segue una descrizione degli stessi, dall'alto verso il basso:
 	\item "tsconfig.json": configurazione per TypeScript.
 \end{itemize}
 
+
+\subsubsection*{Directory backend/}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/tree_backend.png}
+	Output del comando "tree" all'interno della cartella "backend/".
+\end{figure}
+
+
+La struttura della directory "backend/" segue il seguente formato:
+\begin{itemize}
+	\item server.ts: è il file principale. Si occupa di istanziare l'App di express, 
+	connettersi al database e definire le route delle API.
+	\item classes/ : directory contenente le classi relative ai profili, che vengono manipolate ed immagazzinate nel database.
+	\item enums/ : directory contenente gli enumi necessari.
+	\item routes/ : directory contenente gli endpoint delle API del sistema.
+	\item tests/ : directory contenente i test delle API
+	\item utils/ : directory contenente strutture dati e funzioni utili al funzionamento del sistema.
+\end{itemize} 
+
 \subsection{Comandi npm}
 Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite npm. Ogni comando può esssere eseguito digitando "npm run" ed il nome del comando.
 \begin{itemize}
@@ -385,11 +407,258 @@ Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite n
 
 \section{Microservizio Task}
 
-\subsection*{Crea Task}
+Questa sezione comprende lo sviluppo e la documentazione del backend del
+"Microservizio Task". 
+
+\subsection{Lista delle Risorse}
+
+Segue una lista delle risorse implementate dal microservizio:
+\begin{itemize}
+	\item "Task": contiene tutte le informazioni e i metodi che appartengono alla classe Task (vedi sotto).
+	\item "Crea Task": permette all'utente di creare una nuova task.
+	\item "Modifica Stato Task": permette al dipendente o al manager di modificare lo stato di una task.
+	\item "Scegli Task": permette al dipendento o al manager di assegnare una task al proprio profilo.
+	\item "Get Lista Task In Lavorazione": permette al dipendente o al manager di ottenere la lista delle task con lo status di "In Lavorazione" in formato json.
+	\item "Get Lista Task Da Eseguire": permette al dipendente o al manager di ottenere la lista delle task con lo status di "Da Eseguire" in formato json.
+	\item "Get Lista Task In Pausa": permette al dipendente o al manager di ottenere la lista delle task con lo status di "In Pausa" in formato json.
+	\item "Get Storico Task" permette al dipendente o al manager di ottenere la lista delle task con lo status di "Completata" in formato json. Il dipendente rivecerà le tasks che gli sono state assegnate e che sono completate, mentre il dipendente riceverà in risposta tutte le task completate da ogni dipendente.
+\end{itemize}
+
+\subsection{Specifica delle Risorse}
+
+Per ogni risorsa elencata nella sezione precedente, si descrive la risorsa attraverso l'utilizzo di illustrazioni e testo.
+
+\subsection*{Task}
+
+La risorsa "Task" implementa la classe "Task" vista nel "Documento di Architettura".
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/resource_task.png}
+	Diagramma della risorsa "Task".
+\end{figure}
+
+Segeue l'implementazione nel linguaggio "Typescript":
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_task.png}
+	File situato in "backend/classes/Task.ts".
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_task_magazzino.png}
+	File situato in "backend/classes/TaskMagazzino.ts".
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_task_negozio.png}
+	File situato in "backend/classes/TaskNegozio.ts".
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_task_riparazione.png}
+	File situato in "backend/classes/TaskRiparazione.ts".
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=0.9\textwidth]{images/code_task_supporto.png}
+	
+	File situato in "backend/classes/TaskSupporto.ts".
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=0.9\textwidth]{images/code_task_assistenza.png}
+	
+	File situato in "backend/classes/TaskAssistenza.ts".
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_task_feedback.png}
+	File situato in "backend/classes/TaskFeedback.ts".
+\end{figure}
+
+
+
+
+\subsection*{Scegli Task}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/scegli_task_model.png}
+	Diagramma delle risorse per l'API "Scegli Task".
+\end{figure}
+
+La risorsa "Scegli Task", accessibile tramite la route "/api/tasks/scegliTask" permette di assegnare una task ad un dipendente o ad un manager. L'API richiede i seguenti campi:
+
+\begin{itemize}
+	\item "token": il codice numerico che identifica una sessione autenticata, ottenuto attraverso il microservizio autenticazione.
+	\item "taskId": il codice univoco che identifica una task nel database.
+\end{itemize}
+
+La response body `e in formato application/json. Di seguito le possibili risposte:
+
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{Success: "task assigned to the user" \}  & La procedura è terminata con successo	\\ 
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti. \\
+		\hline
+		400 BAD REQUEST & \{ error: "task not found" \} & Il valore "taskId" inviato non è valido \\
+		\hline
+		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		\hline
+		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		\hline
+		404 NOT FOUND & \{ error: "Task not found" \} & Non è stata trovata alcuna task con il taskid inviato. \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Di seguito viene derscitta la risorsa secondo OpenAPI specification:
+
+
+\begin{verbatim}
+openapi: 3.0.3
+    info:
+    title: Seleziona Task
+    version: 1.0.0
+    description: Permette di assegnare una
+                 task ad un dipendente o ad un manager
+paths:
+    /api/tasks/scegliTask:
+    post:
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            token:
+                                type: string
+                                description: Il token ottenuto attraverso
+                                             il microservizio autenticazione.
+                                example: 171595638452613
+                            taskid:
+                                type: string
+                                description: L'identificativo univoco
+                                             della task
+                                example: 66476aa0726f8460bce4a26d
+                        required:
+                            - token
+                            - taskid
+        responses:
+            '200':
+                description: Task assigned to the user
+                content:
+                    application/json:
+                    schema:
+                        type: object
+                        properties:
+                            Success:
+                               type: string
+                                example: "Task assigned to the user"
+            '400':
+                description: Bad Request
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                error:
+                                    type: string
+                                    example: "missing fields"
+                                missingFields:
+                                    type: array
+                                    items:
+                                    type: string
+                                    example: token
+                            required:
+                                - error
+                                - missingFields
+            '401':
+                description: Unauthorized
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                error:
+                                    type: string
+                                    example: "user not found with
+                                              the given token"
+                            required:
+                               - error
+            '403':
+                description: Forbidden
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: "User not authorized"
+                                    required:
+                                        - error
+            '404':
+                description: Not Found
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: "taskidask not found"
+                                required:
+                                    - error
+	
+	
+\end{verbatim}
+
+Il codice che implementa quanto detto sopra è il seguente:
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task.png}
+	Codice estratto da "backend/routes/scegliTaskRouter.ts".
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_task_exists.png}
+	Funzione "taskExists()".
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_query.png}
+	Funzione "executeQuery()".
+\end{figure}
+
+Sono stati realizzati i seguenti tests per coprire ogni possibile risultato della chiamata:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_test1.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_test2.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_test3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_test4.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_test5.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_test6.png}
+\end{figure}
+
+
 
 \subsection*{Modifica Stato Task}
 
-\subsection*{Scegli Task}
 
 \subsection*{Get Lista Task In Lavorazione}
 
@@ -398,6 +667,8 @@ Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite n
 \subsection*{Get Lista Task In Pausa}
 
 \subsection*{Get Storico Task}
+
+\subsection*{Crea Task}
 
 \subsection*{Testing routes}
 
