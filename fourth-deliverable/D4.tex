@@ -367,16 +367,10 @@ Questa sezione comprende lo sviluppo e la documentazione del backend del Microse
 \subsection*{Struttura del backend}
 La struttura del backend del microservizio autenticazione è riportata
 nella figura sotto. 
-\begin{itemize}
-	\item server.ts: è il file principale. Si occupa di istanziare l'App di express, 
-	connettersi al database e definire le route delle API.
-	\item classes/ : directory contenente le classi relative ai profili, che vengono manipolate ed immagazzinate nel database.
-	\item enums/ : directory contenente gli enumi necessari.
-	\item routes/ : directory contenente gli endpoint delle API del sistema.
-	\item tests/ : directory contenente i test delle API
-	\item utils/ : directory contenente strutture dati e funzioni utili al funzionamento del sistema.
-	
-\end{itemize} 
+\begin{figure}[H]
+	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/backend-structure.png}
+	\caption{Output del comando "tree" all'interno di un microservizio.}
+\end{figure}
 
 \subsection*{Modellazione dati nel database}
 
@@ -435,8 +429,9 @@ Richiede in ingresso l'email, la password e il codice 2FA.
 \paragraph*{<<resource>> autenticaUtente}
 Permette a un altro microservizio di autenticare un utente che desidera utilizzare una funzionalità che richiede autorizzazione.
 Richiede in ingresso il token dell'utente.
-\subsection*{Specifica delle API}
-\subsubsection*{Login}
+
+\subsection{Login}
+\subsubsection*{Specifica}
 Questa API, all'indirizzo /api/auth/login, ha un metodo POST e viene utilizzata per far accedere utenti all'applicazione.
 La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
 \begin{itemize}
@@ -464,7 +459,23 @@ La response body è in formato application/json. Di seguito le possibili rispost
 		\hline
 	\end{tabular}
 \end{center}
-\subsubsection*{Logout}
+
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un utente per eseguire l'accesso.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se l'utente esista o meno nel database, e successivamente la validità della password.
+Dopo aver controllato che il codice 2FA sia corretto, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/login-carbon.png}
+	Codice dell'API api/auth/login
+\end{figure}
+\subsubsection*{Documentazione}
+\subsection{Logout}
+\subsubsection*{Specifica}
+
+
 Questa API, all'indirizzo/api/auth/logout, ha un metodo DELETE e viene utilizzata da un utente autenticato per svolgere il logout.
 La request body è in formato x-www-form-urlencoded e deve contenere il token dell'utente.
 La response body è in formato application/json. di seguito le possibili risposte:
@@ -486,7 +497,20 @@ La response body è in formato application/json. di seguito le possibili rispost
 		
 	\end{tabular}
 \end{center}
-\subsubsection*{Registrazione}
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un utente già autenticato per eseguire il logout.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se il token fornito è presente nella sessione.
+A operazione completata, viene rimosso il token dalla sessione.
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/logout-carbon.png}
+	Codice dell'API api/auth/logout
+\end{figure}
+\subsubsection*{Documentazione}
+\subsection{Registrazione}
+\subsubsection*{Specifica}
 Questa API, all'indirizzo /api/auth/register, ha un metodo POST e viene utilizzata per la creazione di un account cliente.
 La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
 \begin{itemize}
@@ -512,7 +536,21 @@ La response body è in formato application/json. Di seguito le possibili rispost
 		\hline
 	\end{tabular}
 \end{center}
-\subsubsection*{Cambio Password}
+
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un utente per creare un proprio account cliente.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se un utente con la stessa email sia già esistente nel database.
+Dopo aver controllato che il codice 2FA sia corretto,viene inserito il nuovo profilo cliente nel database, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/register-carbon.png}
+	Codice dell'API api/auth/register
+\end{figure}
+\subsubsection*{Documentazione}
+\subsection{Cambio password}
+\subsubsection*{Specifica}
 Questa API, all'indirizzo /api/auth/changepass, ha un metodo PATCH e viene utilizzata per cambiare la password di un utente.
 La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
 \begin{itemize}
@@ -538,7 +576,19 @@ La response body è in formato application/json. Di seguito le possibili rispost
 		\hline
 	\end{tabular}
 \end{center}
-\subsubsection*{Eliminazione Profilo}
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un utente per cambiare la password del proprio account.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se l'utente esista o meno nel database.
+Dopo aver controllato che il codice 2FA sia corretto,viene modificata la password nel database, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/changepass-carbon.png}
+	Codice dell'API api/auth/changepass
+\end{figure}
+\subsubsection*{Documentazione}
+\subsection{Eliminazione Profilo}
+\subsubsection*{Specifica}
 Questa API, all'indirizzo /api/auth/remove, ha un metodo POST e viene utilizzata per rimuovere il profilo di un utente.
 La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
 \begin{itemize}
@@ -566,7 +616,20 @@ La response body è in formato application/json. Di seguito le possibili rispost
 		\hline
 	\end{tabular}
 \end{center}
-\subsubsection*{Auth}
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un utente per eliminare il proprio profilo.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se l'utente esista o meno nel database, e successivamente la validità della password.
+Dopo aver controllato che il codice 2FA sia corretto, il profilo viene eliminato dal database e il suo token rimosso dalla sessione.
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/remove-carbon.png}
+	Codice dell'API api/auth/remove
+\end{figure}
+\subsubsection*{Documentazione}
+\subsection{Autentifica Token}
+\subsubsection*{Specifica}
 Questa API, all'indirizzo/api/auth/authenticate, ha un metodo POST e viene utilizzata da un altro microservizio per autenticare un utente utilizzando il suo token.
 La request body è in formato x-www-form-urlencoded e deve contenere il token dell'utente.
 La response body è in formato application/json. di seguito le possibili risposte:
@@ -588,8 +651,19 @@ La response body è in formato application/json. di seguito le possibili rispost
 		
 	\end{tabular}
 \end{center}
-\subsubsection*{Two Factor Authentication}
-\subsubsection*{Auth}
+
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un microservizio per autenticare un utente che desidera farne uso.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se il token fornito abbia un utente corrispondente nella sessione.
+Infine il livello di permesso associato all'utente e il suo id vengono inviati nella risposta.
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/authenticate-carbon.png}
+	Codice dell'API api/auth/authenticate
+\end{figure}
+\subsubsection*{Documentazione}
+\subsection{Two Factor Authentication}
+\subsubsection*{Specifica}
 Questa API, all'indirizzo/api/auth/twofa, ha un metodo POST e viene utilizzata da un utente per richiedere un codice 2FA attraverso mail
 La request body è in formato x-www-form-urlencoded e deve contenere l'indirizzo email dell'utente.
 La response body è in formato application/json. di seguito le possibili risposte:
@@ -607,73 +681,7 @@ La response body è in formato application/json. di seguito le possibili rispost
 	\end{tabular}
 \end{center}
 
-
-\subsection*{Sviluppo delle API}
-\subsubsection*{Login}
-
-Questa API viene utilizzata da un utente per eseguire l'accesso.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente si controlla se l'utente esista o meno nel database, e successivamente la validità della password.
-Dopo aver controllato che il codice 2FA sia corretto, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
-
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/login-carbon.png}
-	Codice dell'API api/auth/login
-\end{figure}
-\subsubsection*{Logout}
-Questa API viene utilizzata da un utente già autenticato per eseguire il logout.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente si controlla se il token fornito è presente nella sessione.
-A operazione completata, viene rimosso il token dalla sessione.
-
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/logout-carbon.png}
-	Codice dell'API api/auth/logout
-\end{figure}
-\subsubsection*{Registrazione}
-Questa API viene utilizzata da un utente per creare un proprio account cliente.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente si controlla se un utente con la stessa email sia già esistente nel database.
-Dopo aver controllato che il codice 2FA sia corretto,viene inserito il nuovo profilo cliente nel database, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
-
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/register-carbon.png}
-	Codice dell'API api/auth/register
-\end{figure}
-\subsubsection*{Cambio Password}
-Questa API viene utilizzata da un utente per cambiare la password del proprio account.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente si controlla se l'utente esista o meno nel database.
-Dopo aver controllato che il codice 2FA sia corretto,viene modificata la password nel database, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/changepass-carbon.png}
-	Codice dell'API api/auth/changepass
-\end{figure}
-\subsubsection*{Eliminazione Profilo}
-Questa API viene utilizzata da un utente per eliminare il proprio profilo.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente si controlla se l'utente esista o meno nel database, e successivamente la validità della password.
-Dopo aver controllato che il codice 2FA sia corretto, il profilo viene eliminato dal database e il suo token rimosso dalla sessione.
-
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/remove-carbon.png}
-	Codice dell'API api/auth/remove
-\end{figure}
-\subsubsection*{Auth}
-Questa API viene utilizzata da un microservizio per autenticare un utente che desidera farne uso.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente si controlla se il token fornito abbia un utente corrispondente nella sessione.
-Infine il livello di permesso associato all'utente e il suo id vengono inviati nella risposta.
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/authenticate-carbon.png}
-	Codice dell'API api/auth/authenticate
-\end{figure}
-\subsubsection*{Two Factor Authentication}
+\subsubsection*{Sviluppo}
 Questa API viene utilizzata da un utente per ricevere un codice 2FA attraverso email.
 Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
 Successivamente viene inviata l'email con il codice 2FA.
@@ -682,6 +690,8 @@ Successivamente viene inviata l'email con il codice 2FA.
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/twofa-carbon.png}
 	Codice dell'API api/auth/twofa
 \end{figure}
+
+\subsubsection*{Documentazione}
 
 \section{Microservizio Task}
 
