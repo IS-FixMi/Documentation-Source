@@ -472,6 +472,74 @@ Dopo aver controllato che il codice 2FA sia corretto, viene generato un token, a
 	Codice dell'API api/auth/login
 \end{figure}
 \subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint login contenuta nel file 'openapi.yaml'
+\begin{verbatim}
+	/login:
+    post:
+      summary: Login method for user authentication
+      description: This endpoint allows users to log in by providing email, password, and two-factor authentication code.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+
+                password:
+                  type: string
+                  format: password
+                  
+                twofa:
+                  type: string
+                  format: twofa-code
+               
+              required:
+                - email
+                - password
+                - twofa
+      responses:
+        '200':
+          description: Successfully logged in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "successfully logged in!"
+                  token:
+                    type: string
+                    example: "12415343463452"
+            
+
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+              description: Session token
+        '400':
+          description: Bad Request - Missing fields or 2fa not correct
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/missingFieldsSchema'
+                  - $ref: '#/components/schemas/wrongTwoFaSchema'
+      
+        '404':
+          description: User not found or wrong password
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/notFoundSchema'
+                  - $ref: '#/components/schemas/wrongPassSchema'
+\end{verbatim}
 \subsection{Logout}
 \subsubsection*{Specifica}
 
@@ -509,6 +577,48 @@ A operazione completata, viene rimosso il token dalla sessione.
 	Codice dell'API api/auth/logout
 \end{figure}
 \subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint logout contenuta nel file 'openapi.yaml'
+\begin{verbatim}
+	/logout:
+    delete:
+      summary: Method for logging out 
+      description: This endpoint allows users who have already logged in to log out by providing their token.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+              required:
+                  - token
+      responses:
+        '200':
+          description: Succesfully logged out
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Succesfully logged out!"
+        '400':
+          description: Bad Request - Missing fields 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/missingFieldsSchema'
+        '404':
+          description: User not found with the given token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/notFoundSchema'
+	
+\end{verbatim}
 \subsection{Registrazione}
 \subsubsection*{Specifica}
 Questa API, all'indirizzo /api/auth/register, ha un metodo POST e viene utilizzata per la creazione di un account cliente.
@@ -549,6 +659,63 @@ Dopo aver controllato che il codice 2FA sia corretto,viene inserito il nuovo pro
 	Codice dell'API api/auth/register
 \end{figure}
 \subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint register contenuta nel file 'openapi.yaml'
+\begin{verbatim}
+	/register:
+    post:
+      summary: Registering method for new users
+      description: This endpoint allows new users to register by providing email, password, and two-factor authentication code.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  
+                password:
+                  type: string
+                  format: password
+                twofa:
+                  type: string
+                  format: twofa-code
+              required:
+                - email
+                - password
+                - twofa
+      responses:
+        '200':
+          description: Succesfully registered
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Successfully registered"
+                  token:
+                    type: string
+                    example: "1231345321532151"
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+              description: Session token
+        '400':
+          description: Bad Request - Missing fields or 2fa not correct or User already exists
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/missingFieldsSchema'
+                  - $ref: '#/components/schemas/wrongTwoFaSchema'
+                  - $ref: '#/components/schemas/alreadyExistsSchema'
+
+\end{verbatim}
 \subsection{Cambio password}
 \subsubsection*{Specifica}
 Questa API, all'indirizzo /api/auth/changepass, ha un metodo PATCH e viene utilizzata per cambiare la password di un utente.
@@ -587,6 +754,68 @@ Dopo aver controllato che il codice 2FA sia corretto,viene modificata la passwor
 	Codice dell'API api/auth/changepass
 \end{figure}
 \subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint changepass contenuta nel file 'openapi.yaml'
+\begin{verbatim}
+	/changepass:
+    patch:
+      summary: Password Changing Method
+      description: This endpoint allows existing users to change their passwords  by providing email, the new password, and two-factor authentication code.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                new_password:
+                  type: string
+                  format: password
+                twofa:
+                  type: string
+                  format: twofa-code
+              required:
+                - email
+                - new_password
+                - twofa
+      responses:
+        '200':
+          description: Successfully changed your password
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "successfully changed your password"
+                  token:
+                    type: string
+                    example: "12312434325321234"
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+              description: Session token
+        '400':
+          description: Bad Request - Missing fields or 2fa not correct
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/missingFieldsSchema'
+                  - $ref: '#/components/schemas/wrongTwoFaSchema'
+      
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/notFoundSchema'
+
+\end{verbatim}
 \subsection{Eliminazione Profilo}
 \subsubsection*{Specifica}
 Questa API, all'indirizzo /api/auth/remove, ha un metodo POST e viene utilizzata per rimuovere il profilo di un utente.
@@ -628,6 +857,63 @@ Dopo aver controllato che il codice 2FA sia corretto, il profilo viene eliminato
 	Codice dell'API api/auth/remove
 \end{figure}
 \subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint remove contenuta nel file 'openapi.yaml'
+
+\begin{verbatim}
+	/remove:
+    delete:
+      summary: Account removal method
+      description: This endpoint allows existing users to remove their accounts by providing email, password, and two-factor authentication code.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+                twofa:
+                  type: string
+                  format: twofa-code
+              required:
+                - email
+                - password
+                - twofa
+      responses:
+        '200':
+          description: Succesfully removed the account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Successfully removed your account."
+        '400':
+          description: Bad Request - Missing fields or 2fa not correct
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/missingFieldsSchema'
+                  - $ref: '#/components/schemas/wrongTwoFaSchema'
+      
+        '404':
+          description: User not found or wrong password
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/notFoundSchema'
+                  - $ref: '#/components/schemas/wrongPassSchema'
+
+\end{verbatim}
 \subsection{Autentifica Token}
 \subsubsection*{Specifica}
 Questa API, all'indirizzo/api/auth/authenticate, ha un metodo POST e viene utilizzata da un altro microservizio per autenticare un utente utilizzando il suo token.
@@ -662,6 +948,63 @@ Infine il livello di permesso associato all'utente e il suo id vengono inviati n
 	Codice dell'API api/auth/authenticate
 \end{figure}
 \subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint authenticate contenuta nel file 'openapi.yaml'
+\begin{verbatim}
+	/authenticate:
+    post:
+      summary: Method for authentication 
+      description: This endpoint allows other microservices to authenticate a user by providing their token
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  
+              required:
+                  - token
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "success"
+                  user_info:
+                    type: object
+                    properties:
+                      permission:
+                        type: string
+                        example: "Manager"
+                      id:
+                        type: string
+                        example: "aa231e3421bd1223"
+
+      
+
+        '400':
+          description: Bad Request - Missing fields 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/missingFieldsSchema'
+        '404':
+          description: User not found with the given token or user doesn't exist 
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/notFoundSchema'
+                  - $ref: '#/components/schemas/maybeDeletedSchema'
+
+\end{verbatim}
 \subsection{Two Factor Authentication}
 \subsubsection*{Specifica}
 Questa API, all'indirizzo/api/auth/twofa, ha un metodo POST e viene utilizzata da un utente per richiedere un codice 2FA attraverso mail
@@ -692,7 +1035,43 @@ Successivamente viene inviata l'email con il codice 2FA.
 \end{figure}
 
 \subsubsection*{Documentazione}
-
+Di seguito la specifica openapi dell'endpoint twofa contenuta nel file 'openapi.yaml'
+\begin{verbatim}
+	/twofa:
+    post:
+      summary: Method for receiving a 2FA code 
+      description: This endpoint allows users to request a Two-Factor Authentication code by providing their email
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+              required:
+                  - token
+      responses:
+        '200':
+          description: Succesfully sent the 2FA
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Successfully sent the 2FA code to your email(SPOILER: IT'S 12345)"
+        '400':
+          description: Bad Request - Missing fields 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/missingFieldsSchema'
+                     
+     
+\end{verbatim}
 \section{Microservizio Task}
 
 \section{Microservizio Gestione Dipendenti}
