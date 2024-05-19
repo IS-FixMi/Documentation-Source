@@ -473,8 +473,112 @@ Segeue l'implementazione nel linguaggio "Typescript":
 	File situato in "backend/classes/TaskFeedback.ts".
 \end{figure}
 
+Segue la definizione in OpenAPI specification:
 
-
+\begin{verbatim}
+components:
+	schemas:
+	    Task:
+	        type: object
+	        properties:
+	            nome:
+	                type: string
+	                example: "Task di esempio"
+	            descrizione:
+	                type: string
+	                example: "Descrizione del task di esempio"
+	            taskTag:
+	                type: string
+	                enum:
+	                    - Negozio
+	                    - Riparazione
+	                    - Magazzino
+	                    - Assistenza
+	                    - Feedback
+	                example: "Riparazione"
+	            taskStatus:
+	                type: string
+	                enum:
+	                    - Da Eseguire
+	                    - In Lavorazione
+	                    - In Pausa
+	                    - Completata
+	                example: "In Lavorazione"
+	        required:
+	            - nome
+	            - descrizione
+	            - taskTag
+	            - taskStatus
+	    TaskAssistenza:
+	        allOf:
+	            - $ref: '#/components/schemas/Task'
+	            - type: object
+	            properties:
+	                emailRichiedente:
+	                    type: string
+	                    format: email
+	                    example: "richiedente@example.com"
+	            required:
+	                - emailRichiedente
+	    TaskFeedback:
+	        allOf:
+	            - $ref: '#/components/schemas/Task'
+	            - type: object
+	        properties:
+	            ideePerMigliorare:
+	                type: string
+	                example: "Suggerimenti per migliorare il servizio"
+	            disponibilitaAzienda:
+	                type: string
+	                example: "Disponibilità dell'azienda a migliorare"
+	            velocitaRiparazione:
+	                type: string
+	                example: "8"
+	            soddisfazioneRiparazione:
+	                type: sting
+	                example: 9
+	            soddisfazioneSitoWeb:
+	                type: string
+	                example: 7
+	        required:
+	        - ideePerMigliorare
+	        - disponibilitaAzienda
+	        - velocitaRiparazione
+	        - soddisfazioneRiparazione
+	        - soddisfazioneSitoWeb
+	   
+	    TaskRiparazione:
+	        allOf:
+	            - $ref: '#/components/schemas/Task'
+	            - type: object
+	                properties:
+	                    nomeRichiedentee:
+	                        type: string
+	                        example: "Mario"
+	                    cognomeRichiedente:
+	                        type: string
+	                        example: "Rossi"
+	                    emailRichiedente:
+	                        type: string
+	                        format: email
+	                        example: "mario.rossi@example.com"
+	                    numeroTelefono:
+	                        type: string
+	                        example: "391234567890"
+	                required:
+	                    - nomeRichiedente
+	                    - cognomeRichiedente
+	                    - emailRichiedente
+	                    - numeroTelefono
+	    TaskMagazzino:
+	        allOf:
+	            - $ref: '#/components/schemas/Task'
+	            - type: object
+	    TaskNegozio:
+	        allOf:
+	            - $ref: '#/components/schemas/Task'
+	            - type: object
+\end{verbatim}
 
 \subsection*{Scegli Task}
 
@@ -518,7 +622,7 @@ Di seguito viene derscitta la risorsa secondo OpenAPI specification:
 \begin{verbatim}
 openapi: 3.0.3
     info:
-    title: Seleziona Task
+    title: Scegli Task
     version: 1.0.0
     description: Permette di assegnare una
                  task ad un dipendente o ad un manager
@@ -704,12 +808,12 @@ Segue la definizione secondo OpenAPI:
 \begin{verbatim}
 openapi: 3.0.3
     info:
-    title: Task Status Modification API
+    title: Modifica Stato Tas
     version: 1.0.0
 paths:
     /api/tasks/modificaStatoTask:
         post:
-            summary: Change task status
+            summary: Modifica lo stato di una task
             description: Questa route permette al dipendente o al
                          manager di cambiare lo stato di una task.
             requestBody:
@@ -839,19 +943,664 @@ Sono stati creati i seguenti tests:
 
 \subsection*{Get Lista Task In Lavorazione}
 
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/model_in_lavorazione.png}
+	
+	Modello delle risorse per "/api/tasks/getListaTaskInLavorazione".
+\end{figure}
+
+La risorsa "Get Lista Task In Lavorazione" è accessibile tramite la route
+
+ "/api/tasks/getListaTaskInLavorazione". Permette al dipendente o al manager di ottenere una lista in formato json delle task nello stato di "In Lavorazione". Gli elementi della rispecchiano gli attributi della risorsa "Task" vista precedentemente.
+
+La risorsa richiede tutti i seguenti campi nel body:
+\begin{itemize}
+	\item "token": token ottenuto dal microservizio autenticazione che identifica la sessione
+\end{itemize}
+
+Il corpo della risposta è in formato application/json e riporta le seguenti risposte:
+
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{ [ task1, task2, ... ] \}  & La procedura è terminata con successo	\\ 
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti o malformati. \\
+		\hline
+		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		\hline
+		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		\hline
+	\end{tabular}
+\end{center}
+
+OpenAPI:
+
+\begin{verbatim}
+openapi: 3.0.3
+info:
+     title: Get Lista Task In lavorazione
+     description: API getListaTaskInLavorazione
+     version: 1.0.0
+paths:
+    /api/tasks/getListaTaskInLavorazione:
+        post:
+            summary: Ritorna tutte le tasks on lo stato di "In Lavorazione"
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                token:
+                                    type: string
+                                    description: User's authentication token
+                                    example: 171595638452613
+                            required:
+                                - token
+            responses:
+                '200':
+                    description: Successfully retrieved tasks in progress
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/TaskInLavorazione'
+
+                '400':
+                    description: Missing fields in the request
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: missing fields
+                                        missingFields:
+                                            type: array
+                                            items:
+                                               type: string
+                                               example: token
+                '401':
+                    description: User not found with the given token
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: user not found with the given token
+                '403':
+                    description: User not authorized
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: User not authorized
+
+\end{verbatim}
+
+Il codice che implementa quanto sopra è il seguente:
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione.png}
+	
+	Codice estratto da "backend/routes/getListaTaskInLavorazione".
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione2.png}
+\end{figure}
+
+Sono stati individuati i seguenti test cases:
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test1.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test2.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test4.png}
+\end{figure}
+
 \subsection*{Get Lista Task Da Eseguire}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/model_da_eseguire.png}
+	
+	Modello delle risorse per "/api/tasks/getListaTaskDaEseguire".
+\end{figure}
+
+La risorsa "Get Lista Task Da Eseguire" è accessibile tramite la route
+
+"/api/tasks/getListaTaskDaEdeguire". Permette al dipendente o al manager di ottenere una lista in formato json delle task nello stato di "Da Eseguire". Gli elementi della rispecchiano gli attributi della risorsa "Task" vista precedentemente.
+
+La risorsa richiede tutti i seguenti campi nel body:
+\begin{itemize}
+	\item "token": token ottenuto dal microservizio autenticazione che identifica la sessione
+\end{itemize}
+
+Il corpo della risposta è in formato application/json e riporta le seguenti risposte:
+
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{ [ task1, task2, ... ] \}  & La procedura è terminata con successo	\\ 
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti o malformati. \\
+		\hline
+		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		\hline
+		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{verbatim}
+openapi: 3.0.3
+info:
+    title: Get Lista Task Da Eseguire
+	description: API getListaTaskDaEseguire
+	version: 1.0.0
+paths:
+	/api/tasks/getListaTaskDaEseguire:
+	    post:
+	        summary: Ritorna tutte le tasks on lo stato di "Da Eseguire"
+	        requestBody:
+	            required: true
+	            content:
+	                application/json:
+	                    schema:
+	                        type: object
+	                        properties:
+	                            token:
+	                                type: string
+	                                description: User's authentication token
+	                                example: 171595638452613
+	                        required:
+	                            - token
+	    responses:
+	        '200':
+	            description: Successfully retrieved tasks in progress
+	            content:
+	                application/json:
+	                    schema:
+	                        type: array
+	                        items:
+	                            $ref: '#/components/schemas/TaskInLavorazione'
+	        '400':
+	            description: Missing fields in the request
+	            content:
+	                application/json:
+	                    schema:
+	                        type: object
+	                        properties:
+	                            error:
+	                                type: string
+	                                example: missing fields
+	                            missingFields:
+	                                type: array
+	                                items:
+	                                    type: string
+	                                    example: token
+	        '401':
+	            description: User not found with the given token
+	            content:
+	                application/json:
+	                    schema:
+	                        type: object
+	                        properties:
+	                            error:
+	                                type: string
+	                                example: user not found with the given token
+	        '403':
+	            description: User not authorized
+	            content:
+	                application/json:
+	                    schema:
+	                    type: object
+	                    properties:
+	                        error:
+	                        type: string
+	                        example: User not authorized
+	
+\end{verbatim}
+
+Il codice è il seguente:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire.png}
+	
+	Codice estratto da "backend/routes/getListaTaskDaEseguire".
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire2.png}
+\end{figure}
+
+Sono stati creati i seguenti test cases:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test1.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test2.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test4.png}
+\end{figure}
 
 \subsection*{Get Lista Task In Pausa}
 
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/model_in_pausa.png}
+	
+	Modello delle risorse per "/api/tasks/getListaTaskInPausa".
+\end{figure}
+
+La risorsa "Get Lista Task In Pausa" è accessibile tramite la route
+
+"/api/tasks/getListaTaskInPausa". Permette al dipendente o al manager di ottenere una lista in formato json delle task nello stato di "In Pausa". Gli elementi della rispecchiano gli attributi della risorsa "Task" vista precedentemente.
+
+La risorsa richiede tutti i seguenti campi nel body:
+\begin{itemize}
+	\item "token": token ottenuto dal microservizio autenticazione che identifica la sessione
+\end{itemize}
+
+Il corpo della risposta è in formato application/json e riporta le seguenti risposte:
+
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{ [ task1, task2, ... ] \}  & La procedura è terminata con successo	\\ 
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti o malformati. \\
+		\hline
+		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		\hline
+		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{verbatim}
+openapi: 3.0.3
+    info:
+    title: Get Lista Task In Pausa
+    edescription: API getListaTaskInPausa
+version: 1.0.0
+paths:
+    /api/tasks/getListaTaskInPausa:
+        post:
+            summary: Ritorna tutte le tasks on lo stato di "In Pausa"
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                token:
+                                    type: string
+                                    description: User's authentication token
+                                    example: 171595638452613
+                            required:
+                                - token
+        responses:
+            '200':
+                description: Successfully retrieved tasks in progress
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                $ref: '#/components/schemas/TaskInLavorazione'
+            '400':
+                description: Missing fields in the request
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                error:
+                                    type: string
+                                    example: missing fields
+                                missingFields:
+                                    type: array
+                                    items:
+                                        type: string
+                                        example: token
+            '401':
+                description: User not found with the given token
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                error:
+                                    type: string
+                                    example: user not found with the given token
+            '403':
+                description: User not authorized
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                error:
+                                    type: string
+                                    example: User not authorized
+\end{verbatim}
+
+Il codice è quanto segue:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa.png}
+	
+	Codice estratto da "backend/routes/getlistaTaskInPausa".
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_in_paus2.png}
+\end{figure}
+
+Sono stati creati i seguenti test cases:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa_test1.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa_test2.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa_test3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa_test4.png}
+\end{figure}
+
+
 \subsection*{Get Storico Task}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/model_storico_task.png}
+	
+	Modello delle risorse per "/api/tasks/getStoricoTask".
+\end{figure}
+
+La risorsa "Get Storico Task" è accessibile tramite la route
+
+"/api/tasks/getStoricoTask". Permette al dipendente o al manager di ottenere una lista in formato json delle task nello stato di "Completata". Gli elementi della rispecchiano gli attributi della risorsa "Task" vista precedentemente.
+Il dipendente otterrà solo le task alle quali è stato assegnato, mentre il manager otterrà tutte le task completate presenti nel database.
+
+La risorsa richiede tutti i seguenti campi nel body:
+\begin{itemize}
+	\item "token": token ottenuto dal microservizio autenticazione che identifica la sessione
+\end{itemize}
+
+Il corpo della risposta è in formato application/json e riporta le seguenti risposte:
+
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{ [ task1, task2, ... ] \}  & La procedura è terminata con successo	\\ 
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti o malformati. \\
+		\hline
+		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		\hline
+		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{verbatim}
+openapi: 3.0.3
+    info:
+    title: Get Storico Task
+    description: API getStoricoTask
+version: 1.0.0
+paths:
+    /api/tasks/getStoricoTask:
+        post:
+            summary: Ritorna tutte le tasks on lo stato di "Completate"
+            requestBody:
+            required: true
+                content:
+                    application/json:
+                        schema:
+                        type: object
+                        properties:
+                            token:
+                                type: string
+                                description: User's authentication token
+                                example: 171595638452613
+                        required:
+                            - token
+        responses:
+            '200':
+                description: Successfully retrieved tasks in progress
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                $ref: '#/components/schemas/TaskInLavorazione'
+            '400':
+                description: Missing fields in the request
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                error:
+                                    type: string
+                                    example: missing fields
+                                missingFields:
+                                    type: array
+                                    items:
+                                        type: string
+                                        example: token
+            '401':
+                description: User not found with the given token
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                error:
+                                    type: string
+                                    example: user not found with the given token
+            '403':
+                description: User not authorized
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                error:
+                                    type: string
+                                    example: User not authorized
+\end{verbatim}
+
+Il codice è il seguente:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_storico.png}
+	
+	Estratto di codice dal file "backend/routes/getStoricoTask".
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_storico2.png}
+\end{figure}
+
+Sono stati individuati i seguenti test cases:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_storico_test1.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_storico_test2.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_storico_test3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_storico_test4.png}
+\end{figure}
+
 
 \subsection*{Crea Task}
 
-\subsection*{Testing routes}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/model_crea_task.png}
+	
+	Modello delle risorse per "/api/tasks/creaTask".
+\end{figure}
 
-\subsubsection*{Greet}
-\subsubsection*{Test Task}
-\subsubsection*{Test DB}
+La risorsa "Crea Task" è accessibile tramite la route
+
+"/api/tasks/creaTask". Permette a chiunque sia autenticato di creare una task. L'oggetto task da creare deve essere compatibile con il costruttore di una delle classi che ereditano la risorsa "Task" definita precedentemente.
+
+La risorsa richiede tutti i seguenti campi nel body:
+\begin{itemize}
+	\item "token": token ottenuto dal microservizio autenticazione che identifica la sessione
+\end{itemize}
+
+Il corpo della risposta è in formato application/json e riporta le seguenti risposte:
+
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{ Seccess: "task created" \}  & La procedura è terminata con successo	\\ 
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti o malformati. \\
+		\hline
+		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		\hline
+		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{verbatim}
+
+openapi: 3.0.3
+    info:
+    title: API Crea Task
+    description: API pre /api/tasks/creaTask
+    version: 1.0.0
+paths:
+    /api/tasks/creaTask:
+        post:
+            summary: Create a task
+            description: Questa route permette agli utenti
+                         autenticati di creare una nuova task
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                         schema:
+                             oneOf:
+                                 - $ref: '#/components/schemas/TaskAssistenza'
+                                 - $ref: '#/components/schemas/TaskFeedback'
+                                 - $ref: '#/components/schemas/TaskRiparazione'
+                                 - $ref: '#/components/schemas/TaskMagazzino'
+                                 - $ref: '#/components/schemas/TaskNegozio'
+        responses:
+            '200':
+                description: Successfully created the task
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                Success:
+                                    type: string
+                                    example: "class created"
+            '400':
+                description: Missing fields in the request
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                error:
+                                    type: string
+                                    example: missing fields
+                                missingFields:
+                                    type: array
+                                    items:
+                                        type: string
+            '401':
+                description: User not found with the given token
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                error:
+                                    type: string
+                                    example: User not found
+                                             with the given token
+
+\end{verbatim}
+
+Il codice è il seguente:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_crea_task.png}
+	
+	Estratto di codice dal file "backend/routes/creaTask".
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_crea_task2.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_crea_task3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_crea_task4.png}
+\end{figure}
+
+Sono stati individuati i seguenti test cases
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test1.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test2.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test4.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test5.png}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test6.png}
+\end{figure}
 
 \section{Microservizio Gestione Dipendenti}
 
