@@ -87,9 +87,22 @@
 	
 	
 	\section{Scopo del documento}
-	
+	Questo documento denominato "Application Implementation and Documentation" descrive in dettaglio l'implementazione dell'applicazione nelle sue molteplici parti, seguendo quanto visto nei precedenti documenti. Il documento è strutturato in diversi capitoli: il primo dedicato alla specifica dell'infrastruttura in generale, con grafici e codice, seguito da quattro capitoli dedicati alle varie funzionalità implementate, con una visione della backend e della frontend. Il documento si chiude con le istruzioni per il deploy dell'applicazione.
 	
 	\section{Implementazione}
+	Il team di sviluppo, valutando i requisiti del progetto ed il tempo a disposizione, ha deciso di implementare i seguenti microservizi:
+	\begin{itemize}
+		\item Autenticazione
+		\item Task
+		\item Home
+		\item Gestione Dipendenti
+	\end{itemize}
+	Inoltre vengono implementati i seguenti servizi:
+	\begin{itemize}
+		\item Reverse Proxy
+		\item Database
+	\end{itemize}
+	
 	
 	\section{Informazioni del Documento}
 	
@@ -144,7 +157,7 @@ Un'architettura a microservizi è intrinsecamente più complessa nella progettaz
 \section{Visione Generale}
 Prima di analizzare il singolo microservizio, questa sezione illustra una visione generale dell'applicazione e degli strumenti utilizzati per la realizzazione dell'infrastruttura, per poi concentrarsi sulle parti comuni di ogni microservizio e infine sul singolo microservizio.
 
-\section{Tecnologie}
+\subsection{Tecnologie}
 
 In questo capitolo verranno menzionate più volte alcune tecnologie, dunque ne viene riportata una breve descrizionee sotto:
 \begin{itemize}
@@ -156,7 +169,7 @@ In questo capitolo verranno menzionate più volte alcune tecnologie, dunque ne v
 	\item "React": framework frontend lo sviluppo di applicazioni web. L'icona ricorda un atomo.
 \end{itemize}
 
-\section{Specifica dell'Infrastruttura}
+\subsection{Specifica dell'Infrastruttura}
 
 Si presti attenzione alla seguente infografica dell'infrastruttura implementata:
 
