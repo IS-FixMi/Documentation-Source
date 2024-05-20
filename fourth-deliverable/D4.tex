@@ -45,76 +45,76 @@
 % options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
 
 \begin{document}
-	
-	
-	%title page
-	\begin{titlepage}
-		\begin{figure}[t]
-			\centering\includegraphics[width=0.3\textwidth]{images/unitn-logo}
-		\end{figure}
-		\begin{center}
-			\textsc{ \LARGE{Università degli Studi di Trento \\}}
-			\textsc{ \LARGE{Facoltà di Informatica\\ }}
-			\textnormal{ \LARGE{Corso di Ingegneria del Software\\}}
-			\vspace{30mm}
-			\fontsize{10mm}{7mm}\selectfont 
-			\textup{Fix Mi \\ Application Implementation and Documentation}\\
-		\end{center}
-		
-		\vspace{25mm}
-		
-		\centering
-		\large Gruppo G43: \\ Giovanni Santini\\ Riginel Ungureanu \\ Valerio Asaro
-		
-		\vspace{20mm}
-		
-		\centering{\large{Anno Accademico 2023/2024 \\ Trento }}
-		
-	\end{titlepage}
-	
-	
-	
-	
-	% use header and footers
-	\pagestyle{fancy}
-	\fancyhead[R]{\chaptername\ \thechapter}  % header
-	
-	%\maketitle
-	\tableofcontents
-	\newpage
-	
-	
-	
-	\section{Scopo del documento}
-	
-	
-	\section{Implementazione}
-	
-	\section{Informazioni del Documento}
-	
-	% table
-	\begin{center} % center the table
-		\centering
-		\begin{tabular}{ |p{4cm}|p{4cm}|  }
-			\hline
-			\centering Campo & \qquad\qquad Valore \\ % I found no other way...
-			\hline
-			Titolo del Documento & Application Implementation and Documentation \\
-			\hline
-			Titolo del Progetto & Fix Mi \\
-			\hline
-			Autori del Documento &
-			Giovanni Santini \\ & Riginel Ungureanu \\ & Valerio Asaro \\
-			\hline
-			Amministratore Progetto & Riginel Ungureanu\\
-			\hline
-			Versione del documento & 1.0 \\
-			\hline
-		\end{tabular}
+
+
+%title page
+\begin{titlepage}
+	\begin{figure}[t]
+		\centering\includegraphics[width=0.3\textwidth]{images/unitn-logo}
+	\end{figure}
+	\begin{center}
+		\textsc{ \LARGE{Università degli Studi di Trento \\}}
+		\textsc{ \LARGE{Facoltà di Informatica\\ }}
+		\textnormal{ \LARGE{Corso di Ingegneria del Software\\}}
+		\vspace{30mm}
+		\fontsize{10mm}{7mm}\selectfont
+		\textup{Fix Mi \\ Application Implementation and Documentation}\\
 	\end{center}
-	
-	
-	
+
+	\vspace{25mm}
+
+	\centering
+	\large Gruppo G43: \\ Giovanni Santini\\ Riginel Ungureanu \\ Valerio Asaro
+
+	\vspace{20mm}
+
+	\centering{\large{Anno Accademico 2023/2024 \\ Trento }}
+
+\end{titlepage}
+
+
+
+
+% use header and footers
+\pagestyle{fancy}
+\fancyhead[R]{\chaptername\ \thechapter}  % header
+
+%\maketitle
+\tableofcontents
+\newpage
+
+
+
+\section{Scopo del documento}
+
+
+\section{Implementazione}
+
+\section{Informazioni del Documento}
+
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{4cm}|  }
+		\hline
+		\centering Campo        & \qquad\qquad Valore                          \\ % I found no other way...
+		\hline
+		Titolo del Documento    & Application Implementation and Documentation \\
+		\hline
+		Titolo del Progetto     & Fix Mi                                       \\
+		\hline
+		Autori del Documento    &
+		Giovanni Santini                                                       \\ & Riginel Ungureanu \\ & Valerio Asaro \\
+		\hline
+		Amministratore Progetto & Riginel Ungureanu                            \\
+		\hline
+		Versione del documento  & 1.0                                          \\
+		\hline
+	\end{tabular}
+\end{center}
+
+
+
 \chapter{Backend}
 
 Il seguente capitolo descrive l'implementazione, con il supporto di diagrammi "UML" e codice, della parte "Backend" dell'applicazione, in riferimento a quanto detto nei precedenti documenti quali "Analisi dei Requisiti", "Specifica dei Requisiti" e del "Documento di Architettura".  Il capitolo è strutturato partendo da una visione generale dell'infrastruttura, andando verso una visione più specifica e dettagliata.
@@ -172,24 +172,24 @@ Se eseguito su un singolo host, il network di default segue la seguente struttur
 \end{figure}
 
 Docker imposta i microservizi sul network 10.5.0.0/24 con i seguenti IP:
-	% table
+% table
 \begin{center} % center the table
 	\centering
 	\begin{tabular}{ |p{4cm}|p{4cm}|  }
 		\hline
-		\centering Nome Microservizio & \qquad\quad Network IP \\ % I found no other way...
+		\centering Nome Microservizio     & \qquad\quad Network IP \\ % I found no other way...
 		\hline
-		MongoDB & 10.5.0.10/24 \\
+		MongoDB                           & 10.5.0.10/24           \\
 		\hline
-		Microservizio Autenticazione & 10.5.0.11/24 \\
+		Microservizio Autenticazione      & 10.5.0.11/24           \\
 		\hline
-		Microservizio Task & 10.5.0.12/24 \\
+		Microservizio Task                & 10.5.0.12/24           \\
 		\hline
-		Microservizio Home & 10.5.0.13/24 \\
+		Microservizio Home                & 10.5.0.13/24           \\
 		\hline
-		Microservizio Gestione Dipendenti & 10.5.0.14/24 \\
+		Microservizio Gestione Dipendenti & 10.5.0.14/24           \\
 		\hline
-		Reverse Proxy & 127.0.0.1 \\
+		Reverse Proxy                     & 127.0.0.1              \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -202,13 +202,13 @@ Ad ogni servizio sono state assegnate le seguenti porte:
 		\hline
 		\centering Nome servizio & \qquad\qquad Porta \\ % I found no other way...
 		\hline
-		MongoDB & 27017 \\
+		MongoDB                  & 27017              \\
 		\hline
-		Backend & 3001 \\
+		Backend                  & 3001               \\
 		\hline
-		frontend & 3002 \\
+		frontend                 & 3002               \\
 		\hline
-		Reverse Proxy & 7777 \\
+		Reverse Proxy            & 7777               \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -227,7 +227,7 @@ La directory radice del progetto contiene i seguenti files:
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/tree.png}
-    Output del comando "tree", mostra i contenuti della directory root del progetto.
+	Output del comando "tree", mostra i contenuti della directory root del progetto.
 \end{figure}
 
 Segue una descrizione degli stessi:
@@ -314,7 +314,7 @@ Ogni microservizio utilizza:
 	\item \textit{React} v18.3.0: libreria UI per javascript, utilizzata per la frontend.
 	\item \textit{tailwindcss} v3.4.1: framework CSS.
 	\item \textit{Jest} v29.7.0 : framework per il testing
-	\item \textit{supertest} v7.0.0: framework per il testing di api, utilizzato insieme a Jest. 
+	\item \textit{supertest} v7.0.0: framework per il testing di api, utilizzato insieme a Jest.
 	\item \textit{concurrently} v8.2.2: esegue più comandi contemporaneamente, utilizzato per eseguire frontend e backend insieme.
 	\item \textit{serve} v14.2.3: hosta un sito statico, utilizzato per hostare la frontend in produzione.
 	\item \textit{dotenv} v16.4.5: permette l'accesso alle variabili di ambiente, utilizzate per la configurazione dei microservizi.
@@ -359,14 +359,14 @@ Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite n
 	\item "lint": esegue un'analisi stica del codice
 	\item "test": esegue gli script di testing del codice.
 \end{itemize}
-	
+
 
 \section{Microservizio Autenticazione}
 
 Questa sezione comprende lo sviluppo e la documentazione del backend del Microservizio Autenticazione
 \subsection*{Struttura del backend}
 La struttura del backend del microservizio autenticazione è riportata
-nella figura sotto. 
+nella figura sotto.
 \begin{figure}[H]
 	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/backend-structure.png}
 	\caption{Output del comando "tree" all'interno di un microservizio.}
@@ -386,7 +386,7 @@ Ha i seguenti attributi
 	\item token
 \end{itemize}
 \paragraph*{<<resource>> Dipendente}
-Rappresenta il profilo di un Dipendente. 
+Rappresenta il profilo di un Dipendente.
 Ha tutti gli attributi di cliente, in più:
 \begin{itemize}
 	\item nome
@@ -394,7 +394,7 @@ Ha tutti gli attributi di cliente, in più:
 	\item data di assunzione
 	\item data di nascita
 	\item worktags
-\end{itemize} 
+\end{itemize}
 \paragraph*{Manager}
 Rappresenta il profilo del Manager.
 Ha tutti gli attributi di Dipendente, ma ha come permissionLevel "Manager"
@@ -414,8 +414,8 @@ Permette a un utente che vuole eseguire l'accesso, registrarsi per la prima volt
 Richiede in ingresso la propria email.
 
 \paragraph*{<<resource>> registrazione}
-Permette a un nuovo cliente di registrarsi all'applicazione. 
-Richiede in ingresso l'email, la password e il codice 2FA 
+Permette a un nuovo cliente di registrarsi all'applicazione.
+Richiede in ingresso l'email, la password e il codice 2FA
 
 \paragraph*{<<resource>> cambioPassword}
 Permette a un utente già esistente  di cambiare la propria password.
@@ -444,17 +444,17 @@ La response body è in formato application/json. Di seguito le possibili rispost
 	\centering
 	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\quad Body e Cookie                               & \qquad\qquad Spiegazione                              \\ % I found no other way...
 		\hline
-		200 OK & \{text: "successfully logged in", token\} cookie: token & Login avvenuto con successo 	\\
+		200 OK                 & \{text: "successfully logged in", token\} cookie: token & Login avvenuto con successo                           \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		400 BAD REQUEST        & \{error: "missing fields", missingFields\}              & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
 		\hline
-		404 NOT FOUND & \{error: "user not found"\} & non esiste utente con la mail fornita \\% I found no other way... 
+		404 NOT FOUND          & \{error: "user not found"\}                             & non esiste utente con la mail fornita                 \\% I found no other way...
 		\hline
-		404 NOT FOUND & \{error: "wrong password" \} & la password inserita non è corretta \\
+		404 NOT FOUND          & \{error: "wrong password" \}                            & la password inserita non è corretta                   \\
 		\hline
-		400 BAD REQUEST & \{error: "2fa not correct" \} & Il codice twofa inserito non è corretto. \\
+		400 BAD REQUEST        & \{error: "2fa not correct" \}                           & Il codice twofa inserito non è corretto.              \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -574,17 +574,16 @@ La response body è in formato application/json. di seguito le possibili rispost
 	\centering
 	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\quad Body e Cookie                        & \qquad\qquad Spiegazione                               \\ % I found no other way...
 		\hline
-		200 OK & \{text: "successfully logged out"\} & Logout avvenuto con successo 	\\
+		200 OK                 & \{text: "successfully logged out"\}              & Logout avvenuto con successo                           \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		400 BAD REQUEST        & \{error: "missing fields", missingFields\}       & Alcuni campi non sono stati specificati nella request  \\ % I found no other way...
 		\hline
-		404 NOT FOUND & \{error: "user not found with the given token"\} & non esiste utente nella sessione con il token fornito.\\% I found no other way... 
+		404 NOT FOUND          & \{error: "user not found with the given token"\} & non esiste utente nella sessione con il token fornito. \\% I found no other way...
 		\hline
-		404 NOT FOUND & \{error: "wrong password" \} & la password inserita non è corretta \\
+		404 NOT FOUND          & \{error: "wrong password" \}                     & la password inserita non è corretta                    \\
 		\hline
-		
 	\end{tabular}
 \end{center}
 \begin{figure}[H]
@@ -673,15 +672,15 @@ La response body è in formato application/json. Di seguito le possibili rispost
 	\centering
 	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\quad Body e Cookie                                & \qquad\qquad Spiegazione                              \\ % I found no other way...
 		\hline
-		200 OK & \{text: "successfully registered", token\} cookie: token & Login avvenuto con successo 	\\
+		200 OK                 & \{text: "successfully registered", token\} cookie: token & Login avvenuto con successo                           \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		400 BAD REQUEST        & \{error: "missing fields", missingFields\}               & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
 		\hline
-		404 NOT FOUND & \{error: "user already exists with the given email"\} & Esiste già un utente con la mail fornita\\% I found no other way... 
+		404 NOT FOUND          & \{error: "user already exists with the given email"\}    & Esiste già un utente con la mail fornita              \\% I found no other way...
 		\hline
-		400 BAD REQUEST & \{error: "2fa not correct" \} & Il codice twofa inserito non è corretto. \\
+		400 BAD REQUEST        & \{error: "2fa not correct" \}                            & Il codice twofa inserito non è corretto.              \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -786,15 +785,15 @@ La response body è in formato application/json. Di seguito le possibili rispost
 	\centering
 	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\quad Body e Cookie                                           & \qquad\qquad Spiegazione                              \\ % I found no other way...
 		\hline
-		200 OK & \{text: "successfully changed your password", token\} cookie: token & Cambio password avvenuto con successo	\\
+		200 OK                 & \{text: "successfully changed your password", token\} cookie: token & Cambio password avvenuto con successo                 \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		400 BAD REQUEST        & \{error: "missing fields", missingFields\}                          & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
 		\hline
-		404 NOT FOUND & \{error: "user not found"\} & non esiste utente con la mail fornita \\% I found no other way... 
+		404 NOT FOUND          & \{error: "user not found"\}                                         & non esiste utente con la mail fornita                 \\% I found no other way...
 		\hline
-		400 BAD REQUEST & \{error: "2fa not correct" \} & Il codice twofa inserito non è corretto. \\
+		400 BAD REQUEST        & \{error: "2fa not correct" \}                                       & Il codice twofa inserito non è corretto.              \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -899,17 +898,17 @@ La response body è in formato application/json. Di seguito le possibili rispost
 	\centering
 	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\quad Body e Cookie                                          & \qquad\qquad Spiegazione                              \\ % I found no other way...
 		\hline
-		200 OK & \{text: "successfully removed your account", token\} cookie: token & L'account è stato rimosso con successo	\\
+		200 OK                 & \{text: "successfully removed your account", token\} cookie: token & L'account è stato rimosso con successo                \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		400 BAD REQUEST        & \{error: "missing fields", missingFields\}                         & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
 		\hline
-		404 NOT FOUND & \{error: "user not found"\} & non esiste utente con la mail fornita \\% I found no other way... 
+		404 NOT FOUND          & \{error: "user not found"\}                                        & non esiste utente con la mail fornita                 \\% I found no other way...
 		\hline
-		404 NOT FOUND & \{error: "wrong password" \} & la password inserita non è corretta \\
+		404 NOT FOUND          & \{error: "wrong password" \}                                       & la password inserita non è corretta                   \\
 		\hline
-		400 BAD REQUEST & \{error: "2fa not correct" \} & Il codice twofa inserito non è corretto. \\
+		400 BAD REQUEST        & \{error: "2fa not correct" \}                                      & Il codice twofa inserito non è corretto.              \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1009,17 +1008,16 @@ La response body è in formato application/json. di seguito le possibili rispost
 	\centering
 	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\quad Body e Cookie                            & \qquad\qquad Spiegazione                                                                                                     \\ % I found no other way...
 		\hline
-		200 OK & \{text: "success", user\_info: \{permission, id\} \} & L'utente esiste, e ha il seguente id e permissionLevel 	\\
+		200 OK                 & \{text: "success", user\_info: \{permission, id\} \} & L'utente esiste, e ha il seguente id e permissionLevel                                                                       \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		400 BAD REQUEST        & \{error: "missing fields", missingFields\}           & Alcuni campi non sono stati specificati nella request                                                                        \\ % I found no other way...
 		\hline
-		404 NOT FOUND & \{error: "user not found with the given token"\} & non esiste utente nella sessione con il token fornito.\\% I found no other way... 
+		404 NOT FOUND          & \{error: "user not found with the given token"\}     & non esiste utente nella sessione con il token fornito.                                                                       \\% I found no other way...
 		\hline
-		404 NOT FOUND & \{error: "user doesn't exist or is deleted" \} & Caso impossibile a meno di bug: il token esiste nella sessione, ma l'id utente non corrisponde ad alcun utente del database. \\
+		404 NOT FOUND          & \{error: "user doesn't exist or is deleted" \}       & Caso impossibile a meno di bug: il token esiste nella sessione, ma l'id utente non corrisponde ad alcun utente del database. \\
 		\hline
-		
 	\end{tabular}
 \end{center}
 \begin{figure}[H]
@@ -1104,11 +1102,11 @@ La response body è in formato application/json. di seguito le possibili rispost
 	\centering
 	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\quad Body e Cookie                                & \qquad\qquad Spiegazione                              \\ % I found no other way...
 		\hline
-		200 OK & \{text: "Successfully sent the 2FA code to your email"\} &  Il codice è stato inviato alla mail correttamente\\
+		200 OK                 & \{text: "Successfully sent the 2FA code to your email"\} & Il codice è stato inviato alla mail correttamente     \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		400 BAD REQUEST        & \{error: "missing fields", missingFields\}               & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
 		\hline
 	\end{tabular}
 \end{center}
@@ -1176,10 +1174,183 @@ Di seguito la specifica openapi dell'endpoint twofa contenuta nel file 'openapi.
 \section{Microservizio Task}
 
 \section{Microservizio Gestione Dipendenti}
+	\subsection*{Struttura del backend}
+	\subsection*{Modellazione dati nel database}
+	\subsection*{Specifica delle Risorse}
+
+	\subsection*{Crea profilo Dipendente}
+
+		\subsubsection*{Specifica}
+		Questa API, all'indirizzo /api/dipendenti/create, ha un metodo POST e viene utilizzata per la creazione di un profilo dipendente da parte del Manager.
+		La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
+		\begin{itemize}
+			
+			\item email
+			\item password
+			\item data di nascita
+			\item data di assunzione
+			\item lista worktag
+		\end{itemize}
+		Inoltre, per verificare che il manager sia autenticato, il suo token va inserito o all'interno del body o attraverso un cookie.
+		La response body è in formato application/json. Di seguito le possibili risposte:
+		% table
+		\begin{center} % center the table
+			\centering
+			\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+				\hline
+				\centering Status Code & \qquad\quad Body e Cookie                                & \qquad\qquad Spiegazione                              \\ % I found no other way...
+				\hline
+				200 OK                 & \{text: "successfully created the profile"\} 			  & Profilo dipendente creato con successo                           \\
+				\hline
+				401 UNAUTHORIZED       & \{error: "missing token"\} 							  & Il token non è presente nella richiesta				  \\
+				\hline
+				403 FORBIDDEN		   & \{error: "permission denied"\}							  & Il token è presente nella richiesta, ma l'utente associato non è un manager \\	
+				\hline
+				404 NOT FOUND 		   & \{error: "No user found with the given token"\}          & Il token è presente nella richiesta, ma non corrisponde a nessun profilo autenticato \\
+				\hline
+				400 BAD REQUEST        & \{error: "missing fields", missingFields\}               & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
+				\hline
+				400 BAD REQUEST        & \{error: "user already exists with the given email"\}    & Esiste già un utente con la mail fornita              \\% I found no other way...
+				\hline
+				400 BAD REQUEST        & \{error: "invalid birth date" \}                            & La data di nascita fornita non è in un formato riconosciuto             \\
+				\hline
+				400 BAD REQUEST        & \{error: "invalid assunzione date" \}                            & La data di assunzione fornita non è in un formato riconosciuto             \\
+				\hline
+				400 BAD REQUEST        & \{error: "no worktag array" \}                            & il campo della richiesta 'worktag' non è un array           \\
+				\hline
+				400 BAD REQUEST        & \{error: "elements provided are not worktags" \}                            & Gli elementi forniti all'interno di 'worktag' non sono worktags           \\
+				\hline
+			\end{tabular}
+		\end{center}
+		\subsubsection*{Sviluppo}
+
+		\subsubsection*{Documentazione}
+
+		\subsubsection*{Testing}
+
+	\subsection*{Elimina profilo}
+		\subsubsection*{Specifica}
+		Questa API, all'indirizzo /api/dipendenti/delete, ha un metodo delete e viene utilizzata per l'eliminazione di un profilo da parte del Manager.
+		La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
+		\begin{itemize}
+			\item email
+		\end{itemize}
+		Inoltre, per verificare che il manager sia autenticato, il suo token va inserito o all'interno del body o attraverso un cookie.
+		La response body è in formato application/json. Di seguito le possibili risposte:
+		% table
+		\begin{center} % center the table
+			\centering
+			\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+				\hline
+				\centering Status Code & \qquad\quad Body e Cookie                                & \qquad\qquad Spiegazione                              \\ % I found no other way...
+				\hline
+				200 OK                 & \{text: "successfully deleted the profile"\} 			  & Profilo eliminato con successo                           \\
+				\hline
+				401 UNAUTHORIZED       & \{error: "missing token"\} 							  & Il token non è presente nella richiesta				  \\
+				\hline
+				403 FORBIDDEN		   & \{error: "permission denied"\}							  & Il token è presente nella richiesta, ma l'utente associato non è un manager \\	
+				\hline
+				404 NOT FOUND 		   & \{error: "No user found with the given token"\}          & Il token è presente nella richiesta, ma non corrisponde a nessun profilo autenticato \\
+				\hline
+				400 BAD REQUEST        & \{error: "missing fields", missingFields\}               & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
+				\hline
+				404 NOT FOUND 		   & \{error: "no user with the given email" \}				  & Non esiste alcun utente con la mail fornita      \\
+				\hline
+			\end{tabular}
+		\end{center}
+		\subsubsection*{Sviluppo}
+
+		\subsubsection*{Documentazione}
+
+		\subsubsection*{Testing}
+
+	\subsection*{Cerca profili}
+		\subsubsection*{Specifica}
+		Questa API, all'indirizzo /api/dipendenti/find, ha un metodo post e viene utilizzata per la ricerca di uno o più profili da parte del manager.
+		La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
+		\begin{itemize}
+			\item mode
+		\end{itemize}
+		il campo mode può assumere i valori 'one' o 'many', e indica se la ricerca debba ritornare uno o più profili.
+		Il body può contenere, ma non è obbligatorio, i seguenti campi per una ricerca più specifica:
+		\begin{itemize}
+			\item email
+			\item nome
+			\item cognome
+			\item data di nascita
+			\item data di assunzione
+			\item worktags
+		\end{itemize}
+		Inoltre, per verificare che il manager sia autenticato, il suo token va inserito o all'interno del body o attraverso un cookie.
+		La response body è in formato application/json. Di seguito le possibili risposte:
+		% table
+		\begin{center} % center the table
+			\centering
+			\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+				\hline
+				\centering Status Code & \qquad\quad Body e Cookie                                & \qquad\qquad Spiegazione                              \\ % I found no other way...
+				\hline
+				200 OK                 & \{user: {...}\} 			  & La ricerca con mode = "one" ha riportato un risultato                           \\
+				\hline
+				200 OK 				   & \{users: [user1,user2,user3...]\} & La ricerca con mode = 'many' ha riportato uno o più risultati              \\
+				\hline
+				401 UNAUTHORIZED       & \{error: "missing token"\} 							  & Il token non è presente nella richiesta				  \\
+				\hline
+				403 FORBIDDEN		   & \{error: "permission denied"\}							  & Il token è presente nella richiesta, ma l'utente associato non è un manager \\	
+				\hline
+				404 NOT FOUND 		   & \{error: "No user found with the given token"\}          & Il token è presente nella richiesta, ma non corrisponde a nessun profilo autenticato \\
+				\hline
+				400 BAD REQUEST        & \{error: "missing fields", missingFields\}               & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
+				\hline
+				404 NOT FOUND 		   & \{error: "no user found" \}				  & Non esiste alcun utente avente i parametri di ricerca forniti. viene ritornato solo con mode = one   \\
+				\hline
+			\end{tabular}
+		\end{center}
+		\subsubsection*{Sviluppo}
+
+		\subsubsection*{Documentazione}
+
+		\subsubsection*{Testing}
+
+	\subsection*{Storico profili}
+		\subsubsection*{Specifica}
+		Questa API, all'indirizzo /api/dipendenti/history, ha un metodo post e viene utilizzata per la visione dello storico task di un determinato dipendente
+		La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
+		\begin{itemize}
+			\item email
+		\end{itemize}
+		Inoltre, per verificare che il manager sia autenticato, il suo token va inserito o all'interno del body o attraverso un cookie.
+		La response body è in formato application/json. Di seguito le possibili risposte:
+		% table
+		\begin{center} % center the table
+			\centering
+			\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+				\hline
+				\centering Status Code & \qquad\quad Body e Cookie                                & \qquad\qquad Spiegazione                              \\ % I found no other way...
+				\hline
+				200 OK                 & \{[task1,task2,task3...]\} 			  & La ricerca ha riportato lo storico task con successo                          \\
+				\hline
+				401 UNAUTHORIZED       & \{error: "missing token"\} 							  & Il token non è presente nella richiesta				  \\
+				\hline
+				403 FORBIDDEN		   & \{error: "permission denied"\}							  & Il token è presente nella richiesta, ma l'utente associato non è un manager \\	
+				\hline
+				404 NOT FOUND 		   & \{error: "No user found with the given token"\}          & Il token è presente nella richiesta, ma non corrisponde a nessun profilo autenticato \\
+				\hline
+				400 BAD REQUEST        & \{error: "missing fields", missingFields\}               & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
+				\hline
+				404 NOT FOUND 		   & \{error: "dipendente not foudn" \}				  & Non esiste alcun dipendente avente la mail fornita \\
+				\hline
+			\end{tabular}
+		\end{center}
+		\subsubsection*{Sviluppo}
+
+		\subsubsection*{Documentazione}
+
+		\subsubsection*{Testing}
 
 \section{Microservizio Home}
 
 \chapter{Frontend}
 
-	
+
 \end{document}
