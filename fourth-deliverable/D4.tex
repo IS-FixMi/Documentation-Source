@@ -15,6 +15,8 @@
 % underlining
 \usepackage{ulem}
 
+\usepackage[T1]{fontenc}
+
 % Table of contents link to corresponding sections
 \usepackage{hyperref}
 \hypersetup{
@@ -402,6 +404,816 @@ Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite n
 
 \section{Microservizio Autenticazione}
 
+Questa sezione comprende lo sviluppo e la documentazione del backend del Microservizio Autenticazione
+\subsection*{Struttura del backend}
+La struttura del backend del microservizio autenticazione è riportata
+nella figura sotto. 
+\begin{figure}[H]
+	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/backend-structure.png}
+	\caption{Output del comando "tree" all'interno di un microservizio.}
+\end{figure}
+
+\subsection*{Modellazione dati nel database}
+\subsection*{Specifica delle risorse}
+Di seguito le risorse estratte dal diagramma delle classi e utilizzate da questo microservizio.
+\paragraph*{<<resource>> Cliente}
+Rappresenta il profilo di un Cliente.
+Ha i seguenti attributi
+\begin{itemize}
+	\item id
+	\item email
+	\item password\_hash
+	\item permissionLevel
+	\item token
+\end{itemize}
+\paragraph*{<<resource>> Dipendente}
+Rappresenta il profilo di un Dipendente. 
+Ha tutti gli attributi di cliente, in più:
+\begin{itemize}
+	\item nome
+	\item cognome
+	\item data di assunzione
+	\item data di nascita
+	\item worktags
+\end{itemize} 
+\paragraph*{Manager}
+Rappresenta il profilo del Manager.
+Ha tutti gli attributi di Dipendente, ma ha come permissionLevel "Manager"
+
+Metodi
+\paragraph{<<resource>> login}
+Permette a un utente già esistente di accedere all'applicazione.
+I parametri in ingresso sono email, password e codice 2FA.
+E' un'API del backend.
+
+\paragraph*{<<resource>> logout}
+Permette a un utente che ha già eseguito l'accesso di svolgere il logout dall'applicazione.
+Richiede in ingresso il token di sessione ricevuto al login.
+
+\paragraph*{<<resource>> twofa}
+Permette a un utente che vuole eseguire l'accesso, registrarsi per la prima volta, cambiare la password o rimuovere il proprio account di ricevere attraverso email un codice 2FA.
+Richiede in ingresso la propria email.
+
+\paragraph*{<<resource>> registrazione}
+Permette a un nuovo cliente di registrarsi all'applicazione. 
+Richiede in ingresso l'email, la password e il codice 2FA 
+
+\paragraph*{<<resource>> cambioPassword}
+Permette a un utente già esistente  di cambiare la propria password.
+Richiede in ingresso l'email, la nuova password e il codice 2FA.
+
+\paragraph*{<<resource>> eliminaProfilo}
+Permette a un utente già esistende di eliminare il proprio profilo.
+Richiede in ingresso l'email, la password e il codice 2FA.
+
+\paragraph*{<<resource>> autenticaUtente}
+Permette a un altro microservizio di autenticare un utente che desidera utilizzare una funzionalità che richiede autorizzazione.
+Richiede in ingresso il token dell'utente.
+
+\subsection{Login}
+\subsubsection*{Specifica}
+Questa API, all'indirizzo /api/auth/login, ha un metodo POST e viene utilizzata per far accedere utenti all'applicazione.
+La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
+\begin{itemize}
+	\item email
+	\item password
+	\item twofa
+\end{itemize}
+La response body è in formato application/json. Di seguito le possibili risposte:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{text: "successfully logged in", token\} cookie: token & Login avvenuto con successo 	\\
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		\hline
+		404 NOT FOUND & \{error: "user not found"\} & non esiste utente con la mail fornita \\% I found no other way... 
+		\hline
+		404 NOT FOUND & \{error: "wrong password" \} & la password inserita non è corretta \\
+		\hline
+		400 BAD REQUEST & \{error: "2fa not correct" \} & Il codice twofa inserito non è corretto. \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_login.drawio.png}
+	\caption{Diagramma dell'endpoint "login"}
+\end{figure}
+
+
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un utente per eseguire l'accesso.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se l'utente esista o meno nel database, e successivamente la validità della password.
+Dopo aver controllato che il codice 2FA sia corretto, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/login-carbon.png}
+	Codice dell'API api/auth/login
+\end{figure}
+\subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint login contenuta nel file 'openapi.yaml' della directory del microservizio
+\begin{verbatim}
+	/login:
+    post:
+      summary: Login method for user authentication
+      description: This endpoint allows users to log in by providing email, password, and two-factor authentication code.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+
+                password:
+                  type: string
+                  format: password
+                  
+                twofa:
+                  type: string
+                  format: twofa-code
+               
+              required:
+                - email
+                - password
+                - twofa
+      responses:
+        '200':
+          description: Successfully logged in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "successfully logged in!"
+                  token:
+                    type: string
+                    example: "12415343463452"
+            
+
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+              description: Session token
+        '400':
+          description: Bad Request - Missing fields or 2fa not correct
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/missingFieldsSchema'
+                  - $ref: '#/components/schemas/wrongTwoFaSchema'
+      
+        '404':
+          description: User not found or wrong password
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/notFoundSchema'
+                  - $ref: '#/components/schemas/wrongPassSchema'
+\end{verbatim}
+\subsubsection*{Testing}
+Per questo endpoint sono stati creati i seguenti test:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/login_test_1.png}
+	\caption{Test Login 1}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/login_test_2.png}
+	\caption{Test Login 2}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/login_test_3.png}
+	\caption{Test Login 3}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/login_test_4.png}
+	\caption{Test Login 4}
+\end{figure}
+\subsection{Logout}
+\subsubsection*{Specifica}
+
+
+Questa API, all'indirizzo/api/auth/logout, ha un metodo DELETE e viene utilizzata da un utente autenticato per svolgere il logout.
+La request body è in formato x-www-form-urlencoded e deve contenere il token dell'utente.
+La response body è in formato application/json. di seguito le possibili risposte:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{text: "successfully logged out"\} & Logout avvenuto con successo 	\\
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		\hline
+		404 NOT FOUND & \{error: "user not found with the given token"\} & non esiste utente nella sessione con il token fornito.\\% I found no other way... 
+		\hline
+		404 NOT FOUND & \{error: "wrong password" \} & la password inserita non è corretta \\
+		\hline
+		
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_logout.drawio.png}
+	\caption{Diagramma dell'endpoint "logout"}
+\end{figure}
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un utente già autenticato per eseguire il logout.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se il token fornito è presente nella sessione.
+A operazione completata, viene rimosso il token dalla sessione.
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/logout-carbon.png}
+	Codice dell'API api/auth/logout
+\end{figure}
+\subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint logout contenuta nel file 'openapi.yaml' della directory del microservizio
+\begin{verbatim}
+	/logout:
+    delete:
+      summary: Method for logging out 
+      description: This endpoint allows users who have already logged in to log out by providing their token.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+              required:
+                  - token
+      responses:
+        '200':
+          description: Succesfully logged out
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Succesfully logged out!"
+        '400':
+          description: Bad Request - Missing fields 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/missingFieldsSchema'
+        '404':
+          description: User not found with the given token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/notFoundSchema'
+	
+\end{verbatim}
+\subsubsection*{Testing}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/logout_test_1.png}
+	\caption{Test Logout 1}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/logout_test_2.png}
+	\caption{Test Logout 2}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/logout_test_3.png}
+	\caption{Test Logout 3}
+\end{figure}
+\subsection{Registrazione}
+\subsubsection*{Specifica}
+Questa API, all'indirizzo /api/auth/register, ha un metodo POST e viene utilizzata per la creazione di un account cliente.
+La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
+\begin{itemize}
+	\item email
+	\item password
+	\item twofa
+\end{itemize}
+La response body è in formato application/json. Di seguito le possibili risposte:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{text: "successfully registered", token\} cookie: token & Login avvenuto con successo 	\\
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		\hline
+		404 NOT FOUND & \{error: "user already exists with the given email"\} & Esiste già un utente con la mail fornita\\% I found no other way... 
+		\hline
+		400 BAD REQUEST & \{error: "2fa not correct" \} & Il codice twofa inserito non è corretto. \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_register.drawio.png}
+	\caption{Diagramma dell'endpoint "register"}
+\end{figure}
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un utente per creare un proprio account cliente.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se un utente con la stessa email sia già esistente nel database.
+Dopo aver controllato che il codice 2FA sia corretto,viene inserito il nuovo profilo cliente nel database, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/register-carbon.png}
+	Codice dell'API api/auth/register
+\end{figure}
+\subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint register contenuta nel file 'openapi.yaml' della directory del microservizio
+\begin{verbatim}
+	/register:
+    post:
+      summary: Registering method for new users
+      description: This endpoint allows new users to register by providing email, password, and two-factor authentication code.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  
+                password:
+                  type: string
+                  format: password
+                twofa:
+                  type: string
+                  format: twofa-code
+              required:
+                - email
+                - password
+                - twofa
+      responses:
+        '200':
+          description: Succesfully registered
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Successfully registered"
+                  token:
+                    type: string
+                    example: "1231345321532151"
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+              description: Session token
+        '400':
+          description: Bad Request - Missing fields or 2fa not correct or User already exists
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/missingFieldsSchema'
+                  - $ref: '#/components/schemas/wrongTwoFaSchema'
+                  - $ref: '#/components/schemas/alreadyExistsSchema'
+
+\end{verbatim}
+\subsubsection*{Testing}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/register_test_1.png}
+	\caption{Test Register 1}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/register_test_2.png}
+	\caption{Test Register 2}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/register_test_3.png}
+	\caption{Test Register 3}
+\end{figure}
+\subsection{Cambio password}
+\subsubsection*{Specifica}
+Questa API, all'indirizzo /api/auth/changepass, ha un metodo PATCH e viene utilizzata per cambiare la password di un utente.
+La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
+\begin{itemize}
+	\item email
+	\item new\_password
+	\item twofa
+\end{itemize}
+La response body è in formato application/json. Di seguito le possibili risposte:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{text: "successfully changed your password", token\} cookie: token & Cambio password avvenuto con successo	\\
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		\hline
+		404 NOT FOUND & \{error: "user not found"\} & non esiste utente con la mail fornita \\% I found no other way... 
+		\hline
+		400 BAD REQUEST & \{error: "2fa not correct" \} & Il codice twofa inserito non è corretto. \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_changepass.drawio.png}
+	\caption{Diagramma dell'endpoint "changepass"}
+\end{figure}
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un utente per cambiare la password del proprio account.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se l'utente esista o meno nel database.
+Dopo aver controllato che il codice 2FA sia corretto,viene modificata la password nel database, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/changepass-carbon.png}
+	Codice dell'API api/auth/changepass
+\end{figure}
+\subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint changepass contenuta nel file 'openapi.yaml'
+\begin{verbatim}
+	/changepass:
+    patch:
+      summary: Password Changing Method
+      description: This endpoint allows existing users to change their passwords  by providing email, the new password, and two-factor authentication code.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                new_password:
+                  type: string
+                  format: password
+                twofa:
+                  type: string
+                  format: twofa-code
+              required:
+                - email
+                - new_password
+                - twofa
+      responses:
+        '200':
+          description: Successfully changed your password
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "successfully changed your password"
+                  token:
+                    type: string
+                    example: "12312434325321234"
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+              description: Session token
+        '400':
+          description: Bad Request - Missing fields or 2fa not correct
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/missingFieldsSchema'
+                  - $ref: '#/components/schemas/wrongTwoFaSchema'
+      
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/notFoundSchema'
+
+\end{verbatim}
+\subsubsection*{Testing}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/password_test_1.png}
+	\caption{Test Pass 1}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/password_test_2.png}
+	\caption{Test Pass 2}
+\end{figure}
+\subsection{Eliminazione Profilo}
+\subsubsection*{Specifica}
+Questa API, all'indirizzo /api/auth/remove, ha un metodo POST e viene utilizzata per rimuovere il profilo di un utente.
+La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
+\begin{itemize}
+	\item email
+	\item password
+	\item twofa
+\end{itemize}
+La response body è in formato application/json. Di seguito le possibili risposte:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{text: "successfully removed your account", token\} cookie: token & L'account è stato rimosso con successo	\\
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		\hline
+		404 NOT FOUND & \{error: "user not found"\} & non esiste utente con la mail fornita \\% I found no other way... 
+		\hline
+		404 NOT FOUND & \{error: "wrong password" \} & la password inserita non è corretta \\
+		\hline
+		400 BAD REQUEST & \{error: "2fa not correct" \} & Il codice twofa inserito non è corretto. \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_remove.drawio.png}
+	\caption{Diagramma dell'endpoint "remove"}
+\end{figure}
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un utente per eliminare il proprio profilo.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se l'utente esista o meno nel database, e successivamente la validità della password.
+Dopo aver controllato che il codice 2FA sia corretto, il profilo viene eliminato dal database e il suo token rimosso dalla sessione.
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/remove-carbon.png}
+	Codice dell'API api/auth/remove
+\end{figure}
+\subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint remove contenuta nel file 'openapi.yaml' della directory del microservizio
+
+\begin{verbatim}
+	/remove:
+    delete:
+      summary: Account removal method
+      description: This endpoint allows existing users to remove their accounts by providing email, password, and two-factor authentication code.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+                twofa:
+                  type: string
+                  format: twofa-code
+              required:
+                - email
+                - password
+                - twofa
+      responses:
+        '200':
+          description: Succesfully removed the account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Successfully removed your account."
+        '400':
+          description: Bad Request - Missing fields or 2fa not correct
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/missingFieldsSchema'
+                  - $ref: '#/components/schemas/wrongTwoFaSchema'
+      
+        '404':
+          description: User not found or wrong password
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/notFoundSchema'
+                  - $ref: '#/components/schemas/wrongPassSchema'
+
+\end{verbatim}
+\subsubsection*{Testing}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/remove_test_1.png}
+	\caption{Test Remove 1}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/remove_test_2.png}
+	\caption{Test Remove 2}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/remove_test_3.png}
+	\caption{Test Remove 3}
+\end{figure}
+\subsection{Autentifica Token}
+\subsubsection*{Specifica}
+Questa API, all'indirizzo/api/auth/authenticate, ha un metodo POST e viene utilizzata da un altro microservizio per autenticare un utente utilizzando il suo token.
+La request body è in formato x-www-form-urlencoded e deve contenere il token dell'utente.
+La response body è in formato application/json. di seguito le possibili risposte:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{text: "success", user\_info: \{permission, id\} \} & L'utente esiste, e ha il seguente id e permissionLevel 	\\
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		\hline
+		404 NOT FOUND & \{error: "user not found with the given token"\} & non esiste utente nella sessione con il token fornito.\\% I found no other way... 
+		\hline
+		404 NOT FOUND & \{error: "user doesn't exist or is deleted" \} & Caso impossibile a meno di bug: il token esiste nella sessione, ma l'id utente non corrisponde ad alcun utente del database. \\
+		\hline
+		
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_auth.drawio.png}
+	\caption{Diagramma dell'endpoint "authenticate"}
+\end{figure}
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un microservizio per autenticare un utente che desidera farne uso.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se il token fornito abbia un utente corrispondente nella sessione.
+Infine il livello di permesso associato all'utente e il suo id vengono inviati nella risposta.
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/authenticate-carbon.png}
+	Codice dell'API api/auth/authenticate
+\end{figure}
+\subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint authenticate contenuta nel file 'openapi.yaml' della directory del microservizio
+\begin{verbatim}
+	/authenticate:
+    post:
+      summary: Method for authentication 
+      description: This endpoint allows other microservices to authenticate a user by providing their token
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  
+              required:
+                  - token
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "success"
+                  user_info:
+                    type: object
+                    properties:
+                      permission:
+                        type: string
+                        example: "Manager"
+                      id:
+                        type: string
+                        example: "aa231e3421bd1223"
+
+      
+
+        '400':
+          description: Bad Request - Missing fields 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/missingFieldsSchema'
+        '404':
+          description: User not found with the given token or user doesn't exist 
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/notFoundSchema'
+                  - $ref: '#/components/schemas/maybeDeletedSchema'
+
+\end{verbatim}
+
+\subsection{Two Factor Authentication}
+\subsubsection*{Specifica}
+Questa API, all'indirizzo/api/auth/twofa, ha un metodo POST e viene utilizzata da un utente per richiedere un codice 2FA attraverso mail
+La request body è in formato x-www-form-urlencoded e deve contenere l'indirizzo email dell'utente.
+La response body è in formato application/json. di seguito le possibili risposte:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\quad Body e Cookie & \qquad\qquad Spiegazione\\ % I found no other way...
+		\hline
+		200 OK & \{text: "Successfully sent the 2FA code to your email"\} &  Il codice è stato inviato alla mail correttamente\\
+		\hline
+		400 BAD REQUEST & \{error: "missing fields", missingFields\} & Alcuni campi non sono stati specificati nella request\\ % I found no other way...
+		\hline
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_twofa.drawio.png}
+	\caption{Diagramma dell'endpoint "changepass"}
+\end{figure}
+\subsubsection*{Sviluppo}
+Questa API viene utilizzata da un utente per ricevere un codice 2FA attraverso email.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente viene inviata l'email con il codice 2FA.
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/twofa-carbon.png}
+	Codice dell'API api/auth/twofa
+\end{figure}
+
+\subsubsection*{Documentazione}
+Di seguito la specifica openapi dell'endpoint twofa contenuta nel file 'openapi.yaml' della directory del microservizio
+\begin{verbatim}
+	/twofa:
+    post:
+      summary: Method for receiving a 2FA code 
+      description: This endpoint allows users to request a Two-Factor Authentication code by providing their email
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+              required:
+                  - token
+      responses:
+        '200':
+          description: Succesfully sent the 2FA
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "Successfully sent the 2FA code to your email(SPOILER: IT'S 12345)"
+        '400':
+          description: Bad Request - Missing fields 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/missingFieldsSchema'
+                     
+     
+\end{verbatim}
+\subsubsection*{Testing}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/twofa_test_1.png}
+	\caption{TwoFa Testing 1}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/twofa_test_2.png}
+	\caption{TwoFa Testing 2}
+\end{figure}
 \section{Microservizio Task}
 
 Questa sezione comprende lo sviluppo e la documentazione del backend del
