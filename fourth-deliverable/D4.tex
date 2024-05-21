@@ -1456,7 +1456,7 @@ components:
 	            - type: object
 \end{verbatim}
 
-\subsection*{Scegli Task}
+\subsection{Scegli Task}
 \subsubsection*{Specifica}
 
 La risorsa "Scegli Task", accessibile tramite la route "/api/tasks/scegliTask" permette di assegnare una task ad un dipendente o ad un manager. L'API richiede tutti i seguenti campi:
@@ -1619,25 +1619,60 @@ Il codice che implementa quanto detto sopra è il seguente:
 \subsubsection*{Testing}
 
 Sono stati realizzati i seguenti tests per coprire ogni possibile risultato della chiamata:
+
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1 & Nessun field & - & - & - & 400 & 400 \\
+		\hline
+		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		\hline
+		3 & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 403 & 403 \\
+		\hline
+		4 & Invio di un token valido ma senza taskid & \{ token: tokenManager \} & Esistenza di un manager nel DB & Microservizio Autenticazione, DB & 400 & 400 \\
+		\hline
+		5 & Invio token valido, taskid non valido & \{ token: tokenManager, taskid: "fake" \} & Esistenza di un Manager nel DB & Microservizio Autenticazione, DB & 404 & 404 \\
+		\hline
+		6 & Invio token valido con taskid valido & \{ token: tokenManager, taskid: validTaskid \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Di seguito il codice dei tests e l'output:
+
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_test1.png}
+	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_test2.png}
+	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_test3.png}
+	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_test4.png}
+	Testcase 4
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_test5.png}
+	Testcase 5
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_test6.png}
+	Testcase 6
 \end{figure}
 
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/jest_scegli_task.png}
+	Risultato dei tests
+\end{figure}
 
 
 \subsection{Modifica Stato Task}
@@ -1811,25 +1846,66 @@ Il codice è il seguente:
 
 Sono stati creati i seguenti tests:
 
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1 & Nessun field & - & - & - & 400 & 400 \\
+		\hline
+		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		\hline
+		3 & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 403 & 403 \\
+		\hline
+		4 & Invio di un token valido ma senza taskid & \{ token: tokenManager \} & Esistenza di un manager nel DB & Microservizio Autenticazione, DB & 400 & 400 \\
+		\hline
+		5 & Invio token valido con taskid valido ma con uno stato sbagliato & \{ token: tokenManager, taskid: validTaskid, taskStatus: "fake" \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 400 & 400 \\
+		\hline
+		6 & Invio token valido con taskid valido e uno stato valido & \{ token: tokenManager, taskid: validTaskid, taskStatus: validStatus \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Di seguito il codice dei tests:
+
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test1.png}
+	
+	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test2.png}
+	
+	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test3.png}
+	
+	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test4.png}
+	
+	Testcase 4
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test5.png}
+	
+	Testcase 5
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test6.png}
+	
+	Testcase 6
 \end{figure}
 
+\begin{figure}[H]
+	\centering\includegraphics[width=0.8\textwidth]{images/jest_modifica_stato.png}
+	
+	Risultato dei tests
+\end{figure}
 
 \subsection{Get Lista Task In Lavorazione}
 \subsubsection*{Specifica}
@@ -1958,17 +2034,51 @@ Il codice che implementa quanto sopra è il seguente:
 
 Sono stati individuati i seguenti test cases:
 
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1 & Nessun field & - & - & - & 400 & 400 \\
+		\hline
+		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		\hline
+		3 & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 403 & 403 \\
+		\hline
+		4 & Invio token valido & \{ token: tokenManager \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Di seguito il codice dei suddetti tests:
+
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test1.png}
+	
+	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test2.png}
+	
+	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test3.png}
+	
+	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test4.png}
+	
+	Testcase 4
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/jest_in_lavorazione.png}
+	
+    Risultato dei tests
 \end{figure}
 
 \subsection{Get Lista Task Da Eseguire}
@@ -2095,17 +2205,51 @@ Il codice è il seguente:
 \subsubsection*{Testing}
 
 Sono stati creati i seguenti test cases:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1 & Nessun field & - & - & - & 400 & 400 \\
+		\hline
+		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		\hline
+		3 & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 403 & 403 \\
+		\hline
+		4 & Invio token valido & \{ token: tokenManager \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Di seguito il loro codice:
+
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test1.png}
+	
+	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test2.png}
+	
+	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test3.png}
+	
+	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test4.png}
+	
+	Testcase 4
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/jest_da_eseguire.png}
+	
+	Risultato tests
 \end{figure}
 
 \subsection{Get Lista Task In Pausa}
@@ -2232,19 +2376,50 @@ Il codice è quanto segue:
 \subsubsection*{Testing}
 
 Sono stati creati i seguenti test cases:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1 & Nessun field & - & - & - & 400 & 400 \\
+		\hline
+		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		\hline
+		3 & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 403 & 403 \\
+		\hline
+		4 & Invio token valido & \{ token: tokenManager \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		\hline
+	\end{tabular}
+\end{center}
+
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa_test1.png}
+	
+	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa_test2.png}
+	
+	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa_test3.png}
+	
+	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa_test4.png}
+	
+	Testcase 4
 \end{figure}
 
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/jest_in_pausa.png}
+	
+	Risultato dei tests.
+\end{figure}
 
 \subsection{Get Storico Task}
 \subsubsection*{Specifica}
@@ -2369,17 +2544,49 @@ Il codice è il seguente:
 \subsubsection*{Testing}
 
 Sono stati individuati i seguenti test cases:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1 & Nessun field & - & - & - & 400 & 400 \\
+		\hline
+		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		\hline
+		3 & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 403 & 403 \\
+		\hline
+		4 & Invio token valido & \{ token: tokenManager \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		\hline
+	\end{tabular}
+\end{center}
+
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_storico_test1.png}
+	
+	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_storico_test2.png}
+	
+	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_storico_test3.png}
+	
+	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_storico_test4.png}
+	
+	Testcase 4
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/jest_storico.png}
+	
+	Testcase 4
 \end{figure}
 
 
@@ -2502,27 +2709,65 @@ Il codice è il seguente:
 \end{figure}
 
 \subsubsection*{Testing}
-Sono stati individuati i seguenti test cases
+Sono stati individuati i seguenti test cases:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1 & Nessun field & - & - & - & 400 & 400 \\
+		\hline
+		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		\hline
+		3 & Invio token senza task tag & \{ token: validToken \} & Esistenza Manager nel DB & Microsetvizio Autenticazione, DB & 400 & 400 \\
+		4 & Invio token con task tag sbagliato & \{ token: validToken, taskTag: "fake" \} & Esistenza Manager nel DB & Microservizio Autenticazione, DB & 400 & 400 \\
+		5 & Invio Token con task tag ma senza altri attributi & \{ token: tokenCliente, taskTag: "Magazzino" \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 400 & 400 \\
+		\hline
+		6 & Tutto valido  & \{ token: tokenManager, taskTak: "Magazzino", nome: "test", descrizione: "test" \} & Esistenza di un Manager nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Codice dei testcases:
+
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test1.png}
+	
+	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test2.png}
+	
+	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test3.png}
+	
+	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test4.png}
+	
+	Testcase 4
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test5.png}
+	
+	Testcase 5
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test6.png}
+	
+	Testcase 6
 \end{figure}
 
-
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/jest_crea_task.png}
+	
+	Risultato testcases
+\end{figure}
 
 \chapter{Microservizio Gestione Dipendenti}
 
