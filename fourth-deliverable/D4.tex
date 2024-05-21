@@ -87,9 +87,22 @@
 	
 	
 	\section{Scopo del documento}
-	
+	Questo documento denominato "Application Implementation and Documentation" descrive in dettaglio l'implementazione dell'applicazione nelle sue molteplici parti, seguendo quanto visto nei precedenti documenti. Il documento è strutturato in diversi capitoli: il primo dedicato alla specifica dell'infrastruttura in generale, con grafici e codice, seguito da quattro capitoli dedicati alle varie funzionalità implementate, con una visione della backend e della frontend. Il documento si chiude con le istruzioni per il deploy dell'applicazione.
 	
 	\section{Implementazione}
+	Il team di sviluppo, valutando i requisiti del progetto ed il tempo a disposizione, ha deciso di implementare i seguenti microservizi:
+	\begin{itemize}
+		\item Autenticazione
+		\item Task
+		\item Home
+		\item Gestione Dipendenti
+	\end{itemize}
+	Inoltre vengono implementati i seguenti servizi:
+	\begin{itemize}
+		\item Reverse Proxy
+		\item Database
+	\end{itemize}
+	
 	
 	\section{Informazioni del Documento}
 	
@@ -116,9 +129,9 @@
 	
 	
 	
-\chapter{Backend}
+\chapter{Microservizi}
 
-Il seguente capitolo descrive l'implementazione, con il supporto di diagrammi "UML" e codice, della parte "Backend" dell'applicazione, in riferimento a quanto detto nei precedenti documenti quali "Analisi dei Requisiti", "Specifica dei Requisiti" e del "Documento di Architettura".  Il capitolo è strutturato partendo da una visione generale dell'infrastruttura, andando verso una visione più specifica e dettagliata.
+Il seguente capitolo descrive l'implementazione, con il supporto di diagrammi "UML" e codice, dell'architettura dell'applicazione, in riferimento a quanto detto nei precedenti documenti quali "Analisi dei Requisiti", "Specifica dei Requisiti" e del "Documento di Architettura".  Il capitolo è strutturato partendo da una visione generale dell'infrastruttura, andando ad analizzare più nello specifico i suoi componenti. I successivi capitoli andranno a descrivere nello specifico ogni microservizio.
 
 
 Gli estratti di codice verranno mostrati nel seguente formato:
@@ -126,18 +139,6 @@ Gli estratti di codice verranno mostrati nel seguente formato:
 	\centering\includegraphics[width=1\textwidth]{images/example_code_01.png}
 	Esempio di estratto di codice
 \end{figure}
-
-\subsection*{Tecnologie}
-
-In questo capitolo verranno menzionate più volte alcune tecnologie, dunque ne viene riportata una breve descrizionee sotto:
-\begin{itemize}
-	\item "Docker": tecnologia che raccoglie il software in unità standardizzate chiamate container, offrendo tutto il necessario per la loro corretta esecuzione, incluse librerie, strumenti di sistema, codice e runtime. Il logo ricorda una balena di colore azzurro con dei rettangoli al di sopra rappresentanti dei containers, come se la balena stessa fosse una nave.
-	\item "Docker Compose": software per la gestione di molteplici docker containers contemporaneamente. L'icona rappresenta un polpo con dei parallelepipedi azzurri tra i tentacoli.
-	\item "Nginx": intermediario tra le richieste da parte dei client e il server. Può essere usato come load balancer, cache o proxy. Il logo è raffigurato da un N bianca con sfondo verde.
-	\item "MongoDB": DBMS non relazionale. Il logo rappresenta una foglia verde.
-	\item "Express": framework backend per applicazioni web in javascript. Il logo è formato dalle due lettere "e" e "x" in nero.
-	\item "React": framework frontend lo sviluppo di applicazioni web. L'icona ricorda un atomo.
-\end{itemize}
 
 \section{Architettura dei Microservizi}
 
@@ -151,11 +152,24 @@ Da un punto di vista di sviluppo, un'architettura non monolitica permette lo svi
 
 Un'architettura a microservizi è intrinsecamente più complessa nella progettazzione e nella menutenzione rispetto ad una architettura tradizionale. La necessità di orchestrare e mettere in comunicazione i diversi microservizi richiede particolari accortezze nella parte di design e di deploy. Tali problematiche sono state valutate con cura dal team di sviluppo.
 
+
+
 \section{Visione Generale}
 Prima di analizzare il singolo microservizio, questa sezione illustra una visione generale dell'applicazione e degli strumenti utilizzati per la realizzazione dell'infrastruttura, per poi concentrarsi sulle parti comuni di ogni microservizio e infine sul singolo microservizio.
 
+\subsection{Tecnologie}
 
-\subsection*{Infrastruttura}
+In questo capitolo verranno menzionate più volte alcune tecnologie, dunque ne viene riportata una breve descrizionee sotto:
+\begin{itemize}
+	\item "Docker": tecnologia che raccoglie il software in unità standardizzate chiamate container, offrendo tutto il necessario per la loro corretta esecuzione, incluse librerie, strumenti di sistema, codice e runtime. Il logo ricorda una balena di colore azzurro con dei rettangoli al di sopra rappresentanti dei containers, come se la balena stessa fosse una nave.
+	\item "Docker Compose": software per la gestione di molteplici docker containers contemporaneamente. L'icona rappresenta un polpo con dei parallelepipedi azzurri tra i tentacoli.
+	\item "Nginx": intermediario tra le richieste da parte dei client e il server. Può essere usato come load balancer, cache o proxy. Il logo è raffigurato da un N bianca con sfondo verde.
+	\item "MongoDB": DBMS non relazionale. Il logo rappresenta una foglia verde.
+	\item "Express": framework backend per applicazioni web in javascript. Il logo è formato dalle due lettere "e" e "x" in nero.
+	\item "React": framework frontend lo sviluppo di applicazioni web. L'icona ricorda un atomo.
+\end{itemize}
+
+\subsection{Specifica dell'Infrastruttura}
 
 Si presti attenzione alla seguente infografica dell'infrastruttura implementata:
 
@@ -222,7 +236,10 @@ In particolare, \textit{Nginx} associa le routes nel seguente modo:
 	Schema delle routes di Nginx
 \end{figure}
 
-\subsection*{Codice: Struttura}
+\section{Codice}
+In questa sezione verrà mostrato il codice che implementa quanto sopra, con opportuna spiegazione del funzionamento quando necessaria.
+
+\subsection{Codice: Struttura}
 
 La directory radice del progetto contiene i seguenti files:
 
@@ -244,7 +261,7 @@ Segue una descrizione degli stessi:
 	\item "README.md": contiene informazioni e documentazione sul deploy dell'infrastruttura.
 \end{itemize}
 
-\subsection*{Codice: docker-compose.yaml}
+\subsection{Codice: docker-compose.yaml}
 
 Si prenda come esempio questo frammento di codice responsabile del setup del microservizio task:
 \begin{figure}[H]
@@ -275,7 +292,7 @@ La configurazione per gli altri microservizi è simile, con qualche piccola diff
 	Codice responsabile per l'avvio del reverse proxy
 \end{figure}
 
-\subsection*{Codice: nginx.conf}
+\subsection{Codice: nginx.conf}
 
 Il file \textit{nginx.conf} all'interno della cartella \textit{fixmi-reverse-proxy} imposta la configurazione per il reverse proxy. Questo microservizio si occupa di instradare le richieste ai vari microservizi. Segue un'estratto della configurazione:
 
@@ -401,11 +418,17 @@ Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite n
 	\item "test": esegue gli script di testing del codice.
 \end{itemize}
 	
+	
+	
+	
 
-\section{Microservizio Autenticazione}
+\chapter{Microservizio Autenticazione}
+
+\section{Backend}
 
 Questa sezione comprende lo sviluppo e la documentazione del backend del Microservizio Autenticazione
-\subsection*{Struttura del backend}
+
+\subsection{Struttura del backend}
 La struttura del backend del microservizio autenticazione è riportata
 nella figura sotto. 
 \begin{figure}[H]
@@ -413,8 +436,11 @@ nella figura sotto.
 	\caption{Output del comando "tree" all'interno di un microservizio.}
 \end{figure}
 
-\subsection*{Modellazione dati nel database}
-\subsection*{Specifica delle risorse}
+\subsection{Modellazione dati nel database}
+
+
+
+\subsection{Specifica delle risorse}
 Di seguito le risorse estratte dal diagramma delle classi e utilizzate da questo microservizio.
 \paragraph*{<<resource>> Cliente}
 Rappresenta il profilo di un Cliente.
@@ -504,19 +530,7 @@ La response body è in formato application/json. Di seguito le possibili rispost
 	\caption{Diagramma dell'endpoint "login"}
 \end{figure}
 
-
-\subsubsection*{Sviluppo}
-Questa API viene utilizzata da un utente per eseguire l'accesso.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente si controlla se l'utente esista o meno nel database, e successivamente la validità della password.
-Dopo aver controllato che il codice 2FA sia corretto, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
-
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/login-carbon.png}
-	Codice dell'API api/auth/login
-\end{figure}
-\subsubsection*{Documentazione}
+\subsubsection*{Specifica OpenAPI}
 Di seguito la specifica openapi dell'endpoint login contenuta nel file 'openapi.yaml' della directory del microservizio
 \begin{verbatim}
 	/login:
@@ -585,6 +599,19 @@ Di seguito la specifica openapi dell'endpoint login contenuta nel file 'openapi.
                   - $ref: '#/components/schemas/notFoundSchema'
                   - $ref: '#/components/schemas/wrongPassSchema'
 \end{verbatim}
+
+\subsubsection*{Codice}
+Questa API viene utilizzata da un utente per eseguire l'accesso.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se l'utente esista o meno nel database, e successivamente la validità della password.
+Dopo aver controllato che il codice 2FA sia corretto, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/login-carbon.png}
+	Codice dell'API api/auth/login
+\end{figure}
+
 \subsubsection*{Testing}
 Per questo endpoint sono stati creati i seguenti test:
 \begin{figure}[H]
@@ -632,18 +659,9 @@ La response body è in formato application/json. di seguito le possibili rispost
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_logout.drawio.png}
 	\caption{Diagramma dell'endpoint "logout"}
 \end{figure}
-\subsubsection*{Sviluppo}
-Questa API viene utilizzata da un utente già autenticato per eseguire il logout.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente si controlla se il token fornito è presente nella sessione.
-A operazione completata, viene rimosso il token dalla sessione.
 
 
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/logout-carbon.png}
-	Codice dell'API api/auth/logout
-\end{figure}
-\subsubsection*{Documentazione}
+\subsubsection*{Specifica OpenAPI}
 Di seguito la specifica openapi dell'endpoint logout contenuta nel file 'openapi.yaml' della directory del microservizio
 \begin{verbatim}
 	/logout:
@@ -686,6 +704,20 @@ Di seguito la specifica openapi dell'endpoint logout contenuta nel file 'openapi
                 $ref: '#/components/schemas/notFoundSchema'
 	
 \end{verbatim}
+
+\subsubsection*{Codice}
+Questa API viene utilizzata da un utente già autenticato per eseguire il logout.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se il token fornito è presente nella sessione.
+A operazione completata, viene rimosso il token dalla sessione.
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/logout-carbon.png}
+	Codice dell'API api/auth/logout
+\end{figure}
+
+
 \subsubsection*{Testing}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/logout_test_1.png}
@@ -699,6 +731,7 @@ Di seguito la specifica openapi dell'endpoint logout contenuta nel file 'openapi
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/logout_test_3.png}
 	\caption{Test Logout 3}
 \end{figure}
+
 \subsection{Registrazione}
 \subsubsection*{Specifica}
 Questa API, all'indirizzo /api/auth/register, ha un metodo POST e viene utilizzata per la creazione di un account cliente.
@@ -730,18 +763,9 @@ La response body è in formato application/json. Di seguito le possibili rispost
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_register.drawio.png}
 	\caption{Diagramma dell'endpoint "register"}
 \end{figure}
-\subsubsection*{Sviluppo}
-Questa API viene utilizzata da un utente per creare un proprio account cliente.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente si controlla se un utente con la stessa email sia già esistente nel database.
-Dopo aver controllato che il codice 2FA sia corretto,viene inserito il nuovo profilo cliente nel database, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
 
 
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/register-carbon.png}
-	Codice dell'API api/auth/register
-\end{figure}
-\subsubsection*{Documentazione}
+\subsubsection*{Specifica OpenAPI}
 Di seguito la specifica openapi dell'endpoint register contenuta nel file 'openapi.yaml' della directory del microservizio
 \begin{verbatim}
 	/register:
@@ -799,6 +823,20 @@ Di seguito la specifica openapi dell'endpoint register contenuta nel file 'opena
                   - $ref: '#/components/schemas/alreadyExistsSchema'
 
 \end{verbatim}
+
+\subsubsection*{Codice}
+Questa API viene utilizzata da un utente per creare un proprio account cliente.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se un utente con la stessa email sia già esistente nel database.
+Dopo aver controllato che il codice 2FA sia corretto,viene inserito il nuovo profilo cliente nel database, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/register-carbon.png}
+	Codice dell'API api/auth/register
+\end{figure}
+
+
 \subsubsection*{Testing}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/register_test_1.png}
@@ -843,17 +881,8 @@ La response body è in formato application/json. Di seguito le possibili rispost
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_changepass.drawio.png}
 	\caption{Diagramma dell'endpoint "changepass"}
 \end{figure}
-\subsubsection*{Sviluppo}
-Questa API viene utilizzata da un utente per cambiare la password del proprio account.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente si controlla se l'utente esista o meno nel database.
-Dopo aver controllato che il codice 2FA sia corretto,viene modificata la password nel database, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
 
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/changepass-carbon.png}
-	Codice dell'API api/auth/changepass
-\end{figure}
-\subsubsection*{Documentazione}
+\subsubsection*{Specifica OpenAPI}
 Di seguito la specifica openapi dell'endpoint changepass contenuta nel file 'openapi.yaml'
 \begin{verbatim}
 	/changepass:
@@ -916,6 +945,19 @@ Di seguito la specifica openapi dell'endpoint changepass contenuta nel file 'ope
                 $ref: '#/components/schemas/notFoundSchema'
 
 \end{verbatim}
+
+\subsubsection*{Codice}
+Questa API viene utilizzata da un utente per cambiare la password del proprio account.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se l'utente esista o meno nel database.
+Dopo aver controllato che il codice 2FA sia corretto,viene modificata la password nel database, viene generato un token, aggiunto alla sessione e inviato sia nel body sia come cookie nella risposta.
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/changepass-carbon.png}
+	Codice dell'API api/auth/changepass
+\end{figure}
+
+
 \subsubsection*{Testing}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/password_test_1.png}
@@ -958,18 +1000,8 @@ La response body è in formato application/json. Di seguito le possibili rispost
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_remove.drawio.png}
 	\caption{Diagramma dell'endpoint "remove"}
 \end{figure}
-\subsubsection*{Sviluppo}
-Questa API viene utilizzata da un utente per eliminare il proprio profilo.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente si controlla se l'utente esista o meno nel database, e successivamente la validità della password.
-Dopo aver controllato che il codice 2FA sia corretto, il profilo viene eliminato dal database e il suo token rimosso dalla sessione.
 
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/remove-carbon.png}
-	Codice dell'API api/auth/remove
-\end{figure}
-\subsubsection*{Documentazione}
+\subsubsection*{Specifica OpenAPI}
 Di seguito la specifica openapi dell'endpoint remove contenuta nel file 'openapi.yaml' della directory del microservizio
 
 \begin{verbatim}
@@ -1027,6 +1059,20 @@ Di seguito la specifica openapi dell'endpoint remove contenuta nel file 'openapi
                   - $ref: '#/components/schemas/wrongPassSchema'
 
 \end{verbatim}
+
+\subsubsection*{Codice}
+Questa API viene utilizzata da un utente per eliminare il proprio profilo.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se l'utente esista o meno nel database, e successivamente la validità della password.
+Dopo aver controllato che il codice 2FA sia corretto, il profilo viene eliminato dal database e il suo token rimosso dalla sessione.
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/remove-carbon.png}
+	Codice dell'API api/auth/remove
+\end{figure}
+
+
 \subsubsection*{Testing}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/remove_test_1.png}
@@ -1067,16 +1113,8 @@ La response body è in formato application/json. di seguito le possibili rispost
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_auth.drawio.png}
 	\caption{Diagramma dell'endpoint "authenticate"}
 \end{figure}
-\subsubsection*{Sviluppo}
-Questa API viene utilizzata da un microservizio per autenticare un utente che desidera farne uso.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente si controlla se il token fornito abbia un utente corrispondente nella sessione.
-Infine il livello di permesso associato all'utente e il suo id vengono inviati nella risposta.
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/authenticate-carbon.png}
-	Codice dell'API api/auth/authenticate
-\end{figure}
-\subsubsection*{Documentazione}
+
+\subsubsection*{Specifica OpenAPI}
 Di seguito la specifica openapi dell'endpoint authenticate contenuta nel file 'openapi.yaml' della directory del microservizio
 \begin{verbatim}
 	/authenticate:
@@ -1135,6 +1173,16 @@ Di seguito la specifica openapi dell'endpoint authenticate contenuta nel file 'o
 
 \end{verbatim}
 
+\subsubsection*{Codice}
+Questa API viene utilizzata da un microservizio per autenticare un utente che desidera farne uso.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente si controlla se il token fornito abbia un utente corrispondente nella sessione.
+Infine il livello di permesso associato all'utente e il suo id vengono inviati nella risposta.
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/authenticate-carbon.png}
+	Codice dell'API api/auth/authenticate
+\end{figure}
+
 \subsection{Two Factor Authentication}
 \subsubsection*{Specifica}
 Questa API, all'indirizzo/api/auth/twofa, ha un metodo POST e viene utilizzata da un utente per richiedere un codice 2FA attraverso mail
@@ -1157,17 +1205,9 @@ La response body è in formato application/json. di seguito le possibili rispost
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/diagrams/diagramma_twofa.drawio.png}
 	\caption{Diagramma dell'endpoint "changepass"}
 \end{figure}
-\subsubsection*{Sviluppo}
-Questa API viene utilizzata da un utente per ricevere un codice 2FA attraverso email.
-Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
-Successivamente viene inviata l'email con il codice 2FA.
 
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/twofa-carbon.png}
-	Codice dell'API api/auth/twofa
-\end{figure}
 
-\subsubsection*{Documentazione}
+\subsubsection*{Specifica OpenAPI}
 Di seguito la specifica openapi dell'endpoint twofa contenuta nel file 'openapi.yaml' della directory del microservizio
 \begin{verbatim}
 	/twofa:
@@ -1205,6 +1245,17 @@ Di seguito la specifica openapi dell'endpoint twofa contenuta nel file 'openapi.
                      
      
 \end{verbatim}
+
+\subsubsection*{Codice}
+Questa API viene utilizzata da un utente per ricevere un codice 2FA attraverso email.
+Una volta ricevuta la richiesta, viene controllata la presenza di tutti i campi richiesti.
+Successivamente viene inviata l'email con il codice 2FA.
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/twofa-carbon.png}
+	Codice dell'API api/auth/twofa
+\end{figure}
+
 \subsubsection*{Testing}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/twofa_test_1.png}
@@ -1214,7 +1265,15 @@ Di seguito la specifica openapi dell'endpoint twofa contenuta nel file 'openapi.
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/twofa_test_2.png}
 	\caption{TwoFa Testing 2}
 \end{figure}
-\section{Microservizio Task}
+
+
+
+
+
+
+\chapter{Microservizio Task}
+
+\section{Backend}
 
 Questa sezione comprende lo sviluppo e la documentazione del backend del
 "Microservizio Task". 
@@ -1237,7 +1296,8 @@ Segue una lista delle risorse implementate dal microservizio:
 
 Per ogni risorsa elencata nella sezione precedente, si descrive la risorsa attraverso l'utilizzo di illustrazioni e testo.
 
-\subsection*{Task}
+\subsection{Task}
+\subsubsection*{Specifica}
 
 La risorsa "Task" implementa la classe "Task" vista nel "Documento di Architettura".
 
@@ -1245,6 +1305,8 @@ La risorsa "Task" implementa la classe "Task" vista nel "Documento di Architettu
 	\centering\includegraphics[width=1\textwidth]{images/resource_task.png}
 	Diagramma della risorsa "Task".
 \end{figure}
+
+\subsubsection*{Codice}
 
 Segeue l'implementazione nel linguaggio "Typescript":
 
@@ -1284,6 +1346,8 @@ Segeue l'implementazione nel linguaggio "Typescript":
 	\centering\includegraphics[width=1\textwidth]{images/code_task_feedback.png}
 	File situato in "backend/classes/TaskFeedback.ts".
 \end{figure}
+
+\subsubsection*{Specifica OpenAPI}
 
 Segue la definizione in OpenAPI specification:
 
@@ -1393,11 +1457,7 @@ components:
 \end{verbatim}
 
 \subsection*{Scegli Task}
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/scegli_task_model.png}
-	Diagramma delle risorse per l'API "Scegli Task".
-\end{figure}
+\subsubsection*{Specifica}
 
 La risorsa "Scegli Task", accessibile tramite la route "/api/tasks/scegliTask" permette di assegnare una task ad un dipendente o ad un manager. L'API richiede tutti i seguenti campi:
 
@@ -1427,6 +1487,14 @@ La response body `e in formato application/json. Di seguito le possibili rispost
 		\hline
 	\end{tabular}
 \end{center}
+
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/scegli_task_model.png}
+	Diagramma delle risorse per l'API "Scegli Task".
+\end{figure}
+
+\subsubsection*{Specifica OpenAPI}
 
 Di seguito viene derscitta la risorsa secondo OpenAPI specification:
 
@@ -1531,6 +1599,8 @@ paths:
 	
 \end{verbatim}
 
+\subsubsection*{Codice}
+
 Il codice che implementa quanto detto sopra è il seguente:
 
 \begin{figure}[H]
@@ -1545,6 +1615,8 @@ Il codice che implementa quanto detto sopra è il seguente:
 	\centering\includegraphics[width=1\textwidth]{images/code_scegli_task_query.png}
 	Funzione "executeQuery()".
 \end{figure}
+
+\subsubsection*{Testing}
 
 Sono stati realizzati i seguenti tests per coprire ogni possibile risultato della chiamata:
 \begin{figure}[H]
@@ -1568,14 +1640,8 @@ Sono stati realizzati i seguenti tests per coprire ogni possibile risultato dell
 
 
 
-\subsection*{Modifica Stato Task}
-
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/model_modifica_task.png}
-	
-	Modello delle risorse per "/api/tasks/modificaStatoTask".
-\end{figure}
+\subsection{Modifica Stato Task}
+\subsubsection*{Specifica}
 
 La risorsa "Modifica Stato Task" è accessibile tramite la route "/api/tasks/modificaStatoTask". Permette al dipendente o al manager di impostare un nuovo stato ad una task presente nel database. Gli stati possibili sono definiti nell'enum TaskStatus e sono i seguenti: "DaEseguire", "InLavorazione", "InPausa". "Completata".
 
@@ -1614,6 +1680,14 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 		\hline
 	\end{tabular}
 \end{center}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/model_modifica_task.png}
+	
+	Modello delle risorse per "/api/tasks/modificaStatoTask".
+\end{figure}
+
+\subsubsection*{Specifica OpenAPI}
 
 Segue la definizione secondo OpenAPI:
 
@@ -1719,6 +1793,8 @@ paths:
                                    - error
 \end{verbatim}
 
+\subsubsection*{Codice}
+
 Il codice è il seguente:
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato.png}
@@ -1730,6 +1806,8 @@ Il codice è il seguente:
 	
 	Funzione "checkStatus()" e "executeQuery()".
 \end{figure}
+
+\subsubsection*{Testing}
 
 Sono stati creati i seguenti tests:
 
@@ -1753,13 +1831,8 @@ Sono stati creati i seguenti tests:
 \end{figure}
 
 
-\subsection*{Get Lista Task In Lavorazione}
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/model_in_lavorazione.png}
-	
-	Modello delle risorse per "/api/tasks/getListaTaskInLavorazione".
-\end{figure}
+\subsection{Get Lista Task In Lavorazione}
+\subsubsection*{Specifica}
 
 La risorsa "Get Lista Task In Lavorazione" è accessibile tramite la route
 
@@ -1789,7 +1862,13 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 	\end{tabular}
 \end{center}
 
-OpenAPI:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/model_in_lavorazione.png}
+	
+	Modello delle risorse per "/api/tasks/getListaTaskInLavorazione".
+\end{figure}
+
+\subsubsection*{Specifica OpenAPI}
 
 \begin{verbatim}
 openapi: 3.0.3
@@ -1862,6 +1941,8 @@ paths:
 
 \end{verbatim}
 
+\subsubsection*{Codice}
+
 Il codice che implementa quanto sopra è il seguente:
 
 \begin{figure}[H]
@@ -1872,6 +1953,8 @@ Il codice che implementa quanto sopra è il seguente:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione2.png}
 \end{figure}
+
+\subsubsection*{Testing}
 
 Sono stati individuati i seguenti test cases:
 
@@ -1888,13 +1971,8 @@ Sono stati individuati i seguenti test cases:
 	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test4.png}
 \end{figure}
 
-\subsection*{Get Lista Task Da Eseguire}
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/model_da_eseguire.png}
-	
-	Modello delle risorse per "/api/tasks/getListaTaskDaEseguire".
-\end{figure}
+\subsection{Get Lista Task Da Eseguire}
+\subsubsection*{Specifica}
 
 La risorsa "Get Lista Task Da Eseguire" è accessibile tramite la route
 
@@ -1923,6 +2001,14 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 		\hline
 	\end{tabular}
 \end{center}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/model_da_eseguire.png}
+	
+	Modello delle risorse per "/api/tasks/getListaTaskDaEseguire".
+\end{figure}
+
+\subsubsection*{Specifica OpenAPI}
 
 \begin{verbatim}
 openapi: 3.0.3
@@ -1994,6 +2080,8 @@ paths:
 	
 \end{verbatim}
 
+\subsubsection*{Codice}
+
 Il codice è il seguente:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire.png}
@@ -2003,6 +2091,8 @@ Il codice è il seguente:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire2.png}
 \end{figure}
+
+\subsubsection*{Testing}
 
 Sono stati creati i seguenti test cases:
 \begin{figure}[H]
@@ -2018,13 +2108,9 @@ Sono stati creati i seguenti test cases:
 	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test4.png}
 \end{figure}
 
-\subsection*{Get Lista Task In Pausa}
+\subsection{Get Lista Task In Pausa}
+\subsubsection*{Specifica}
 
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/model_in_pausa.png}
-	
-	Modello delle risorse per "/api/tasks/getListaTaskInPausa".
-\end{figure}
 
 La risorsa "Get Lista Task In Pausa" è accessibile tramite la route
 
@@ -2053,6 +2139,14 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 		\hline
 	\end{tabular}
 \end{center}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/model_in_pausa.png}
+	
+	Modello delle risorse per "/api/tasks/getListaTaskInPausa".
+\end{figure}
+
+\subsubsection*{Specifica OpenAPI}
 
 \begin{verbatim}
 openapi: 3.0.3
@@ -2123,6 +2217,8 @@ paths:
                                     example: User not authorized
 \end{verbatim}
 
+\subsubsection*{Codice}
+
 Il codice è quanto segue:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa.png}
@@ -2132,6 +2228,8 @@ Il codice è quanto segue:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_paus2.png}
 \end{figure}
+
+\subsubsection*{Testing}
 
 Sono stati creati i seguenti test cases:
 \begin{figure}[H]
@@ -2148,13 +2246,8 @@ Sono stati creati i seguenti test cases:
 \end{figure}
 
 
-\subsection*{Get Storico Task}
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/model_storico_task.png}
-	
-	Modello delle risorse per "/api/tasks/getStoricoTask".
-\end{figure}
+\subsection{Get Storico Task}
+\subsubsection*{Specifica}
 
 La risorsa "Get Storico Task" è accessibile tramite la route
 
@@ -2185,6 +2278,14 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 	\end{tabular}
 \end{center}
 
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/model_storico_task.png}
+	
+	Modello delle risorse per "/api/tasks/getStoricoTask".
+\end{figure}
+
+\subsubsection*{Specifica OpenAPI}
 \begin{verbatim}
 openapi: 3.0.3
     info:
@@ -2253,6 +2354,7 @@ paths:
                                     type: string
                                     example: User not authorized
 \end{verbatim}
+\subsubsection*{Codice}
 
 Il codice è il seguente:
 \begin{figure}[H]
@@ -2263,6 +2365,8 @@ Il codice è il seguente:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_storico2.png}
 \end{figure}
+
+\subsubsection*{Testing}
 
 Sono stati individuati i seguenti test cases:
 \begin{figure}[H]
@@ -2279,13 +2383,8 @@ Sono stati individuati i seguenti test cases:
 \end{figure}
 
 
-\subsection*{Crea Task}
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/model_crea_task.png}
-	
-	Modello delle risorse per "/api/tasks/creaTask".
-\end{figure}
+\subsection{Crea Task}
+\subsubsection*{Specifica}
 
 La risorsa "Crea Task" è accessibile tramite la route
 
@@ -2314,7 +2413,13 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 		\hline
 	\end{tabular}
 \end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/model_crea_task.png}
+	
+	Modello delle risorse per "/api/tasks/creaTask".
+\end{figure}
 
+\subsubsection*{Specifica OpenAPI}
 \begin{verbatim}
 
 openapi: 3.0.3
@@ -2378,6 +2483,8 @@ paths:
 
 \end{verbatim}
 
+\subsubsection*{Codice}
+
 Il codice è il seguente:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task.png}
@@ -2394,6 +2501,7 @@ Il codice è il seguente:
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task4.png}
 \end{figure}
 
+\subsubsection*{Testing}
 Sono stati individuati i seguenti test cases
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test1.png}
@@ -2414,11 +2522,92 @@ Sono stati individuati i seguenti test cases
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test6.png}
 \end{figure}
 
-\section{Microservizio Gestione Dipendenti}
 
-\section{Microservizio Home}
 
-\chapter{Frontend}
+\chapter{Microservizio Gestione Dipendenti}
+
+\chapter{Microservizio Home}
+
+\chapter{Deploy}
+
+In questo capitolo si descrivono i procedimenti per effettuare un deploy dell'applicazione con successo in locale. 
+
+\section{Dipendenze}
+E' necessario aver installato docker nella macchina host. Se l'host si trova su windows, docker può essere installto tramite "WSL" ("Windows Subsystem for Linux").
+
+\section{Ottenere il codice}
+Tutto il codice necessario è presente su github, accessibile tramite \href{https://github.com/orgs/IS-FixMi/repositories}{questo} link (le repo sono private quindi se non si è loggati con il profilo autorizzato si otterrà una 404). In particolare, il codice per eseguire l'infrastruttura si trova in \href{https://github.com/IS-FixMi/fixmi-compose}{"fixmi-compose"}. Al suo interno sono contenute le altre repo dei microservizi in submoduli. Per clonare la repo si sui il comando:
+\begin{verbatim}
+git clone --recurse-submodules https://github.com/IS-FixMi/fixmi-compose.git
+\end{verbatim}
+\subsection*{Nota:}
+Dato che i moduli da installare sono molti, il team di sviluppo consiglia di scaricare la directory con già i moduli tramite il seguente link TODO.
+Successivamente, è possibile estrarre la cartella tramite:
+\begin{verbatim}
+tar -xf archive.tar.gz
+\end{verbatim}
+
+\section{Istruzioni}
+L'intera infrastruttura può essere eseguita tramite il seguente comando all'interno della cartella "fixmi-compose":
+\begin{verbatim}
+sudo docker compose up --build
+\end{verbatim}
+si consiglia di utilizzare quest'ultimo in quanto vengono di impostare tutte le porte e volumi necessari per il corretto funzionamento dell'applicazione.
+\subsection*{Problemi Noti}
+\begin{itemize}
+	\item L'applicazione risulta parecchio pesante, dunque il tempo di download potrebbe essere prolisso.
+	\item Sono noti dei problemi nell'installazione dei moduli "concurrently" e "react-scripts". Qualora vi siano dei problemi del tipo "concurrently non è stato trovato", si proceda in questo modo:
+\begin{enumerate}
+	\item Si entri nella cartella del microservizio che riporta il problema
+	\item Si esegua il comando "npm i <nome-del-modulo-non-trovato> ."
+\end{enumerate}
+    \item Qualora le porte da 3001 a 3008 risultassero già occupate da altri servizi nella macchina host, queste possono essere cambiate nel file "docker-compose.yaml", così come la porta del reverse proxy (7777) e gli ip dei microservizi.
+\end{itemize}
+
+\section{Eseguire Singoli Microservizi}
+Nonostante eseguire parti dell'infrastruttura indipendenti senza docker compose non sia consigliato, questa sezione riporta le istruzioni per eseguire in microservizio singolarmente e informazioni per il developement.
+
+\subsection*{Microservizio con Docker}
+Per eseguire un signolo microservizio dobbiamo buildare il docker container, questo può essere fatto con il seguente comando:
+\begin{verbatim}
+cd fixmi-microservizio-<nome-del-microservizio>
+docker build -t example-microservice .
+\end{verbatim}
+Successivamente, il docker container può essere eseguito con il comando:
+\begin{verbatim}
+docker run -p <backend_port>:3001 -p <frontend_port>:3002 \\
+-v .:/app example-microservice
+\end{verbatim}
+\begin{itemize}
+	\item Al comando può essere aggiunta la flag "-d" per eseguire il container in detached mode, nascondendo l'output nel background. Si ricordi che per fermare il container sarà necessario usare il comando "docker stop <container-id>" e per leggere i logs si può usare il comando "docker logs <container-id>"
+\end{itemize}
+
+\subsection*{Microservizio senza docker}
+Per eseguire un microservizio senza l'utilizzo di docker è necessario aver installato "npm". I seguenti comandi sono utili per il deploy e lo sviluppo.
+Prima di tutto è necessario installare i moduli da cui dipende il programma:
+\begin{verbatim}
+npm install .
+\end{verbatim}
+Il microservizio può essere eseguito in production con:
+\begin{verbatim}
+npm run buildfront
+npm run production
+\end{verbatim}
+Per eseguire solo la backend:
+\begin{verbatim}
+npm run startback
+\end{verbatim}
+Per eseguire solo la forntend:
+\begin{verbatim}
+npm run startfront
+\end{verbatim}
+Per eseguire la backend e frontend in dev mode:
+\begin{verbatim}
+npm run start
+\end{verbatim}
+Nota: i microservizi utilizzano il database per il salvataggio e la lettura dei dati, e il reverse proxy per ottenere il token di sessione e are redirect agli altri microservizi.
+
+Per qualsiasi problema e assistenza, si contatti um membro dello sviluppo.
 
 	
 \end{document}
