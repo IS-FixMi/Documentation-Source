@@ -2530,5 +2530,84 @@ Sono stati individuati i seguenti test cases
 
 \chapter{Deploy}
 
+In questo capitolo si descrivono i procedimenti per effettuare un deploy dell'applicazione con successo in locale. 
+
+\section{Dipendenze}
+E' necessario aver installato docker nella macchina host. Se l'host si trova su windows, docker può essere installto tramite "WSL" ("Windows Subsystem for Linux").
+
+\section{Ottenere il codice}
+Tutto il codice necessario è presente su github, accessibile tramite \href{https://github.com/orgs/IS-FixMi/repositories}{questo} link (le repo sono private quindi se non si è loggati con il profilo autorizzato si otterrà una 404). In particolare, il codice per eseguire l'infrastruttura si trova in \href{https://github.com/IS-FixMi/fixmi-compose}{"fixmi-compose"}. Al suo interno sono contenute le altre repo dei microservizi in submoduli. Per clonare la repo si sui il comando:
+\begin{verbatim}
+git clone --recurse-submodules https://github.com/IS-FixMi/fixmi-compose.git
+\end{verbatim}
+\subsection*{Nota:}
+Dato che i moduli da installare sono molti, il team di sviluppo consiglia di scaricare la directory con già i moduli tramite il seguente link TODO.
+Successivamente, è possibile estrarre la cartella tramite:
+\begin{verbatim}
+tar -xf archive.tar.gz
+\end{verbatim}
+
+\section{Istruzioni}
+L'intera infrastruttura può essere eseguita tramite il seguente comando all'interno della cartella "fixmi-compose":
+\begin{verbatim}
+sudo docker compose up --build
+\end{verbatim}
+si consiglia di utilizzare quest'ultimo in quanto vengono di impostare tutte le porte e volumi necessari per il corretto funzionamento dell'applicazione.
+\subsection*{Problemi Noti}
+\begin{itemize}
+	\item L'applicazione risulta parecchio pesante, dunque il tempo di download potrebbe essere prolisso.
+	\item Sono noti dei problemi nell'installazione dei moduli "concurrently" e "react-scripts". Qualora vi siano dei problemi del tipo "concurrently non è stato trovato", si proceda in questo modo:
+\begin{enumerate}
+	\item Si entri nella cartella del microservizio che riporta il problema
+	\item Si esegua il comando "npm i <nome-del-modulo-non-trovato> ."
+\end{enumerate}
+    \item Qualora le porte da 3001 a 3008 risultassero già occupate da altri servizi nella macchina host, queste possono essere cambiate nel file "docker-compose.yaml", così come la porta del reverse proxy (7777) e gli ip dei microservizi.
+\end{itemize}
+
+\section{Eseguire Singoli Microservizi}
+Nonostante eseguire parti dell'infrastruttura indipendenti senza docker compose non sia consigliato, questa sezione riporta le istruzioni per eseguire in microservizio singolarmente e informazioni per il developement.
+
+\subsection*{Microservizio con Docker}
+Per eseguire un signolo microservizio dobbiamo buildare il docker container, questo può essere fatto con il seguente comando:
+\begin{verbatim}
+cd fixmi-microservizio-<nome-del-microservizio>
+docker build -t example-microservice .
+\end{verbatim}
+Successivamente, il docker container può essere eseguito con il comando:
+\begin{verbatim}
+docker run -p <backend_port>:3001 -p <frontend_port>:3002 \\
+-v .:/app example-microservice
+\end{verbatim}
+\begin{itemize}
+	\item Al comando può essere aggiunta la flag "-d" per eseguire il container in detached mode, nascondendo l'output nel background. Si ricordi che per fermare il container sarà necessario usare il comando "docker stop <container-id>" e per leggere i logs si può usare il comando "docker logs <container-id>"
+\end{itemize}
+
+\subsection*{Microservizio senza docker}
+Per eseguire un microservizio senza l'utilizzo di docker è necessario aver installato "npm". I seguenti comandi sono utili per il deploy e lo sviluppo.
+Prima di tutto è necessario installare i moduli da cui dipende il programma:
+\begin{verbatim}
+npm install .
+\end{verbatim}
+Il microservizio può essere eseguito in production con:
+\begin{verbatim}
+npm run buildfront
+npm run production
+\end{verbatim}
+Per eseguire solo la backend:
+\begin{verbatim}
+npm run startback
+\end{verbatim}
+Per eseguire solo la forntend:
+\begin{verbatim}
+npm run startfront
+\end{verbatim}
+Per eseguire la backend e frontend in dev mode:
+\begin{verbatim}
+npm run start
+\end{verbatim}
+Nota: i microservizi utilizzano il database per il salvataggio e la lettura dei dati, e il reverse proxy per ottenere il token di sessione e are redirect agli altri microservizi.
+
+Per qualsiasi problema e assistenza, si contatti um membro dello sviluppo.
+
 	
 \end{document}
