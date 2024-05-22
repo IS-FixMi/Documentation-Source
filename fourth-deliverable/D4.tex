@@ -47,89 +47,89 @@
 
 \begin{document}
 
-	
-	
-	%title page
-	\begin{titlepage}
-		\begin{figure}[t]
-			\centering\includegraphics[width=0.3\textwidth]{images/unitn-logo}
-		\end{figure}
-		\begin{center}
-			\textsc{ \LARGE{Università degli Studi di Trento \\}}
-			\textsc{ \LARGE{Facoltà di Informatica\\ }}
-			\textnormal{ \LARGE{Corso di Ingegneria del Software\\}}
-			\vspace{30mm}
-			\fontsize{10mm}{7mm}\selectfont 
-			\textup{Fix Mi \\ Application Implementation and Documentation}\\
-		\end{center}
-		
-		\vspace{25mm}
-		
-		\centering
-		\large Gruppo G43: \\ Giovanni Santini\\ Riginel Ungureanu \\ Valerio Asaro
-		
-		\vspace{20mm}
-		
-		\centering{\large{Anno Accademico 2023/2024 \\ Trento }}
-		
-	\end{titlepage}
-	
-	
-	
-	
-	% use header and footers
-	\pagestyle{fancy}
-	\fancyhead[R]{\chaptername\ \thechapter}  % header
-	
-	%\maketitle
-	\tableofcontents
-	\newpage
-	
-	
-	
-	\section{Scopo del documento}
-	Questo documento denominato "Application Implementation and Documentation" descrive in dettaglio l'implementazione dell'applicazione nelle sue molteplici parti, seguendo quanto visto nei precedenti documenti. Il documento è strutturato in diversi capitoli: il primo dedicato alla specifica dell'infrastruttura in generale, con grafici e codice, seguito da quattro capitoli dedicati alle varie funzionalità implementate, con una visione della backend e della frontend. Il documento si chiude con le istruzioni per il deploy dell'applicazione.
-	
-	\section{Implementazione}
-	Il team di sviluppo, valutando i requisiti del progetto ed il tempo a disposizione, ha deciso di implementare i seguenti microservizi:
-	\begin{itemize}
-		\item Autenticazione
-		\item Task
-		\item Home
-		\item Gestione Dipendenti
-	\end{itemize}
-	Inoltre vengono implementati i seguenti servizi:
-	\begin{itemize}
-		\item Reverse Proxy
-		\item Database
-	\end{itemize}
-	
-	
-	\section{Informazioni del Documento}
-	
-	% table
-	\begin{center} % center the table
-		\centering
-		\begin{tabular}{ |p{4cm}|p{4cm}|  }
-			\hline
-			\centering Campo & \qquad\qquad Valore \\ % I found no other way...
-			\hline
-			Titolo del Documento & Application Implementation and Documentation \\
-			\hline
-			Titolo del Progetto & Fix Mi \\
-			\hline
-			Autori del Documento &
-			Giovanni Santini \\ & Riginel Ungureanu \\ & Valerio Asaro \\
-			\hline
-			Amministratore Progetto & Riginel Ungureanu\\
-			\hline
-			Versione del documento & 1.0 \\
-			\hline
-		\end{tabular}
+
+
+%title page
+\begin{titlepage}
+	\begin{figure}[t]
+		\centering\includegraphics[width=0.3\textwidth]{images/unitn-logo}
+	\end{figure}
+	\begin{center}
+		\textsc{ \LARGE{Università degli Studi di Trento \\}}
+		\textsc{ \LARGE{Facoltà di Informatica\\ }}
+		\textnormal{ \LARGE{Corso di Ingegneria del Software\\}}
+		\vspace{30mm}
+		\fontsize{10mm}{7mm}\selectfont
+		\textup{Fix Mi \\ Application Implementation and Documentation}\\
 	\end{center}
-	
-	
-	
+
+	\vspace{25mm}
+
+	\centering
+	\large Gruppo G43: \\ Giovanni Santini\\ Riginel Ungureanu \\ Valerio Asaro
+
+	\vspace{20mm}
+
+	\centering{\large{Anno Accademico 2023/2024 \\ Trento }}
+
+\end{titlepage}
+
+
+
+
+% use header and footers
+\pagestyle{fancy}
+\fancyhead[R]{\chaptername\ \thechapter}  % header
+
+%\maketitle
+\tableofcontents
+\newpage
+
+
+
+\section{Scopo del documento}
+Questo documento denominato "Application Implementation and Documentation" descrive in dettaglio l'implementazione dell'applicazione nelle sue molteplici parti, seguendo quanto visto nei precedenti documenti. Il documento è strutturato in diversi capitoli: il primo dedicato alla specifica dell'infrastruttura in generale, con grafici e codice, seguito da quattro capitoli dedicati alle varie funzionalità implementate, con una visione della backend e della frontend. Il documento si chiude con le istruzioni per il deploy dell'applicazione.
+
+\section{Implementazione}
+Il team di sviluppo, valutando i requisiti del progetto ed il tempo a disposizione, ha deciso di implementare i seguenti microservizi:
+\begin{itemize}
+	\item Autenticazione
+	\item Task
+	\item Home
+	\item Gestione Dipendenti
+\end{itemize}
+Inoltre vengono implementati i seguenti servizi:
+\begin{itemize}
+	\item Reverse Proxy
+	\item Database
+\end{itemize}
+
+
+\section{Informazioni del Documento}
+
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{4cm}|  }
+		\hline
+		\centering Campo        & \qquad\qquad Valore                          \\ % I found no other way...
+		\hline
+		Titolo del Documento    & Application Implementation and Documentation \\
+		\hline
+		Titolo del Progetto     & Fix Mi                                       \\
+		\hline
+		Autori del Documento    &
+		Giovanni Santini                                                       \\ & Riginel Ungureanu \\ & Valerio Asaro \\
+		\hline
+		Amministratore Progetto & Riginel Ungureanu                            \\
+		\hline
+		Versione del documento  & 1.0                                          \\
+		\hline
+	\end{tabular}
+\end{center}
+
+
+
 \chapter{Microservizi}
 
 
@@ -399,14 +399,14 @@ Segue una descrizione degli stessi, dall'alto verso il basso:
 
 La struttura della directory "backend/" segue il seguente formato:
 \begin{itemize}
-	\item server.ts: è il file principale. Si occupa di istanziare l'App di express, 
-	connettersi al database e definire le route delle API.
+	\item server.ts: è il file principale. Si occupa di istanziare l'App di express,
+	      connettersi al database e definire le route delle API.
 	\item classes/ : directory contenente le classi relative ai profili, che vengono manipolate ed immagazzinate nel database.
 	\item enums/ : directory contenente gli enumi necessari.
 	\item routes/ : directory contenente gli endpoint delle API del sistema.
 	\item tests/ : directory contenente i test delle API
 	\item utils/ : directory contenente strutture dati e funzioni utili al funzionamento del sistema.
-\end{itemize} 
+\end{itemize}
 
 \subsection{Comandi npm}
 Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite npm. Ogni comando può esssere eseguito digitando "npm run" ed il nome del comando.
@@ -419,6 +419,43 @@ Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite n
 	\item "lint": esegue un'analisi stica del codice
 	\item "test": esegue gli script di testing del codice.
 \end{itemize}
+
+\section{Modellazione dati nel database}
+Sono presenti due database MongoDB con i quali i microservizi interagiscono:
+\subsection*{Users}
+Il database Users contiene i profili dei clienti, dipendenti e manager
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/database/manager.png}
+	\caption{Profilo manager nel database}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/database/dipendente.png}
+	\caption{Profilo dipendente nel database}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/database/cliente.png}
+	\caption{Profilo cliente nel database}
+\end{figure}
+
+
+\subsection*{Tasks}
+Il database Tasks contiene le task
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/database/assistenza.png}
+	\caption{Task Assistenza nel database}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/database/riparazione.png}
+	\caption{Task Riparazione nel database}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/database/feedback.png}
+	\caption{Task Feedback nel database}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/database/magazzino.png}
+	\caption{Task Magazzino nel database}
+\end{figure}
 
 
 \chapter{Microservizio Autenticazione}
@@ -435,7 +472,7 @@ nella figura sotto.
 	\caption{Output del comando "tree" all'interno di un microservizio.}
 \end{figure}
 
-\subsection{Modellazione dati nel database}
+
 
 
 
@@ -466,7 +503,7 @@ Rappresenta il profilo del Manager.
 Ha tutti gli attributi di Dipendente, ma ha come permissionLevel "Manager"
 
 Metodi
-\paragraph{<<resource>> login}
+\paragraph*{<<resource>> login}
 Permette a un utente già esistente di accedere all'applicazione.
 I parametri in ingresso sono email, password e codice 2FA.
 E' un'API del backend.
@@ -613,6 +650,22 @@ Dopo aver controllato che il codice 2FA sia corretto, viene generato un token, a
 
 \subsubsection*{Testing}
 Per questo endpoint sono stati creati i seguenti test:
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case & Test Data                   & Precondizioni                                          & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1               & Login con successo    & \{email, password, twofa\}  & email e pass già esistenti nel sistema, twofa corretto & DB         & 200        & 200             \\
+		\hline
+		2               & Mancanza campi        & \{ \}                       &                                                        &            & 400        & 400             \\
+		\hline
+		3               & Utente non esiste     & \{ email, password, twofa\} & L'account non esiste                                   & DB         & 404        & 404             \\
+		\hline
+		4               & Password non valida   & \{ email,password,twofa\}   & email già esistente nel sistema                        & DB         & 404        & 404             \\
+		\hline
+	\end{tabular}
+\end{center}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/login_test_1.png}
 	\caption{Test Login 1}
@@ -628,6 +681,11 @@ Per questo endpoint sono stati creati i seguenti test:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/login_test_4.png}
 	\caption{Test Login 4}
+\end{figure}
+I risultati dei test sono i seguenti:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/login_test_results.png}
+	\caption{Risultati test}
 \end{figure}
 \subsection{Logout}
 \subsubsection*{Specifica}
@@ -717,6 +775,22 @@ A operazione completata, viene rimosso il token dalla sessione.
 
 
 \subsubsection*{Testing}
+Per questo endpoint sono stati creati i seguenti test:
+
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case            & Test Data  & Precondizioni                     & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1               & Logout con successo              & \{token\}  & Token ottenuto dal login          &            & 200        & 200             \\
+		\hline
+		2               & Mancanza campi                   & \{ \}      &                                   &            & 400        & 400             \\
+		\hline
+		3               & Token non presente nella session & \{ token\} & Token non presente nella sessione &            & 404        & 404             \\
+		\hline
+	\end{tabular}
+\end{center}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/logout_test_1.png}
 	\caption{Test Logout 1}
@@ -729,7 +803,11 @@ A operazione completata, viene rimosso il token dalla sessione.
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/logout_test_3.png}
 	\caption{Test Logout 3}
 \end{figure}
-
+I risultati dei test sono i seguenti:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/logout_test_results.png}
+	\caption{Risultati test}
+\end{figure}
 \subsection{Registrazione}
 \subsubsection*{Specifica}
 Questa API, all'indirizzo /api/auth/register, ha un metodo POST e viene utilizzata per la creazione di un account cliente.
@@ -836,6 +914,22 @@ Dopo aver controllato che il codice 2FA sia corretto,viene inserito il nuovo pro
 
 
 \subsubsection*{Testing}
+Per questo endpoint sono stati creati i seguenti test:
+
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case   & Test Data                   & Precondizioni                                  & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1               & Registrato con successo & \{email, password, twofa\}  & email non presente nel sistema, twofa corretto & DB         & 200        & 200             \\
+		\hline
+		2               & Mancanza campi          & \{ \}                       &                                                &            & 400        & 400             \\
+		\hline
+		3               & Utente  esistente       & \{ email, password, twofa\} & L'account esiste                               & DB         & 400        & 400             \\
+		\hline
+	\end{tabular}
+\end{center}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/register_test_1.png}
 	\caption{Test Register 1}
@@ -847,6 +941,11 @@ Dopo aver controllato che il codice 2FA sia corretto,viene inserito il nuovo pro
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/register_test_3.png}
 	\caption{Test Register 3}
+\end{figure}
+I risultati dei test sono i seguenti:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/register_test_results.png}
+	\caption{Risultati test}
 \end{figure}
 \subsection{Cambio password}
 \subsubsection*{Specifica}
@@ -957,6 +1056,20 @@ Dopo aver controllato che il codice 2FA sia corretto,viene modificata la passwor
 
 
 \subsubsection*{Testing}
+Per questo endpoint sono stati creati i seguenti test:
+
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case        & Test Data                       & Precondizioni                                            & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1               & Cambio password con successo & \{email, new\_password, twofa\} & creazione account con richiesta register, twofa corretto & DB         & 200        & 200             \\
+		\hline
+		2               & Mancanza campi               & \{ \}                           &                                                          &            & 400        & 400             \\
+		\hline
+	\end{tabular}
+\end{center}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/password_test_1.png}
 	\caption{Test Pass 1}
@@ -964,6 +1077,11 @@ Dopo aver controllato che il codice 2FA sia corretto,viene modificata la passwor
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/password_test_2.png}
 	\caption{Test Pass 2}
+\end{figure}
+I risultati dei test sono i seguenti:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/password_test_results.png}
+	\caption{Risultati test}
 \end{figure}
 \subsection{Eliminazione Profilo}
 \subsubsection*{Specifica}
@@ -1072,6 +1190,21 @@ Dopo aver controllato che il codice 2FA sia corretto, il profilo viene eliminato
 
 
 \subsubsection*{Testing}
+Per questo endpoint sono stati creati i seguenti test:
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case     & Test Data                   & Precondizioni                                               & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1               & Eliminazione con successo & \{email, password, twofa\}  & utente già creato con la richiesta register, twofa corretto & DB         & 200        & 200             \\
+		\hline
+		2               & Mancanza campi            & \{ \}                       &                                                             &            & 400        & 400             \\
+		\hline
+		3               & Utente non esiste         & \{ email, password, twofa\} & L'account non esiste                                        & DB         & 404        & 404             \\
+		\hline
+	\end{tabular}
+\end{center}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/remove_test_1.png}
 	\caption{Test Remove 1}
@@ -1083,6 +1216,11 @@ Dopo aver controllato che il codice 2FA sia corretto, il profilo viene eliminato
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/remove_test_3.png}
 	\caption{Test Remove 3}
+\end{figure}
+I risultati dei test sono i seguenti:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/remove_test_results.png}
+	\caption{Risultati test}
 \end{figure}
 \subsection{Autentifica Token}
 \subsubsection*{Specifica}
@@ -1179,7 +1317,39 @@ Infine il livello di permesso associato all'utente e il suo id vengono inviati n
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/authenticate-carbon.png}
 	Codice dell'API api/auth/authenticate
 \end{figure}
-
+\subsubsection*{Testing}
+Per questo endpoint sono stati creati i seguenti test
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case         & Test Data  & Precondizioni                     & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1               & Autentificazione con successo & \{token\}  & token presente nella sessione     & DB         & 200        & 200             \\
+		\hline
+		2               & Mancanza campi                & \{ \}      &                                   &            & 400        & 400             \\
+		\hline
+		3               & Utente non esiste             & \{ token\} & token non presente nella sessione & DB         & 404        & 404             \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/auth_test_1.png}
+	\caption{Test Auth 1}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/auth_test_2.png}
+	\caption{Test Auth 2}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/auth_test_3.png}
+	\caption{Test Auth 3}
+\end{figure}
+I risultati dei test sono i seguenti:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/auth_test_results.png}
+	\caption{Risultati test}
+\end{figure}
 \subsection{Two Factor Authentication}
 \subsubsection*{Specifica}
 Questa API, all'indirizzo/api/auth/twofa, ha un metodo POST e viene utilizzata da un utente per richiedere un codice 2FA attraverso mail
@@ -1254,6 +1424,19 @@ Successivamente viene inviata l'email con il codice 2FA.
 \end{figure}
 
 \subsubsection*{Testing}
+Per questo endpoint sono stati creati i seguenti test
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case      & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1               & Twofa inviato con successo & \{email\} &               &            & 200        & 200             \\
+		\hline
+		2               & Mancanza campi             & \{ \}     &               &            & 400        & 400             \\
+		\hline
+	\end{tabular}
+\end{center}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/twofa_test_1.png}
 	\caption{TwoFa Testing 1}
@@ -1262,7 +1445,11 @@ Successivamente viene inviata l'email con il codice 2FA.
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/twofa_test_2.png}
 	\caption{TwoFa Testing 2}
 \end{figure}
-
+I risultati dei test sono i seguenti:
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/tests/twofa_test_results.png}
+	\caption{Risultati test}
+\end{figure}
 
 
 
@@ -1273,7 +1460,7 @@ Successivamente viene inviata l'email con il codice 2FA.
 \section{Backend}
 
 Questa sezione comprende lo sviluppo e la documentazione del backend del
-"Microservizio Task". 
+"Microservizio Task".
 
 \subsection{Lista delle Risorse}
 
@@ -1329,13 +1516,13 @@ Segeue l'implementazione nel linguaggio "Typescript":
 
 \begin{figure}[H]
 	\centering\includegraphics[width=0.9\textwidth]{images/code_task_supporto.png}
-	
+
 	File situato in "backend/classes/TaskSupporto.ts".
 \end{figure}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=0.9\textwidth]{images/code_task_assistenza.png}
-	
+
 	File situato in "backend/classes/TaskAssistenza.ts".
 \end{figure}
 
@@ -1470,17 +1657,17 @@ La response body `e in formato application/json. Di seguito le possibili rispost
 	\centering
 	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\qquad\quad Body                             & \qquad\quad Spiegazione                                \\ % I found no other way...
 		\hline
-		200 OK & \{Success: "task assigned to the user" \}  & La procedura è terminata con successo	\\ 
+		200 OK                 & \{Success: "task assigned to the user" \}          & La procedura è terminata con successo                  \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti. \\
+		400 BAD REQUEST        & \{error: "missing fields", missingFields \}        & I campi richiesti sono mancanti.                       \\
 		\hline
-		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		401 UNAUTHORIZED       & \{ error: "User not found with the given token" \} & Il token non è valido                                  \\
 		\hline
-		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		403 FORBIDDEN          & \{ error: "User not authorized" \}                 & L'utente non ha permessi elevati per accedere all'API  \\
 		\hline
-		404 NOT FOUND & \{ error: "Task not found" \} & Non è stata trovata alcuna task con il taskid inviato. \\
+		404 NOT FOUND          & \{ error: "Task not found" \}                      & Non è stata trovata alcuna task con il taskid inviato. \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1622,19 +1809,19 @@ Sono stati realizzati i seguenti tests per coprire ogni possibile risultato dell
 	\centering
 	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
 		\hline
-		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		Numero Testcase & Descrizione Test Case                    & Test Data                                      & Precondizioni                         & Dipendenze                       & Res Atteso & Res Riscontrato \\
 		\hline
-		1 & Nessun field & - & - & - & 400 & 400 \\
+		1               & Nessun field                             & -                                              & -                                     & -                                & 400        & 400             \\
 		\hline
-		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		2               & Invio Token non valido                   & \{token: "fake" \}                             & -                                     & -                                & 401        & 401             \\
 		\hline
-		3 & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 403 & 403 \\
+		3               & Invio Token da un cliente                & \{ token: tokenCliente \}                      & Esistenza di un cliente nel DB        & Microservizio Autenticazione, DB & 403        & 403             \\
 		\hline
-		4 & Invio di un token valido ma senza taskid & \{ token: tokenManager \} & Esistenza di un manager nel DB & Microservizio Autenticazione, DB & 400 & 400 \\
+		4               & Invio di un token valido ma senza taskid & \{ token: tokenManager \}                      & Esistenza di un manager nel DB        & Microservizio Autenticazione, DB & 400        & 400             \\
 		\hline
-		5 & Invio token valido, taskid non valido & \{ token: tokenManager, taskid: "fake" \} & Esistenza di un Manager nel DB & Microservizio Autenticazione, DB & 404 & 404 \\
+		5               & Invio token valido, taskid non valido    & \{ token: tokenManager, taskid: "fake" \}      & Esistenza di un Manager nel DB        & Microservizio Autenticazione, DB & 404        & 404             \\
 		\hline
-		6 & Invio token valido con taskid valido & \{ token: tokenManager, taskid: validTaskid \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		6               & Invio token valido con taskid valido     & \{ token: tokenManager, taskid: validTaskid \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200        & 200             \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1679,7 +1866,7 @@ La risorsa "Modifica Stato Task" è accessibile tramite la route "/api/tasks/mod
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_enum_taskStatus.png}
-	
+
 	Definizione dell'enum "TaskStatus" in "backend/enums/TaskStatus.ts".
 \end{figure}
 
@@ -1696,26 +1883,26 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 	\centering
 	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\qquad\quad Body                             & \qquad\quad Spiegazione                                                       \\ % I found no other way...
 		\hline
-		200 OK & \{Success: "Task status changed succesfully" \}  & La procedura è terminata con successo	\\ 
+		200 OK                 & \{Success: "Task status changed succesfully" \}    & La procedura è terminata con successo                                         \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti. \\
+		400 BAD REQUEST        & \{error: "missing fields", missingFields \}        & I campi richiesti sono mancanti.                                              \\
 		\hline
-		400 BAD REQUEST & \{error: "Wrong status", missingFields \} & Lo status inviato non è valido (non corrisponde ad uno dei valori dell'enum). \\
+		400 BAD REQUEST        & \{error: "Wrong status", missingFields \}          & Lo status inviato non è valido (non corrisponde ad uno dei valori dell'enum). \\
 		\hline
-		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		401 UNAUTHORIZED       & \{ error: "User not found with the given token" \} & Il token non è valido                                                         \\
 		\hline
-		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		403 FORBIDDEN          & \{ error: "User not authorized" \}                 & L'utente non ha permessi elevati per accedere all'API                         \\
 		\hline
-		404 NOT FOUND & \{ error: "Task not found" \} & Non è stata trovata alcuna task con il taskid inviato. \\
+		404 NOT FOUND          & \{ error: "Task not found" \}                      & Non è stata trovata alcuna task con il taskid inviato.                        \\
 		\hline
 	\end{tabular}
 \end{center}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/model_modifica_task.png}
-	
+
 	Modello delle risorse per "/api/tasks/modificaStatoTask".
 \end{figure}
 
@@ -1830,12 +2017,12 @@ paths:
 Il codice è il seguente:
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato.png}
-	
+
 	Estratto da "backend/routes/modificaStatoTask".
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_query.png}
-	
+
 	Funzione "checkStatus()" e "executeQuery()".
 \end{figure}
 
@@ -1848,19 +2035,19 @@ Sono stati creati i seguenti tests:
 	\centering
 	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
 		\hline
-		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		Numero Testcase & Descrizione Test Case                                           & Test Data                                                               & Precondizioni                         & Dipendenze                       & Res Atteso & Res Riscontrato \\
 		\hline
-		1 & Nessun field & - & - & - & 400 & 400 \\
+		1               & Nessun field                                                    & -                                                                       & -                                     & -                                & 400        & 400             \\
 		\hline
-		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		2               & Invio Token non valido                                          & \{token: "fake" \}                                                      & -                                     & -                                & 401        & 401             \\
 		\hline
-		3 & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 403 & 403 \\
+		3               & Invio Token da un cliente                                       & \{ token: tokenCliente \}                                               & Esistenza di un cliente nel DB        & Microservizio Autenticazione, DB & 403        & 403             \\
 		\hline
-		4 & Invio di un token valido ma senza taskid & \{ token: tokenManager \} & Esistenza di un manager nel DB & Microservizio Autenticazione, DB & 400 & 400 \\
+		4               & Invio di un token valido ma senza taskid                        & \{ token: tokenManager \}                                               & Esistenza di un manager nel DB        & Microservizio Autenticazione, DB & 400        & 400             \\
 		\hline
-		5 & Invio token valido con taskid valido ma con uno stato sbagliato & \{ token: tokenManager, taskid: validTaskid, taskStatus: "fake" \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 400 & 400 \\
+		5               & Invio token valido con taskid valido ma con uno stato sbagliato & \{ token: tokenManager, taskid: validTaskid, taskStatus: "fake" \}      & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 400        & 400             \\
 		\hline
-		6 & Invio token valido con taskid valido e uno stato valido & \{ token: tokenManager, taskid: validTaskid, taskStatus: validStatus \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		6               & Invio token valido con taskid valido e uno stato valido         & \{ token: tokenManager, taskid: validTaskid, taskStatus: validStatus \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200        & 200             \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1869,38 +2056,38 @@ Di seguito il codice dei tests:
 
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test1.png}
-	
+
 	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test2.png}
-	
+
 	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test3.png}
-	
+
 	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test4.png}
-	
+
 	Testcase 4
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test5.png}
-	
+
 	Testcase 5
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/code_modifica_stato_test6.png}
-	
+
 	Testcase 6
 \end{figure}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=0.8\textwidth]{images/jest_modifica_stato.png}
-	
+
 	Risultato dei tests
 \end{figure}
 
@@ -1909,7 +2096,7 @@ Di seguito il codice dei tests:
 
 La risorsa "Get Lista Task In Lavorazione" è accessibile tramite la route
 
- "/api/tasks/getListaTaskInLavorazione". Permette al dipendente o al manager di ottenere una lista in formato json delle task nello stato di "In Lavorazione". Gli elementi della rispecchiano gli attributi della risorsa "Task" vista precedentemente.
+"/api/tasks/getListaTaskInLavorazione". Permette al dipendente o al manager di ottenere una lista in formato json delle task nello stato di "In Lavorazione". Gli elementi della rispecchiano gli attributi della risorsa "Task" vista precedentemente.
 
 La risorsa richiede tutti i seguenti campi nel body:
 \begin{itemize}
@@ -1922,22 +2109,22 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 	\centering
 	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\qquad\quad Body                             & \qquad\quad Spiegazione                               \\ % I found no other way...
 		\hline
-		200 OK & \{ [ task1, task2, ... ] \}  & La procedura è terminata con successo	\\ 
+		200 OK                 & \{ [ task1, task2, ... ] \}                        & La procedura è terminata con successo                 \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti o malformati. \\
+		400 BAD REQUEST        & \{error: "missing fields", missingFields \}        & I campi richiesti sono mancanti o malformati.         \\
 		\hline
-		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		401 UNAUTHORIZED       & \{ error: "User not found with the given token" \} & Il token non è valido                                 \\
 		\hline
-		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		403 FORBIDDEN          & \{ error: "User not authorized" \}                 & L'utente non ha permessi elevati per accedere all'API \\
 		\hline
 	\end{tabular}
 \end{center}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/model_in_lavorazione.png}
-	
+
 	Modello delle risorse per "/api/tasks/getListaTaskInLavorazione".
 \end{figure}
 
@@ -2020,7 +2207,7 @@ Il codice che implementa quanto sopra è il seguente:
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione.png}
-	
+
 	Codice estratto da "backend/routes/getListaTaskInLavorazione".
 \end{figure}
 \begin{figure}[H]
@@ -2036,15 +2223,15 @@ Sono stati individuati i seguenti test cases:
 	\centering
 	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
 		\hline
-		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		Numero Testcase & Descrizione Test Case     & Test Data                 & Precondizioni                         & Dipendenze                       & Res Atteso & Res Riscontrato \\
 		\hline
-		1 & Nessun field & - & - & - & 400 & 400 \\
+		1               & Nessun field              & -                         & -                                     & -                                & 400        & 400             \\
 		\hline
-		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		2               & Invio Token non valido    & \{token: "fake" \}        & -                                     & -                                & 401        & 401             \\
 		\hline
-		3 & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 403 & 403 \\
+		3               & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB        & Microservizio Autenticazione, DB & 403        & 403             \\
 		\hline
-		4 & Invio token valido & \{ token: tokenManager \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		4               & Invio token valido        & \{ token: tokenManager \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200        & 200             \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -2053,29 +2240,29 @@ Di seguito il codice dei suddetti tests:
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test1.png}
-	
+
 	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test2.png}
-	
+
 	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test3.png}
-	
+
 	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_lavorazione_test4.png}
-	
+
 	Testcase 4
 \end{figure}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/jest_in_lavorazione.png}
-	
-    Risultato dei tests
+
+	Risultato dei tests
 \end{figure}
 
 \subsection{Get Lista Task Da Eseguire}
@@ -2096,22 +2283,22 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 	\centering
 	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\qquad\quad Body                             & \qquad\quad Spiegazione                               \\ % I found no other way...
 		\hline
-		200 OK & \{ [ task1, task2, ... ] \}  & La procedura è terminata con successo	\\ 
+		200 OK                 & \{ [ task1, task2, ... ] \}                        & La procedura è terminata con successo                 \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti o malformati. \\
+		400 BAD REQUEST        & \{error: "missing fields", missingFields \}        & I campi richiesti sono mancanti o malformati.         \\
 		\hline
-		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		401 UNAUTHORIZED       & \{ error: "User not found with the given token" \} & Il token non è valido                                 \\
 		\hline
-		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		403 FORBIDDEN          & \{ error: "User not authorized" \}                 & L'utente non ha permessi elevati per accedere all'API \\
 		\hline
 	\end{tabular}
 \end{center}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/model_da_eseguire.png}
-	
+
 	Modello delle risorse per "/api/tasks/getListaTaskDaEseguire".
 \end{figure}
 
@@ -2192,7 +2379,7 @@ paths:
 Il codice è il seguente:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire.png}
-	
+
 	Codice estratto da "backend/routes/getListaTaskDaEseguire".
 \end{figure}
 \begin{figure}[H]
@@ -2207,15 +2394,15 @@ Sono stati creati i seguenti test cases:
 	\centering
 	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
 		\hline
-		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		Numero Testcase & Descrizione Test Case     & Test Data                 & Precondizioni                         & Dipendenze                       & Res Atteso & Res Riscontrato \\
 		\hline
-		1 & Nessun field & - & - & - & 400 & 400 \\
+		1               & Nessun field              & -                         & -                                     & -                                & 400        & 400             \\
 		\hline
-		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		2               & Invio Token non valido    & \{token: "fake" \}        & -                                     & -                                & 401        & 401             \\
 		\hline
-		3 & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 403 & 403 \\
+		3               & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB        & Microservizio Autenticazione, DB & 403        & 403             \\
 		\hline
-		4 & Invio token valido & \{ token: tokenManager \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		4               & Invio token valido        & \{ token: tokenManager \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200        & 200             \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -2224,28 +2411,28 @@ Di seguito il loro codice:
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test1.png}
-	
+
 	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test2.png}
-	
+
 	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test3.png}
-	
+
 	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_da_eseguire_test4.png}
-	
+
 	Testcase 4
 \end{figure}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/jest_da_eseguire.png}
-	
+
 	Risultato tests
 \end{figure}
 
@@ -2268,22 +2455,22 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 	\centering
 	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\qquad\quad Body                             & \qquad\quad Spiegazione                               \\ % I found no other way...
 		\hline
-		200 OK & \{ [ task1, task2, ... ] \}  & La procedura è terminata con successo	\\ 
+		200 OK                 & \{ [ task1, task2, ... ] \}                        & La procedura è terminata con successo                 \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti o malformati. \\
+		400 BAD REQUEST        & \{error: "missing fields", missingFields \}        & I campi richiesti sono mancanti o malformati.         \\
 		\hline
-		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		401 UNAUTHORIZED       & \{ error: "User not found with the given token" \} & Il token non è valido                                 \\
 		\hline
-		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		403 FORBIDDEN          & \{ error: "User not authorized" \}                 & L'utente non ha permessi elevati per accedere all'API \\
 		\hline
 	\end{tabular}
 \end{center}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/model_in_pausa.png}
-	
+
 	Modello delle risorse per "/api/tasks/getListaTaskInPausa".
 \end{figure}
 
@@ -2363,7 +2550,7 @@ paths:
 Il codice è quanto segue:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa.png}
-	
+
 	Codice estratto da "backend/routes/getlistaTaskInPausa".
 \end{figure}
 \begin{figure}[H]
@@ -2378,43 +2565,43 @@ Sono stati creati i seguenti test cases:
 	\centering
 	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
 		\hline
-		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		Numero Testcase & Descrizione Test Case     & Test Data                 & Precondizioni                         & Dipendenze                       & Res Atteso & Res Riscontrato \\
 		\hline
-		1 & Nessun field & - & - & - & 400 & 400 \\
+		1               & Nessun field              & -                         & -                                     & -                                & 400        & 400             \\
 		\hline
-		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		2               & Invio Token non valido    & \{token: "fake" \}        & -                                     & -                                & 401        & 401             \\
 		\hline
-		3 & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 403 & 403 \\
+		3               & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB        & Microservizio Autenticazione, DB & 403        & 403             \\
 		\hline
-		4 & Invio token valido & \{ token: tokenManager \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		4               & Invio token valido        & \{ token: tokenManager \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200        & 200             \\
 		\hline
 	\end{tabular}
 \end{center}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa_test1.png}
-	
+
 	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa_test2.png}
-	
+
 	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa_test3.png}
-	
+
 	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_in_pausa_test4.png}
-	
+
 	Testcase 4
 \end{figure}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/jest_in_pausa.png}
-	
+
 	Risultato dei tests.
 \end{figure}
 
@@ -2437,15 +2624,15 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 	\centering
 	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\qquad\quad Body                             & \qquad\quad Spiegazione                               \\ % I found no other way...
 		\hline
-		200 OK & \{ [ task1, task2, ... ] \}  & La procedura è terminata con successo	\\ 
+		200 OK                 & \{ [ task1, task2, ... ] \}                        & La procedura è terminata con successo                 \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti o malformati. \\
+		400 BAD REQUEST        & \{error: "missing fields", missingFields \}        & I campi richiesti sono mancanti o malformati.         \\
 		\hline
-		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		401 UNAUTHORIZED       & \{ error: "User not found with the given token" \} & Il token non è valido                                 \\
 		\hline
-		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		403 FORBIDDEN          & \{ error: "User not authorized" \}                 & L'utente non ha permessi elevati per accedere all'API \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -2453,7 +2640,7 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/model_storico_task.png}
-	
+
 	Modello delle risorse per "/api/tasks/getStoricoTask".
 \end{figure}
 
@@ -2531,7 +2718,7 @@ paths:
 Il codice è il seguente:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_storico.png}
-	
+
 	Estratto di codice dal file "backend/routes/getStoricoTask".
 \end{figure}
 \begin{figure}[H]
@@ -2546,43 +2733,43 @@ Sono stati individuati i seguenti test cases:
 	\centering
 	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
 		\hline
-		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		Numero Testcase & Descrizione Test Case     & Test Data                 & Precondizioni                         & Dipendenze                       & Res Atteso & Res Riscontrato \\
 		\hline
-		1 & Nessun field & - & - & - & 400 & 400 \\
+		1               & Nessun field              & -                         & -                                     & -                                & 400        & 400             \\
 		\hline
-		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		2               & Invio Token non valido    & \{token: "fake" \}        & -                                     & -                                & 401        & 401             \\
 		\hline
-		3 & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 403 & 403 \\
+		3               & Invio Token da un cliente & \{ token: tokenCliente \} & Esistenza di un cliente nel DB        & Microservizio Autenticazione, DB & 403        & 403             \\
 		\hline
-		4 & Invio token valido & \{ token: tokenManager \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		4               & Invio token valido        & \{ token: tokenManager \} & Esistenza di un Manager e Task nel DB & Microservizio Autenticazione, DB & 200        & 200             \\
 		\hline
 	\end{tabular}
 \end{center}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_storico_test1.png}
-	
+
 	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_storico_test2.png}
-	
+
 	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_storico_test3.png}
-	
+
 	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_storico_test4.png}
-	
+
 	Testcase 4
 \end{figure}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/jest_storico.png}
-	
+
 	Testcase 4
 \end{figure}
 
@@ -2605,21 +2792,21 @@ Il corpo della risposta è in formato application/json e riporta le seguenti ris
 	\centering
 	\begin{tabular}{ |p{4cm}|p{4cm}|p{4cm}| }
 		\hline
-		\centering Status Code & \qquad\qquad\quad Body & \qquad\quad Spiegazione\\ % I found no other way...
+		\centering Status Code & \qquad\qquad\quad Body                             & \qquad\quad Spiegazione                               \\ % I found no other way...
 		\hline
-		200 OK & \{ Seccess: "task created" \}  & La procedura è terminata con successo	\\ 
+		200 OK                 & \{ Seccess: "task created" \}                      & La procedura è terminata con successo                 \\
 		\hline
-		400 BAD REQUEST & \{error: "missing fields", missingFields \} & I campi richiesti sono mancanti o malformati. \\
+		400 BAD REQUEST        & \{error: "missing fields", missingFields \}        & I campi richiesti sono mancanti o malformati.         \\
 		\hline
-		401 UNAUTHORIZED & \{ error: "User not found with the given token" \} & Il token non è valido \\
+		401 UNAUTHORIZED       & \{ error: "User not found with the given token" \} & Il token non è valido                                 \\
 		\hline
-		403 FORBIDDEN & \{ error: "User not authorized" \} &  L'utente non ha permessi elevati per accedere all'API \\
+		403 FORBIDDEN          & \{ error: "User not authorized" \}                 & L'utente non ha permessi elevati per accedere all'API \\
 		\hline
 	\end{tabular}
 \end{center}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/model_crea_task.png}
-	
+
 	Modello delle risorse per "/api/tasks/creaTask".
 \end{figure}
 
@@ -2692,7 +2879,7 @@ paths:
 Il codice è il seguente:
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task.png}
-	
+
 	Estratto di codice dal file "backend/routes/creaTask".
 \end{figure}
 \begin{figure}[H]
@@ -2712,17 +2899,17 @@ Sono stati individuati i seguenti test cases:
 	\centering
 	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
 		\hline
-		Numero Testcase & Descrizione Test Case & Test Data & Precondizioni & Dipendenze & Res Atteso & Res Riscontrato \\
+		Numero Testcase & Descrizione Test Case                             & Test Data                                                                          & Precondizioni                  & Dipendenze                       & Res Atteso & Res Riscontrato \\
 		\hline
-		1 & Nessun field & - & - & - & 400 & 400 \\
+		1               & Nessun field                                      & -                                                                                  & -                              & -                                & 400        & 400             \\
 		\hline
-		2 & Invio Token non valido & \{token: "fake" \} & - & - & 401 & 401 \\
+		2               & Invio Token non valido                            & \{token: "fake" \}                                                                 & -                              & -                                & 401        & 401             \\
 		\hline
-		3 & Invio token senza task tag & \{ token: validToken \} & Esistenza Manager nel DB & Microsetvizio Autenticazione, DB & 400 & 400 \\
-		4 & Invio token con task tag sbagliato & \{ token: validToken, taskTag: "fake" \} & Esistenza Manager nel DB & Microservizio Autenticazione, DB & 400 & 400 \\
-		5 & Invio Token con task tag ma senza altri attributi & \{ token: tokenCliente, taskTag: "Magazzino" \} & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 400 & 400 \\
+		3               & Invio token senza task tag                        & \{ token: validToken \}                                                            & Esistenza Manager nel DB       & Microsetvizio Autenticazione, DB & 400        & 400             \\
+		4               & Invio token con task tag sbagliato                & \{ token: validToken, taskTag: "fake" \}                                           & Esistenza Manager nel DB       & Microservizio Autenticazione, DB & 400        & 400             \\
+		5               & Invio Token con task tag ma senza altri attributi & \{ token: tokenCliente, taskTag: "Magazzino" \}                                    & Esistenza di un cliente nel DB & Microservizio Autenticazione, DB & 400        & 400             \\
 		\hline
-		6 & Tutto valido  & \{ token: tokenManager, taskTak: "Magazzino", nome: "test", descrizione: "test" \} & Esistenza di un Manager nel DB & Microservizio Autenticazione, DB & 200 & 200 \\
+		6               & Tutto valido                                      & \{ token: tokenManager, taskTak: "Magazzino", nome: "test", descrizione: "test" \} & Esistenza di un Manager nel DB & Microservizio Autenticazione, DB & 200        & 200             \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -2731,251 +2918,742 @@ Codice dei testcases:
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test1.png}
-	
+
 	Testcase 1
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test2.png}
-	
+
 	Testcase 2
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test3.png}
-	
+
 	Testcase 3
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test4.png}
-	
+
 	Testcase 4
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test5.png}
-	
+
 	Testcase 5
 \end{figure}
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/code_crea_task_test6.png}
-	
+
 	Testcase 6
 \end{figure}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/jest_crea_task.png}
-	
+
 	Risultato testcases
 \end{figure}
 
 
-\section{Microservizio Gestione Dipendenti}
-	\subsection*{Struttura del backend}
-	\subsection*{Modellazione dati nel database}
-	\subsection*{Specifica delle Risorse}
+\chapter{Microservizio Gestione Dipendenti}
+\section{Backend}
 
-	\subsection*{Crea profilo Dipendente}
+Questa sezione comprende lo sviluppo e la documentazione del backend del Microservizio Autenticazione
 
-		\subsubsection*{Specifica}
-		Questa API, all'indirizzo /api/dipendenti/create, ha un metodo POST e viene utilizzata per la creazione di un profilo dipendente da parte del Manager.
-		La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
-		\begin{itemize}
-			
-			\item email
-			\item password
-			\item data di nascita
-			\item data di assunzione
-			\item lista worktag
-		\end{itemize}
-		Inoltre, per verificare che il manager sia autenticato, il suo token va inserito o all'interno del body o attraverso un cookie.
-		La response body è in formato application/json. Di seguito le possibili risposte:
-		% table
-		\begin{center} % center the table
-			\centering
-			\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
-				\hline
-				\centering Status Code & \qquad\quad Body e Cookie                                & \qquad\qquad Spiegazione                              \\ % I found no other way...
-				\hline
-				200 OK                 & \{text: "successfully created the profile"\} 			  & Profilo dipendente creato con successo                           \\
-				\hline
-				401 UNAUTHORIZED       & \{error: "missing token"\} 							  & Il token non è presente nella richiesta				  \\
-				\hline
-				403 FORBIDDEN		   & \{error: "permission denied"\}							  & Il token è presente nella richiesta, ma l'utente associato non è un manager \\	
-				\hline
-				404 NOT FOUND 		   & \{error: "No user found with the given token"\}          & Il token è presente nella richiesta, ma non corrisponde a nessun profilo autenticato \\
-				\hline
-				400 BAD REQUEST        & \{error: "missing fields", missingFields\}               & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
-				\hline
-				400 BAD REQUEST        & \{error: "user already exists with the given email"\}    & Esiste già un utente con la mail fornita              \\% I found no other way...
-				\hline
-				400 BAD REQUEST        & \{error: "invalid birth date" \}                            & La data di nascita fornita non è in un formato riconosciuto             \\
-				\hline
-				400 BAD REQUEST        & \{error: "invalid assunzione date" \}                            & La data di assunzione fornita non è in un formato riconosciuto             \\
-				\hline
-				400 BAD REQUEST        & \{error: "no worktag array" \}                            & il campo della richiesta 'worktag' non è un array           \\
-				\hline
-				400 BAD REQUEST        & \{error: "elements provided are not worktags" \}                            & Gli elementi forniti all'interno di 'worktag' non sono worktags           \\
-				\hline
-			\end{tabular}
-		\end{center}
-		\subsubsection*{Sviluppo}
-		Questa api viene utilizzata dal manager per la creazione di un profilo dipendente.
-		Una volta ricevuta la richiesta, viene controllata inizialmente la presenza del token del manager nel body o nel token attraverso il middleware 'permissionMiddleware'.
-		Successivamente viene controllata la presenza di tutti i campi richiesti e dell'integrità dei dati forniti, ossia:
-		\begin{itemize}
-			\item Se la data di nascita è in un formato valido
-			\item Se la data di assunzione è in un formato valido
-			\item se 'worktag' è un array
-			\item se gli elementi di 'worktag' sono esclusivamente worktags
-		\end{itemize}
-		Dopodichè viene controllata la presenza di un utente con la mail fornita nel database. 
-		Infine viene creato il dipendente e memorizzato all'interno del database, ritornando una risposta positiva.
-		%figure here
-		\subsubsection*{Documentazione}
+\subsection*{Struttura del backend}
+La struttura del backend del microservizio autenticazione è riportata
+nella figura sotto.
+\begin{figure}[H]
+	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/backend-structure.png}
+	\caption{Output del comando "tree" all'interno di un microservizio.}
+\end{figure}
+\subsection*{Modellazione dati nel database}
+\subsection*{Specifica delle Risorse}
+Di seguito le risorse estratte dal diagramma delle classi e utilizzate da questo microservizio.
+\paragraph*{<<resource>> Dipendente}
+Rappresenta il profilo di un Dipendente.
+Ha tutti gli attributi di cliente, in più:
+\begin{itemize}
+	\item nome
+	\item cognome
+	\item data di assunzione
+	\item data di nascita
+	\item worktags
+\end{itemize}
+\paragraph*{Manager}
+Rappresenta il profilo del Manager.
+Ha tutti gli attributi di Dipendente, ma ha come permissionLevel "Manager"
 
-		\subsubsection*{Testing}
+Metodi
+\paragraph*{<<resource>> crea}
+Permette al manager di creare un profilo dipendente.
+E' un'API del backend
+\paragraph*{<<resource>> rimuovi}
+Permette al manager di rimuovere un profilo dipendente
+E' un'API del backend
+\paragraph*{<<resource>> cerca}
+Permette al manager di cercare profili dipendente
+E' un'API del backend
+\paragraph*{<<resource>> storico}
+Permette al manager di visualizzare lo storico task di un determinato dipendente
+E' un'API del backend
 
-	\subsection*{Elimina profilo}
-		\subsubsection*{Specifica}
-		Questa API, all'indirizzo /api/dipendenti/delete, ha un metodo delete e viene utilizzata per l'eliminazione di un profilo da parte del Manager.
-		La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
-		\begin{itemize}
-			\item email
-		\end{itemize}
-		Inoltre, per verificare che il manager sia autenticato, il suo token va inserito o all'interno del body o attraverso un cookie.
-		La response body è in formato application/json. Di seguito le possibili risposte:
-		% table
-		\begin{center} % center the table
-			\centering
-			\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
-				\hline
-				\centering Status Code & \qquad\quad Body e Cookie                                & \qquad\qquad Spiegazione                              \\ % I found no other way...
-				\hline
-				200 OK                 & \{text: "successfully deleted the profile"\} 			  & Profilo eliminato con successo                           \\
-				\hline
-				401 UNAUTHORIZED       & \{error: "missing token"\} 							  & Il token non è presente nella richiesta				  \\
-				\hline
-				403 FORBIDDEN		   & \{error: "permission denied"\}							  & Il token è presente nella richiesta, ma l'utente associato non è un manager \\	
-				\hline
-				404 NOT FOUND 		   & \{error: "No user found with the given token"\}          & Il token è presente nella richiesta, ma non corrisponde a nessun profilo autenticato \\
-				\hline
-				400 BAD REQUEST        & \{error: "missing fields", missingFields\}               & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
-				\hline
-				404 NOT FOUND 		   & \{error: "no user with the given email" \}				  & Non esiste alcun utente con la mail fornita      \\
-				\hline
-			\end{tabular}
-		\end{center}
-		\subsubsection*{Sviluppo}
-		Questa api viene utilizzata dal manager per eliminare un profilo già esistente nel sistema.
-		Una volta ricevuta la richiesta, viene controllata inizialmente la presenza del token del manager nel body o nel token attraverso il middleware 'permissionMiddleware'.
-		Successivamente viene controllata la presenza di tutti i campi richiesti.
-		Dopodichè viene controllato se l'email fornita corrisponde al profilo di un utente.
-		Infine viene eliminato il profilo all'interno del database, ritornando un esito positivo
-		%figure here %%
+\subsection{Crea profilo Dipendente}
 
-		\subsubsection*{Documentazione}
+\subsubsection*{Specifica}
+Questa API, all'indirizzo /api/dipendenti/create, ha un metodo POST e viene utilizzata per la creazione di un profilo dipendente da parte del Manager.
+La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
+\begin{itemize}
 
-		\subsubsection*{Testing}
+	\item email
+	\item password
+	\item data di nascita
+	\item data di assunzione
+	\item lista worktag
+\end{itemize}
+Inoltre, per verificare che il manager sia autenticato, il suo token va inserito o all'interno del body o attraverso un cookie.
+La response body è in formato application/json. Di seguito le possibili risposte:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\quad Body e Cookie                             & \qquad\qquad Spiegazione                                                             \\ % I found no other way...
+		\hline
+		200 OK                 & \{text: "successfully created the profile"\}          & Profilo dipendente creato con successo                                               \\
+		\hline
+		401 UNAUTHORIZED       & \{error: "missing token"\}                            & Il token non è presente nella richiesta                                              \\
+		\hline
+		403 FORBIDDEN          & \{error: "permission denied"\}                        & Il token è presente nella richiesta, ma l'utente associato non è un manager          \\
+		\hline
+		404 NOT FOUND          & \{error: "No user found with the given token"\}       & Il token è presente nella richiesta, ma non corrisponde a nessun profilo autenticato \\
+		\hline
+		400 BAD REQUEST        & \{error: "missing fields", missingFields\}            & Alcuni campi non sono stati specificati nella request                                \\ % I found no other way...
+		\hline
+		400 BAD REQUEST        & \{error: "user already exists with the given email"\} & Esiste già un utente con la mail fornita                                             \\% I found no other way...
+		\hline
+		400 BAD REQUEST        & \{error: "invalid birth date" \}                      & La data di nascita fornita non è in un formato riconosciuto                          \\
+		\hline
+		400 BAD REQUEST        & \{error: "invalid assunzione date" \}                 & La data di assunzione fornita non è in un formato riconosciuto                       \\
+		\hline
+		400 BAD REQUEST        & \{error: "no worktag array" \}                        & il campo della richiesta 'worktag' non è un array                                    \\
+		\hline
+		400 BAD REQUEST        & \{error: "elements provided are not worktags" \}      & Gli elementi forniti all'interno di 'worktag' non sono worktags                      \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/diagrams/create_diagram.drawio.png}
+	\caption{Diagramma dell'endpoint create}
+\end{figure}
 
-	\subsection*{Cerca profili}
-		\subsubsection*{Specifica}
-		Questa API, all'indirizzo /api/dipendenti/find, ha un metodo post e viene utilizzata per la ricerca di uno o più profili da parte del manager.
-		La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
-		\begin{itemize}
-			\item mode
-		\end{itemize}
-		il campo mode può assumere i valori 'one' o 'many', e indica se la ricerca debba ritornare uno o più profili.
-		Il body può contenere, ma non è obbligatorio, i seguenti campi per una ricerca più specifica:
-		\begin{itemize}
-			\item email
-			\item nome
-			\item cognome
-			\item data di nascita
-			\item data di assunzione
-			\item worktags
-		\end{itemize}
-		Inoltre, per verificare che il manager sia autenticato, il suo token va inserito o all'interno del body o attraverso un cookie.
-		La response body è in formato application/json. Di seguito le possibili risposte:
-		% table
-		\begin{center} % center the table
-			\centering
-			\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
-				\hline
-				\centering Status Code & \qquad\quad Body e Cookie                                & \qquad\qquad Spiegazione                              \\ % I found no other way...
-				\hline
-				200 OK                 & \{user: {...}\} 			  & La ricerca con mode = "one" ha riportato un risultato                           \\
-				\hline
-				200 OK 				   & \{users: [user1,user2,user3...]\} & La ricerca con mode = 'many' ha riportato uno o più risultati              \\
-				\hline
-				401 UNAUTHORIZED       & \{error: "missing token"\} 							  & Il token non è presente nella richiesta				  \\
-				\hline
-				403 FORBIDDEN		   & \{error: "permission denied"\}							  & Il token è presente nella richiesta, ma l'utente associato non è un manager \\	
-				\hline
-				404 NOT FOUND 		   & \{error: "No user found with the given token"\}          & Il token è presente nella richiesta, ma non corrisponde a nessun profilo autenticato \\
-				\hline
-				400 BAD REQUEST        & \{error: "missing fields", missingFields\}               & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
-				\hline
-				404 NOT FOUND 		   & \{error: "no user found" \}				  & Non esiste alcun utente avente i parametri di ricerca forniti. viene ritornato solo con mode = one   \\
-				\hline
-			\end{tabular}
-		\end{center}
-		\subsubsection*{Sviluppo}
-		Questa api viene utilizzata dal manager per cercare uno o più  profili presenti nel sistema.
-		Una volta ricevuta la richiesta, viene controllata inizialmente la presenza del token del manager nel body o nel token attraverso il middleware 'permissionMiddleware'.
-		Successivamente viene controllata la presenza di tutti i campi richiesti.
-		Dopodichè vengono presi tutti i campi opzionali forniti e inseriti nella query di ricerca nel database.
-		Infine il server risponde con il primo profilo trovato che corrisponde ai criteri di ricerca forniti.
-		% screen here
-	
-		\subsubsection*{Documentazione}
+\subsubsection*{Specifica OpenAPI}
+Di seguito la specifica openapi dell'endpoint remove contenuta nel file 'openapi.yaml' della directory del microservizio
+\begin{verbatim}
+	/create:
+    post:
+      summary: Metodo per la creazione di profili dipendente da parte del manager
+      description: Questo endpoint permette al manager di creare un profilo dipendente fornendo email, password, nome, cognome, data di nascita, data di assunzione, worktag
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
 
-		\subsubsection*{Testing}
+                password:
+                  type: string
+                  format: password
+                  
+                nome:
+                  type: string
+                cognome:
+                  type: string
+                nascita:
+                  type: string
+                  format: date
+                assunzione:
+                  type: string
+                  format: date
+                worktag:
+                  type: array
+                token:
+                  type: string
+               
+              required:
+                - email
+                - password
+                - nome
+                - cognome
+                - nascita
+                - assunzione
+                - worktag
+                - token
+      responses:
+        '200':
+          description: "Profilo creato con successo"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "successfully created"
+                  
+            
 
-	\subsection*{Storico profili}
-		\subsubsection*{Specifica}
-		Questa API, all'indirizzo /api/dipendenti/history, ha un metodo post e viene utilizzata per la visione dello storico task di un determinato dipendente
-		La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
-		\begin{itemize}
-			\item email
-		\end{itemize}
-		Inoltre, per verificare che il manager sia autenticato, il suo token va inserito o all'interno del body o attraverso un cookie.
-		La response body è in formato application/json. Di seguito le possibili risposte:
-		% table
-		\begin{center} % center the table
-			\centering
-			\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
-				\hline
-				\centering Status Code & \qquad\quad Body e Cookie                                & \qquad\qquad Spiegazione                              \\ % I found no other way...
-				\hline
-				200 OK                 & \{[task1,task2,task3...]\} 			  & La ricerca ha riportato lo storico task con successo                          \\
-				\hline
-				401 UNAUTHORIZED       & \{error: "missing token"\} 							  & Il token non è presente nella richiesta				  \\
-				\hline
-				403 FORBIDDEN		   & \{error: "permission denied"\}							  & Il token è presente nella richiesta, ma l'utente associato non è un manager \\	
-				\hline
-				404 NOT FOUND 		   & \{error: "No user found with the given token"\}          & Il token è presente nella richiesta, ma non corrisponde a nessun profilo autenticato \\
-				\hline
-				400 BAD REQUEST        & \{error: "missing fields", missingFields\}               & Alcuni campi non sono stati specificati nella request \\ % I found no other way...
-				\hline
-				404 NOT FOUND 		   & \{error: "dipendente not foudn" \}				  & Non esiste alcun dipendente avente la mail fornita \\
-				\hline
-			\end{tabular}
-		\end{center}
-		\subsubsection*{Sviluppo}
-		Questa api viene utilizzata dal manager per ottenere lo storico task di un determinato dipendente
-		Una volta ricevuta la richiesta, viene controllata inizialmente la presenza del token del manager nel body o nel token attraverso il middleware 'permissionMiddleware'.
-		Successivamente viene controllata la presenza di tutti i campi richiesti.
-		Dopodichè viene controllata la presenza di un dipendente nel database avente la mail fornita.
-		Infine il server risponde con lo storico task del dipendente.
-		\subsubsection*{Documentazione}
+        '401':
+          description: "Token mancante nella richiesta"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/missingTokenSchema"
+        '403':
+          description: "Il token non corrisponde al token del manager"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/notTheManagerSchema"
 
-		\subsubsection*{Testing}
+        '404':
+          description: "Il token non corrisponde a nessun utente"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/notFoundSchema"
+        '400':
+          description: Bad Request - 'Missing fields' or 'invalid birth date' or 'invalid assunzione date' or 'no worktag array'or 'elements provided are not worktags' or 'user with given email already exists'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/missingFieldsSchema'
+                  - type: object
+                    properties:
+                      text:
+                        type: string
+                        example: 
+                          oneOf:
+                            - "invalid birth date"
+                            - "invalid assunzione date"
+                  - type: object
+                    properties:
+                      text:
+                        type: string
+                        example:
+                          oneOf:
+                            - "no worktag array"
+                            - "elements provided are not worktags"
+                  - $ref: '#/components/schemas/alreadyExistsSchema'
+\end{verbatim}
+\subsubsection*{Codice}
+Questa api viene utilizzata dal manager per la creazione di un profilo dipendente.
+Una volta ricevuta la richiesta, viene controllata inizialmente la presenza del token del manager nel body o nel token attraverso il middleware 'permissionMiddleware'.
+Successivamente viene controllata la presenza di tutti i campi richiesti e dell'integrità dei dati forniti, ossia:
+\begin{itemize}
+	\item Se la data di nascita è in un formato valido
+	\item Se la data di assunzione è in un formato valido
+	\item se 'worktag' è un array
+	\item se gli elementi di 'worktag' sono esclusivamente worktags
+\end{itemize}
+Dopodichè viene controllata la presenza di un utente con la mail fornita nel database.
+Infine viene creato il dipendente e memorizzato all'interno del database, ritornando una risposta positiva.
+%figure here
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/create-carbon.png}
+	\caption{Codice dell'endpoint create}
+\end{figure}
 
 
+\subsubsection*{Testing}
+Per questo endpoint sono stati creati i seguenti test:
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case & Test Data                   & Precondizioni                                          & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1               & Dipendente creato con successo    & \{email, password, nome, cognome, nascita, assunzione, worktag\}  & utente non esistente &  Microservizio Autenticazione,DB         & 200        & 200             \\
+		\hline
+		2               & Nascita e Assunzione non validi    & \{email, password, nome, cognome, nascita, assunzione, worktag\}  &  &  Microservizio Autenticazione,DB         & 400        & 400           \\
+		\hline
+		3              & Elementi forniti non sono worktags    & \{email, password, nome, cognome, nascita, assunzione, worktag\}  &  &  Microservizio Autenticazione,DB         & 400        & 400           \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/create_test_1.png}
+	\caption{Test Case 1}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/create_test_2.png}
+	\caption{Test Case 2}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/create_test_3.png}
+	\caption{Test Case 3}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/create_test_results.png}
+	\caption{Risultati dei test}
+\end{figure}
+\subsection{Elimina profilo}
+\subsubsection*{Specifica}
+Questa API, all'indirizzo /api/dipendenti/delete, ha un metodo delete e viene utilizzata per l'eliminazione di un profilo da parte del Manager.
+La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
+\begin{itemize}
+	\item email
+\end{itemize}
+Inoltre, per verificare che il manager sia autenticato, il suo token va inserito o all'interno del body o attraverso un cookie.
+La response body è in formato application/json. Di seguito le possibili risposte:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\quad Body e Cookie                       & \qquad\qquad Spiegazione                                                             \\ % I found no other way...
+		\hline
+		200 OK                 & \{text: "successfully deleted the profile"\}    & Profilo eliminato con successo                                                       \\
+		\hline
+		401 UNAUTHORIZED       & \{error: "missing token"\}                      & Il token non è presente nella richiesta                                              \\
+		\hline
+		403 FORBIDDEN          & \{error: "permission denied"\}                  & Il token è presente nella richiesta, ma l'utente associato non è un manager          \\
+		\hline
+		404 NOT FOUND          & \{error: "No user found with the given token"\} & Il token è presente nella richiesta, ma non corrisponde a nessun profilo autenticato \\
+		\hline
+		400 BAD REQUEST        & \{error: "missing fields", missingFields\}      & Alcuni campi non sono stati specificati nella request                                \\ % I found no other way...
+		\hline
+		404 NOT FOUND          & \{error: "no user with the given email" \}      & Non esiste alcun utente con la mail fornita                                          \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/diagrams/delete_diagram.drawio.png}
+	\caption{Diagramma dell'endpoint delete}
+\end{figure}
+
+\subsubsection*{Specifica OpenAPI}
+Di seguito la specifica openapi dell'endpoint remove contenuta nel file 'openapi.yaml' della directory del microservizio
+\begin{verbatim}
+	/delete:
+    delete:
+      summary: Metodo per l'eliminazione di un profilo
+      description: Questo endpoint permette al manager di eliminare un profilo fornendo la sua mail
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                token:
+                  type: string
+               
+              required:
+                - email
+                - token
+      responses:
+        '200':
+          description: "Profilo elimanto con successo con successo"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    example: "successfully deleted the profile"
+                  
+            
+
+        '401':
+          description: "Token mancante nella richiesta"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/missingTokenSchema"
+        '403':
+          description: "Il token non corrisponde al token del manager"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/notTheManagerSchema"
+
+        '404':
+          description: "'Il token non corrisponde a nessun utente' OR 'Nessun utente trovato con la mail fornita' "
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/notFoundSchema"
+        '400':
+          description: Bad Request - 'Missing fields' 
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/missingFieldsSchema'
+     
+\end{verbatim}
+\subsubsection*{Codice}
+Questa api viene utilizzata dal manager per eliminare un profilo già esistente nel sistema.
+Una volta ricevuta la richiesta, viene controllata inizialmente la presenza del token del manager nel body o nel token attraverso il middleware 'permissionMiddleware'.
+Successivamente viene controllata la presenza di tutti i campi richiesti.
+Dopodichè viene controllato se l'email fornita corrisponde al profilo di un utente.
+Infine viene eliminato il profilo all'interno del database, ritornando un esito positivo
+%figure here %%
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/delete-carbon.png}
+	\caption{Codice dell'endpoint delete}
+\end{figure}
+
+
+\subsubsection*{Testing}
+Per questo endpoint sono stati creati i seguenti test:
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case & Test Data                   & Precondizioni                                          & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1               & Dipendente eliminato con successo    & \{email\}  & utente  creato con la richiesta create &  Microservizio Autenticazione,DB         & 200        & 200             \\
+		\hline
+		2               & utente non trovato  & \{email\}  &  &  Microservizio Autenticazione,DB         & 404        & 404           \\
+		\hline
+		
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/delete_test_1.png}
+	\caption{Test Case 1}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/delete_test_2.png}
+	\caption{Test Case 1}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/delete_test_results.png}
+	\caption{Risultati dei test}
+\end{figure}
+\subsection*{Cerca profili}
+\subsubsection*{Specifica}
+Questa API, all'indirizzo /api/dipendenti/find, ha un metodo post e viene utilizzata per la ricerca di uno o più profili da parte del manager.
+La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
+\begin{itemize}
+	\item mode
+\end{itemize}
+il campo mode può assumere i valori 'one' o 'many', e indica se la ricerca debba ritornare uno o più profili.
+Il body può contenere, ma non è obbligatorio, i seguenti campi per una ricerca più specifica:
+\begin{itemize}
+	\item email
+	\item nome
+	\item cognome
+	\item data di nascita
+	\item data di assunzione
+	\item worktags
+\end{itemize}
+Inoltre, per verificare che il manager sia autenticato, il suo token va inserito o all'interno del body o attraverso un cookie.
+La response body è in formato application/json. Di seguito le possibili risposte:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\quad Body e Cookie                       & \qquad\qquad Spiegazione                                                                           \\ % I found no other way...
+		\hline
+		200 OK                 & \{user: {...}\}                                 & La ricerca con mode = "one" ha riportato un risultato                                              \\
+		\hline
+		200 OK                 & \{users: [user1,user2,user3...]\}               & La ricerca con mode = 'many' ha riportato uno o più risultati                                      \\
+		\hline
+		401 UNAUTHORIZED       & \{error: "missing token"\}                      & Il token non è presente nella richiesta                                                            \\
+		\hline
+		403 FORBIDDEN          & \{error: "permission denied"\}                  & Il token è presente nella richiesta, ma l'utente associato non è un manager                        \\
+		\hline
+		404 NOT FOUND          & \{error: "No user found with the given token"\} & Il token è presente nella richiesta, ma non corrisponde a nessun profilo autenticato               \\
+		\hline
+		400 BAD REQUEST        & \{error: "missing fields", missingFields\}      & Alcuni campi non sono stati specificati nella request                                              \\ % I found no other way...
+		\hline
+		404 NOT FOUND          & \{error: "no user found" \}                     & Non esiste alcun utente avente i parametri di ricerca forniti. viene ritornato solo con mode = one \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/diagrams/find_diagram.drawio.png}
+	\caption{Diagramma dell'endpoint find}
+\end{figure}
+
+\subsubsection*{Specifica OpenAPI}
+Di seguito la specifica openapi dell'endpoint remove contenuta nel file 'openapi.yaml' della directory del microservizio
+\begin{verbatim}
+	/find:
+    post:
+      summary: Metodo per la ricerca di profili dipendente da parte del manager
+      description: Questo endpoint permette al manager di cercare profili dipendente fornendo email, password, nome, cognome, data di nascita, data di assunzione, worktag
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+
+                password:
+                  type: string
+                  format: password
+                  
+                nome:
+                  type: string
+                cognome:
+                  type: string
+                nascita:
+                  type: string
+                  format: date
+                assunzione:
+                  type: string
+                  format: date
+                worktag:
+                  type: array
+                token:
+                  type: string
+                mode: 
+                  type: string
+                  enum: [one,many]
+              required:
+                - token
+                - mode
+      responses:
+        '200':
+          description: "(mode=one) Profilo trovato OR (mode=many) Profili trovati "
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#components/schemas/user'
+                  - $ref: '#components/schemas/users'
+        '401':
+          description: "Token mancante nella richiesta"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/missingTokenSchema"
+        '403':
+          description: "Il token non corrisponde al token del manager"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/notTheManagerSchema"
+
+        '404':
+          description: "Il token non corrisponde a nessun utente OR (mode = one) Utente non trovato nella ricerca"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/notFoundSchema"
+        '400':
+          description: Bad Request - 'Missing fields' 
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/missingFieldsSchema'
+     
+\end{verbatim}
+\subsubsection*{Codice}
+Questa api viene utilizzata dal manager per cercare uno o più  profili presenti nel sistema.
+Una volta ricevuta la richiesta, viene controllata inizialmente la presenza del token del manager nel body o nel token attraverso il middleware 'permissionMiddleware'.
+Successivamente viene controllata la presenza di tutti i campi richiesti.
+Dopodichè vengono presi tutti i campi opzionali forniti e inseriti nella query di ricerca nel database.
+Infine il server risponde con il primo profilo trovato che corrisponde ai criteri di ricerca forniti.
+% screen here
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/find-carbon.png}
+	\caption{Codice dell'endpoint find}
+\end{figure}
+
+
+\subsubsection*{Testing}
+Per questo endpoint sono stati creati i seguenti test:
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case & Test Data                   & Precondizioni                                          & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1               & Dipendente trovato con successo & \{email, mode=one\}  & utente esistente &  Microservizio Autenticazione,DB         & 200        & 200             \\
+		\hline
+		2               & Mode non è 'one' o 'many'   & \{email, mode\}  &  &  Microservizio Autenticazione,DB         & 400        & 400           \\
+		\hline
+		3              & Utente non trovato   & \{email, mode=one\}  & utente non esistente &  Microservizio Autenticazione,DB         & 404      & 404          \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/find_test_1.png}
+	\caption{Test Case 1}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/find_test_2.png}
+	\caption{Test Case 2}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/find_test_3.png}
+	\caption{Test Case 3}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/create_test_results.png}
+	\caption{Risultati dei test}
+\end{figure}
+\subsection*{Storico profili}
+\subsubsection*{Specifica}
+Questa API, all'indirizzo /api/dipendenti/history, ha un metodo post e viene utilizzata per la visione dello storico task di un determinato dipendente
+La request body è in formato x-www-form-urlencoded e deve contenere i seguenti campi:
+\begin{itemize}
+	\item email
+\end{itemize}
+Inoltre, per verificare che il manager sia autenticato, il suo token va inserito o all'interno del body o attraverso un cookie.
+La response body è in formato application/json. Di seguito le possibili risposte:
+% table
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{4cm}|p{5cm}|p{4cm}| }
+		\hline
+		\centering Status Code & \qquad\quad Body e Cookie                       & \qquad\qquad Spiegazione                                                             \\ % I found no other way...
+		\hline
+		200 OK                 & \{[task1,task2,task3...]\}                      & La ricerca ha riportato lo storico task con successo                                 \\
+		\hline
+		401 UNAUTHORIZED       & \{error: "missing token"\}                      & Il token non è presente nella richiesta                                              \\
+		\hline
+		403 FORBIDDEN          & \{error: "permission denied"\}                  & Il token è presente nella richiesta, ma l'utente associato non è un manager          \\
+		\hline
+		404 NOT FOUND          & \{error: "No user found with the given token"\} & Il token è presente nella richiesta, ma non corrisponde a nessun profilo autenticato \\
+		\hline
+		400 BAD REQUEST        & \{error: "missing fields", missingFields\}      & Alcuni campi non sono stati specificati nella request                                \\ % I found no other way...
+		\hline
+		404 NOT FOUND          & \{error: "dipendente not found" \}              & Non esiste alcun dipendente avente la mail fornita                                   \\
+		\hline
+	\end{tabular}
+\end{center}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/diagrams/history_diagram.drawio.png}
+	\caption{Diagramma dell'endpoint history}
+\end{figure}
+
+\subsubsection*{Specifica OpenAPI}
+Di seguito la specifica openapi dell'endpoint remove contenuta nel file 'openapi.yaml' della directory del microservizio
+\begin{verbatim}
+	/history:
+    post:
+      summary: Metodo per la visione dello storico task di un dipendente
+      description: Questo endpoint permette al manager di vedere lo storico task di un determinato dipendente.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                token:
+                  type: string
+               
+              required:
+                - token
+                - email
+      responses:
+        '200':
+          description: "Il dipendente esiste e questo è il suo storico task "
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  
+        '401':
+          description: "Token mancante nella richiesta"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/missingTokenSchema"
+        '403':
+          description: "Il token non corrisponde al token del manager"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/notTheManagerSchema"
+
+        '404':
+          description: "Il token non corrisponde a nessun utente OR Utente non trovato nella ricerca"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/notFoundSchema"
+        '400':
+          description: Bad Request - 'Missing fields' 
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/missingFieldsSchema'
+\end{verbatim}
+\subsubsection*{Codice}
+Questa api viene utilizzata dal manager per ottenere lo storico task di un determinato dipendente
+Una volta ricevuta la richiesta, viene controllata inizialmente la presenza del token del manager nel body o nel token attraverso il middleware 'permissionMiddleware'.
+Successivamente viene controllata la presenza di tutti i campi richiesti.
+Dopodichè viene controllata la presenza di un dipendente nel database avente la mail fornita.
+Infine il server risponde con lo storico task del dipendente.
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/history-carbon.png}
+	\caption{Codice dell'endpoint history}
+\end{figure}
+
+\subsubsection*{Testing}
+Per questo endpoint sono stati creati i seguenti test:
+\begin{center} % center the table
+	\centering
+	\begin{tabular}{ |p{1cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{1cm}|p{1cm}| }
+		\hline
+		Numero Testcase & Descrizione Test Case & Test Data                   & Precondizioni                                          & Dipendenze & Res Atteso & Res Riscontrato \\
+		\hline
+		1               & Storico trovato con successo   & \{email\}  & dipendente esistente &  Microservizio Autenticazione,DB         & 200        & 200             \\
+		\hline
+		2               & Utente non trovato   & \{email\}  &  &  Microservizio Autenticazione,DB         & 404        & 404         \\
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/history_test_1.png}
+	\caption{Test Case 1}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/history_test_2.png}
+	\caption{Test Case 2}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-dipendenti/tests/history_test_results.png}
+	\caption{Risultati dei test}
+\end{figure}
 
 \chapter{Microservizio Home}
 
 \chapter{Deploy}
 
-In questo capitolo si descrivono i procedimenti per effettuare un deploy dell'applicazione con successo in locale. 
+In questo capitolo si descrivono i procedimenti per effettuare un deploy dell'applicazione con successo in locale.
 
 \section{Dipendenze}
 E' necessario aver installato docker nella macchina host. Se l'host si trova su windows, docker può essere installto tramite "WSL" ("Windows Subsystem for Linux").
@@ -3003,11 +3681,11 @@ si consiglia di utilizzare quest'ultimo in quanto vengono di impostare tutte le 
 \begin{itemize}
 	\item L'applicazione risulta parecchio pesante, dunque il tempo di download potrebbe essere prolisso.
 	\item Sono noti dei problemi nell'installazione dei moduli "concurrently" e "react-scripts". Qualora vi siano dei problemi del tipo "concurrently non è stato trovato", si proceda in questo modo:
-\begin{enumerate}
-	\item Si entri nella cartella del microservizio che riporta il problema
-	\item Si esegua il comando "npm i <nome-del-modulo-non-trovato> ."
-\end{enumerate}
-    \item Qualora le porte da 3001 a 3008 risultassero già occupate da altri servizi nella macchina host, queste possono essere cambiate nel file "docker-compose.yaml", così come la porta del reverse proxy (7777) e gli ip dei microservizi.
+	      \begin{enumerate}
+		      \item Si entri nella cartella del microservizio che riporta il problema
+		      \item Si esegua il comando "npm i <nome-del-modulo-non-trovato> ."
+	      \end{enumerate}
+	\item Qualora le porte da 3001 a 3008 risultassero già occupate da altri servizi nella macchina host, queste possono essere cambiate nel file "docker-compose.yaml", così come la porta del reverse proxy (7777) e gli ip dei microservizi.
 \end{itemize}
 
 \section{Eseguire Singoli Microservizi}
@@ -3057,6 +3735,6 @@ Per qualsiasi problema e assistenza, si contatti um membro dello sviluppo.
 
 
 
-	
+
 \end{document}
 
