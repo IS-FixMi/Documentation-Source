@@ -2462,7 +2462,18 @@ Sono stati individuati i seguenti test cases
 			\end{tabular}
 		\end{center}
 		\subsubsection*{Sviluppo}
-
+		Questa api viene utilizzata dal manager per la creazione di un profilo dipendente.
+		Una volta ricevuta la richiesta, viene controllata inizialmente la presenza del token del manager nel body o nel token attraverso il middleware 'permissionMiddleware'.
+		Successivamente viene controllata la presenza di tutti i campi richiesti e dell'integrità dei dati forniti, ossia:
+		\begin{itemize}
+			\item Se la data di nascita è in un formato valido
+			\item Se la data di assunzione è in un formato valido
+			\item se 'worktag' è un array
+			\item se gli elementi di 'worktag' sono esclusivamente worktags
+		\end{itemize}
+		Dopodichè viene controllata la presenza di un utente con la mail fornita nel database. 
+		Infine viene creato il dipendente e memorizzato all'interno del database, ritornando una risposta positiva.
+		%figure here
 		\subsubsection*{Documentazione}
 
 		\subsubsection*{Testing}
@@ -2498,6 +2509,12 @@ Sono stati individuati i seguenti test cases
 			\end{tabular}
 		\end{center}
 		\subsubsection*{Sviluppo}
+		Questa api viene utilizzata dal manager per eliminare un profilo già esistente nel sistema.
+		Una volta ricevuta la richiesta, viene controllata inizialmente la presenza del token del manager nel body o nel token attraverso il middleware 'permissionMiddleware'.
+		Successivamente viene controllata la presenza di tutti i campi richiesti.
+		Dopodichè viene controllato se l'email fornita corrisponde al profilo di un utente.
+		Infine viene eliminato il profilo all'interno del database, ritornando un esito positivo
+		%figure here %%
 
 		\subsubsection*{Documentazione}
 
@@ -2546,7 +2563,13 @@ Sono stati individuati i seguenti test cases
 			\end{tabular}
 		\end{center}
 		\subsubsection*{Sviluppo}
-
+		Questa api viene utilizzata dal manager per cercare uno o più  profili presenti nel sistema.
+		Una volta ricevuta la richiesta, viene controllata inizialmente la presenza del token del manager nel body o nel token attraverso il middleware 'permissionMiddleware'.
+		Successivamente viene controllata la presenza di tutti i campi richiesti.
+		Dopodichè vengono presi tutti i campi opzionali forniti e inseriti nella query di ricerca nel database.
+		Infine il server risponde con il primo profilo trovato che corrisponde ai criteri di ricerca forniti.
+		% screen here
+	
 		\subsubsection*{Documentazione}
 
 		\subsubsection*{Testing}
@@ -2582,7 +2605,11 @@ Sono stati individuati i seguenti test cases
 			\end{tabular}
 		\end{center}
 		\subsubsection*{Sviluppo}
-
+		Questa api viene utilizzata dal manager per ottenere lo storico task di un determinato dipendente
+		Una volta ricevuta la richiesta, viene controllata inizialmente la presenza del token del manager nel body o nel token attraverso il middleware 'permissionMiddleware'.
+		Successivamente viene controllata la presenza di tutti i campi richiesti.
+		Dopodichè viene controllata la presenza di un dipendente nel database avente la mail fornita.
+		Infine il server risponde con lo storico task del dipendente.
 		\subsubsection*{Documentazione}
 
 		\subsubsection*{Testing}
