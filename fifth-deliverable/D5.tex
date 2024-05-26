@@ -123,6 +123,20 @@
 \subsection{Kanban}
 
 \subsection{IBM}
+\subsubsection*{Riassunto}
+Il seminario viene  presentato dal Cloud Technical Specialist Ferdinando Gorga di IBM.
+Comincia presentandoci i servizi cloud di IBM, i diversi livelli di astrazione dal bare metal al serverless, e i vantaggi della piattaforma.
+Procede facendo l'esempio di un'architettura molto vulnerabile, e i vari metodi per migliorarla utilizzando tecnologie cloud.
+Successivamente ci mostra il catalogo di IBM cloud, dove è possibile acquistare varie componenti che funzionano tra di loro senza problemi, per poi mostrarci il code engine, che è alla base del serverless. Una particolarità è la load distribution, in quanto le istanze dell'applicazione si moltiplicano e dividono in base al carico,
+arrivando perfino a spegnersi in caso di mancanza di traffico. 
+Inoltre ci mostra un semplice linguaggio di scripting grafico nominato NodeRED.
+
+Infine ci mostra il concetto di Cloud Satellite: Un modo per integrare i propri computer e server all'interno dell'ecosistema cloud di IBM.
+\subsubsection*{Cosa abbiamo imparato}
+Abbiamo imparato quanto sia importante il cloud al giorno d'oggi, in quanto i giusti servizio e tecnologie permettono di dedicarsi al codice e non all'infrastruttura sottostante.
+\subsection*{Il nostro approccio}
+Il deploy non lo abbiamo fatto su nessuna piattaforma di cloud, tuttavia abbiamo seguito l'approccio dei container per i nostri microservizi. 
+Grazie a ciò non soffriamo di problemi di compatibilità tra le macchine, il software è portabile e siamo certi che con un po' di lavoro si potrebbe rilasciare sul cloud.
 
 \subsection{META}
 
@@ -131,11 +145,43 @@
 \subsection{RedHat}
 
 \subsection{Microsoft}
+\subsubsection*{Riassunto}
+Il seminario viene presentato dal Senior Software Engineer Diego Colombo.
+Comincia presentandoci il concetto di testing, i suoi utilizzi e i vari tipi, e usa come esempio particolare l'acceptance testing e il behaviour driven development(bdd).
+Successivamente ci spiega perchè è importante testare e perchè sono fondamentali degli health check all'interno di un'architettura a microservizi.
+Dopodichè dimostra i vari tipi di tool per il testing - dal Unit Test framework ai test runner continui, 
+per poi dirci che i test vengono idealmente svolti in diversi contesti e diverse fasi: Nella macchina di sviluppo, nell'environment di build, in production e perfino nel computer dell'utente finale.
+Ci mostra degli esempi di strumenti di testing scrivendo il codice in tempo reale:
+\begin{itemize}
+	\item Mocha, framework di test e Chai, framework di asserzioni 
+	\item Wallaby, un test runner continuo e con supporto di live comment
+	\item Playwright, che simula un browser per testare le funzionalità di ui e permette di fare mocking
+\end{itemize}
+Infine ci spiega la filosofia del Test Driven Development, dove i test vanno scritti ancora prima del codice.
+\subsubsection*{Cosa abbiamo imparato}
+Questo seminario ci ha fatto capire l'importanza dei test e il modo in cui la loro presenza possa facilitare lo sviluppo. Inoltre il test driven development è un approccio interressante che sicuro adotteremo in futuri progetti. 
+\subsubsection*{Il nostro approccio}
+Per il testing delle nostre API abbiamo usato Jest, molto simile a Mocha, e Supertest, ottima per testare le richieste http. Non abbiamo seguito un approccio TDD, però abbiamo messo grande importanza nel testing di ogni API.
 
 \subsection{Molinari}
 
 \subsection{Marsiglia}
+\subsubsection*{Riassunto}
+Il seminario viene presentato dal Enterprise Architect Gerardo Marsiglia
+Comincia presentandoci i vari ruoli all'interno di un progetto, quali Specialista, Architetto, Consulente, Ingegnere e Manager.
+Ci parla del ciclo di vita del software che, soprattutto nei grandi e vari team di sviluppo, è difficile da gestire. E' fondamentale definire standard, organizzare lo sviluppo e utilizzare tool di automazione.
+Successivamente ci parla dell'evoluzione delle metodologie di sviluppo, partendo da waterfall, passando a quelle iterative, all'Agile e infine al DevOps.
+Dopodichè spiega il concetto di Continous Delivery, processo fondamentale del DevOps che si integra con il Continous Integration. 
+Ciò che è più evidente è che il processo di Continous Delivery è spesso automatizzabile, il che velocizza tutto.
+Successivamente parla di Modernizzazione Applicativa, un processo fondamentale per modernizzare le applicazioni tradizionali e ottenere i vantaggi delle nuove tecnologie.
+In questo segmento parla anche dell'evoluzione dell'architettura software, partendo dal monolith per arrivare poi all'architettura a microservizi, e i vari livelli di astrazione dal Bare metal ai container.
+Infine ci mostra l'esempio della domotizzazione di casa sua, dove ha utilizzato una soluzione open source per unire i vari dispositivi di diversi marchi in un' unica applicazione dalla quale controllarli.
 
+\subsubsection*{Cosa abbiamo imparato}
+Abbiamo imparato che la gestione del ciclo di vita è veramente importante e non va mai trascurato, ci ha offerto uno scorcio nel mondo del DevOps e in particolare del CI/CD.
+\subsubsection*{Il nostro approccio}
+Per il progetto non abbiamo seguito una metodologia precisa, tuttavia durante alcune fasi dello sviluppo del codice abbiamo seguito un approccio simile al Continous Integration.
+Inoltre abbiamo sviluppato un'architettura a microservizi.
 \subsection{APSS \& Trentino.ai}
 
 
