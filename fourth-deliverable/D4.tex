@@ -1480,17 +1480,6 @@ I risultati dei test sono i seguenti:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 \section{Frontend}
 
 Questa sezione comprende lo sviluppo e la documentazione del frontend del Microservizio Autenticazione
@@ -1501,6 +1490,13 @@ nella figura sotto.
 \begin{figure}[H]
 	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/frontend-structure.png}
 	\caption{Output del comando "tree" all'interno del microservizio autenticazione.}
+\end{figure}
+
+\subsection{UserFlow}
+Lo userflow del microservizio autenticazione viene mostrato sotto nel suo intero. Verrà successivamente suddiviso ed analizzato in ciascun suo componente.
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/userflow-autenticazione.png}
+	\caption{UserFlow del microservizio "Autenticazione"}
 \end{figure}
 
 
@@ -1515,6 +1511,12 @@ La pagina si occupa di chiedere le credenziali necessarie per effettuare l'acces
 E' possibile tornare indietro cliccando il bottone rosso "Cancella"\\
 Dopo avere inserito le credenziali è possibile continuare cliccando il bottone verde "Accedi"
 
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" l'utente non autenticato deve prima cliccare il tasto "Profilo" presente nella "navbar", successivamente può inserire le proprie credenziali e passare alla pagina "Two Factor Authentication"
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/accesso-userflow.png}
+	Userflow della pagina "Login"
+\end{figure}
 
 \subsubsection*{Codice}
 La pagina "Login" è composta da due componenti chiamati "login.tsx" e "formLogin.tsx" con le seguenti caratteristiche:
@@ -1523,10 +1525,6 @@ La pagina "Login" è composta da due componenti chiamati "login.tsx" e "formLogi
 	\begin{itemize}
 		\item Contiene al suo interno "formLogin.tsx"
 		\item Contiene controlli e "Fallbacks" per eventuali errori
-		\begin{figure}[H]
-			\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/login-carbon.png}
-			Codice del componente "login.tsx"
-		\end{figure}
 	\end{itemize}
 	\item formLogin.tsx
 	\begin{itemize}
@@ -1548,83 +1546,51 @@ Aggiornare la pagina non provoca alcun cambiamento nel comportamento del softwar
 non causa problemi di alcun tipo e vengono gestiti correttamente.
 
 
-
-\subsection{Login}
-\subsubsection*{Specifica}
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/accesso.jpg}
-	\caption{Schermata per il login}
-\end{figure}
-
-\subsubsection*{Codice}
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/login-carbon.png}
-	Codice del componente "formLogin.tsx"
-\end{figure}
-
-\subsubsection*{Testing}
-
-
-\subsection{Profilo}
-\subsubsection*{Specifica}
-
-\begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/profilo.jpg}
-	\caption{Schermata per il profilo}
-\end{figure}
-
-\subsubsection*{Codice}
-
-
-\subsubsection*{Testing}
-
-
-
 \subsection{Registrazione}
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/registrazione.jpg}
 	Schermata per la registrazione
 \end{figure}
-
 \subsubsection*{Specifica}
+La pagina si occupa di chiedere le credenziali necessarie per la creazione di un nuovo profilo per l'utente.\\
+E' possibile tornare indietro cliccando il bottone rosso "Cancella"\\
+Dopo avere inserito le credenziali è possibile continuare cliccando il bottone verde "Registrati"
 
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" l'utente non autenticato deve prima cliccare il tasto "Profilo" presente nella "navbar", successivamente può inserire le proprie credenziali e passare alla pagina "Two Factor Authentication"
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/registrazione-userflow.png}
+	Userflow della pagina "Registrazione"
+\end{figure}
 
 \subsubsection*{Codice}
-
-
-
-\subsubsection*{Testing}
-
-\subsection{Cambio password}
-\subsubsection*{Specifica}
-
-
-\subsubsection*{Codice}
-
-
-\subsubsection*{Testing}
-
-\subsection{Eliminazione Profilo}
-\subsubsection*{Specifica}
-
-
-\subsubsection*{Codice}
-
-
+La pagina "Registrazione" è composta da due componenti chiamati "register.tsx" e "formRegister.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item register.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "formRegister.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item formRegister.tsx
+	\begin{itemize}
+		\item Contiene al suo interno un modulo che deve essere compilato dall'utente inserendo l'email, la password ed una ripetizione della password.
+		\item Contiene controlli sulle credenziali inserite
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/formRegister-carbon.png}
+			Codice del componente "formRegister.tsx"
+		\end{figure}
+	\end{itemize}
+\end{itemize}
 
 \subsubsection*{Testing}
+Aggiornare la pagina non provoca alcun cambiamento nel comportamento del software.\\Inserire credenziali non valide del tipo:
+\begin{itemize}
+	\item Spazi vuoti
+	\item Numero elevato di caratteri
+\end{itemize}
+non causa problemi di alcun tipo e vengono gestiti correttamente.
 
-\subsection{Autentifica Token}
-
-\subsubsection*{Specifica}
-
-
-\subsubsection*{Codice}
-
-\subsubsection*{Testing}
 
 \subsection{Two Factor Authentication}
 
@@ -1636,6 +1602,13 @@ non causa problemi di alcun tipo e vengono gestiti correttamente.
 La pagina si occupa di chiedere il codice di autenticazione a due fattori che è stato mandato all'utente.\\
 E' possibile tornare indietro cliccando il bottone rosso "Cancella"\\
 Dopo avere inserito il codice è possibile continuare cliccando il bottone verde "Conferma"
+
+\subsubsection*{Userflow}
+Partendo dalle pagine "Login", "Registrazione" o "Elimina Profilo" l'utente ha la possibilità di tornare indietro cliccando il tasto "Cancella", oppure completare il modulo inserendo il codice ricevuto e successivamente cliccando "Conferma". Se il codice è valido l'utente viene poi riportato nella pagina "Homepage".
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/twofa-userflow.png}
+	Userflow della pagina "Two Factor Authentication"
+\end{figure}
 
 
 \subsubsection*{Codice}
@@ -1670,33 +1643,55 @@ Aggiornare la pagina non provoca alcun cambiamento nel comportamento del softwar
 \end{itemize}
 non causa problemi di alcun tipo e vengono gestiti correttamente.
 
+\subsection{Profilo}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/profilo.jpg}
+	\caption{Schermata per il profilo quando si è autenticati}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/nonautenticato.jpg}
+	\caption{Schermata per il profilo quando non si è autenticati}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina può assumere due aspetti diversi se chi sta cercando di visualizzare la pagina è autenticato oppure no.
+Se non si ha ancora fatto il login la pagina si occupa di informare l'utente che non ha ancora fatto l'accesso, ma che tuttavia sta cercando di visualizzare il proprio profilo\\
+E' possibile fare il login cliccando il bottone blu "Login"\\
+E' possibile registrarsi cliccando il bottone verde "Registrati"
+Se il login è già stato effettuato la pagina si occupa di informare l'utente che ha fatto l'accesso.
+E' possibile eliminare il proprio profilo cliccando il bottone rosso "Rimuovi Profilo"\\
+E' possibile uscire dal proprio profilo cliccando il bottone verde "Logout"
 
 
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" l'utente deve cliccare il tasto "Profilo" presente nella "navbar".
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/profilo-userflow.png}
+	Userflow della pagina "Profilo"
+\end{figure}
 
+\subsubsection*{Codice}
+La pagina "Profilo" è composta da due componenti chiamati "profile.tsx" e "notLoggedIn.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item profile.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "notLoggedIn.tsx", "logout.tsx", "remove.tsx"
+		\item Se l'utente è autenticato mostra due bottoni "Rimuovi Profilo" e "Logout"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item notLoggedIn.tsx
+	\begin{itemize}
+		\item Mostra all'utente due bottoni "Login" e "Registrati"
+		\item Contiene controlli sulle credenziali inserite
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/notLoggedIn-carbon.png}
+			Codice del componente "notLoggedIn.tsx"
+		\end{figure}
+	\end{itemize}
+\end{itemize}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\subsubsection*{Testing}
+Aggiornare la pagina non provoca alcun cambiamento nel comportamento del software.\\
 
 
 
