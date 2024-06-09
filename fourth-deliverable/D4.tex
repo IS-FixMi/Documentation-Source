@@ -1485,12 +1485,19 @@ I risultati dei test sono i seguenti:
 Questa sezione comprende lo sviluppo e la documentazione del frontend del Microservizio Autenticazione
 
 \subsection{Struttura del frontend}
-La struttura del backend del microservizio autenticazione è riportata
+La struttura del frontend del microservizio autenticazione è riportata
 nella figura sotto.
 \begin{figure}[H]
 	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/frontend-structure.png}
 	\caption{Output del comando "tree" all'interno del microservizio autenticazione.}
 \end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/app-carbon.png}
+	Codice del componente "App.tsx"
+\end{figure}
+\subsubsection*{Specifica}
+Tutte le componenti facenti parte del microservizio "Autenticazione" vengono gestite dalla componente "App.tsx", quest'ultimo stabilisce gli indirizzi di ciascuna pagina del microservizio e quale componente deve gestire l'indirizzo. 
 
 \subsection{UserFlow}
 Lo userflow del microservizio autenticazione viene mostrato sotto nel suo intero. Verrà successivamente suddiviso ed analizzato in ciascun suo componente.
