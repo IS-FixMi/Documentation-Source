@@ -420,6 +420,30 @@ Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite n
 	\item "test": esegue gli script di testing del codice.
 \end{itemize}
 
+\subsection{Elementi frontend}
+Ogni microservizio condivide due componenti grafici, "navbar.tsx" e "footer.tsx" posizionati sempre rispettivamente in cima e in fondo ad ogni pagina dell'applicazione.
+Il loro scopo è rendere la navigazione per l'utente più semplice e chiara
+\subsubsection{Navbar}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/navbar.jpg}
+	\caption{Immagine del componente "navbar.tsx"}
+\end{figure}
+Contiene bottoni per accedere ai diversi microservizi del sito, ha uno stile ed un design semplice ed intuitivo in linea con il resto dell'applicazione.
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/navbar-carbon.png}
+	\caption{Codice del componente "navbar.tsx"}
+\end{figure}
+\subsubsection{Footer}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/footer.jpg}
+	\caption{Immagine del componente "footer.tsx"}
+\end{figure}
+Contiene le principali informazioni sugli autori dell'applicazione "FixMi", dell'azienda e contatti di cui l'utente potrebbe eventualmente avere bisogno 
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/footer-carbon.png}
+	\caption{Codice del componente "footer.tsx"}
+\end{figure}
+
 \section{Modellazione dati nel database}
 Sono presenti due database MongoDB con i quali i microservizi interagiscono:
 \subsection*{Users}
@@ -1455,6 +1479,229 @@ I risultati dei test sono i seguenti:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Frontend}
+
+Questa sezione comprende lo sviluppo e la documentazione del frontend del Microservizio Autenticazione
+
+\subsection{Struttura del frontend}
+La struttura del backend del microservizio autenticazione è riportata
+nella figura sotto.
+\begin{figure}[H]
+	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/frontend-structure.png}
+	\caption{Output del comando "tree" all'interno del microservizio autenticazione.}
+\end{figure}
+
+
+\subsection{Login}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/accesso.jpg}
+	\caption{Schermata per il login}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di chiedere le credenziali necessarie per effettuare l'accesso nel proprio profilo.\\
+E' possibile tornare indietro cliccando il bottone rosso "Cancella"\\
+Dopo avere inserito le credenziali è possibile continuare cliccando il bottone verde "Accedi"
+
+
+\subsubsection*{Codice}
+La pagina "Login" è composta da due componenti chiamati "login.tsx" e "formLogin.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item login.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "formLogin.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/login-carbon.png}
+			Codice del componente "login.tsx"
+		\end{figure}
+	\end{itemize}
+	\item formLogin.tsx
+	\begin{itemize}
+		\item Contiene al suo interno un modulo che deve essere compilato dall'utente inserendo l'email e la password.
+		\item Contiene controlli sulle credenziali inserite
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/formLogin-carbon.png}
+			Codice del componente "formLogin.tsx"
+		\end{figure}
+	\end{itemize}
+\end{itemize}
+
+\subsubsection*{Testing}
+Aggiornare la pagina non provoca alcun cambiamento nel comportamento del software.\\Inserire credenziali non valide del tipo:
+\begin{itemize}
+	\item Spazi vuoti
+	\item Numero elevato di caratteri
+\end{itemize}
+non causa problemi di alcun tipo e vengono gestiti correttamente.
+
+
+
+\subsection{Login}
+\subsubsection*{Specifica}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/accesso.jpg}
+	\caption{Schermata per il login}
+\end{figure}
+
+\subsubsection*{Codice}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/login-carbon.png}
+	Codice del componente "formLogin.tsx"
+\end{figure}
+
+\subsubsection*{Testing}
+
+
+\subsection{Profilo}
+\subsubsection*{Specifica}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/profilo.jpg}
+	\caption{Schermata per il profilo}
+\end{figure}
+
+\subsubsection*{Codice}
+
+
+\subsubsection*{Testing}
+
+
+
+\subsection{Registrazione}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/registrazione.jpg}
+	Schermata per la registrazione
+\end{figure}
+
+\subsubsection*{Specifica}
+
+
+\subsubsection*{Codice}
+
+
+
+\subsubsection*{Testing}
+
+\subsection{Cambio password}
+\subsubsection*{Specifica}
+
+
+\subsubsection*{Codice}
+
+
+\subsubsection*{Testing}
+
+\subsection{Eliminazione Profilo}
+\subsubsection*{Specifica}
+
+
+\subsubsection*{Codice}
+
+
+
+\subsubsection*{Testing}
+
+\subsection{Autentifica Token}
+
+\subsubsection*{Specifica}
+
+
+\subsubsection*{Codice}
+
+\subsubsection*{Testing}
+
+\subsection{Two Factor Authentication}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/twofa.jpg}
+	Schermata per il "Two Factor Authentication"
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di chiedere il codice di autenticazione a due fattori che è stato mandato all'utente.\\
+E' possibile tornare indietro cliccando il bottone rosso "Cancella"\\
+Dopo avere inserito il codice è possibile continuare cliccando il bottone verde "Conferma"
+
+
+\subsubsection*{Codice}
+La pagina "Two Factor Authentication" è composta da due componenti chiamati "twoFa.tsx" e "formTwoFa.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item twoFa.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "formTwoFa.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/twoFa-carbon.png}
+			Codice del componente "twoFa.tsx"
+		\end{figure}
+	\end{itemize}
+	\item formTwoFa.tsx
+	\begin{itemize}
+		\item Contiene al suo interno un modulo che deve essere compilato dall'utente inserendo il codice di autenticazione a due fattori
+		\item Contiene controlli sul codice inserito dall'utente
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/formTwoFa-carbon.png}
+			Codice del componente "formTwoFa.tsx"
+		\end{figure}
+	\end{itemize}
+\end{itemize}
+
+\subsubsection*{Testing}
+Aggiornare la pagina non provoca alcun cambiamento nel comportamento del software.\\Inserire codici non validi del tipo:
+\begin{itemize}
+	\item Caratteri Speciali
+	\item Spazi vuoti
+	\item Numero elevato di caratteri
+\end{itemize}
+non causa problemi di alcun tipo e vengono gestiti correttamente.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \chapter{Microservizio Task}
 
 \section{Backend}
@@ -1469,7 +1716,7 @@ Segue una lista delle risorse implementate dal microservizio:
 	\item "Task": contiene tutte le informazioni e i metodi che appartengono alla classe Task (vedi sotto).
 	\item "Crea Task": permette all'utente di creare una nuova task.
 	\item "Modifica Stato Task": permette al dipendente o al manager di modificare lo stato di una task.
-	\item "Scegli Task": permette al dipendento o al manager di assegnare una task al proprio profilo.
+	\item "Scegli Task": permette al dipendente o al manager di assegnare una task al proprio profilo.
 	\item "Get Lista Task In Lavorazione": permette al dipendente o al manager di ottenere la lista delle task con lo status di "In Lavorazione" in formato json.
 	\item "Get Lista Task Da Eseguire": permette al dipendente o al manager di ottenere la lista delle task con lo status di "Da Eseguire" in formato json.
 	\item "Get Lista Task In Pausa": permette al dipendente o al manager di ottenere la lista delle task con lo status di "In Pausa" in formato json.
@@ -3721,7 +3968,7 @@ Per eseguire solo la backend:
 \begin{verbatim}
 npm run startback
 \end{verbatim}
-Per eseguire solo la forntend:
+Per eseguire solo la frontend:
 \begin{verbatim}
 npm run startfront
 \end{verbatim}
