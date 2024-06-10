@@ -3289,45 +3289,58 @@ Aggiornare la pagina non provoca alcun cambiamento nel comportamento del softwar
 \subsection{Task}
 
 \begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/tasks.jpg}
-	\caption{Schermata per la task}
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/Completata.jpg}
+	\caption{Schermata per la task in stato "Completato"}
 \end{figure}
 \subsubsection*{Specifica}
-La pagina si occupa di mostrare tutti i dettagli legati ad una singola task.\\ E' possibile tornare alla pagina "Tasks" cliccando il bottone blu "Chiudi"\\
-E' possibile, se lo stato della Task lo permette, cliccare il bottone arancione "Metti in Pausa" per mettere in pausa la task\\
+La pagina si occupa di mostrare tutti i dettagli legati ad una singola task.\\ La pagina assume diversi aspetti in base allo stato della task che si sta visualizzando.\\E' sempre possibile tornare alla pagina "Tasks" cliccando il bottone blu "Chiudi"\\\\
+E' possibile, se lo stato della Task lo permette, cliccare i seguenti bottoni:
+
+\begin{itemize}
+	\item Bottone arancione "Metti in Pausa" per mettere in pausa la task 
+	\item Bottone verde "Completa" per completare la task 
+	\begin{figure}[H]
+		\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/InLavorazione.jpg}
+		\caption{Schermata per la task in stato "In Lavorazione"}
+	\end{figure}
+\end{itemize}
+
+\begin{itemize}
+	\item Bottone arancione "Prendi in Carico" per prendere in carico la task
+	\begin{figure}[H]
+		\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/DaEseguire.jpg}
+		\caption{Schermata per la task in stato "Da Eseguire"}
+	\end{figure}
+\end{itemize}
+
+\begin{itemize}
+	\item Bottone verde "Riprendi" per riprendere la task
+	\begin{figure}[H]
+		\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/InPausa.jpg}
+		\caption{Schermata per la task in stato "In Pausa"}
+	\end{figure}
+\end{itemize}
+
 
 \subsubsection*{Userflow}
 Partendo dalla pagina "Homepage" il dipedente o manager autenticato devono cliccare il tasto "Tasks" presente nella "navbar", dopodichè devono scegliere una Task e cliccare il corrispettivo bottone blu "Apri".
 \begin{figure}[H]
-	\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/tasks-userflow.png}
-	Userflow della pagina "Tasks"
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/task-userflow.png}
+	Userflow della pagina "Task"
 \end{figure}
 
 \subsubsection*{Codice}
-La pagina "Task" è composta da due componenti chiamati "vediTask.tsx" e "TaskDetails.tsx" con le seguenti caratteristiche:
+La pagina "Task" è composta da due componenti chiamati "TaskDetails.tsx" e "vediTask.tsx" con le seguenti caratteristiche:
 \begin{itemize}
-	\item tasks.tsx
+	\item TaskDetails.tsx
 	\begin{itemize}
-		\item Contiene al suo interno "task.tsx" e "searchBar.tsx"
+		\item Contiene al suo interno "veditask.tsx"
 		\item Contiene controlli e "Fallbacks" per eventuali errori
 	\end{itemize}
-	\item task.tsx
+	\item vediTask.tsx
 	\begin{itemize}
-		\item Si occupa di mostrare una carta contenente i principali dettagli della task per ciascuna task da visualizzare.
-		\item Contiene un bottone blu "Apri" che visualizza i dettagli della task selezionata
-		\begin{figure}[H]
-			\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/task-carbon.png}
-			Codice del componente "task.tsx"
-		\end{figure}
-	\end{itemize}
-	\item searchBar.tsx
-	\begin{itemize}
-		\item Si occupa di filtrare la lista di task mostrate.
-		\item Contiene due menu "Dropdown" in cui è possibile scegliere la tipologia e lo stato che le task devono possedere per essere mostrate
-		\begin{figure}[H]
-			\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/searchBar-carbon.png}
-			Codice del componente "searchBar.tsx"
-		\end{figure}
+		\item Si occupa di mostrare una carta contenente i principali dettagli della task.
+		\item Contiene sempre un bottone blu "Chiudi" che ritorna alla pagina "Tasks".
 	\end{itemize}
 \end{itemize}
 
@@ -3340,10 +3353,10 @@ Aggiornare la pagina non provoca alcun cambiamento nel comportamento del softwar
 \chapter{Microservizio Gestione Dipendenti}
 \section{Backend}
 
-Questa sezione comprende lo sviluppo e la documentazione del backend del Microservizio Autenticazione
+Questa sezione comprende lo sviluppo e la documentazione del backend del Microservizio Gestione Dipendenti
 
 \subsection*{Struttura del backend}
-La struttura del backend del microservizio autenticazione è riportata
+La struttura del backend del microservizio Gestione Dipendenti è riportata
 nella figura sotto.
 \begin{figure}[H]
 	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/backend-structure.png}
