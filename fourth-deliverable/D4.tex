@@ -4047,12 +4047,176 @@ Per questo endpoint sono stati creati i seguenti test:
 
 \chapter{Microservizio Home}
 
+\section{Frontend}
+
+Questa sezione comprende lo sviluppo e la documentazione del frontend del Microservizio Home
+
+\subsection{Struttura del frontend}
+La struttura del frontend del microservizio Home è riportata
+nella figura sotto.
+\begin{figure}[H]
+	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-home/frontend-structure.png}
+	\caption{Output del comando "tree" all'interno del microservizio home.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/app-carbon.png}
+	Codice del componente "App.tsx"
+\end{figure}
+\subsubsection*{Specifica}
+Tutte le componenti facenti parte del microservizio "Home" vengono gestite dalla componente "App.tsx", quest'ultimo stabilisce gli indirizzi di ciascuna pagina del microservizio e quale componente deve gestire l'indirizzo. 
+
+\subsection{UserFlow}
+Lo userflow del microservizio home viene mostrato sotto nel suo intero. Verrà successivamente suddiviso ed analizzato in ciascun suo componente.
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/userflow-home.png}
+	\caption{UserFlow del microservizio "Home"}
+\end{figure}
+
+
+\subsection{Homepage}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/homepage.jpg}
+	\caption{Schermata per la homepage}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di mostrare un messaggio di benvenuto all'utente.\\ E' possibile raggiungere tutti gli altri microservizi tramite i bottoni presenti al suo interno.
+
+\subsubsection*{Userflow}
+E' la prima pagina che viene mostrata quando l'applicazione viene aperta
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/homepage-userflow.png}
+	Userflow della pagina "homepage"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Homepage" è composta da due componenti chiamati "home.tsx" e "homeContent.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item home.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "homeContent.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item homeContent.tsx
+	\begin{itemize}
+		\item Si occupa di mostrare una carta contenente un messaggio di benvenuto e tre bottoni per accedere ai principali servizi dell'applicazione
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/homeContent-carbon.png}
+			Codice del componente "homeContent.tsx"
+		\end{figure}
+	\end{itemize}
+\end{itemize}
+
+\subsubsection*{Testing}
+Aggiornare la pagina non provoca alcun cambiamento nel comportamento del software.
+
+\subsection{Riparazione}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/riparazione.jpg}
+	\caption{Schermata per la richiesta di riparazione}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di mostrare un modulo per una richiesta di riparazione che può essere compilato ed inviato dall'utente.\\ 
+
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" bisogna cliccare il tasto all'interno della "navbar" chiamato "Riparazione"
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/riparazione-userflow.png}
+	Userflow della pagina "riparazione"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Riparazione" è composta da due componenti chiamati "riparazione.tsx" e "formRiparazione.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item riparazione.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "formRiparazione.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item formRiparazione.tsx
+	\begin{itemize}
+		\item Si occupa di mostrare una carta contenente un modulo per una richiesta di Riparazione che può essere compilata dall'utente
+	\end{itemize}
+\end{itemize}
+
+\subsubsection*{Testing}
+Aggiornare la pagina non provoca alcun cambiamento nel comportamento del software.
+
+
+\subsection{Assistenza}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/assistenza.jpg}
+	\caption{Schermata per la richiesta di assistenza}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di mostrare un modulo per una richiesta di assistenza che può essere compilato ed inviato dall'utente.\\ 
+
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" bisogna cliccare il tasto all'interno della "navbar" chiamato "Assistenza"
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/assistenza-userflow.png}
+	Userflow della pagina "assistenza"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Assistenza" è composta da due componenti chiamati "assistenza.tsx" e "formAssistenza.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item assistenza.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "formAssistenza.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item formAssistenza.tsx
+	\begin{itemize}
+		\item Si occupa di mostrare una carta contenente un modulo per una richiesta di Assistenza che può essere compilata dall'utente
+	\end{itemize}
+\end{itemize}
+
+\subsubsection*{Testing}
+Aggiornare la pagina non provoca alcun cambiamento nel comportamento del software.
+
+\subsection{Feedback}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/feedback.jpg}
+	\caption{Schermata per il feedback}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di mostrare un modulo per l'invio di un feedback che può essere compilato dall'utente.\\ 
+
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" bisogna cliccare il tasto all'interno della carta di benvenuto chiamato "Lasciaci un feedback"
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/feedback-userflow.png}
+	Userflow della pagina "feedback"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Feedback" è composta da due componenti chiamati "feedback.tsx" e "formFeedback.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item feedback.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "formFeedback.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item formFeedback.tsx
+	\begin{itemize}
+		\item Si occupa di mostrare una carta contenente un modulo per l'invio di feedback che può essere compilata dall'utente
+	\end{itemize}
+\end{itemize}
+
+\subsubsection*{Testing}
+Aggiornare la pagina non provoca alcun cambiamento nel comportamento del software.
+
 \chapter{Deploy}
 
 In questo capitolo si descrivono i procedimenti per effettuare un deploy dell'applicazione con successo in locale.
 
 \section{Dipendenze}
-E' necessario aver installato docker nella macchina host. Se l'host si trova su windows, docker può essere installto tramite "WSL" ("Windows Subsystem for Linux").
+E' necessario aver installato docker nella macchina host. Se l'host si trova su windows, docker può essere installato tramite "WSL" ("Windows Subsystem for Linux").
 
 
 \section{Ottenere il codice}
