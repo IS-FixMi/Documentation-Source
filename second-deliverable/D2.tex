@@ -14,7 +14,7 @@
 	\end{tikzpicture}
 	\huge 
 	\fi
-	Fix Mi \\
+	FixMi \\
 	Analisi dei Requisiti
 }
 \author{Giovanni Santini, Riginel Ungureanu, Valerio Asaro}
@@ -77,7 +77,7 @@
 			\textnormal{ \LARGE{Corso di Ingegneria del Software\\}}
 			\vspace{30mm}
 			\fontsize{10mm}{7mm}\selectfont 
-			\textup{Fix Mi \\ Specifica dei Requisiti}\\
+			\textup{FixMi \\ Specifica dei Requisiti}\\
 		\end{center}
 		
 		\vspace{25mm}
@@ -106,7 +106,7 @@
 	
 	\section{Scopo del documento}
 	
-	Nel presente documento vengono riportate le specifiche dei requisiti di sistema del progetto FixMi,  attraverso diagrammi di tipo Unified Modeling Language (UML) e tabelle strutturate.\\
+	Nel presente documento vengono riportate le specifiche dei requisiti di sistema del progetto FixMi,  attraverso diagrammi di tipo "Unified Modeling Language" (UML) e tabelle strutturate.\\
 	
 	
 	
@@ -121,14 +121,14 @@
 			\hline
 			Titolo del Documento & Specifica dei Requisiti \\
 			\hline
-			Titolo del Progetto & Fix Mi \\
+			Titolo del Progetto & FixMi \\
 			\hline
 			Autori del Documento &
 			Giovanni Santini \\ & Riginel Ungureanu \\ & Valerio Asaro \\
 			\hline
 			Amministratore Progetto & Riginel Ungureanu\\
 			\hline
-			Versione del documento & 1.1 \\
+			Versione del documento & 1.2 \\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -143,7 +143,7 @@ Nel presente capitolo vengono riportati i requisiti funzionali (RF) del sistema 
 \subsection*{RF1 Profilo }
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/UCD/RF1_login_UCD.png}
-	Use Case Diagram (UCD) di RF1.1 "Login", RF1.2 "2FA", RF1.3 "Reimpostazione/Recupero della password", RF1.4 "Cambio password", RF1.5 "Log out" e RF1.6 "Eliminazione profilo".
+	Use Case Diagram (UCD) di RF1.1 "Login", RF1.2 "2FA", RF1.3 "Reimpostazione/Recupero della password", RF1.4 "Cambio password", RF1.5 "Log Out" e RF1.6 "Eliminazione profilo".
 \end{figure}
 Per descrivere questo use case, facciamo uso di tre diagrammi delle attività swimlane:
 \begin{figure}[H]
@@ -228,7 +228,7 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 	Use Case Diagram (UCD) di RF7 "Assistenza"
 \end{figure}
 \textbf{Titolo}: Assistenza \newline
-\textbf{Riassunto}: Questo use case descrive come un utente può richiedere assistenza  \newline
+\textbf{Riassunto}: Questo Use Case Diagram descrive come un utente può richiedere assistenza  \newline
 \textbf{Descrizione}:
 	\begin{enumerate}
 		\item L'utente autenticato seleziona la pagina "Assistenza";
@@ -253,7 +253,7 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 	Use Case Diagram (UCD) di RF8 "Feedback"
 \end{figure}
 \textbf{Titolo}: Feedback\newline
-\textbf{Riassunto}: Questo use case descrive come un utente può inviare feedback all'azienda  \newline
+\textbf{Riassunto}: Questo Use Case Diagram descrive come un utente può inviare feedback all'azienda  \newline
 \textbf{Descrizione}:
 	\begin{enumerate}
 		\item L'utente autenticato seleziona la pagina "Feedback";
@@ -281,7 +281,7 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 \end{figure}
 
 \textbf{titolo}: Tasks\newline
-\textbf{Riassunto}: Questo use case descrive come gli utenti possono interagire con il sistema task, diviso in base ai ruoli degli utenti.\newline
+\textbf{Riassunto}: Questo Use Case Diagram descrive come gli utenti possono interagire con il sistema task, diviso in base ai ruoli degli utenti.\newline
 \textbf{Descrizione}: 
 	\begin{itemize}
 		\item \textit{Cliente}: Il cliente può creare task indirettamente, interagendo con i vari sistemi dell'applicazione:
@@ -299,7 +299,7 @@ Per descrivere questo use case, facciamo uso di un diagramma delle attività swi
 			\item Il dipendente può scegliere una task dalla lista da eseguire ed assegnarsela[Exception4]. La task scelta verrà spostata nella lista "In lavorazione".  
 			\item Il dipendente può mettere in pausa la task su cui sta lavorando.
 			\item Il dipendente può contrassegnare una task come "completata", rimuovendola dalla lista delle task in lavorazione.
-			\item Il dipendente può contrassegnare una task come "fallita",rimuovendola dalla lista delle task in lavorazione. 
+			\item Il dipendente può contrassegnare una task come "fallita", rimuovendola dalla lista delle task in lavorazione. 
 		\end{itemize}
 	\end{itemize}
 \textbf{Exceptions}
@@ -324,7 +324,7 @@ Di seguito uno State Diagram che mostra gli stati possibili di una task.
 
 \subsubsection*{Descrizione Use Case "Magazzino"}
 \textbf{Titolo}: Magazzino \newline
-\textbf{Riassunto}: Questo use case descrive come il manager ed i dipendenti possono visualizzare e gestire gli articoli presenti nel magazzino. \newline
+\textbf{Riassunto}: Questo Use Case Diagram descrive come il manager ed i dipendenti possono visualizzare e gestire gli articoli presenti nel magazzino. \newline
 \textbf{Descrizione}:
 \begin{enumerate}
 	\item Il dipendente seleziona la pagina "Magazzino";
@@ -354,7 +354,7 @@ Di seguito uno State Diagram che mostra gli stati possibili di una task.
 
 \subsubsection*{Descrizione Use Case "Gestione Dipendenti"}
 \textbf{Titolo}: Gestione Dipendenti \newline
-\textbf{Riassunto}: Questo use case descrive come il manager può visualizzare e gestire i dipendenti. \newline
+\textbf{Riassunto}: Questo Use Case Diagram descrive come il manager può visualizzare e gestire i dipendenti. \newline
 \textbf{Descrizione}:
 \begin{enumerate}
 	\item Il manager seleziona la pagina "Gestione Dipendenti";
@@ -576,7 +576,7 @@ Nel seguente capitolo vengono riportati i requisiti non funzionali (RNF) del sis
 
 \section{Utenti e Sistemi Esterni}
 
-Sono stati individuati tutti gli Utenti ed i Sistemi Esterni che fanno parte del funzionamento del sistema "Fix Mi".\\Segue una elencazione di ogni elemento con una descrizione breve adibita.
+Sono stati individuati tutti gli Utenti ed i Sistemi Esterni che fanno parte del funzionamento del sistema "FixMi".\\Segue una elencazione di ogni elemento con una descrizione breve adibita.
 
 
 \subsection*{Utente non autenticato/Ospite}
@@ -642,14 +642,14 @@ Con il termine "Microservizio Magazzino" si intende il microservizio dell'applic
 
 \section{Diagramma di Contesto}
 
-Il seguente diagramma di contesto rappresenta l'applicazione "Fix Mi" da un punto di vista generale e riassuntivo.
+Il seguente diagramma di contesto rappresenta l'applicazione "FixMi" da un punto di vista generale e riassuntivo.
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/Diagrammi_Contesto/Diagramma_Contesto_FixMi.png}
-	Diagramma di contesto dell'applicazione "Fix Mi".
+	Diagramma di contesto dell'applicazione "FixMi".
 \end{figure}
 
-I seguenti diagrammi di contesto rappresentano tutti i microservizi che, nell'insieme, compongono "Fix Mi".
+I seguenti diagrammi di contesto rappresentano tutti i microservizi che, nell'insieme, compongono "FixMi".
 
 \begin{figure}[H]
 	\centering\includegraphics[width=1\textwidth]{images/Diagrammi_Contesto/Diagramma_Contesto_Autenticazione.png}
@@ -690,7 +690,7 @@ In questa sezione vengono definiti i componenti.
 \subsection*{Autenticazione}
 \uline{\textit{Descrizione}}: 
 Sono stati considerati i requisiti funzionali \textbf{RF1}, \textbf{RF2} e la definizione del microservizio "Autenticazione" nel documento "Analisi dei requisiti"
-Capitolo 3.2.3 "Design del Back End - Descrizione Microservizi".\\
+Capitolo 3.2.3 "Design del Back-End - Descrizione Microservizi".\\
 È stata quindi definita la componente "Autenticazione", che gestirà tutte le operazioni relative all'autenticazione degli utenti.\\
 Questa componente, infatti, sarà centrale al funzionamento del microservizio autenticazione, da cui prende il nome.\\
 La componente si interfaccerà  con il database per la modifica, lettura, creazione ed eliminazione dei dati di autenticazione degli utenti dell'applicazione.\\

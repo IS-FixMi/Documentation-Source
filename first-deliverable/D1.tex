@@ -11,7 +11,7 @@
 	\end{tikzpicture}
 	\huge 
 	\fi
-	Fix Mi \\
+	FixMi \\
 	Analisi dei Requisiti
 }
 \author{Giovanni Santini, Riginel Ungureanu, Valerio Asaro}
@@ -72,7 +72,7 @@
 		\textnormal{ \LARGE{Corso di Ingegneria del Software\\}}
 		\vspace{30mm}
 		\fontsize{10mm}{7mm}\selectfont 
-		\textup{Fix Mi \\ Analisi dei Requisiti}\\
+		\textup{FixMi \\ Analisi dei Requisiti}\\
 	\end{center}
 	
 	\vspace{25mm}
@@ -100,7 +100,7 @@
 
 
 \section{Scopo del documento}
-Il seguente documento riporta la definizione e l'analisi del progetto "Fix Mi" in linguaggio naturale.
+Il seguente documento riporta la definizione e l'analisi del progetto "FixMi" in linguaggio naturale.
 In particolare il documento mira a:
 
 \begin{enumerate}
@@ -133,7 +133,7 @@ In particolare il documento mira a:
 		\hline
 		Responsabile del Progetto & Riginel Ungureanu\\
 		\hline
-		Versione del documento & 1.2 \\
+		Versione del documento & 1.3 \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -146,7 +146,7 @@ Di seguito vengono illustrati in maniera discorsiva gli obiettivi principali e s
 
 \section{Obiettivo Principale}
 
-L’obiettivo del progetto è la realizzazione di una Web-App denominata "Fix Mi": un'applicazione web gestionale sviluppata per un negozio di articoli informatici ed elettronici. Tale software svolgerà il ruolo di supporto all’attività di commercio e riparazione dei dispositivi elettronici mettendo in comunicazione datore di lavoro, dipendenti e clienti.
+L’obiettivo del progetto è la realizzazione di una Web-App denominata "FixMi": un'applicazione web gestionale sviluppata per un negozio di articoli informatici ed elettronici. Tale software svolgerà il ruolo di supporto all’attività di commercio e riparazione dei dispositivi elettronici mettendo in comunicazione datore di lavoro, dipendenti e clienti.
 
 
 \section{Obiettivi Secondari}
@@ -155,11 +155,11 @@ Successivamente vengono elencati gli obiettivi secondari del progetto, numerati 
 
 
 \subsection*{OS1 Autenticazione}
-L’applicazione dispone di un sistema di distinzione dei ruoli: "Amministratore", "Dipendente" e "Cliente". Il sistema permetterà diverse funzionalità in base al livello di autorizzazione di cui si dispone.
+L’applicazione dispone di un sistema di distinzione dei ruoli: "Manager", "Dipendente" e "Cliente". Il sistema permetterà diverse funzionalità in base al livello di autorizzazione di cui si dispone.
 
 
 \subsection*{OS2 Magazzino}
-Il sito fornisce ai dipendenti e all'amministratore un sistema di gestione del magazzino con il quale si potrà aggiungere e rimuovere merce, oltre a controllarne la quantità disponibile.
+Il sito fornisce ai dipendenti e al manager un sistema di gestione del magazzino con il quale si potrà aggiungere e rimuovere merce, oltre a controllarne la quantità disponibile.
 
 
 \subsection*{OS3 Negozio}
@@ -174,16 +174,16 @@ L’applicazione offre ai clienti la possibilità di richiedere la riparazione d
 Il sito presenta ai clienti la lista dei contatti aziendali, nonché la possibilità di inserire una richiesta di assistenza relativa al sito, un ordine o una riparazione. I dipendenti potranno gestire le richieste e comunicare direttamente con i clienti.
 
 
-\subsection*{OS6 Feedback} %Questo vorrei chiamarlo "riscontri" o qualche altro sinonimo in italiano....
+\subsection*{OS6 Feedback} 
 Il sito dispone agli utenti un'area "feedback" in cui potranno inviare dei giudizi sulla qualità del servizio offertogli e dei suggerimenti su come migliorare ulteriormente quest'ultimo.
 
 \subsection*{OS7 Gestione Dipendenti}
 
-L'amministratore può gestire i profili di tutti i dipendenti, visualizzarne le statistiche e lo storico delle attività. Inoltre si affida all'amministratore il compito di aggiungere, rimuovere e modificare i profili "Dipendente" nel corso del tempo dell'attività aziendale.
+Il manager può gestire i profili di tutti i dipendenti, visualizzarne le statistiche e lo storico delle attività. Inoltre si affida al manager il compito di aggiungere, rimuovere e modificare i profili "Dipendente" nel corso del tempo dell'attività aziendale.
 
 
-\subsection*{OS8 Gestione Task}%Anche questo vorrei non chiamarlo task...
-L’applicazione presenta ai dipendenti e all'amministratore un sistema di gestione delle task, ossia le varie attività che i dipendenti devono completare. Il ruolo dell'amministratore prevede la gestione e l'assegnazione di tali task ai dipendenti.
+\subsection*{OS8 Gestione Task}
+L’applicazione presenta ai dipendenti e al manager un sistema di gestione delle Task, ossia le varie attività che i dipendenti possono prendere in carico e devono completare. Il ruolo del manager prevede la supervisione delle Task.
 
 
 \chapter{Requisiti}
@@ -203,7 +203,7 @@ In vista di questo, la seguente sezione verrà divisa in base al tipo di utente 
 
 \subsection*{RF1 Profilo}
 
-Avere un profilo è il primo passo verso l'interazione con "Fix Mi". Nel momento in cui si crea il proprio profilo si passa dall'essere un "Utente" ad essere un "Cliente", ricevendo nuovi servizi e vantaggi. Di seguito una lista dei requisiti per la corretta implementazione del profilo all'interno del sito web.
+Avere un profilo è il primo passo verso l'interazione con "FixMi". Nel momento in cui si crea il proprio profilo si passa dall'essere un "Utente" ad essere un "Cliente", ricevendo nuovi servizi e vantaggi. Di seguito una lista dei requisiti per la corretta implementazione del profilo all'interno del sito web.
 
 \subsubsection*{RF1.1 Login}
 
@@ -253,7 +253,7 @@ Come Utente, voglio poter effettuare il login nel mio profilo per accedere alle 
 \subsection*{RF2 Registrazione}
 Il sito deve dare la possibilità ad un utente di registrarsi:
 \begin{enumerate}
-	\item La pagina deve rappresentare i campi "e-mail", "password" (due volte), "nome" e "nazionalità". 
+	\item La pagina deve rappresentare i campi "e-mail" e "password" (due volte). 
 	\item La password deve essere conforme come specificato in RNF2.
 \end{enumerate}
 
@@ -278,15 +278,15 @@ L'applicazione deve verificare la mail dell'utente per terminare la registrazion
 \end{enumerate}
 
 
-\subsection*{RF3 Negozio}
-Il sito deve presentare presenta una pagina "Negozio”: 
+\subsection*{RF3 Negozio Utente}
+Il sito deve presentare una pagina "Negozio”: 
 
 \begin{enumerate}
 	\item La pagina deve permettere di visualizzare gli oggetti presenti nel magazzino al momento del caricamento della stessa.
 	
-	\item L’utente deve essere in grado di ordinare gli oggetti per nome o per prezzo tramite un bottone, ricercare una stringa tra tutti gli oggetti nel magazzino.
+	\item L’utente deve essere in grado di ordinare gli oggetti per nome o per prezzo, ricercare una stringa tra i nomi degli oggetti nel negozio.
 	
-	\item Ogni oggetto deve avere una pagina dedicata accessibile.
+	\item Ogni oggetto deve avere una pagina dedicata.
 \end{enumerate}
 
 
@@ -318,11 +318,11 @@ Il sito deve offrire la possibilità all'utente di cambiare password nel caso av
 
 \subsubsection{RF1.5 Log Out}
 
-L'applicazione deve dare la possibilità al cliente / dipendenti / manager di uscire dal proprio profilo qualora fosse autenticato, rendendoli di conseguenza degli "utenti" (2.1.1)
+L'applicazione deve dare la possibilità al cliente / dipendente / manager di uscire dal proprio profilo qualora fosse autenticato, rendendoli di conseguenza degli "utenti" (2.1.1)
 
 \subsubsection{RF1.6 Eliminazione profilo}
 
-L'applicazione deve dare la possibilità al cliente e ai dipendenti di potere cancellare il proprio profilo, con tutte le relative informazioni e i dati legati alla persona associata ad esso, da ogni tipo di memoria, base di dati o altro metodo di memorizzazione appartenenti all'applicazione "Fix Mi".
+L'applicazione deve dare la possibilità al cliente e ai dipendenti di potere cancellare il proprio profilo, con tutte le relative informazioni e i dati legati alla persona associata ad esso, da ogni tipo di memoria, base di dati o altro metodo di memorizzazione appartenenti all'applicazione "FixMi".
 
 \begin{enumerate}
 	\item Il sistema deve chiedere il campo "e-mail" associato al profilo che si vuole eliminare.
@@ -330,7 +330,7 @@ L'applicazione deve dare la possibilità al cliente e ai dipendenti di potere ca
 	\item Viene richiesto l'inserimento della password legata al profilo una ultima volta prima della definitiva eliminazione.
 	\item La procedura deve fallire qualora non vi esistesse alcun profilo associato alla e-mail inserita nell'omonimo campo.
 \end{enumerate}
-\subsection*{RF5 Negozio}
+\subsection*{RF5 Negozio Cliente}
 Il sito deve permettere al cliente, oltre alle funzionalità definite in RF3 per gli utenti, le seguenti funzionalità:
 
 \subsubsection{RF5.1 Carrello}
@@ -360,7 +360,7 @@ La pagina deve fornire diversi metodi di pagamento:
 	\item La pagina deve fornire il pagamento tramite "Paypal" e "Bancomat" con circuiti "Visa" e "Mastercard".
 
 	\item Una volta effettuato il pagamento con successo, il sito deve fornire un riepilogo dell’acquisto e un messaggio che invita il cliente a recarsi in negozio per il ritiro dei prodotti.
-	\item Il sito deve creare per i dipendenti una task “magazzino” (RF9), dettagliando i prodotti richiesti.
+	\item Il sito deve creare per i dipendenti una Task “magazzino” (RF9), dettagliando i prodotti richiesti.
 	\item Il sito deve inviare i dettagli del pagamento al software di accounting scelto.
 	\item Il sito deve eliminare gli elementi dal carrello dell’utente una volta effettuato il pagamento.
 \end{enumerate}
@@ -373,9 +373,9 @@ Il sito deve offrire al cliente la possibilità di inviare, compilando un apposi
 
 	\item Il documento deve richiedere i campi "nome", "cognome", "e-mail", "numero di telefono", "descrizione del problema" e opzionalmente "foto". Una volta compilato, il documento deve poter essere spedito attraverso un apposito bottone etichettato "Invia".
 	
-	\item L’applicazione deve generare una task di tipo “riparazione” successivamente all’invio della richiesta da parte del cliente (il sistema di task è specificato in RF9).
+	\item L’applicazione deve generare una Task di tipo “riparazione” successivamente all’invio della richiesta da parte del cliente (il sistema di Task è specificato in RF9).
 	
-	\item Qualora il cliente abbia inviato una riparazione, il sito deve mostrare al cliente lo stato della propria riparazione in un'apposita pagina "stato riparazioni", interfacciandosi con il sistema di task specificato in RF9. In caso non vi siano riparazioni, la pagina deve mostrare la scritta "Nessuna riparazione registrata".
+	\item Qualora il cliente abbia inviato una riparazione, il sito deve mostrare al cliente lo stato della propria riparazione in un'apposita pagina "stato riparazioni", interfacciandosi con il sistema di Task specificato in RF9. In caso non vi siano riparazioni, la pagina deve mostrare la scritta "Nessuna riparazione registrata".
 	
 \end{enumerate}
 
@@ -385,7 +385,7 @@ Il sito deve permettere al cliente di richiedere assistenza e comunicare con l'a
 \begin{enumerate}
 	\item Il modulo deve presentare i campi "e-mail", "descrizione richiesta" e un bottone "Invia".
 	
-	\item L’applicazione deve generare una task di tipo “assistenza” successivamente all’invio della richiesta di assistenza da parte del cliente. Il sistema di task è specificato in RF9.
+	\item L’applicazione deve generare una Task di tipo “assistenza” successivamente all’invio della richiesta di assistenza da parte del cliente. Il sistema di Task è specificato in RF9.
 	
 	
 \end{enumerate}
@@ -395,7 +395,7 @@ Il sito deve dare la possibilità al cliente di inviare anonimamente del feedbac
 \begin{enumerate}
 	\item La pagina deve contenere i campi "disponibilità azienda", "velocità riparazione", "soddisfazione riparazione", "soddisfazione sito web", "idee per migliorare" e un bottone "Invia".
 
-	\item Il sito deve creare una task assistenza con i contenuti dei campi inseriti dall'utente.
+	\item Il sito deve creare una Task assistenza con i contenuti dei campi inseriti dall'utente.
 
 	
 \end{enumerate}
@@ -407,10 +407,10 @@ Il sito deve dare la possibilità al dipendente di autenticarsi attraverso la pa
 
 Il sito deve offrire una pagina “Task” ai dipendenti autenticati, il sistema delle \textit{Task} è definito qui di seguito:
 
-\subsubsection*{RF9.1 Definizione Task}
+\subsubsection*{Definizione Task}
 
-Una task è un'attività sulla quale un dipendente o un manager può decidere di lavorare. Esistono diverse tipologie di Task, caratterizzate da una \textit{Task-Tag} ed una descrizione di massimo 200 caratteri.\\
-Le tasks possono essere in uno dei seguenti stati: 
+Una Task è un'attività sulla quale un dipendente o un manager può decidere di lavorare. Esistono diverse tipologie di Task, caratterizzate da una \textit{Task-Tag} ed una descrizione di massimo 200 caratteri.\\
+Le Task possono essere in uno dei seguenti stati: 
 \begin{itemize}
 	\item Da eseguire
 	\item In lavorazione
@@ -419,27 +419,37 @@ Le tasks possono essere in uno dei seguenti stati:
 	\item Fallita
 \end{itemize}
 Una \textit{Task-Tag} è una e una sola stringa tra le seguenti:
+\begin{itemize}
+	\item Magazzino
+	\begin{itemize}
+		\item Il dipendente accede alla pagina del magazzino (RF10) per apportare eventuali modifiche o visualizzare i vari articoli.
+	\end{itemize}
+	\item Negozio
+	\begin{itemize}
+		\item Il dipendente si assume il compito di rimanere alla cassa per interagire con eventuali clienti.
+	\end{itemize}
+	\item Assistenza
+	\begin{itemize}
+		\item Il dipendente visualizza la richiesta di supporto dal cliente tramite e-mail. Il dipendente potrà rispondere per e-mail al cliente in base alle esigenze del caso, secondo la propria discrezione.
+	\end{itemize}
+	\item Riparazione
+	\begin{itemize}
+		\item Il dipendente si assume il compito di rimanere alla cassa per interagire con eventuali clienti.
+	\end{itemize}
+\end{itemize}
 
-\subsubsection*{Magazzino} Il dipendente accede alla pagina del magazzino (RF10) per apportare eventuali modifiche o visualizzare i vari articoli.
-	
-\subsubsection*{Negozio} Il dipendente si assume il compito di rimanere alla cassa per interagire con eventuali clienti.
-	
-\subsubsection*{Assistenza} Il dipendente visualizza la richiesta di supporto dal cliente tramite e-mail. Il dipendente potrà rispondere per e-mail al cliente in base alle esigenze del caso, secondo la propria discrezione.
-	
-\subsubsection*{Riparazione} Il dipendente potrà prendersi carico di una riparazione selezionando e avviando la task. Qualora ci fossero problemi e/o ritardi, il dipendente potrà mettere la task in pausa e riprenderla in qualsiasi momento. Una volta che la riparazione viene terminata, il dipendente segnerà la task come completata o fallita nel caso la riparazione non avesse successo.
-
-\subsubsection*{RF9.2 Definizione Work-Tag}
+\subsubsection*{Definizione Work-Tag}
 Ad ogni profilo dipendente sono associate una o più \textit{Work-Tag}. Una \textit{Work-Tag} è una stringa dello stesso tipo di una \textit{Task-Tag}.\\
-Ogni dipendente potrà lavorare solo sulle task che hanno gli stessi o meno \textit{Task-Tag} rispetto ai \textit{Work-Tag} del dipendente.
+Ogni dipendente potrà lavorare solo sulle Task che hanno gli stessi o meno \textit{Task-Tag} rispetto ai \textit{Work-Tag} del dipendente.
 
-\subsubsection*{RF9.3 Interagire con le Task}
+\subsubsection*{RF9.1 Interagire con le Task}
 
 Nella pagina "Task", il dipendente deve essere in grado di:
 
 \begin{enumerate}
 	\item Visualizzare la lista delle Task ed i corrispettivi \textit{Task-Tag} selezionate per il dipendente in base al suo corrispettivo \textit{Work-Tag}.
 	
-	\item Selezionare una Task dalla lista da eseguire o da quelle messe in pausa, contrassegnandola come in lavorazione, solo nel caso in cui il dipendente non presenti alcuna task in lavorazione.
+	\item Selezionare una Task dalla lista da eseguire o da quelle messe in pausa, contrassegnandola come in lavorazione, solo nel caso in cui il dipendente non presenti alcuna Task in lavorazione.
 	
 	\item Mettere in pausa la Task in esecuzione, la Task verrà contrassegnata come “In pausa” e il dipendente potrà selezionare una nuova Task dalla lista.
 	
@@ -458,7 +468,7 @@ Il dipendente deve aver la possibilità di interagire con il magazzino in un'app
 \end{enumerate}
 
 \subsection{Manager}
-Il sito deve dare la possibilità di autenticazione del manager nella pagina di login, fornendo e-mail e password del profilo manager.
+Il sito deve dare la possibilità al manager di potersi autenticare nella pagina di login, fornendo e-mail e password del profilo manager.
 
 \subsection*{RF11}
 Se un profilo è di tipo manager, deve poter accedere a tutte le funzionalità del profilo “dipendente” specificate sopra.
@@ -470,8 +480,7 @@ Il manager deve essere in grado di:
 	
 	\item Aggiungere profili “Dipendente” dall’applicazione inserendo l’e-mail del profilo in un apposito campo.
 	\item Aggiungere dati Anagrafici associati all'account dipendente , "nome", "cognome", "data di nascita", "giorno assunzione".
-	\item Rimuovere dipendenti tramite un bottone che permette di selezionare la 
-	e-mail del dipendente e rimuoverla dalla lista dipendenti.
+	\item Rimuovere dipendenti selezionando la e-mail del dipendente e rimuovendola dalla lista dipendenti.
 	
 	\item Assegnare e rimuovere una o più \textit{Work-Tag} ai dipendenti. 
 	
@@ -583,10 +592,6 @@ Tra i principali vi sono:
 		\item https
 		\item tls 1.2
 	\end{itemize}
-	\item Dal lato server, computer che supporti:
-	\begin{itemize}
-		\item Node js 18.18.0 LTS
-	\end{itemize}
 \end{enumerate}
 Il sito deve essere "responsive", ossia deve potersi adattare alla dimensione degli schermi dei principali dispositivi in commercio, quali:
 \begin{enumerate}
@@ -611,7 +616,6 @@ Il sito deve essere "responsive", ossia deve potersi adattare alla dimensione de
 \end{enumerate}
 \subsection*{RNF7 Mantenibilità e Scalabilità}
 \begin{enumerate}
-	\item Al sito deve essere affiancato, prima e dopo il rilascio ufficiale, un team di manutenzione che si occupi di testare ogni funzionalità periodicamente e che, su richiesta qualora ci siano problemi, sia pronto a intervenire tempestivamente
 	\item Il sito, al fine di essere facilmente mantenibile, deve possedere un codice sorgente con le seguenti caratteristiche:
 	\begin{itemize}
 		\item Il codice sorgente del back-end deve essere modulare, utilizzando un'architettura a microservizi come descritto nel capitolo 3.2 - Design del back-end.
@@ -627,18 +631,18 @@ L'applicazione deve essere conforme alle normative di legge in materia di siti w
 \end{enumerate}
 \chapter{Design}
 
-\section{Design del Front End}
+\section{Design del Front-End}
 
-In seguito vengono mostrate schermate delle principali aree di Fix Mi, essi rispecchiano le caratteristiche descritte dal (RF1) e vengono mostrate attraverso le tre tipologie di schermo discusse nel (RNF6). 
+In seguito vengono mostrate schermate delle principali aree di FixMi, essi rispecchiano le caratteristiche descritte dal (RF1) e vengono mostrate attraverso le tre tipologie di schermo discusse nel (RNF6). 
 
 \subsection*{Schermata Login}
 
-La schermata "Login" permette all'utente di inserire l'email e la password del suo profilo ed in seguito di premere il bottone "ACCEDI", nel caso in cui l'utente non abbia ancora creato un proprio profilo egli potrà farlo accedendo all'area "Registrazione" attraverso il bottone "REGISTRATI".
+La schermata "Login" permette all'utente di inserire l'e-mail e la password del suo profilo ed in seguito di premere il bottone "ACCEDI", nel caso in cui l'utente non abbia ancora creato un proprio profilo egli potrà farlo accedendo all'area "Registrazione" attraverso il bottone "REGISTRATI".
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{images/Snapshots/login_snapshot.png}
-	\caption{Schermata "Login" di "Fix Mi"}
+	\caption{Schermata "Login" di "FixMi"}
 \end{figure}	
 
 \subsection*{Schermata Home}
@@ -648,7 +652,7 @@ La schermata "Home" permette di raggiungere tutte le aree principali del sistema
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{images/Snapshots/mainpage_snapshot.png}
-	\caption{Schermata "Home" di "Fix Mi"}
+	\caption{Schermata "Home" di "FixMi"}
 \end{figure}	
 
 \subsection*{Schermata Magazzino}
@@ -657,11 +661,11 @@ La schermata "Magazzino" permette al Dipendente ed al Manager di poter gestire i
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{images/Snapshots/magazzino_snapshot.png}
-	\caption{Schermata "Magazzino" di "Fix Mi"}
+	\caption{Schermata "Magazzino" di "FixMi"}
 \end{figure}	
 
 
-\section{Design del Back End}
+\section{Design del Back-End}
 
 Nella seguente sezione vengono riportate le specifiche generali per quanto riguarda la back-end dell’applicazione.
 
@@ -682,7 +686,7 @@ La Back-End presenta un’architettura basata su microservizi indipendenti che c
 L’applicazione si interfaccerà con i seguenti sistemi esterni:
 
 \subsubsection{Sistemi di Pagamento}
-La backend si interfaccierà con "Paypal Name-Value-Pair" (NVP) e "NEXI XPay" per effettuare i pagamenti nella pagina "Negozio" (RF3). 
+La back-end si interfaccierà con "Paypal Name-Value-Pair" (NVP) e "NEXI XPay" per effettuare i pagamenti nella pagina "Negozio" (RF3). 
 
 \subsubsection{Databases}
 La Back-End utilizzerà il servizio "MongoDB Cluster Atlas" per interagire con databases distribuiti, in particolare i database per gli utenti registrati, le Task e il magazzino.
@@ -784,6 +788,7 @@ Diversi strumenti e tecniche sono state scelte accuratamente in base alla situaz
 	\item Figma \qquad \url{https://www.figma.com/}
 	\item Coolors \qquad \url{https://coolors.co/}
 	\item Diagrams \qquad \url{https://app.diagrams.net/}
+	\item Vim \qquad \url{https://www.vim.org/}
 \end{itemize}
 
 \chapter{Glossario}
@@ -791,23 +796,22 @@ Segue la definizione dei principali termini utilizzati all'interno del documento
 
 \subsubsection*{2FA}
 Il "2FA", in Italiano chiamato "Autenticazione a due fattori", è un metodo di autenticazione che consiste nel generare un codice temporaneo (Vedere "OTP") che solo l'utente in procinto di accedere conosce, aumentando notevolmente la sicurezza del sistema.
-\subsubsection*{Back-End}
 \subsubsection*{E-mail}
 La "E-mail, anche chiamata "Posta Elettronica" è un sistema di comunicazione ampiamente utilizzato nel mondo odierno.
 \subsubsection*{Microservizio}
-Per Microservizio si intende una componente autosufficiente del sistema "Fix Mi" atta a svolgere uno specifico compito. L'unione di tutti i microservizi risulta essere di conseguenza il vero e proprio sistema "Fix Mi".
+Per Microservizio si intende una componente autosufficiente del sistema "FixMi" atta a svolgere uno specifico compito. L'unione di tutti i microservizi risulta essere di conseguenza il vero e proprio sistema "FixMi".
 \subsubsection*{Front-End}
-Il termine "Front-End", in Italiano letteralmente "Fine Frontale", si intende quella parte di sistema visibile all'utente ed a chiunque provi a raggiungere il sito web.
+Con il termine "Front-End" si intende quella parte di sistema visibile all'utente ed a chiunque tenti di raggiungere il sito web.
 \subsubsection*{Back-End}
-Con il termine "Back-End", si riferisce a quella parte di sistema dedicata alla gestione dei dati e delle funzioni appartenenti al sito web (Fine Indiretto, Fine di Spalle).
+Con il termine "Back-End", si riferisce a quella parte di sistema dedicata alla gestione dei dati e delle funzioni appartenenti al sito web.
 \subsubsection*{OTP}
-L'acronimo "OTP" sta per "One Time Password", è un codice generato temporaneamente e che viene mostrato solo all'utente  utilizzato per l'autenticazione a due fattori (Vedere "2FA").
+L'acronimo "OTP" sta per "One Time Password", è un codice generato temporaneamente e che viene mostrato solo all'utente, utilizzato per l'autenticazione a due fattori (Vedere "2FA").
 \subsubsection*{Password}
 Per "Password" si intende una serie di lettere, numeri e simboli conosciuti solo dall'utente. Potendo solo quest'ultimo sapere la corretta "Parola d'ordine" l'accesso al sistema risulta essere più sicuro e meno vulnerabile da attacchi informatici.
 \subsubsection*{Task}
-Il termine "Task", tradotto in Italiano "Compito" o "Mansione", viene utilizzato nel sistema "Fix Mi" per fissare gli obiettivi ed i traguardi che gli impiegati devono raggiungere.
+Il termine "Task", tradotto in Italiano "Compito" o "Mansione", viene utilizzato nel sistema "FixMi" per fissare gli obiettivi ed i traguardi che gli impiegati devono raggiungere.
 \subsubsection*{Task-Tag}
-Le "Task-Tag", cioè "Etichetta del Compito", servono a meglio definire l'ambito e la funzione in cui una determinata "Task" si trova (Vedere "Task"). Diverse "Task-Tags" possono essere attribuite ad una singola "Task".
+Le "Task-Tag", cioè "Etichetta del Compito", servono a meglio definire l'ambito e la funzione in cui una determinata "Task" si trova (Vedere "Task").
 \subsubsection*{Work-Tag}
 Le "Work-Tag", "Etichette del Lavoro", vengono utilizzate per stabilire le diverse mansioni che un dipendente è in grado ed in dovere di svolgere. Diverse "Work-Tags" possono essere attribuite ad un singolo dipendente.
 

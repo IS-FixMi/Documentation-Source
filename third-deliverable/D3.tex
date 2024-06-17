@@ -58,7 +58,7 @@
 			\textnormal{ \LARGE{Corso di Ingegneria del Software\\}}
 			\vspace{30mm}
 			\fontsize{10mm}{7mm}\selectfont 
-			\textup{Fix Mi \\ Documento di Architettura}\\
+			\textup{FixMi \\ Documento di Architettura}\\
 		\end{center}
 		
 		\vspace{25mm}
@@ -101,14 +101,14 @@
 			\hline
 			Titolo del Documento & Documento di Architettura \\
 			\hline
-			Titolo del Progetto & Fix Mi \\
+			Titolo del Progetto & FixMi \\
 			\hline
 			Autori del Documento &
 			Giovanni Santini \\ & Riginel Ungureanu \\ & Valerio Asaro \\
 			\hline
 			Amministratore Progetto & Riginel Ungureanu\\
 			\hline
-			Versione del documento & 1.0 \\
+			Versione del documento & 1.1 \\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -138,10 +138,10 @@ In seguito descrivi come interagisce la classe analizzata con le altre.
 Nel presente capitolo vengono illustrate le classi previste nell'applicazione "FixMi". Tali classi sono rappresentate in "Unified Modeling Language" (UML) e sono caratterizzate da un nome, degli attributi specificando la visibilità ("+" = public, "-" = private) e dei metodi. Ogni metodo è caratterizzato da un valore di ritorno, un nome e degli argomenti. Inoltre alcune classi presentano un tipo al di sopra del nome per identificare proprietà particolari di un classe o aggiungere informazioni, questi sono:
 \begin{itemize}
 	\item "Enumeration": L'oggetto rappresenta un valore che può essere in uno degli stati descritti all'interno dell'oggetto
-	\item "Abstract": Una classe abstract non viene mai istanziata, viene perciò usata per effettuare templating e venir estesa da altre classi.
+	\item "Abstract": Una classe abstract non viene mai istanziata, viene perciò usata per effettuare templating e venire estesa da altre classi.
 	\item "Singleton": Una classe che viene istanziata una ed una sola volta
 \end{itemize}
-Nei diagrammi che seguono vieve rappresentato il rapporto tra diverse classi, utilizzando i simboli definiti sotto.
+Nei diagrammi che seguono viene rappresentato il rapporto tra diverse classi, utilizzando i simboli definiti sotto.
 
 
 \section{Definizione Simboli}
@@ -151,7 +151,7 @@ Nei diagrammi che seguono vieve rappresentato il rapporto tra diverse classi, ut
 \end{figure}
 Definiamo i seguenti simboli riguardanti la relazione tra più classi:
 \begin{itemize}
-	\item ISA: vi è un rapporto di ereditarietà tra due classi
+	\item ISA: Vi è un rapporto di ereditarietà tra due classi
 	\item Composizione: Stabilisce una relazione per cui una classe è parte di un'altra classe
 	\item Aggregazione: Stabilisce una relazione per cui una classe possiede un'altra classe 
 \end{itemize}
@@ -174,7 +174,7 @@ L'Enumerazione Currency rappresenta le valute supportate all'interno dell'applic
 \subsection*{Payment Method}
 L'Enumerazione Payment Method rappresenta le piattaforme di pagamento utilizzabili all'interno dell'applicazione 
 \subsection*{TaskStatus}
-L'Enumerazione TaskStatus rappresenta lo stato di una determinata task.
+L'Enumerazione TaskStatus rappresenta lo stato di una determinata Task.
 \subsection*{Date}
 La classe Date rappresenta una data
 \subsection*{Language}
@@ -188,7 +188,7 @@ L'Enumerazione Language rappresenta una lingua supportata dall'applicazione
 Data la specifica del Back-End e dato il diagramma di contesto sono state individuate le classi e relativi metodi e attributi di cui sotto
 \subsection*{Descrizione}
 La classe astratta Microservizio rappresenta un microservizio generico dell'applicazione.
-A questi fini sono stati identificati i seguenti attributi e metodi
+A tali fini sono stati identificati i seguenti attributi e metodi:
 \begin{itemize}
 	\item private mid: Int 
 	\begin{itemize}
@@ -644,7 +644,7 @@ Eredita dalla classe "Task", si specializza nella gestione delle Task per il Fee
 \subsection*{Descrizione}
 
 \subsubsection*{Microservizio Task}
-Si pone come tramite tra il dipendente ed il Database Task. Invia e riceve informazioni riguardanti le Task dal Database, permette al dipendente di creare una task, rimuoverla o sceglierla (Cambiandone lo stato in "In Lavorazione"). Per tale scopo, sono stati individuati i seguenti metodi ed attributi:
+Si pone come tramite tra il dipendente ed il Database Task. Invia e riceve informazioni riguardanti le Task dal Database, permette al dipendente di creare una Task, rimuoverla o sceglierla (Cambiandone lo stato in "In Lavorazione"). Per tale scopo, sono stati individuati i seguenti metodi ed attributi:
 
 \begin{itemize}
 \item public creaTask(args):bool
@@ -657,7 +657,7 @@ Si pone come tramite tra il dipendente ed il Database Task. Invia e riceve infor
 \end{itemize}
 \item public scegliTask(dipendente: ProfiloDipendente, task: Task): bool
 \begin{itemize}
-    \item Sceglie un oggetto di tipo "Task" da assegnare ad un dipendente, fallisce nel caso in cui un dipendente stia ancora lavorando ad un altra task.
+    \item Sceglie un oggetto di tipo "Task" da assegnare ad un dipendente, fallisce nel caso in cui un dipendente stia ancora lavorando ad un altra Task.
 \end{itemize}
 \item public modificaStatoTask(task: Task, stato: TaskStatus): bool
 \begin{itemize}
@@ -689,12 +689,12 @@ Si pone come tramite tra il dipendente ed il Database Task. Invia e riceve infor
 \end{itemize}
 \item private getStoricoTaskDipendenteDB(dipendente: ProfiloDipendente): Task[]
 \begin{itemize}
-    \item Ritorna una lista di tipo "Task" contenente lo storico delle task svolte da un dipendente, effettuando una richiesta al DataBase.
+    \item Ritorna una lista di tipo "Task" contenente lo storico delle Task svolte da un dipendente, effettuando una richiesta al DataBase.
 \end{itemize}
 \end{itemize}
 
 \subsubsection*{Database Task}
-La classe "Database Task" permette al Microservizio Task di interfacciarsi con il Database, fornisce metodi utili alla memorizzazione delle tasks, alla loro gestione ed al loro recupero. I metodi individuati sono i seguenti:
+La classe "Database Task" permette al Microservizio Task di interfacciarsi con il Database, fornisce metodi utili alla memorizzazione delle Task, alla loro gestione ed al loro recupero. I metodi individuati sono i seguenti:
 \begin{itemize}
 \item task: Task[]
 \begin{itemize}
@@ -724,7 +724,7 @@ Il dipendente può accedere alla pagina "Tasks"( in cui le può visualizzare, ge
 \begin{itemize}
 \item public goTasks(): void
 \begin{itemize}
-    \item Porta il dipendente nella pagina per gestire le tasks.
+    \item Porta il dipendente nella pagina per gestire le Task.
 \end{itemize}
 \iffalse
 METODI PER IL PROFILO
@@ -786,7 +786,7 @@ METODI NON CERTI
 \end{itemize}
 \item public setCurrTask(task: Task): bool
 \begin{itemize}
-    \item Imposta un oggetto di tipo "Task" come task a cui il dipendente sta lavorando in quel momento, ritorna un valore booleano per indicare il successo dell'operazione.
+    \item Imposta un oggetto di tipo "Task" come Task a cui il dipendente sta lavorando in quel momento, ritorna un valore booleano per indicare il successo dell'operazione.
 \end{itemize}
 FINE METODI NON CERTI
 \fi
@@ -797,7 +797,7 @@ FINE METODI NON CERTI
 	\centering\includegraphics[width=1\textwidth]{images/Diagramma_delle_classi_home.png}
 	Diagramma delle classi per "Home"
 \end{figure}
-Svolge la funzione di accogliere i visitatori nel sito "Fix Mi" e di permettere loro di accedere ad alcuni dei servizi principali quali:
+Svolge la funzione di accogliere i visitatori nel sito "FixMi" e di permettere loro di accedere ad alcuni dei servizi principali quali:
 \begin{itemize}
 	\item Richiedere assistenza al personale.
 	\item Richiedere una riparazione del proprio prodotto ai tecnici.
@@ -805,7 +805,7 @@ Svolge la funzione di accogliere i visitatori nel sito "Fix Mi" e di permettere 
 \end{itemize}
 \subsection*{Home}
 \subsection*{Descrizione}
-Rappresenta la prima pagina mostrata all'utente o chi, per la prima volta, visita il sito "Fix Mi". Da qui, è possibile raggiungere tutti gli altri servizi attraverso i metodi descritti sotto:
+Rappresenta la prima pagina mostrata all'utente o chi, per la prima volta, visita il sito "FixMi". Da qui, è possibile raggiungere tutti gli altri servizi attraverso i metodi descritti sotto:
 \begin{itemize}
 	\item public goRiparazione(): void
 	\begin{itemize}
@@ -823,7 +823,7 @@ Rappresenta la prima pagina mostrata all'utente o chi, per la prima volta, visit
 
 \subsection*{Riparazione}
 \subsection*{Descrizione}
-Rappresenta la pagina in cui è possibile richiedere una riparazione dai tecnici "Fix Mi". I metodi individuati sono:
+Rappresenta la pagina in cui è possibile richiedere una riparazione dai tecnici "FixMi". I metodi individuati sono:
 \begin{itemize}
 	\item public inviaRiparazione(args): void
 	\begin{itemize}
@@ -831,7 +831,7 @@ Rappresenta la pagina in cui è possibile richiedere una riparazione dai tecnici
 	\end{itemize}
 	\item private creaTaskRiparazione(args): void
 	\begin{itemize}
-		\item Crea una nuova task di tipo "Riparazione", contiene le informazioni specifiche alla riparazione stessa passategli per argomenti.
+		\item Crea una nuova Task di tipo "Riparazione", contiene le informazioni specifiche alla riparazione stessa passategli per argomenti.
 	\end{itemize}
 	\item public getListaRiparazioni(utente: Profilo): TaskRiparazione[]
 	\begin{itemize}
@@ -841,7 +841,7 @@ Rappresenta la pagina in cui è possibile richiedere una riparazione dai tecnici
 
 \subsection*{Assistenza}
 \subsection*{Descrizione}
-Rappresenta la pagina in cui è possibile richiedere una assistenza dai tecnici "Fix Mi". I metodi sono:
+Rappresenta la pagina in cui è possibile richiedere una assistenza dai tecnici "FixMi". I metodi sono:
 \begin{itemize}
 	\item public inviaRiparazione(args): void
 	\begin{itemize}
@@ -849,14 +849,13 @@ Rappresenta la pagina in cui è possibile richiedere una assistenza dai tecnici 
 	\end{itemize}
 	\item private creaTaskAssistenza(args): void
 	\begin{itemize}
-		\item Crea una nuova task di tipo "Assistenza" contenente le informazioni specifiche alla assistenza passando le informazioni necessarie per argomento.
+		\item Crea una nuova Task di tipo "Assistenza" contenente le informazioni specifiche alla assistenza passando le informazioni necessarie per argomento.
 	\end{itemize}
-	%%GETLISTA ASSISTENZA?????
 \end{itemize}
 
 \subsection*{Feedback}
 \subsection*{Descrizione}
-Rappresenta la pagina in cui è possibile mandare un "feedback" riguardo al servizio "Fix Mi". I metodi individuati che verranno utilizzati sono:
+Rappresenta la pagina in cui è possibile mandare un "feedback" riguardo al servizio "FixMi". I metodi individuati che verranno utilizzati sono:
 \begin{itemize}
 	\item public inviaFeedback(): void
 	\begin{itemize}
@@ -864,11 +863,11 @@ Rappresenta la pagina in cui è possibile mandare un "feedback" riguardo al serv
 	\end{itemize}
 	\item private creaTaskFeedback(args): void
 	\begin{itemize}
-		\item Crea una nuova task di tipo "Feedback", contiene le informazioni specifiche al feedback stesso tramite argomenti passati al metodo.
+		\item Crea una nuova Task di tipo "Feedback", contiene le informazioni specifiche al feedback stesso tramite argomenti passati al metodo.
 	\end{itemize}
 	\item private getListaFeeback(): TaskFeedback[]
 	\begin{itemize}
-		\item Ritorna la lista delle task feedback presenti nel sistema.
+		\item Ritorna la lista delle Task feedback presenti nel sistema.
 	\end{itemize}
 \end{itemize}
 
@@ -1148,7 +1147,7 @@ Tale logica viene descritta in Object Constraint Language (OCL) perché tali con
 	\centering\includegraphics[width=1\textwidth]{images/OCL/OCL_task.png}
 	Diagramma delle classi con linguaggio OCL 
 \end{figure}
-Quando un dipendente sceglie una task su cui lavorare non deve avere nessuna task correntemente assegnata.
+Quando un dipendente sceglie una Task su cui lavorare non deve avere nessuna Task correntemente assegnata.
 \begin{verbatim}
 	context: Microservizio Task::scegliTask(dipendente, task)
 	pre: dipendente.getCurrTask() = null
@@ -1220,7 +1219,7 @@ Una volta che un profilo dipendente viene rimosso, non deve più apparire all'in
 	\centering\includegraphics[width=1\textwidth]{images/OCL/OCL_negozio.png}
 	Diagramma delle classi con linguaggio OCL 
 \end{figure}
-Una volta acquistati gli articoli, il database non deve più contenerli. Inoltre dev'essere creata una task magazzino.
+Una volta acquistati gli articoli, il database non deve più contenerli. Inoltre dev'essere creata una Task magazzino.
 \begin{verbatim}
 	context: Negozio::acquista(carrello) returns boolean
 	post: if (boolean) then ( NOT DatabaseMagazzino.articoli->contains(carrello.items))
@@ -1234,7 +1233,7 @@ Una volta acquistati gli articoli, il database non deve più contenerli. Inoltre
 	\centering\includegraphics[width=1\textwidth]{images/OCL/OCL_assistenza_riparazione_feedback.PNG}
 	Diagramma delle classi con linguaggio OCL 
 \end{figure}
-Una volta inviata una richiesta di assistenza, riparazione o feedback, viene creata la corrispettiva task e inserita nel database
+Una volta inviata una richiesta di assistenza, riparazione o feedback, viene creata la corrispettiva Task e inserita nel database
 \begin{verbatim}
 	context: Assistenza::inviaAssistenza(args)
 	let t: task assistenza generata
