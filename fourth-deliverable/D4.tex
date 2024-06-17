@@ -420,6 +420,30 @@ Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite n
 	\item "test": esegue gli script di testing del codice.
 \end{itemize}
 
+\subsection{Elementi frontend}
+Ogni microservizio condivide due componenti grafici, "navbar.tsx" e "footer.tsx" posizionati sempre rispettivamente in cima e in fondo ad ogni pagina dell'applicazione.
+Il loro scopo è rendere la navigazione per l'utente più semplice e chiara
+\subsubsection{Navbar}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/navbar.jpg}
+	\caption{Immagine del componente "navbar.tsx"}
+\end{figure}
+Contiene bottoni per accedere ai diversi microservizi del sito, ha uno stile ed un design semplice ed intuitivo in linea con il resto dell'applicazione.
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/navbar-carbon.png}
+	\caption{Codice del componente "navbar.tsx"}
+\end{figure}
+\subsubsection{Footer}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/footer.jpg}
+	\caption{Immagine del componente "footer.tsx"}
+\end{figure}
+Contiene le principali informazioni sugli autori dell'applicazione "FixMi", dell'azienda e contatti di cui l'utente potrebbe eventualmente avere bisogno 
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/footer-carbon.png}
+	\caption{Codice del componente "footer.tsx"}
+\end{figure}
+
 \section{Modellazione dati nel database}
 Sono presenti due database MongoDB con i quali i microservizi interagiscono:
 \subsection*{Users}
@@ -1452,6 +1476,203 @@ I risultati dei test sono i seguenti:
 \end{figure}
 
 
+\section{Frontend}
+
+Questa sezione comprende lo sviluppo e la documentazione del frontend del Microservizio Autenticazione
+
+\subsection{Struttura del frontend}
+La struttura del frontend del microservizio autenticazione è riportata
+nella figura sotto.
+\begin{figure}[H]
+	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/frontend-structure.png}
+	\caption{Output del comando "tree" all'interno del microservizio autenticazione.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/app-carbon.png}
+	Codice del componente "App.tsx"
+\end{figure}
+\subsubsection*{Specifica}
+Tutte le componenti facenti parte del microservizio "Autenticazione" vengono gestite dalla componente "App.tsx", quest'ultimo stabilisce gli indirizzi di ciascuna pagina del microservizio e quale componente deve gestire l'indirizzo. 
+
+\subsection{UserFlow}
+Lo userflow del microservizio autenticazione viene mostrato sotto nel suo intero. Verrà successivamente suddiviso ed analizzato in ciascun suo componente.
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/userflow-autenticazione.png}
+	\caption{UserFlow del microservizio "Autenticazione"}
+\end{figure}
+
+
+\subsection{Login}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/accesso.jpg}
+	\caption{Schermata per il login}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di chiedere le credenziali necessarie per effettuare l'accesso nel proprio profilo.\\
+E' possibile tornare indietro cliccando il bottone rosso "Cancella"\\
+Dopo avere inserito le credenziali è possibile continuare cliccando il bottone verde "Accedi"
+
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" l'utente non autenticato deve prima cliccare il tasto "Profilo" presente nella "navbar", successivamente può inserire le proprie credenziali e passare alla pagina "Two Factor Authentication"
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/accesso-userflow.png}
+	Userflow della pagina "Login"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Login" è composta da due componenti chiamati "login.tsx" e "formLogin.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item login.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "formLogin.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item formLogin.tsx
+	\begin{itemize}
+		\item Contiene al suo interno un modulo che deve essere compilato dall'utente inserendo l'email e la password.
+		\item Contiene controlli sulle credenziali inserite
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/formLogin-carbon.png}
+			Codice del componente "formLogin.tsx"
+		\end{figure}
+	\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Spazi vuoti
+	\item Numero elevato di caratteri
+\end{itemize}
+non causa problemi di alcun tipo e vengono gestiti correttamente.
+
+
+\subsection{Registrazione}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/registrazione.jpg}
+	Schermata per la registrazione
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di chiedere le credenziali necessarie per la creazione di un nuovo profilo per l'utente.\\
+E' possibile tornare indietro cliccando il bottone rosso "Cancella"\\
+Dopo avere inserito le credenziali è possibile continuare cliccando il bottone verde "Registrati"
+
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" l'utente non autenticato deve prima cliccare il tasto "Profilo" presente nella "navbar", successivamente può inserire le proprie credenziali e passare alla pagina "Two Factor Authentication"
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/registrazione-userflow.png}
+	Userflow della pagina "Registrazione"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Registrazione" è composta da due componenti chiamati "register.tsx" e "formRegister.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item register.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "formRegister.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item formRegister.tsx
+	\begin{itemize}
+		\item Contiene al suo interno un modulo che deve essere compilato dall'utente inserendo l'email, la password ed una ripetizione della password.
+		\item Contiene controlli sulle credenziali inserite
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/formRegister-carbon.png}
+			Codice del componente "formRegister.tsx"
+		\end{figure}
+	\end{itemize}
+\end{itemize}
+
+\subsection{Two Factor Authentication}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/twofa.jpg}
+	Schermata per il "Two Factor Authentication"
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di chiedere il codice di autenticazione a due fattori che è stato mandato all'utente.\\
+E' possibile tornare indietro cliccando il bottone rosso "Cancella"\\
+Dopo avere inserito il codice è possibile continuare cliccando il bottone verde "Conferma"
+
+\subsubsection*{Userflow}
+Partendo dalle pagine "Login", "Registrazione" o "Elimina Profilo" l'utente ha la possibilità di tornare indietro cliccando il tasto "Cancella", oppure completare il modulo inserendo il codice ricevuto e successivamente cliccando "Conferma". Se il codice è valido l'utente viene poi riportato nella pagina "Homepage".
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/twofa-userflow.png}
+	Userflow della pagina "Two Factor Authentication"
+\end{figure}
+
+
+\subsubsection*{Codice}
+La pagina "Two Factor Authentication" è composta da due componenti chiamati "twoFa.tsx" e "formTwoFa.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item twoFa.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "formTwoFa.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/twoFa-carbon.png}
+			Codice del componente "twoFa.tsx"
+		\end{figure}
+	\end{itemize}
+	\item formTwoFa.tsx
+	\begin{itemize}
+		\item Contiene al suo interno un modulo che deve essere compilato dall'utente inserendo il codice di autenticazione a due fattori
+		\item Contiene controlli sul codice inserito dall'utente
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/formTwoFa-carbon.png}
+			Codice del componente "formTwoFa.tsx"
+		\end{figure}
+	\end{itemize}
+\end{itemize}
+
+\subsection{Profilo}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/profilo.jpg}
+	\caption{Schermata per il profilo quando si è autenticati}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/nonautenticato.jpg}
+	\caption{Schermata per il profilo quando non si è autenticati}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina può assumere due aspetti diversi se chi sta cercando di visualizzare la pagina è autenticato oppure no.
+Se non si ha ancora fatto il login la pagina si occupa di informare l'utente che non ha ancora fatto l'accesso, ma che tuttavia sta cercando di visualizzare il proprio profilo\\
+E' possibile fare il login cliccando il bottone blu "Login"\\
+E' possibile registrarsi cliccando il bottone verde "Registrati"
+Se il login è già stato effettuato la pagina si occupa di informare l'utente che ha fatto l'accesso.
+E' possibile eliminare il proprio profilo cliccando il bottone rosso "Rimuovi Profilo"\\
+E' possibile uscire dal proprio profilo cliccando il bottone verde "Logout"
+
+
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" l'utente deve cliccare il tasto "Profilo" presente nella "navbar".
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/profilo-userflow.png}
+	Userflow della pagina "Profilo"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Profilo" è composta da due componenti chiamati "profile.tsx" e "notLoggedIn.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item profile.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "notLoggedIn.tsx", "logout.tsx", "remove.tsx"
+		\item Se l'utente è autenticato mostra due bottoni "Rimuovi Profilo" e "Logout"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item notLoggedIn.tsx
+	\begin{itemize}
+		\item Mostra all'utente due bottoni "Login" e "Registrati"
+		\item Contiene controlli sulle credenziali inserite
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-autenticazione/frontend/notLoggedIn-carbon.png}
+			Codice del componente "notLoggedIn.tsx"
+		\end{figure}
+	\end{itemize}
+\end{itemize}
+
 
 
 
@@ -1469,7 +1690,7 @@ Segue una lista delle risorse implementate dal microservizio:
 	\item "Task": contiene tutte le informazioni e i metodi che appartengono alla classe Task (vedi sotto).
 	\item "Crea Task": permette all'utente di creare una nuova task.
 	\item "Modifica Stato Task": permette al dipendente o al manager di modificare lo stato di una task.
-	\item "Scegli Task": permette al dipendento o al manager di assegnare una task al proprio profilo.
+	\item "Scegli Task": permette al dipendente o al manager di assegnare una task al proprio profilo.
 	\item "Get Lista Task In Lavorazione": permette al dipendente o al manager di ottenere la lista delle task con lo status di "In Lavorazione" in formato json.
 	\item "Get Lista Task Da Eseguire": permette al dipendente o al manager di ottenere la lista delle task con lo status di "Da Eseguire" in formato json.
 	\item "Get Lista Task In Pausa": permette al dipendente o al manager di ottenere la lista delle task con lo status di "In Pausa" in formato json.
@@ -2953,14 +3174,158 @@ Codice dei testcases:
 	Risultato testcases
 \end{figure}
 
+\section{Frontend}
+
+Questa sezione comprende lo sviluppo e la documentazione del frontend del Microservizio Task
+
+\subsection{Struttura del frontend}
+La struttura del frontend del microservizio task è riportata
+nella figura sotto.
+\begin{figure}[H]
+	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-task/frontend-structure.png}
+	\caption{Output del comando "tree" all'interno del microservizio task.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/app-carbon.png}
+	Codice del componente "App.tsx"
+\end{figure}
+\subsubsection*{Specifica}
+Tutte le componenti facenti parte del microservizio "Task" vengono gestite dalla componente "App.tsx", quest'ultimo stabilisce gli indirizzi di ciascuna pagina del microservizio e quale componente deve gestire l'indirizzo. 
+
+\subsection{UserFlow}
+Lo userflow del microservizio task viene mostrato sotto nel suo intero. Verrà successivamente suddiviso ed analizzato in ciascun suo componente.
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-task/userflow-task.png}
+	\caption{UserFlow del microservizio "Task"}
+\end{figure}
+
+
+\subsection{Tasks}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/tasks.jpg}
+	\caption{Schermata per le tasks}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di mostrare l'intera lista di tasks presenti all'interno dell'applicazione. E' possibile cercare determinate tasks in base alla loro categoria o al loro stato selezionadoli tramite i due menu "dropdown" mostrati sotto:\\
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/dropdown1.jpg}
+	\caption{I due menu "DropDown", che mostrano solo la lista di task con lo stato "Completato"}
+\end{figure}
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/dropdown2.jpg}
+	\caption{I due menu "DropDown", che mostrano solo la lista di task di tipologia "Magazzino"}
+\end{figure}
+E' possibile visualizzare i dettagli di ciascuna task cliccando il bottone blu "Apri" della task di cui si è interessati\\
+
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" il dipendente o manager autenticato devono cliccare il tasto "Tasks" presente nella "navbar".
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/tasks-userflow.png}
+	Userflow della pagina "Tasks"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Tasks" è composta da quattro componenti chiamati "visualizzaTask.tsx", "tasks.tsx", "task.tsx" e "searchBar.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item visualizzaTask.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "tasks.tsx" e search
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+		\item tasks.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "task.tsx" e "searchBar.tsx"
+		\item Funge da contenitore ed interlocutore tra i vari componenti del microservizio
+	\end{itemize}
+	\item task.tsx
+	\begin{itemize}
+		\item Si occupa di mostrare una carta contenente i principali dettagli della task per ciascuna task da visualizzare.
+		\item Contiene un bottone blu "Apri" che visualizza i dettagli della task selezionata
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/task-carbon.png}
+			Codice del componente "task.tsx"
+		\end{figure}
+	\end{itemize}
+	\item searchBar.tsx
+	\begin{itemize}
+		\item Si occupa di filtrare la lista di task mostrate.
+		\item Contiene due menu "Dropdown" in cui è possibile scegliere la tipologia e lo stato che le task devono possedere per essere mostrate
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/searchBar-carbon.png}
+			Codice del componente "searchBar.tsx"
+		\end{figure}
+	\end{itemize}
+\end{itemize}
+
+\subsection{Task}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/Completata.jpg}
+	\caption{Schermata per la task in stato "Completato"}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di mostrare tutti i dettagli legati ad una singola task.\\ La pagina assume diversi aspetti in base allo stato della task che si sta visualizzando.\\E' sempre possibile tornare alla pagina "Tasks" cliccando il bottone blu "Chiudi"\\\\
+E' possibile, se lo stato della Task lo permette, cliccare i seguenti bottoni:
+
+\begin{itemize}
+	\item Bottone arancione "Metti in Pausa" per mettere in pausa la task 
+	\item Bottone verde "Completa" per completare la task 
+	\begin{figure}[H]
+		\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/InLavorazione.jpg}
+		\caption{Schermata per la task in stato "In Lavorazione"}
+	\end{figure}
+\end{itemize}
+
+\begin{itemize}
+	\item Bottone arancione "Prendi in Carico" per prendere in carico la task
+	\begin{figure}[H]
+		\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/DaEseguire.jpg}
+		\caption{Schermata per la task in stato "Da Eseguire"}
+	\end{figure}
+\end{itemize}
+
+\begin{itemize}
+	\item Bottone verde "Riprendi" per riprendere la task
+	\begin{figure}[H]
+		\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/InPausa.jpg}
+		\caption{Schermata per la task in stato "In Pausa"}
+	\end{figure}
+\end{itemize}
+
+
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" il dipedente o manager autenticato devono cliccare il tasto "Tasks" presente nella "navbar", dopodichè devono scegliere una Task e cliccare il corrispettivo bottone blu "Apri".
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-task/frontend/task-userflow.png}
+	Userflow della pagina "Task"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Task" è composta da due componenti chiamati "TaskDetails.tsx" e "vediTask.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item TaskDetails.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "veditask.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item vediTask.tsx
+	\begin{itemize}
+		\item Si occupa di mostrare una carta contenente i principali dettagli della task.
+		\item Contiene sempre un bottone blu "Chiudi" che ritorna alla pagina "Tasks".
+	\end{itemize}
+\end{itemize}
+
+
 
 \chapter{Microservizio Gestione Dipendenti}
 \section{Backend}
 
-Questa sezione comprende lo sviluppo e la documentazione del backend del Microservizio Autenticazione
+Questa sezione comprende lo sviluppo e la documentazione del backend del Microservizio Gestione Dipendenti
 
 \subsection*{Struttura del backend}
-La struttura del backend del microservizio autenticazione è riportata
+La struttura del backend del microservizio Gestione Dipendenti è riportata
 nella figura sotto.
 \begin{figure}[H]
 	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/backend-structure.png}
@@ -3651,12 +4016,164 @@ Per questo endpoint sono stati creati i seguenti test:
 
 \chapter{Microservizio Home}
 
+\section{Frontend}
+
+Questa sezione comprende lo sviluppo e la documentazione del frontend del Microservizio Home
+
+\subsection{Struttura del frontend}
+La struttura del frontend del microservizio Home è riportata
+nella figura sotto.
+\begin{figure}[H]
+	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-home/frontend-structure.png}
+	\caption{Output del comando "tree" all'interno del microservizio home.}
+\end{figure}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/app-carbon.png}
+	Codice del componente "App.tsx"
+\end{figure}
+\subsubsection*{Specifica}
+Tutte le componenti facenti parte del microservizio "Home" vengono gestite dalla componente "App.tsx", quest'ultimo stabilisce gli indirizzi di ciascuna pagina del microservizio e quale componente deve gestire l'indirizzo. 
+
+\subsection{UserFlow}
+Lo userflow del microservizio home viene mostrato sotto nel suo intero. Verrà successivamente suddiviso ed analizzato in ciascun suo componente.
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/userflow-home.png}
+	\caption{UserFlow del microservizio "Home"}
+\end{figure}
+
+
+\subsection{Homepage}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/homepage.jpg}
+	\caption{Schermata per la homepage}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di mostrare un messaggio di benvenuto all'utente.\\ E' possibile raggiungere tutti gli altri microservizi tramite i bottoni presenti al suo interno.
+
+\subsubsection*{Userflow}
+E' la prima pagina che viene mostrata quando l'applicazione viene aperta
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/homepage-userflow.png}
+	Userflow della pagina "homepage"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Homepage" è composta da due componenti chiamati "home.tsx" e "homeContent.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item home.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "homeContent.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item homeContent.tsx
+	\begin{itemize}
+		\item Si occupa di mostrare una carta contenente un messaggio di benvenuto e tre bottoni per accedere ai principali servizi dell'applicazione
+		\begin{figure}[H]
+			\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/homeContent-carbon.png}
+			Codice del componente "homeContent.tsx"
+		\end{figure}
+	\end{itemize}
+\end{itemize}
+
+\subsection{Riparazione}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/riparazione.jpg}
+	\caption{Schermata per la richiesta di riparazione}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di mostrare un modulo per una richiesta di riparazione che può essere compilato ed inviato dall'utente.\\ 
+
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" bisogna cliccare il tasto all'interno della "navbar" chiamato "Riparazione"
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/riparazione-userflow.png}
+	Userflow della pagina "riparazione"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Riparazione" è composta da due componenti chiamati "riparazione.tsx" e "formRiparazione.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item riparazione.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "formRiparazione.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item formRiparazione.tsx
+	\begin{itemize}
+		\item Si occupa di mostrare una carta contenente un modulo per una richiesta di Riparazione che può essere compilata dall'utente
+	\end{itemize}
+\end{itemize}
+
+
+\subsection{Assistenza}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/assistenza.jpg}
+	\caption{Schermata per la richiesta di assistenza}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di mostrare un modulo per una richiesta di assistenza che può essere compilato ed inviato dall'utente.\\ 
+
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" bisogna cliccare il tasto all'interno della "navbar" chiamato "Assistenza"
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/assistenza-userflow.png}
+	Userflow della pagina "assistenza"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Assistenza" è composta da due componenti chiamati "assistenza.tsx" e "formAssistenza.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item assistenza.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "formAssistenza.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item formAssistenza.tsx
+	\begin{itemize}
+		\item Si occupa di mostrare una carta contenente un modulo per una richiesta di Assistenza che può essere compilata dall'utente
+	\end{itemize}
+\end{itemize}
+
+\subsection{Feedback}
+
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/feedback.jpg}
+	\caption{Schermata per il feedback}
+\end{figure}
+\subsubsection*{Specifica}
+La pagina si occupa di mostrare un modulo per l'invio di un feedback che può essere compilato dall'utente.\\ 
+
+\subsubsection*{Userflow}
+Partendo dalla pagina "Homepage" bisogna cliccare il tasto all'interno della carta di benvenuto chiamato "Lasciaci un feedback"
+\begin{figure}[H]
+	\centering\includegraphics[width=1\textwidth]{images/microservizio-home/frontend/feedback-userflow.png}
+	Userflow della pagina "feedback"
+\end{figure}
+
+\subsubsection*{Codice}
+La pagina "Feedback" è composta da due componenti chiamati "feedback.tsx" e "formFeedback.tsx" con le seguenti caratteristiche:
+\begin{itemize}
+	\item feedback.tsx
+	\begin{itemize}
+		\item Contiene al suo interno "formFeedback.tsx"
+		\item Contiene controlli e "Fallbacks" per eventuali errori
+	\end{itemize}
+	\item formFeedback.tsx
+	\begin{itemize}
+		\item Si occupa di mostrare una carta contenente un modulo per l'invio di feedback che può essere compilata dall'utente
+	\end{itemize}
+\end{itemize}
+
 \chapter{Deploy}
 
 In questo capitolo si descrivono i procedimenti per effettuare un deploy dell'applicazione con successo in locale.
 
 \section{Dipendenze}
-E' necessario aver installato docker nella macchina host. Se l'host si trova su windows, docker può essere installto tramite "WSL" ("Windows Subsystem for Linux").
+E' necessario aver installato docker nella macchina host. Se l'host si trova su windows, docker può essere installato tramite "WSL" ("Windows Subsystem for Linux").
 
 
 \section{Ottenere il codice}
@@ -3721,7 +4238,7 @@ Per eseguire solo la backend:
 \begin{verbatim}
 npm run startback
 \end{verbatim}
-Per eseguire solo la forntend:
+Per eseguire solo la frontend:
 \begin{verbatim}
 npm run startfront
 \end{verbatim}
