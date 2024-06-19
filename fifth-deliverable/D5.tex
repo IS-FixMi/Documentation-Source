@@ -158,6 +158,17 @@ Il nostro team ha agito in linee molto simili a quelle presentate dal CEO di Blu
 
 
 \subsection{Kanban}
+\subsubsection*{Riassunto}
+
+Il seminario ha mostrato, tramite un laboratorio interattivo, le potenzialità del metodo Kanban. Nonostante il termine Kanban venga utilizzato del mondo automobilistico, nell'informatica Kabnan è un metodo per gestire il lavoro utilizzato da molte aziende come Microsoft durante lo svilupo di X-box. Il metodo si basa sulla divisione del lavoro in deverse sezioni, come "Design", "Implementation" e "Done". Una certa task passerà tramite queste fasi di sviiluppo, in modo da fornire una visione chiara dello stato di una task. kanban si basa sul fatto che ci può essere un numero limitato di task su cui si sta lavorando contemporaneamente. Questo permette di concentrare l'intero team su un unico obiettivo e completare tasks più in fretta. Lo scopo del laboratorio è stato mostrare come questo sistema funziona.
+
+\subsubsection*{Cosa abbiamo imparato}
+
+Un sistema di gestione del lavoro è fondamentale per un processo di sviluppo efficiente e produttivo. Kanban fornisce un metodo di organizzare il lavoro per questi scopi.
+
+\subsubsection*{Il nostro approccio}
+
+Anche se non è stato usato il metodo Kanban, durante lo sviluppo il team ha diviso il lavoro in più task e si è concentrato su un'obiettivo alla volta.
 
 \subsection{IBM}
 \subsubsection*{Riassunto}
@@ -190,7 +201,39 @@ All'interno del nostro gruppo abbiamo posto grande attenzione nella scelta del l
 
 \subsection{U-Hopper}
 
+\subsubsection*{Riassunto}
+
+Daniele Miorandi, Chief AI Officer  di U-Hopper, ha dedicato il seminario per familiarizzare gli studenti con tecnologie utilizzate in azienda, portando l'esempio di U-Hopper. Le tecnologie mostrate sono le seguenti:
+\begin{itemize}
+	\item \textbf{Ingestion}: Per reperire grandi quntità di dati, vengono utilizzati dei sistemi a coda come dei buffers e dei lettori e scrittori. Esempi di queste tecnologie sono Kafka, MQTT
+	\item \textbf{Batch Processing}: Computazione in blocchi su cluster. Esempio di Spark.
+	\item \textbf{Stream Processing}: Elaborazione dei dati in streams, spesso usati nei sistemi di pagamento. alcune tecnologie sono Spark Streaming e Flink
+	\item \textbf{In-memory DB}: Tenere tutti i dati in memoria per una maggiore velocità di lettura. Esempio: Redis
+	\item \textbf{Storage}: PostgeSQL, MongoDB, MySQL, Cassandra (Per grandi dati molto sparsi, inserisce per colonne), CouchDB, Elastic (NpSQL per letture e scritture veloci), InfluxDB (lavoro per serie temporali come dati di sensori e logs), MinIO (Object storage), TileDB(gestione di dati cartografici)
+	\item \textbf{Task Management / Orchestration}: Tecnologie per controllare l'esecuzione e i flow dei dati, rappresentati tramite DAG. Ad esempio Celery e AirFlow
+	\item \textbf{Logs}: Sentry, ELK, TIG
+	\item \textbf{Linguaggi di programmazione}: Python, Scala, go
+	\item \textbf{AI}: MLFlow, Tenserflow, Pythorch
+	\item \textbf{DEployment}: Docker, IASS
+	\item \textbf{DEsign Patterns}: Microservizi, Event Driven Architecture, Asynchronous
+	\item \textbf{Processi e strumenti per SE}: Agile, CI / CD, documnetazione
+\end{itemize}
+
+\subsubsection*{Cosa abbiamo imparato}
+
+Esistono numerose tecnologie per la realizzazione di software utilizzate in azienda. Queste tecnologie permettono di risolvere problemi o migliorare il processo di sviluppo. 
+
+\subsubsection*{Il nostro approccio}
+
+Nella creazione dello stack per lnostra applicazione, abbiamo tenuto conto delle tecnologie più utilizzate nell'industria compatibili con i nostri requisiti ed esperienza. Abbiamo utilizzato un design pattern basato sui microservizi ed una serie di tecnologie utili allo sviluppo come linters, tests, agile developement.
+
 \subsection{RedHat}
+
+\subsubsection*{Riassunto}
+Il seminario, presentato da Mario Fusco di RedHat, introduce il mondo dell'open source e delle sue dinamiche. Vengono elencati i vantaggi nell'open source quali la condivisione di conoscenza, il controllo del codice da molti e la community. Vengono discusse le licenze, divise nelle due categorie Copyleft e non-Copyleft. La prima forza la distribuzione del codice delle applicazioni modificate dall'originale, sa seconda non obblica nessuna restrizione sull'utilizzo del codice. Il seminario si conclude mostrando come poter contribuire ad un progetto open source, principalmente guardando la sezione "Issues" su github.
+\subsubsection*{Cosa abbiamo imparato}
+L'open source è un ottimo sistema per lo svuiluppo di software sotto tanti aspetti.
+
 
 \subsection{Microsoft}
 \subsubsection*{Riassunto}
@@ -262,8 +305,11 @@ Abbiamo imparato che la gestione del ciclo di vita è veramente importante e non
 \subsubsection*{Il nostro approccio}
 Per il progetto non abbiamo seguito una metodologia precisa, tuttavia durante alcune fasi dello sviluppo del codice abbiamo seguito un approccio simile al Continous Integration.
 Inoltre abbiamo sviluppato un'architettura a microservizi.
+
 \subsection{APSS \& Trentino.ai}
 
+\subsubsection*{Riassunto}
+Il seminario discute le tencologie e il data flow utilizzati nell'Azienda Provinciale per i Servizi Sanitari (APSS). L'APSS segue un gran dumero di dipendendi, proferrionisti e pazienti su tutto il territorio occupandosi della manutenzione delle attrezzature sanitarie e della gestione dei dati. Infatti vengono utilizzate diverse tecnologie per l'elaborazione e la visualizzazione dei dati come KNIME e Tableau. Inoltre, vi è un interesse nell'adozione di soluzioni basate su AI nel mondo della sanità.
 
 \section{Organizzazione del lavoro}
 
@@ -341,6 +387,10 @@ Il team di sviluppo ha fatto uso dei seguenti strumenti per lo sviluppo dell'app
 % table
 
 \subsubsection{Giovanni Santini}
+\begin{itemize}
+	\item \textbf{Ruolo}: Responsabile Backend
+	\item \textbf{Principali Attività}: Il membro del team a partecipato laboriosamente all'intero design e svuluppo dell'applicazione. In particolare, ha guidato il team durante la stesura del D3 e D4, si è occupato dell'infrastruttura e implementazione dei microservizi utilizzando tecnologie come Docker, Nginx; ha contribuito attivamente alla documentazione.
+\end{itemize}
 
 \subsubsection{Riginel Ungureanu}
 
