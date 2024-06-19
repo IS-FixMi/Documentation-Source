@@ -88,7 +88,7 @@
 
 
 \section{Scopo del documento}
-Questo documento denominato "Application Implementation and Documentation" descrive in dettaglio l'implementazione dell'applicazione nelle sue molteplici parti, seguendo quanto visto nei precedenti documenti. Il documento è strutturato in diversi capitoli: il primo dedicato alla specifica dell'infrastruttura in generale, con grafici e codice, seguito da quattro capitoli dedicati alle varie funzionalità implementate, con una visione della backend e della frontend. Il documento si chiude con le istruzioni per il deploy dell'applicazione.
+Questo documento denominato "Application Implementation and Documentation" descrive in dettaglio l'implementazione dell'applicazione nelle sue molteplici parti, seguendo quanto visto nei precedenti documenti. Il documento è strutturato in diversi capitoli: il primo dedicato alla specifica dell'infrastruttura in generale, con grafici e codice, seguito da quattro capitoli dedicati alle varie funzionalità implementate, con una visione della Back-End e della Front-End. Il documento si chiude con le istruzioni per il deploy dell'applicazione.
 
 \section{Implementazione}
 Il team di sviluppo, valutando i requisiti del progetto ed il tempo a disposizione, ha deciso di implementare i seguenti microservizi:
@@ -144,15 +144,15 @@ Gli estratti di codice verranno mostrati nel seguente formato:
 
 \section{Architettura dei Microservizi}
 
-L'architettura proposta si basa sulla divisione logica (e fisica) delle funzionalità dell'applicazione tramite la distinzione di \textit{Microservizi}. Ciascun microservizio è indipendente dagli altri ed è composto a sua volta da una frontend e una backend distinte. Per tale ragione, è più accurato parlare di micro-frontend e micro-backend.
+L'architettura proposta si basa sulla divisione logica (e fisica) delle funzionalità dell'applicazione tramite la distinzione di \textit{Microservizi}. Ciascun microservizio è indipendente dagli altri ed è composto a sua volta da una Front-End e una Back-End distinte. Per tale ragione, è più accurato parlare di micro-Front-End e micro-Back-End.
 
 \subsection*{Vantaggi di un'architettura basata su microservizi}
 
-Da un punto di vista di sviluppo, un'architettura non monolitica permette lo sviluppo asincrono dei singoli microservizi, oltre a facilitare la divisione del lavoro nelle varie parti. Tale architettura ha anche dei vantaggi a livello di performance in quanto il carico di lavoro chel'applicazione processa viene distribuito su più processi diminuendo il carico sul singolo. Altri vantaggi sono la scalarità dia una componente dell'applicazione in base alle esigenze e la ridondanza in quanto possono esistere più istanze di un microservizio contemporaneamente.
+Da un punto di vista di sviluppo, un'architettura non monolitica permette lo sviluppo asincrono dei singoli microservizi, oltre a facilitare la divisione del lavoro nelle varie parti. Tale architettura ha anche dei vantaggi a livello di performance in quanto il carico di lavoro che l'applicazione processa viene distribuito su più processi diminuendo il carico sul singolo. Altri vantaggi sono la scalabilità dia una componente dell'applicazione in base alle esigenze e la ridondanza in quanto possono esistere più istanze di un microservizio contemporaneamente.
 
 \subsection*{Svantaggi}
 
-Un'architettura a microservizi è intrinsecamente più complessa nella progettazzione e nella menutenzione rispetto ad una architettura tradizionale. La necessità di orchestrare e mettere in comunicazione i diversi microservizi richiede particolari accortezze nella parte di design e di deploy. Tali problematiche sono state valutate con cura dal team di sviluppo.
+Un'architettura a microservizi è intrinsecamente più complessa nella progettazione e nella manutenzione rispetto ad una architettura tradizionale. La necessità di orchestrare e mettere in comunicazione i diversi microservizi richiede particolari accortezze nella parte di design e di deploy. Tali problematiche sono state valutate con cura dal team di sviluppo.
 
 
 
@@ -161,14 +161,14 @@ Prima di analizzare il singolo microservizio, questa sezione illustra una vision
 
 \subsection{Tecnologie}
 
-In questo capitolo verranno menzionate più volte alcune tecnologie, dunque ne viene riportata una breve descrizionee sotto:
+In questo capitolo verranno menzionate più volte alcune tecnologie, dunque ne viene riportata una breve descrizione sotto:
 \begin{itemize}
 	\item "Docker": tecnologia che raccoglie il software in unità standardizzate chiamate container, offrendo tutto il necessario per la loro corretta esecuzione, incluse librerie, strumenti di sistema, codice e runtime. Il logo ricorda una balena di colore azzurro con dei rettangoli al di sopra rappresentanti dei containers, come se la balena stessa fosse una nave.
-	\item "Docker Compose": software per la gestione di molteplici docker containers contemporaneamente. L'icona rappresenta un polpo con dei parallelepipedi azzurri tra i tentacoli.
+	\item "Docker Compose": software per la gestione di molteplici Docker containers contemporaneamente. L'icona rappresenta un polpo con dei parallelepipedi azzurri tra i tentacoli.
 	\item "Nginx": intermediario tra le richieste da parte dei client e il server. Può essere usato come load balancer, cache o proxy. Il logo è raffigurato da un N bianca con sfondo verde.
 	\item "MongoDB": DBMS non relazionale. Il logo rappresenta una foglia verde.
-	\item "Express": framework backend per applicazioni web in javascript. Il logo è formato dalle due lettere "e" e "x" in nero.
-	\item "React": framework frontend lo sviluppo di applicazioni web. L'icona ricorda un atomo.
+	\item "Express": framework Back-End per applicazioni web in javascript. Il logo è formato dalle due lettere "e" e "x" in nero.
+	\item "React": framework Front-End lo sviluppo di applicazioni web. L'icona ricorda un atomo.
 \end{itemize}
 
 \subsection{Specifica dell'Infrastruttura}
@@ -221,9 +221,9 @@ Ad ogni servizio sono state assegnate le seguenti porte:
 		\hline
 		MongoDB                  & 27017              \\
 		\hline
-		Backend                  & 3001               \\
+		Back-End                  & 3001               \\
 		\hline
-		frontend                 & 3002               \\
+		Front-End                 & 3002               \\
 		\hline
 		Reverse Proxy            & 7777               \\
 		\hline
@@ -252,8 +252,8 @@ La directory radice del progetto contiene i seguenti files:
 
 Segue una descrizione degli stessi:
 \begin{itemize}
-	\item "db": volume condiviso tra il docker container del database e il filesystem dell'host per mantenere persistenza dei dati quando il container viene riavviato o rimosso.
-	\item "docker-compose.yaml": file di configurazione utilizzato da docker compose per inizializzare l'infrastruttura. Contiene le informazioni per avviare gli altri microservizi.
+	\item "db": volume condiviso tra il Docker container del database e il filesystem dell'host per mantenere persistenza dei dati quando il container viene riavviato o rimosso.
+	\item "docker-compose.yaml": file di configurazione utilizzato da Docker Compose per inizializzare l'infrastruttura. Contiene le informazioni per avviare gli altri microservizi.
 	\item "fixmi-microservice-gestione-dipendenti": cartella contenente il microservizio "Gestione Dipendenti".
 	\item "fixmi-microservizio-autenticazione": cartella contenente il microservizio "Autenticazione".
 	\item "fixmi-microservizio-home": cartella contenente il microservizio "Home".
@@ -304,7 +304,7 @@ Il file \textit{nginx.conf} all'interno della cartella \textit{fixmi-reverse-pro
 	Estratto da "fixmi-reverse-proxy/nginx.conf", definizione delle routes "/home" e "/api/home"
 \end{figure}
 
-La variabile "worker\_connections" definisce il numero di connessioni simultanee che il servizio può gestire. Il blocco "http" e il blocco "server" contengono le configurazioni delle routes, in particolare in questo esempio notiamo che la route "/home/" viene passata a "http://10.5.0.13:3002/" ossia la frontend del microservizio "home", mentre "/api/home/" rimanda a "http://10.5.0.13:3001/api/home/" ossia la backend del microservizio "home". Vengono inoltre impostati alcuni headers dopo la dicitura "proxy\_set\_header".
+La variabile "worker\_connections" definisce il numero di connessioni simultanee che il servizio può gestire. Il blocco "http" e il blocco "server" contengono le configurazioni delle routes, in particolare in questo esempio notiamo che la route "/home/" viene passata a "http://10.5.0.13:3002/" ossia la Front-End del microservizio "home", mentre "/api/home/" rimanda a "http://10.5.0.13:3001/api/home/" ossia la Back-End del microservizio "home". Vengono inoltre impostati alcuni headers dopo la dicitura "proxy\_set\_header".
 
 Di seguito vengono riportate le altre routes:
 
@@ -341,22 +341,22 @@ In questa sezione verrà descritta la struttura che accomuna i vari microservizi
 
 \subsection{Scelta del Linguaggio}
 
-Il linguaggio scelto per la backend e frontend è \textit{Typescript}: un linguaggio tipizzato che viene tradotto da un compilatore ("transpiler") in Javascript e dunque può essere eseguito in un web browser. Qualsiasi script JavaScript è anche codice TypeScript valido, questo permette all'applicazione di utilizzare l'ampia collezione di pacchetti JavaScript.
+Il linguaggio scelto per la Back-End e Front-End è \textit{Typescript}: un linguaggio tipizzato che viene tradotto da un compilatore ("transpiler") in Javascript e dunque può essere eseguito in un web browser. Qualsiasi script JavaScript è anche codice TypeScript valido, questo permette all'applicazione di utilizzare l'ampia collezione di pacchetti JavaScript.
 
 \subsection{Frameworks e Dipendenze}
 
 Ogni microservizio utilizza:
 \begin{itemize}
-	\item \textit{ts-node} v10.9.2: ambiente runtime Typescript open source e multipiattaforma per la creazione del server di backend.
+	\item \textit{ts-node} v10.9.2: ambiente runtime Typescript open source e multipiattaforma per la creazione del server di Back-End.
 	\item \textit{eslint} v8.56.0: analizzatore di codice statico.
 	\item \textit{nodemon} v3.0.3: tool di assistenza per Node.js. permette il riavvio automatico del server quando viene rilevata una modifica nel codice.
 	\item \textit{express} v4.18.2: framework web per Node.js, utilizzato per la realizzazione di api.
-	\item \textit{React} v18.3.0: libreria UI per javascript, utilizzata per la frontend.
+	\item \textit{React} v18.3.0: libreria UI per javascript, utilizzata per la Front-End.
 	\item \textit{tailwindcss} v3.4.1: framework CSS.
 	\item \textit{Jest} v29.7.0 : framework per il testing
 	\item \textit{supertest} v7.0.0: framework per il testing di api, utilizzato insieme a Jest.
-	\item \textit{concurrently} v8.2.2: esegue più comandi contemporaneamente, utilizzato per eseguire frontend e backend insieme.
-	\item \textit{serve} v14.2.3: hosta un sito statico, utilizzato per hostare la frontend in produzione.
+	\item \textit{concurrently} v8.2.2: esegue più comandi contemporaneamente, utilizzato per eseguire  e Back-End insieme.
+	\item \textit{serve} v14.2.3: hosta un sito statico, utilizzato per hostare la Front-End in produzione.
 	\item \textit{dotenv} v16.4.5: permette l'accesso alle variabili di ambiente, utilizzate per la configurazione dei microservizi.
 	\item \textit{body-parser} v1.20.2: permette di leggere il body di una richiesta http.
 	\item \textit{mongodb} v6.5.0: interfaccia per la connessione al microservizio database.
@@ -371,20 +371,20 @@ La cartella di un microservizio presenta i seguenti files:
 \end{figure}
 Segue una descrizione degli stessi, dall'alto verso il basso:
 \begin{itemize}
-	\item "backend": cartella contenente tutto il codice di Backend in TypeScript.
+	\item "backend": cartella contenente tutto il codice di Back-End in TypeScript.
 	\item "build": cartella contenente l'applicazione web statica generata da React.
 	\item "commands": cartella contenente degli appunti degli sviluppatori durante la creazione del progetto.
-	\item "dist": cartella contenente il codice backend per la produzione, generato dal compilatore di TypeScript.
-	\item "Dockerfile": file contenente le istruzioni per la generazione del contenitore di docker.
+	\item "dist": cartella contenente il codice Back-End per la produzione, generato dal compilatore di TypeScript.
+	\item "Dockerfile": file contenente le istruzioni per la generazione del contenitore di Docker.
 	\item "nix-shell.nix": file contenente l'ambiente di sviluppo per chi sviluppa su NixOS.
 	\item "node\_modules/": cartella contenente i moduli utilizzati dall'applicazione
-	\item "package.json": file che definise le dipendenze e le impostazioni di vari moduli.
+	\item "package.json": file che definisce le dipendenze e le impostazioni di vari moduli.
 	\item "package-lock.json": contiene le versioni delle dipendenze dei moduli.
 	\item "postcss.config.js": script di configurazione necessario per tailwindcss
-	\item "public": contiene file di accesso pubblico per la frontned, come favicon.ico, robots.txt, index.html.
+	\item "public": contiene file di accesso pubblico per la Front-End, come favicon.ico, robots.txt, index.html.
 	\item "README.md": contiene le informazioni del progetto e le istruzioni per il deploy.
 	\item "src/": cartella contenente tutto il codice per la frontend in tsx.
-	\item "tailwind.config.js": file di configurazione per il funzionamento di tailwindcss
+	\item "tailwind.config.js": file di configurazione per il funzionamento di tailwind CSS
 	\item "tsconfig.json": configurazione per TypeScript.
 \end{itemize}
 
@@ -402,25 +402,25 @@ La struttura della directory "backend/" segue il seguente formato:
 	\item server.ts: è il file principale. Si occupa di istanziare l'App di express,
 	      connettersi al database e definire le route delle API.
 	\item classes/ : directory contenente le classi relative ai profili, che vengono manipolate ed immagazzinate nel database.
-	\item enums/ : directory contenente gli enumi necessari.
+	\item enums/ : directory contenente gli enum necessari.
 	\item routes/ : directory contenente gli endpoint delle API del sistema.
 	\item tests/ : directory contenente i test delle API
 	\item utils/ : directory contenente strutture dati e funzioni utili al funzionamento del sistema.
 \end{itemize}
 
 \subsection{Comandi npm}
-Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite npm. Ogni comando può esssere eseguito digitando "npm run" ed il nome del comando.
+Vengono definiti i seguenti scripts per l'esecuzione dell'applicazione tramite npm. Ogni comando può essere eseguito digitando "npm run" ed il nome del comando.
 \begin{itemize}
-	\item "startfront": esegue solo la frontend, si aggiorna automaticamente ad ogni modifica del codice
-	\item "buildfront": genera la frontend statica per la production
-	\item "startback": esegue soltanto il server di backend, si aggiorna automaticamente ad ogni modifica del codice
-	\item "start": esegue sia la frontend sia la backend in developement mode
-	\item "production": esegue sia la frontend sia la backend in production mode
-	\item "lint": esegue un'analisi stica del codice
+	\item "startfront": esegue solo la Front-End, si aggiorna automaticamente ad ogni modifica del codice
+	\item "buildfront": genera la Front-End statica per la production
+	\item "startback": esegue soltanto il server di Back-End, si aggiorna automaticamente ad ogni modifica del codice
+	\item "start": esegue sia la Front-End sia la Back-End in developement mode
+	\item "production": esegue sia la Front-End sia la Back-End in production mode
+	\item "lint": esegue un'analisi statica del codice
 	\item "test": esegue gli script di testing del codice.
 \end{itemize}
 
-\subsection{Elementi frontend}
+\subsection{Elementi Front-End}
 Ogni microservizio condivide due componenti grafici, "navbar.tsx" e "footer.tsx" posizionati sempre rispettivamente in cima e in fondo ad ogni pagina dell'applicazione.
 Il loro scopo è rendere la navigazione per l'utente più semplice e chiara
 \subsubsection{Navbar}
@@ -484,12 +484,12 @@ Il database Tasks contiene le task
 
 \chapter{Microservizio Autenticazione}
 
-\section{Backend}
+\section{Back-End}
 
-Questa sezione comprende lo sviluppo e la documentazione del backend del Microservizio Autenticazione
+Questa sezione comprende lo sviluppo e la documentazione della Back-End del Microservizio "Autenticazione"
 
-\subsection{Struttura del backend}
-La struttura del backend del microservizio autenticazione è riportata
+\subsection{Struttura della Back-End}
+La struttura della Back-End del microservizio autenticazione è riportata
 nella figura sotto.
 \begin{figure}[H]
 	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/backend-structure.png}
@@ -530,7 +530,7 @@ Metodi
 \paragraph*{<<resource>> login}
 Permette a un utente già esistente di accedere all'applicazione.
 I parametri in ingresso sono email, password e codice 2FA.
-E' un'API del backend.
+E' un'API del Back-End.
 
 \paragraph*{<<resource>> logout}
 Permette a un utente che ha già eseguito l'accesso di svolgere il logout dall'applicazione.
@@ -1476,12 +1476,12 @@ I risultati dei test sono i seguenti:
 \end{figure}
 
 
-\section{Frontend}
+\section{Front-End}
 
-Questa sezione comprende lo sviluppo e la documentazione del frontend del Microservizio Autenticazione
+Questa sezione comprende lo sviluppo e la documentazione del Front-End del Microservizio Autenticazione
 
-\subsection{Struttura del frontend}
-La struttura del frontend del microservizio autenticazione è riportata
+\subsection{Struttura del Front-End}
+La struttura del Front-End del microservizio autenticazione è riportata
 nella figura sotto.
 \begin{figure}[H]
 	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/frontend-structure.png}
@@ -1678,10 +1678,10 @@ La pagina "Profilo" è composta da due componenti chiamati "profile.tsx" e "notL
 
 \chapter{Microservizio Task}
 
-\section{Backend}
+\section{Back-End}
 
-Questa sezione comprende lo sviluppo e la documentazione del backend del
-"Microservizio Task".
+Questa sezione comprende lo sviluppo e la documentazione della Back-End del
+Microservizio "Task".
 
 \subsection{Lista delle Risorse}
 
@@ -3174,12 +3174,12 @@ Codice dei testcases:
 	Risultato testcases
 \end{figure}
 
-\section{Frontend}
+\section{Front-End}
 
-Questa sezione comprende lo sviluppo e la documentazione del frontend del Microservizio Task
+Questa sezione comprende lo sviluppo e la documentazione del Front-End del Microservizio Task
 
-\subsection{Struttura del frontend}
-La struttura del frontend del microservizio task è riportata
+\subsection{Struttura del Front-End}
+La struttura del Front-End del microservizio task è riportata
 nella figura sotto.
 \begin{figure}[H]
 	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-task/frontend-structure.png}
@@ -3320,12 +3320,12 @@ La pagina "Task" è composta da due componenti chiamati "TaskDetails.tsx" e "ved
 
 
 \chapter{Microservizio Gestione Dipendenti}
-\section{Backend}
+\section{Back-End}
 
-Questa sezione comprende lo sviluppo e la documentazione del backend del Microservizio Gestione Dipendenti
+Questa sezione comprende lo sviluppo e la documentazione del Back-End del Microservizio 2Gestione Dipendenti"
 
-\subsection*{Struttura del backend}
-La struttura del backend del microservizio Gestione Dipendenti è riportata
+\subsection*{Struttura del Back-End}
+La struttura della Back-End del microservizio "Gestione Dipendenti" è riportata
 nella figura sotto.
 \begin{figure}[H]
 	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-autenticazione/backend-structure.png}
@@ -3351,16 +3351,16 @@ Ha tutti gli attributi di Dipendente, ma ha come permissionLevel "Manager"
 Metodi
 \paragraph*{<<resource>> crea}
 Permette al manager di creare un profilo dipendente.
-E' un'API del backend
+E' un'API della Back-End
 \paragraph*{<<resource>> rimuovi}
 Permette al manager di rimuovere un profilo dipendente
-E' un'API del backend
+E' un'API della Back-End
 \paragraph*{<<resource>> cerca}
 Permette al manager di cercare profili dipendente
-E' un'API del backend
+E' un'API della Back-End
 \paragraph*{<<resource>> storico}
 Permette al manager di visualizzare lo storico task di un determinato dipendente
-E' un'API del backend
+E' un'API della Back-End
 
 \subsection{Crea profilo Dipendente}
 
@@ -4016,12 +4016,12 @@ Per questo endpoint sono stati creati i seguenti test:
 
 \chapter{Microservizio Home}
 
-\section{Frontend}
+\section{Front-End}
 
-Questa sezione comprende lo sviluppo e la documentazione del frontend del Microservizio Home
+Questa sezione comprende lo sviluppo e la documentazione della Front-End del Microservizio Home
 
-\subsection{Struttura del frontend}
-La struttura del frontend del microservizio Home è riportata
+\subsection{Struttura del Front-End}
+La struttura della Front-End del microservizio Home è riportata
 nella figura sotto.
 \begin{figure}[H]
 	\centering\includegraphics[width=0.5\textwidth]{images/microservizio-home/frontend-structure.png}
@@ -4173,7 +4173,7 @@ La pagina "Feedback" è composta da due componenti chiamati "feedback.tsx" e "fo
 In questo capitolo si descrivono i procedimenti per effettuare un deploy dell'applicazione con successo in locale.
 
 \section{Dipendenze}
-E' necessario aver installato docker nella macchina host. Se l'host si trova su windows, docker può essere installato tramite "WSL" ("Windows Subsystem for Linux").
+E' necessario aver installato Docker nella macchina host. Se l'host si trova su windows, Docker può essere installato tramite "WSL" ("Windows Subsystem for Linux").
 
 
 \section{Ottenere il codice}
@@ -4206,15 +4206,15 @@ si consiglia di utilizzare quest'ultimo in quanto vengono di impostare tutte le 
 \end{itemize}
 
 \section{Eseguire Singoli Microservizi}
-Nonostante eseguire parti dell'infrastruttura indipendenti senza docker compose non sia consigliato, questa sezione riporta le istruzioni per eseguire in microservizio singolarmente e informazioni per il developement.
+Nonostante eseguire parti dell'infrastruttura indipendenti senza Docker compose non sia consigliato, questa sezione riporta le istruzioni per eseguire in microservizio singolarmente e informazioni per il developement.
 
 \subsection*{Microservizio con Docker}
-Per eseguire un signolo microservizio dobbiamo buildare il docker container, questo può essere fatto con il seguente comando:
+Per eseguire un signolo microservizio dobbiamo buildare il Docker container, questo può essere fatto con il seguente comando:
 \begin{verbatim}
 cd fixmi-microservizio-<nome-del-microservizio>
 docker build -t example-microservice .
 \end{verbatim}
-Successivamente, il docker container può essere eseguito con il comando:
+Successivamente, il Docker container può essere eseguito con il comando:
 \begin{verbatim}
 docker run -p <backend_port>:3001 -p <frontend_port>:3002 \\
 -v .:/app example-microservice
@@ -4223,8 +4223,8 @@ docker run -p <backend_port>:3001 -p <frontend_port>:3002 \\
 	\item Al comando può essere aggiunta la flag "-d" per eseguire il container in detached mode, nascondendo l'output nel background. Si ricordi che per fermare il container sarà necessario usare il comando "docker stop <container-id>" e per leggere i logs si può usare il comando "docker logs <container-id>"
 \end{itemize}
 
-\subsection*{Microservizio senza docker}
-Per eseguire un microservizio senza l'utilizzo di docker è necessario aver installato "npm". I seguenti comandi sono utili per il deploy e lo sviluppo.
+\subsection*{Microservizio senza Docker}
+Per eseguire un microservizio senza l'utilizzo di Docker è necessario aver installato "npm". I seguenti comandi sono utili per il deploy e lo sviluppo.
 Prima di tutto è necessario installare i moduli da cui dipende il programma:
 \begin{verbatim}
 npm install .
@@ -4234,15 +4234,15 @@ Il microservizio può essere eseguito in production con:
 npm run buildfront
 npm run production
 \end{verbatim}
-Per eseguire solo la backend:
+Per eseguire solo la Back-End:
 \begin{verbatim}
 npm run startback
 \end{verbatim}
-Per eseguire solo la frontend:
+Per eseguire solo la Front-End:
 \begin{verbatim}
 npm run startfront
 \end{verbatim}
-Per eseguire la backend e frontend in dev mode:
+Per eseguire la Back-End e Front-End in dev mode:
 \begin{verbatim}
 npm run start
 \end{verbatim}
